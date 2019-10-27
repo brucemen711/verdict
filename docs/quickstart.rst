@@ -37,7 +37,7 @@ Steps
 
 .. code-block:: bash
 
-    curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-compose-64gb.yaml \
+    curl -s https://raw.githubusercontent.com/verdict-project/verdict/master/docker-compose-64gb.yaml \
         | docker-compose -f - up
 
 

@@ -18,7 +18,7 @@ services:
     container_name: "docker-verdict"
 
   presto:
-    image: "yongjoopark/presto-with-hadoop"
+    image: "verdictproject/presto-with-hadoop"
     ports:
       - "8080:8080"     # presto
       - "10000:10000"   # hive

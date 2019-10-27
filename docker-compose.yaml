@@ -1,4 +1,5 @@
-# this is for remote build
+# This is for remote build
+# Use this for the machines with small amount of memory
 
 version: '3'
 

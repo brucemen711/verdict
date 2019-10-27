@@ -1,4 +1,5 @@
-# this is for remote build
+# This is for remote build
+# Use this for the machines with larger amount of memory (64 GB)
 
 version: '3'
 
@@ -16,7 +17,7 @@ services:
     container_name: "docker-verdict"
 
   presto:
-    image: "verdictproject/docker-presto-with-hadoop"
+    image: "verdictproject/presto-with-hadoop"
     ports:
       - "8080:8080"     # presto
       - "10000:10000"   # hive
