@@ -24,9 +24,9 @@ copyright = '2019, Verdict Team'
 author = 'Verdict Team'
 
 # The short X.Y version
-version = '0.0.9'
+version = '0.6.0'
 # The full version, including alpha/beta/rc tags
-release = '0.0.9'
+release = '0.6.0'
 
 
 # -- General configuration ---------------------------------------------------
