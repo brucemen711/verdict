@@ -1,0 +1,785 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\nimport pandas as pd\nimport verdict\n\nverdict.set_loglevel(\u0027debug\u0027)\nv \u003d verdict.presto(\u0027presto\u0027, preload_cache\u003dFalse)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:14:12.554",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-10-26 21:14:12,567 verdict INFO - Verdict\u0027s log level is set to DEBUG. \n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572124191778_-1198000652",
+      "id": "20191026-210951_1529651661",
+      "dateCreated": "2019-10-26 21:09:51.778",
+      "dateStarted": "2019-10-26 21:14:12.563",
+      "dateFinished": "2019-10-26 21:14:12.571",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nv.info()",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:10:34.413",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{   \u0027Registered Tables\u0027: [   \u0027hive.instacart.order_products\u0027,\n                             \u0027hive.tpch_sf1.orders\u0027,\n                             \u0027hive.instacart.orders\u0027,\n                             \u0027hive.tpch_sf1.lineitem\u0027,\n                             \u0027hive.tpch_sf100.lineitem\u0027,\n                             \u0027hive.tpch_sf100.orders\u0027]}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572124227592_-1911750028",
+      "id": "20191026-211027_1391026417",
+      "dateCreated": "2019-10-26 21:10:27.592",
+      "dateStarted": "2019-10-26 21:10:34.423",
+      "dateFinished": "2019-10-26 21:10:34.439",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nv.info(\u0027hive.instacart.orders\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:35:10.401",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{   \u0027Column Names and Types\u0027: {   \u0027days_since_prior\u0027: \u0027integer\u0027,\n                                  \u0027eval_set\u0027: \u0027varchar\u0027,\n                                  \u0027order_dow\u0027: \u0027integer\u0027,\n                                  \u0027order_hour_of_day\u0027: \u0027integer\u0027,\n                                  \u0027order_id\u0027: \u0027integer\u0027,\n                                  \u0027order_number\u0027: \u0027integer\u0027,\n                                  \u0027user_id\u0027: \u0027integer\u0027},\n    \u0027Created Samples\u0027: [   \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027,\n                           \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027],\n    \u0027Row Count\u0027: 547373120}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125702072_971143135",
+      "id": "20191026-213502_914580839",
+      "dateCreated": "2019-10-26 21:35:02.072",
+      "dateStarted": "2019-10-26 21:35:10.418",
+      "dateFinished": "2019-10-26 21:35:10.425",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:35:25.709",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{   \u0027Column Names and Types\u0027: {   \u0027add_to_car_order\u0027: \u0027integer\u0027,\n                                  \u0027aisle\u0027: \u0027varchar\u0027,\n                                  \u0027aisle_id\u0027: \u0027integer\u0027,\n                                  \u0027department\u0027: \u0027varchar\u0027,\n                                  \u0027department_id\u0027: \u0027integer\u0027,\n                                  \u0027order_id\u0027: \u0027integer\u0027,\n                                  \u0027product_id\u0027: \u0027integer\u0027,\n                                  \u0027product_name\u0027: \u0027varchar\u0027,\n                                  \u0027reordered\u0027: \u0027integer\u0027},\n    \u0027Created Samples\u0027: [   \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027,\n                           \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027],\n    \u0027Row Count\u0027: 3288764416}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125722389_-1540892106",
+      "id": "20191026-213522_509501608",
+      "dateCreated": "2019-10-26 21:35:22.389",
+      "dateStarted": "2019-10-26 21:35:25.724",
+      "dateFinished": "2019-10-26 21:35:25.732",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thursday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:28:29.453",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125039384_827528029",
+      "id": "20191026-212359_1328597098",
+      "dateCreated": "2019-10-26 21:23:59.384",
+      "dateStarted": "2019-10-26 21:28:29.462",
+      "dateFinished": "2019-10-26 21:28:29.467",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# People purchase the most on Saturday followed by Sunday",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:44:56.306",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePeople purchase the most on Saturday followed by Sunday\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125345747_-611159523",
+      "id": "20191026-212905_822270821",
+      "dateCreated": "2019-10-26 21:29:05.747",
+      "dateStarted": "2019-10-26 22:44:56.307",
+      "dateFinished": "2019-10-26 22:44:56.311",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom \n  hive.instacart.orders\ngroup by order_dow\norder by order_dow\n\"\"\")\nz.show(replace_dow(sales_by_days))",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:28:36.215",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "order_dow": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_dow",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-10-26 21:28:35,833 verdict DEBUG - verdict.sql received a query: select order_dow, count(*) c from hive.instacart.orders group by order_dow order by order_dow \n2019-10-26 21:28:35,893 verdict DEBUG - An intermediate JSON from SQL: {\u0027select\u0027: [{\u0027value\u0027: \u0027order_dow\u0027}, {\u0027value\u0027: {\u0027count\u0027: \u0027*\u0027}, \u0027name\u0027: \u0027c\u0027}], \u0027from\u0027: \u0027hive.instacart.orders\u0027, \u0027groupby\u0027: {\u0027value\u0027: \u0027order_dow\u0027}, \u0027orderby\u0027: {\u0027value\u0027: \u0027order_dow\u0027}} \n2019-10-26 21:28:35,894 verdict DEBUG - verdict.json received a query: {\u0027groupby\u0027: [\u0027attr order_dow\u0027], \u0027source\u0027: \u0027table hive.instacart.orders tea434d98\u0027, \u0027agg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027orderby\u0027: [[\u0027attr order_dow\u0027, \u0027asc\u0027]], \u0027type\u0027: \u0027single_agg\u0027} \n2019-10-26 21:28:35,894 verdict DEBUG - Sample information has been retrieved from redis. \n2019-10-26 21:28:35,895 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.orders, columns: None) \n2019-10-26 21:28:35,895 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 21:28:35,895 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 21:28:35,895 verdict DEBUG - The base tables in the query will be replaced as follows: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}} \n2019-10-26 21:28:35,895 verdict DEBUG - The cache engine received a query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_dow)], source: SampleTable(s42c77785ebc246fba29fd05b1799b057_rowid, parts_id: []))) \n2019-10-26 21:28:35,896 pandas_sql DEBUG - PandasDB received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: \u0027sample s42c77785ebc246fba29fd05b1799b057_rowid []\u0027, \u0027arg\u0027: [\u0027attr order_dow\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}, \u0027_group_size\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027t2f679b2a\u0027} \n2019-10-26 21:28:35,896 pandas_sql DEBUG - PandasDB\u0027s internal optimized query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027), (AggFunc(count, args: []), \u0027_group_size\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_dow)], source: DerivedTable(project, args: [(BaseAttr(order_dow), \u0027order_dow\u0027)], source: SampleTable(s42c77785ebc246fba29fd05b1799b057_rowid, parts_id: [])))) \n2019-10-26 21:28:35,908 verdict DEBUG - The smallest group size is 33162. \n2019-10-26 21:28:35,908 verdict DEBUG - The biggest group size is 47051. \n2019-10-26 21:28:35,908 verdict DEBUG - The size of cache is 266758. \n2019-10-26 21:28:35,914 verdict DEBUG - A raw answer from the engine:\n    order_dow      c\n0          0  47051\n1          1  45957\n2          2  36565\n3          3  33905\n4          4  33162\n5          5  35476\n6          6  34642 \n2019-10-26 21:28:35,914 verdict DEBUG - with the following sampling ratio: 0.048828125% \n2019-10-26 21:28:35,918 verdict DEBUG - The result is ordered by: [\u0027order_dow\u0027], [True] \n2019-10-26 21:28:35,921 verdict DEBUG - The result using cache: \n2019-10-26 21:28:35,921 verdict DEBUG -    order_dow         c\n0          0  96360448\n1          1  94119936\n2          2  74885120\n3          3  69437440\n4          4  67915776\n5          5  72654848\n6          6  70946816 \n2019-10-26 21:28:35,930 verdict DEBUG - We need at least 0.0005157476683242683% of data for accurate answers. \n2019-10-26 21:28:35,930 verdict DEBUG - The cache is large enough (0.048828125%); we return its answer. \n"
+          },
+          {
+            "type": "TABLE",
+            "data": "order_dow\tc\nSaturday\t96360448\nSunday\t94119936\nMonday\t74885120\nTuesday\t69437440\nWednesday\t67915776\nThursday\t72654848\nFriday\t70946816\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572124882764_-1543086177",
+      "id": "20191026-212122_1751757888",
+      "dateCreated": "2019-10-26 21:21:22.764",
+      "dateStarted": "2019-10-26 21:28:35.830",
+      "dateFinished": "2019-10-26 21:28:35.935",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# \"Produce\" increases Saturday sales",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:44:30.459",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u0026ldquo;Produce\u0026rdquo; increases Saturday sales\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125395527_1856302582",
+      "id": "20191026-212955_1420239986",
+      "dateCreated": "2019-10-26 21:29:55.528",
+      "dateStarted": "2019-10-26 22:44:30.460",
+      "dateFinished": "2019-10-26 22:44:30.464",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nsales_by_department \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom \n  hive.instacart.orders o INNER JOIN hive.instacart.order_products p ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\n\"\"\")\nz.show(replace_dow(sales_by_department))",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:29:07.555",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "department": "string",
+                      "order_dow": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_dow",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "department",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-10-26 22:29:03,641 verdict DEBUG - verdict.sql received a query: select department, order_dow, count(*) c from hive.instacart.orders o INNER JOIN hive.instacart.order_products p ON order_id \u003d order_id group by department, order_dow order by department, order_dow \n2019-10-26 22:29:03,749 verdict DEBUG - An intermediate JSON from SQL: {\u0027select\u0027: [{\u0027value\u0027: \u0027department\u0027}, {\u0027value\u0027: \u0027order_dow\u0027}, {\u0027value\u0027: {\u0027count\u0027: \u0027*\u0027}, \u0027name\u0027: \u0027c\u0027}], \u0027from\u0027: [{\u0027value\u0027: \u0027hive.instacart.orders\u0027, \u0027name\u0027: \u0027o\u0027}, {\u0027inner join\u0027: {\u0027name\u0027: \u0027p\u0027, \u0027value\u0027: \u0027hive.instacart.order_products\u0027}, \u0027on\u0027: {\u0027eq\u0027: [\u0027order_id\u0027, \u0027order_id\u0027]}}], \u0027groupby\u0027: [{\u0027value\u0027: \u0027department\u0027}, {\u0027value\u0027: \u0027order_dow\u0027}], \u0027orderby\u0027: [{\u0027value\u0027: \u0027department\u0027}, {\u0027value\u0027: \u0027order_dow\u0027}]} \n2019-10-26 22:29:03,750 verdict DEBUG - verdict.json received a query: {\u0027groupby\u0027: [\u0027attr department\u0027, \u0027attr order_dow\u0027], \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027table hive.instacart.orders o\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027table hive.instacart.order_products p\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027agg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027orderby\u0027: [[\u0027attr department\u0027, \u0027asc\u0027], [\u0027attr order_dow\u0027, \u0027asc\u0027]], \u0027type\u0027: \u0027single_agg\u0027} \n2019-10-26 22:29:03,751 verdict DEBUG - Sample information has been retrieved from redis. \n2019-10-26 22:29:03,752 verdict DEBUG - Finding base-\u003esummary for DerivedTable(join, args: [BaseTable(hive.instacart.order_products, columns: None), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: BaseTable(hive.instacart.orders, columns: None)) \n2019-10-26 22:29:03,752 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.orders, columns: None) \n2019-10-26 22:29:03,752 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.order_products, columns: None) \n2019-10-26 22:29:03,752 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - Found base-\u003esummary: {\u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}, \u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:29:03,752 verdict DEBUG - The base tables in the query will be replaced as follows: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}, \u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}} \n2019-10-26 22:29:03,753 verdict DEBUG - The cache engine received a query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027)], source: DerivedTable(groupby, args: [BaseAttr(department), BaseAttr(order_dow)], source: DerivedTable(join, args: [SampleTable(s8adf84d5a3374d85b847c581e7416145order_id, parts_id: []), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: SampleTable(s1e51666201b04338bb10e00fb78a37eaorder_id, parts_id: [])))) \n2019-10-26 22:29:03,754 pandas_sql DEBUG - PandasDB received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027sample s1e51666201b04338bb10e00fb78a37eaorder_id []\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027sample s8adf84d5a3374d85b847c581e7416145order_id []\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027arg\u0027: [\u0027attr department\u0027, \u0027attr order_dow\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}, \u0027_group_size\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027tc8238556\u0027} \n2019-10-26 22:29:03,754 pandas_sql DEBUG - PandasDB\u0027s internal optimized query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027), (AggFunc(count, args: []), \u0027_group_size\u0027)], source: DerivedTable(groupby, args: [BaseAttr(department), BaseAttr(order_dow)], source: DerivedTable(join, args: [DerivedTable(project, args: [(BaseAttr(order_id), \u0027order_id\u0027), (BaseAttr(department), \u0027department\u0027)], source: SampleTable(s8adf84d5a3374d85b847c581e7416145order_id, parts_id: [])), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: DerivedTable(project, args: [(BaseAttr(order_id), \u0027order_id\u0027), (BaseAttr(order_dow), \u0027order_dow\u0027)], source: SampleTable(s1e51666201b04338bb10e00fb78a37eaorder_id, parts_id: []))))) \n2019-10-26 22:29:04,121 verdict DEBUG - The smallest group size is 40. \n2019-10-26 22:29:04,122 verdict DEBUG - The biggest group size is 24416. \n2019-10-26 22:29:04,122 verdict DEBUG - The size of cache is 267198. \n2019-10-26 22:29:04,130 verdict DEBUG - A raw answer from the engine:\n     department  order_dow     c\n0      alcohol          0   223\n1      alcohol          1   223\n2      alcohol          2   276\n3      alcohol          3   265\n4      alcohol          4   373\n..         ...        ...   ...\n142     snacks          2  4826\n143     snacks          3  4297\n144     snacks          4  4258\n145     snacks          5  5137\n146     snacks          6  4523\n\n[147 rows x 3 columns] \n2019-10-26 22:29:04,130 verdict DEBUG - with the following sampling ratio: 0.01220703125% \n2019-10-26 22:29:04,134 verdict DEBUG - The result is ordered by: [\u0027department\u0027, \u0027order_dow\u0027], [True, True] \n2019-10-26 22:29:04,139 verdict DEBUG - The result using cache: \n2019-10-26 22:29:04,139 verdict DEBUG -     department  order_dow         c\n0      alcohol          0   1826816\n1      alcohol          1   1826816\n2      alcohol          2   2260992\n3      alcohol          3   2170880\n4      alcohol          4   3055616\n..         ...        ...       ...\n142     snacks          2  39534592\n143     snacks          3  35201024\n144     snacks          4  34881536\n145     snacks          5  42082304\n146     snacks          6  37052416\n\n[147 rows x 3 columns] \n2019-10-26 22:29:04,155 verdict DEBUG - We need at least 0.1220520383643403% of data for accurate answers. \n2019-10-26 22:29:04,155 verdict INFO - Presto received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027sample s1e51666201b04338bb10e00fb78a37eaorder_id [12 11 10]\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027sample s8adf84d5a3374d85b847c581e7416145order_id [14 13 12 11 10]\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027arg\u0027: [\u0027attr department\u0027, \u0027attr order_dow\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027tc8238556\u0027} \n2019-10-26 22:29:04,156 verdict DEBUG - sending a query to the backend Presto: SELECT department, order_dow, count() AS c FROM (SELECT * FROM hive.verdict.s1e51666201b04338bb10e00fb78a37eaorder_id ta2114270 WHERE (((verdictcol \u003d 12) OR (verdictcol \u003d 11)) OR (verdictcol \u003d 10))) t14329bce INNER JOIN (SELECT * FROM hive.verdict.s8adf84d5a3374d85b847c581e7416145order_id t8f24f7c8 WHERE (((((verdictcol \u003d 14) OR (verdictcol \u003d 13)) OR (verdictcol \u003d 12)) OR (verdictcol \u003d 11)) OR (verdictcol \u003d 10))) tadbe7052 ON t14329bce.order_id \u003d tadbe7052.order_id GROUP BY department, order_dow \n2019-10-26 22:29:07,197 verdict DEBUG - A raw answer from the engine:\n           department  order_dow      c\n0    dry goods pasta          6  25554\n1       meat seafood          2  16954\n2             pantry          2  47881\n3    dry goods pasta          2  21573\n4               deli          0  41693\n..               ...        ...    ...\n142           babies          5   9934\n143        breakfast          0  25728\n144           snacks          3  72213\n145    personal care          4  10988\n146          missing          4   1730\n\n[147 rows x 3 columns] \n2019-10-26 22:29:07,197 verdict DEBUG - with the following sampling ratio: 0.1953125% \n2019-10-26 22:29:07,202 verdict DEBUG - The result is ordered by: [\u0027department\u0027, \u0027order_dow\u0027], [True, True] \n2019-10-26 22:29:07,206 verdict DEBUG - The result using samples: \n2019-10-26 22:29:07,206 verdict DEBUG -     department  order_dow         c\n0      alcohol          0   1784320\n1      alcohol          1   2099712\n2      alcohol          2   2029056\n3      alcohol          3   2277376\n4      alcohol          4   2629632\n..         ...        ...       ...\n142     snacks          2  40182784\n143     snacks          3  36973056\n144     snacks          4  35930624\n145     snacks          5  39964160\n146     snacks          6  36187648\n\n[147 rows x 3 columns] \n"
+          },
+          {
+            "type": "TABLE",
+            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1784320\nalcohol\tSunday\t2099712\nalcohol\tMonday\t2029056\nalcohol\tTuesday\t2277376\nalcohol\tWednesday\t2629632\nalcohol\tThursday\t2726912\nalcohol\tFriday\t1972736\nbabies\tSaturday\t8367104\nbabies\tSunday\t7305216\nbabies\tMonday\t5823488\nbabies\tTuesday\t5355520\nbabies\tWednesday\t5054976\nbabies\tThursday\t5086208\nbabies\tFriday\t5656064\nbakery\tSaturday\t22855168\nbakery\tSunday\t20659712\nbakery\tMonday\t15266816\nbakery\tTuesday\t14119424\nbakery\tWednesday\t13876736\nbakery\tThursday\t15643136\nbakery\tFriday\t16658432\nbeverages\tSaturday\t44122624\nbeverages\tSunday\t48684544\nbeverages\tMonday\t37254656\nbeverages\tTuesday\t35105792\nbeverages\tWednesday\t34539520\nbeverages\tThursday\t38368256\nbeverages\tFriday\t34854400\nbreakfast\tSaturday\t13172736\nbreakfast\tSunday\t13088256\nbreakfast\tMonday\t9784832\nbreakfast\tTuesday\t8919040\nbreakfast\tWednesday\t8625664\nbreakfast\tThursday\t9521664\nbreakfast\tFriday\t9247744\nbulk\tSaturday\t599552\nbulk\tSunday\t626176\nbulk\tMonday\t480256\nbulk\tTuesday\t430080\nbulk\tWednesday\t380416\nbulk\tThursday\t482816\nbulk\tFriday\t473088\ncanned goods\tSaturday\t23035904\ncanned goods\tSunday\t18087936\ncanned goods\tMonday\t13458944\ncanned goods\tTuesday\t12060160\ncanned goods\tWednesday\t11786240\ncanned goods\tThursday\t13005824\ncanned goods\tFriday\t16649728\ndairy eggs\tSaturday\t103936512\ndairy eggs\tSunday\t96360960\ndairy eggs\tMonday\t70887936\ndairy eggs\tTuesday\t65183744\ndairy eggs\tWednesday\t64729600\ndairy eggs\tThursday\t71380992\ndairy eggs\tFriday\t74693120\ndeli\tSaturday\t21346816\ndeli\tSunday\t18656256\ndeli\tMonday\t13704704\ndeli\tTuesday\t12427776\ndeli\tWednesday\t12147200\ndeli\tThursday\t13506560\ndeli\tFriday\t14789632\ndry goods pasta\tSaturday\t18592256\ndry goods pasta\tSunday\t14945280\ndry goods pasta\tMonday\t11045376\ndry goods pasta\tTuesday\t10045952\ndry goods pasta\tWednesday\t9613312\ndry goods pasta\tThursday\t10518528\ndry goods pasta\tFriday\t13083648\nfrozen\tSaturday\t44661760\nfrozen\tSunday\t36283904\nfrozen\tMonday\t28548608\nfrozen\tTuesday\t27008000\nfrozen\tWednesday\t26560000\nfrozen\tThursday\t29569024\nfrozen\tFriday\t34576384\nhousehold\tSaturday\t13049856\nhousehold\tSunday\t12384256\nhousehold\tMonday\t10006016\nhousehold\tTuesday\t9740288\nhousehold\tWednesday\t9498112\nhousehold\tThursday\t10154496\nhousehold\tFriday\t10654720\ninternational\tSaturday\t5711360\ninternational\tSunday\t4610048\ninternational\tMonday\t3423744\ninternational\tTuesday\t3168256\ninternational\tWednesday\t3046912\ninternational\tThursday\t3364864\ninternational\tFriday\t3965952\nmeat seafood\tSaturday\t15422464\nmeat seafood\tSunday\t12072960\nmeat seafood\tMonday\t8680448\nmeat seafood\tTuesday\t8055808\nmeat seafood\tWednesday\t7752192\nmeat seafood\tThursday\t8845312\nmeat seafood\tFriday\t11107840\nmissing\tSaturday\t1471488\nmissing\tSunday\t1206784\nmissing\tMonday\t907264\nmissing\tTuesday\t877568\nmissing\tWednesday\t885760\nmissing\tThursday\t985600\nmissing\tFriday\t1118208\nother\tSaturday\t640512\nother\tSunday\t582144\nother\tMonday\t485376\nother\tTuesday\t512512\nother\tWednesday\t453120\nother\tThursday\t513024\nother\tFriday\t535040\npantry\tSaturday\t35891200\npantry\tSunday\t30372864\npantry\tMonday\t24515072\npantry\tTuesday\t23208448\npantry\tWednesday\t22852608\npantry\tThursday\t24941568\npantry\tFriday\t27991552\npersonal care\tSaturday\t8215552\npersonal care\tSunday\t7382528\npersonal care\tMonday\t6080000\npersonal care\tTuesday\t5754880\npersonal care\tWednesday\t5625856\npersonal care\tThursday\t5865984\npersonal care\tFriday\t6590464\npets\tSaturday\t1732608\npets\tSunday\t1507840\npets\tMonday\t1170432\npets\tTuesday\t1315328\npets\tWednesday\t1288704\npets\tThursday\t1366016\npets\tFriday\t1616896\nproduce\tSaturday\t200114176\nproduce\tSunday\t169052160\nproduce\tMonday\t120573440\nproduce\tTuesday\t108613120\nproduce\tWednesday\t106141184\nproduce\tThursday\t119327232\nproduce\tFriday\t136206336\nsnacks\tSaturday\t49276416\nsnacks\tSunday\t54397440\nsnacks\tMonday\t40182784\nsnacks\tTuesday\t36973056\nsnacks\tWednesday\t35930624\nsnacks\tThursday\t39964160\nsnacks\tFriday\t36187648\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572124234413_-1358816919",
+      "id": "20191026-211034_426820453",
+      "dateCreated": "2019-10-26 21:10:34.414",
+      "dateStarted": "2019-10-26 22:29:03.637",
+      "dateFinished": "2019-10-26 22:29:07.226",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Frozen products are ordered more in the afternoon",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:43:23.032",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eFrozen products are ordered more in the afternoon\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572128115868_-396332900",
+      "id": "20191026-221515_136520021",
+      "dateCreated": "2019-10-26 22:15:15.868",
+      "dateStarted": "2019-10-26 22:43:23.033",
+      "dateFinished": "2019-10-26 22:43:23.037",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nsales_correlation \u003d v.sql(\"\"\"\\\nselect order_hour_of_day, department, count(*) c\nfrom \n  hive.instacart.orders o INNER JOIN hive.instacart.order_products p ON order_id \u003d order_id\nwhere department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027\ngroup by order_hour_of_day, department\norder by order_hour_of_day, department\n\"\"\")\nz.show(sales_correlation)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:39:36.806",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "department": "string",
+                      "order_hour_of_day": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-30"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "department",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "order_hour_of_day",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-10-26 22:39:33,255 verdict DEBUG - verdict.sql received a query: select order_hour_of_day, department, count(*) c from hive.instacart.orders o INNER JOIN hive.instacart.order_products p ON order_id \u003d order_id where department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027 group by order_hour_of_day, department order by order_hour_of_day, department \n2019-10-26 22:39:33,525 verdict DEBUG - An intermediate JSON from SQL: {\u0027select\u0027: [{\u0027value\u0027: \u0027order_hour_of_day\u0027}, {\u0027value\u0027: \u0027department\u0027}, {\u0027value\u0027: {\u0027count\u0027: \u0027*\u0027}, \u0027name\u0027: \u0027c\u0027}], \u0027from\u0027: [{\u0027value\u0027: \u0027hive.instacart.orders\u0027, \u0027name\u0027: \u0027o\u0027}, {\u0027inner join\u0027: {\u0027name\u0027: \u0027p\u0027, \u0027value\u0027: \u0027hive.instacart.order_products\u0027}, \u0027on\u0027: {\u0027eq\u0027: [\u0027order_id\u0027, \u0027order_id\u0027]}}], \u0027where\u0027: {\u0027or\u0027: [{\u0027eq\u0027: [\u0027department\u0027, {\u0027literal\u0027: \u0027beverages\u0027}]}, {\u0027eq\u0027: [\u0027department\u0027, {\u0027literal\u0027: \u0027snacks\u0027}]}, {\u0027eq\u0027: [\u0027department\u0027, {\u0027literal\u0027: \u0027frozen\u0027}]}]}, \u0027groupby\u0027: [{\u0027value\u0027: \u0027order_hour_of_day\u0027}, {\u0027value\u0027: \u0027department\u0027}], \u0027orderby\u0027: [{\u0027value\u0027: \u0027order_hour_of_day\u0027}, {\u0027value\u0027: \u0027department\u0027}]} \n2019-10-26 22:39:33,525 verdict DEBUG - verdict.json received a query: {\u0027groupby\u0027: [\u0027attr order_hour_of_day\u0027, \u0027attr department\u0027], \u0027source\u0027: {\u0027op\u0027: \u0027select\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027table hive.instacart.orders o\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027table hive.instacart.order_products p\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027arg\u0027: {\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027beverages\u0027]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027snacks\u0027]}]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027frozen\u0027]}]}, \u0027name\u0027: \u0027t4b7f6692\u0027}, \u0027agg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027orderby\u0027: [[\u0027attr order_hour_of_day\u0027, \u0027asc\u0027], [\u0027attr department\u0027, \u0027asc\u0027]], \u0027type\u0027: \u0027single_agg\u0027} \n2019-10-26 22:39:33,527 verdict DEBUG - Sample information has been retrieved from redis. \n2019-10-26 22:39:33,528 verdict DEBUG - Finding base-\u003esummary for DerivedTable(select, args: [AttrOp(or, AttrOp(or, AttrOp(eq, BaseAttr(department), Constant(beverages)), AttrOp(eq, BaseAttr(department), Constant(snacks))), AttrOp(eq, BaseAttr(department), Constant(frozen)))], source: DerivedTable(join, args: [BaseTable(hive.instacart.order_products, columns: None), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: BaseTable(hive.instacart.orders, columns: None))) \n2019-10-26 22:39:33,528 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,528 verdict DEBUG - Finding base-\u003esummary for DerivedTable(join, args: [BaseTable(hive.instacart.order_products, columns: None), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: BaseTable(hive.instacart.orders, columns: None)) \n2019-10-26 22:39:33,528 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,528 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.orders, columns: None) \n2019-10-26 22:39:33,528 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,528 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 22:39:33,528 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.order_products, columns: None) \n2019-10-26 22:39:33,528 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}, \u0027hive.instacart.order_products\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027, \u0027order_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,529 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,529 verdict DEBUG - Found base-\u003esummary: {\u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}, \u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,529 verdict DEBUG - Found base-\u003esummary: {\u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}, \u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}}} \n2019-10-26 22:39:33,529 verdict DEBUG - The base tables in the query will be replaced as follows: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}, \u0027hive.instacart.order_products\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027}} \n2019-10-26 22:39:33,530 verdict DEBUG - The cache engine received a query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_hour_of_day), BaseAttr(department)], source: DerivedTable(select, args: [AttrOp(or, AttrOp(or, AttrOp(eq, BaseAttr(department), Constant(beverages)), AttrOp(eq, BaseAttr(department), Constant(snacks))), AttrOp(eq, BaseAttr(department), Constant(frozen)))], source: DerivedTable(join, args: [SampleTable(s8adf84d5a3374d85b847c581e7416145order_id, parts_id: []), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: SampleTable(s1e51666201b04338bb10e00fb78a37eaorder_id, parts_id: []))))) \n2019-10-26 22:39:33,531 pandas_sql DEBUG - PandasDB received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027select\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027sample s1e51666201b04338bb10e00fb78a37eaorder_id []\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027sample s8adf84d5a3374d85b847c581e7416145order_id []\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027arg\u0027: {\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027beverages\u0027]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027snacks\u0027]}]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027frozen\u0027]}]}, \u0027name\u0027: \u0027td584dde5\u0027}, \u0027arg\u0027: [\u0027attr order_hour_of_day\u0027, \u0027attr department\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}, \u0027_group_size\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027t832ce1c7\u0027} \n2019-10-26 22:39:33,531 pandas_sql DEBUG - PandasDB\u0027s internal optimized query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027), (AggFunc(count, args: []), \u0027_group_size\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_hour_of_day), BaseAttr(department)], source: DerivedTable(select, args: [AttrOp(or, AttrOp(or, AttrOp(eq, BaseAttr(department), Constant(beverages)), AttrOp(eq, BaseAttr(department), Constant(snacks))), AttrOp(eq, BaseAttr(department), Constant(frozen)))], source: DerivedTable(join, args: [DerivedTable(project, args: [(BaseAttr(order_id), \u0027order_id\u0027), (BaseAttr(department), \u0027department\u0027)], source: SampleTable(s8adf84d5a3374d85b847c581e7416145order_id, parts_id: [])), BaseAttr(order_id), BaseAttr(order_id), \u0027inner\u0027], source: DerivedTable(project, args: [(BaseAttr(order_hour_of_day), \u0027order_hour_of_day\u0027), (BaseAttr(order_id), \u0027order_id\u0027)], source: SampleTable(s1e51666201b04338bb10e00fb78a37eaorder_id, parts_id: [])))))) \n2019-10-26 22:39:34,012 verdict DEBUG - The smallest group size is 33. \n2019-10-26 22:39:34,012 verdict DEBUG - The biggest group size is 3362. \n2019-10-26 22:39:34,012 verdict DEBUG - The size of cache is 267198. \n2019-10-26 22:39:34,021 verdict DEBUG - A raw answer from the engine:\n     order_hour_of_day department    c\n0                   0  beverages  210\n1                   0     frozen  182\n2                   0     snacks  202\n3                   1  beverages  109\n4                   1     frozen  111\n..                ...        ...  ...\n67                 22     frozen  570\n68                 22     snacks  592\n69                 23  beverages  387\n70                 23     frozen  375\n71                 23     snacks  400\n\n[72 rows x 3 columns] \n2019-10-26 22:39:34,021 verdict DEBUG - with the following sampling ratio: 0.01220703125% \n2019-10-26 22:39:34,025 verdict DEBUG - The result is ordered by: [\u0027order_hour_of_day\u0027, \u0027department\u0027], [True, True] \n2019-10-26 22:39:34,030 verdict DEBUG - The result using cache: \n2019-10-26 22:39:34,030 verdict DEBUG -     order_hour_of_day department        c\n0                   0  beverages  1720320\n1                   0     frozen  1490944\n2                   0     snacks  1654784\n3                   1  beverages   892928\n4                   1     frozen   909312\n..                ...        ...      ...\n67                 22     frozen  4669440\n68                 22     snacks  4849664\n69                 23  beverages  3170304\n70                 23     frozen  3072000\n71                 23     snacks  3276800\n\n[72 rows x 3 columns] \n2019-10-26 22:39:34,048 verdict DEBUG - We need at least 0.1479457410158554% of data for accurate answers. \n2019-10-26 22:39:34,049 verdict INFO - Presto received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027select\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027join\u0027, \u0027source\u0027: \u0027sample s1e51666201b04338bb10e00fb78a37eaorder_id [12 11 10]\u0027, \u0027arg\u0027: {\u0027join_to\u0027: \u0027sample s8adf84d5a3374d85b847c581e7416145order_id [14 13 12 11 10]\u0027, \u0027left_on\u0027: \u0027attr order_id\u0027, \u0027right_on\u0027: \u0027attr order_id\u0027, \u0027join_type\u0027: \u0027inner\u0027}}, \u0027arg\u0027: {\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027or\u0027, \u0027arg\u0027: [{\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027beverages\u0027]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027snacks\u0027]}]}, {\u0027op\u0027: \u0027eq\u0027, \u0027arg\u0027: [\u0027attr department\u0027, \u0027frozen\u0027]}]}, \u0027name\u0027: \u0027t166cd04a\u0027}, \u0027arg\u0027: [\u0027attr order_hour_of_day\u0027, \u0027attr department\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027t832ce1c7\u0027} \n2019-10-26 22:39:34,050 verdict DEBUG - sending a query to the backend Presto: SELECT order_hour_of_day, department, count() AS c FROM (SELECT * FROM hive.verdict.s1e51666201b04338bb10e00fb78a37eaorder_id t2c387274 WHERE (((verdictcol \u003d 12) OR (verdictcol \u003d 11)) OR (verdictcol \u003d 10))) tece9a6c3 INNER JOIN (SELECT * FROM hive.verdict.s8adf84d5a3374d85b847c581e7416145order_id t3a35ad73 WHERE (((((verdictcol \u003d 14) OR (verdictcol \u003d 13)) OR (verdictcol \u003d 12)) OR (verdictcol \u003d 11)) OR (verdictcol \u003d 10))) t633cf413 ON tece9a6c3.order_id \u003d t633cf413.order_id WHERE (((department \u003d \u0027beverages\u0027) OR (department \u003d \u0027snacks\u0027)) OR (department \u003d \u0027frozen\u0027)) GROUP BY order_hour_of_day, department \n2019-10-26 22:39:36,442 verdict DEBUG - A raw answer from the engine:\n     order_hour_of_day department      c\n0                  10     frozen  33635\n1                  16     frozen  36779\n2                  20     snacks  16117\n3                  22     frozen   8439\n4                   6     frozen   3849\n..                ...        ...    ...\n67                 17  beverages  34998\n68                  9  beverages  42823\n69                  5     frozen   1306\n70                 22  beverages   8623\n71                 23     frozen   5448\n\n[72 rows x 3 columns] \n2019-10-26 22:39:36,442 verdict DEBUG - with the following sampling ratio: 0.1953125% \n2019-10-26 22:39:36,446 verdict DEBUG - The result is ordered by: [\u0027order_hour_of_day\u0027, \u0027department\u0027], [True, True] \n2019-10-26 22:39:36,450 verdict DEBUG - The result using samples: \n2019-10-26 22:39:36,451 verdict DEBUG -     order_hour_of_day department        c\n0                   0  beverages  1770496\n1                   0     frozen  1615360\n2                   0     snacks  1803264\n3                   1  beverages   994304\n4                   1     frozen   888320\n..                ...        ...      ...\n67                 22     frozen  4320768\n68                 22     snacks  5141504\n69                 23  beverages  3070464\n70                 23     frozen  2789376\n71                 23     snacks  3396096\n\n[72 rows x 3 columns] \n"
+          },
+          {
+            "type": "TABLE",
+            "data": "order_hour_of_day\tdepartment\tc\n0\tbeverages\t1770496\n0\tfrozen\t1615360\n0\tsnacks\t1803264\n1\tbeverages\t994304\n1\tfrozen\t888320\n1\tsnacks\t921088\n2\tbeverages\t652800\n2\tfrozen\t557568\n2\tsnacks\t598016\n3\tbeverages\t523776\n3\tfrozen\t433664\n3\tsnacks\t423936\n4\tbeverages\t499712\n4\tfrozen\t409088\n4\tsnacks\t403456\n5\tbeverages\t748544\n5\tfrozen\t668672\n5\tsnacks\t668672\n6\tbeverages\t2311680\n6\tfrozen\t1970688\n6\tsnacks\t2413056\n7\tbeverages\t7076864\n7\tfrozen\t5884928\n7\tsnacks\t7438848\n8\tbeverages\t14285312\n8\tfrozen\t10626048\n8\tsnacks\t15479296\n9\tbeverages\t21925376\n9\tfrozen\t14653952\n9\tsnacks\t23296000\n10\tbeverages\t24857088\n10\tfrozen\t17221120\n10\tsnacks\t27024896\n11\tbeverages\t23585280\n11\tfrozen\t17981440\n11\tsnacks\t25565184\n12\tbeverages\t21427712\n12\tfrozen\t17951744\n12\tsnacks\t23236096\n13\tbeverages\t22485504\n13\tfrozen\t18461184\n13\tsnacks\t24297472\n14\tbeverages\t22648320\n14\tfrozen\t19105792\n14\tsnacks\t24609280\n15\tbeverages\t22286848\n15\tfrozen\t19414016\n15\tsnacks\t23762944\n16\tbeverages\t21116416\n16\tfrozen\t18830848\n16\tsnacks\t23013888\n17\tbeverages\t17918976\n17\tfrozen\t16706560\n17\tsnacks\t19119616\n18\tbeverages\t13969408\n18\tfrozen\t13171712\n18\tsnacks\t14240256\n19\tbeverages\t10877952\n19\tfrozen\t10384896\n19\tsnacks\t11214336\n20\tbeverages\t7655936\n20\tfrozen\t7340032\n20\tsnacks\t8251904\n21\tbeverages\t5826048\n21\tfrozen\t5819904\n21\tsnacks\t6593024\n22\tbeverages\t4414976\n22\tfrozen\t4320768\n22\tsnacks\t5141504\n23\tbeverages\t3070464\n23\tfrozen\t2789376\n23\tsnacks\t3396096\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125842286_808400136",
+      "id": "20191026-213722_701436767",
+      "dateCreated": "2019-10-26 21:37:22.286",
+      "dateStarted": "2019-10-26 22:39:33.251",
+      "dateFinished": "2019-10-26 22:39:36.473",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# People order more on Sunday morning",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:42:49.699",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePeople order more on Sunday morning\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572125495340_-624403078",
+      "id": "20191026-213135_958375413",
+      "dateCreated": "2019-10-26 21:31:35.340",
+      "dateStarted": "2019-10-26 22:42:49.701",
+      "dateFinished": "2019-10-26 22:42:49.705",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ntime_dow_correlation \u003d v.sql(\"\"\"\\\nselect order_dow, order_hour_of_day, count(*) c\nfrom \n  hive.instacart.orders o\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\n\"\"\")\nz.show(replace_dow(time_dow_correlation))",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:41:07.291",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "department": "string",
+                      "monthly_freq": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_dow",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "order_hour_of_day",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-10-26 22:41:05,234 verdict DEBUG - verdict.sql received a query: select order_dow, order_hour_of_day, count(*) c from hive.instacart.orders o group by order_dow, order_hour_of_day order by order_dow, order_hour_of_day \n2019-10-26 22:41:05,397 verdict DEBUG - An intermediate JSON from SQL: {\u0027select\u0027: [{\u0027value\u0027: \u0027order_dow\u0027}, {\u0027value\u0027: \u0027order_hour_of_day\u0027}, {\u0027value\u0027: {\u0027count\u0027: \u0027*\u0027}, \u0027name\u0027: \u0027c\u0027}], \u0027from\u0027: {\u0027value\u0027: \u0027hive.instacart.orders\u0027, \u0027name\u0027: \u0027o\u0027}, \u0027groupby\u0027: [{\u0027value\u0027: \u0027order_dow\u0027}, {\u0027value\u0027: \u0027order_hour_of_day\u0027}], \u0027orderby\u0027: [{\u0027value\u0027: \u0027order_dow\u0027}, {\u0027value\u0027: \u0027order_hour_of_day\u0027}]} \n2019-10-26 22:41:05,397 verdict DEBUG - verdict.json received a query: {\u0027groupby\u0027: [\u0027attr order_dow\u0027, \u0027attr order_hour_of_day\u0027], \u0027source\u0027: \u0027table hive.instacart.orders o\u0027, \u0027agg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027orderby\u0027: [[\u0027attr order_dow\u0027, \u0027asc\u0027], [\u0027attr order_hour_of_day\u0027, \u0027asc\u0027]], \u0027type\u0027: \u0027single_agg\u0027} \n2019-10-26 22:41:05,398 verdict DEBUG - Sample information has been retrieved from redis. \n2019-10-26 22:41:05,398 verdict DEBUG - Finding base-\u003esummary for BaseTable(hive.instacart.orders, columns: None) \n2019-10-26 22:41:05,398 verdict DEBUG - The current summary info: {\u0027hive.instacart.orders\u0027: {\u0027samples\u0027: {\u0027_rowid\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027, \u0027order_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 22:41:05,399 verdict DEBUG - Found base-\u003esummary: {\u0027_rowid\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}}, \u0027order_id\u0027: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027order_id\u0027, \u0027sample_id\u0027: \u0027s1e51666201b04338bb10e00fb78a37eaorder_id\u0027}}} \n2019-10-26 22:41:05,399 verdict DEBUG - The base tables in the query will be replaced as follows: {\u0027hive.instacart.orders\u0027: {\u0027key_col\u0027: \u0027_rowid\u0027, \u0027sample_id\u0027: \u0027s42c77785ebc246fba29fd05b1799b057_rowid\u0027}} \n2019-10-26 22:41:05,399 verdict DEBUG - The cache engine received a query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_dow), BaseAttr(order_hour_of_day)], source: SampleTable(s42c77785ebc246fba29fd05b1799b057_rowid, parts_id: []))) \n2019-10-26 22:41:05,399 pandas_sql DEBUG - PandasDB received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: \u0027sample s42c77785ebc246fba29fd05b1799b057_rowid []\u0027, \u0027arg\u0027: [\u0027attr order_dow\u0027, \u0027attr order_hour_of_day\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}, \u0027_group_size\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027t6c3d6fe9\u0027} \n2019-10-26 22:41:05,400 pandas_sql DEBUG - PandasDB\u0027s internal optimized query: DerivedTable(agg, args: [(AggFunc(count, args: []), \u0027c\u0027), (AggFunc(count, args: []), \u0027_group_size\u0027)], source: DerivedTable(groupby, args: [BaseAttr(order_dow), BaseAttr(order_hour_of_day)], source: DerivedTable(project, args: [(BaseAttr(order_hour_of_day), \u0027order_hour_of_day\u0027), (BaseAttr(order_dow), \u0027order_dow\u0027)], source: SampleTable(s42c77785ebc246fba29fd05b1799b057_rowid, parts_id: [])))) \n2019-10-26 22:41:05,418 verdict DEBUG - The smallest group size is 42. \n2019-10-26 22:41:05,419 verdict DEBUG - The biggest group size is 4419. \n2019-10-26 22:41:05,419 verdict DEBUG - The size of cache is 266758. \n2019-10-26 22:41:05,425 verdict DEBUG - A raw answer from the engine:\n      order_dow  order_hour_of_day     c\n0            0                  0   264\n1            0                  1   191\n2            0                  2   122\n3            0                  3    66\n4            0                  4    60\n..         ...                ...   ...\n163          6                 19  1393\n164          6                 20  1025\n165          6                 21   821\n166          6                 22   663\n167          6                 23   449\n\n[168 rows x 3 columns] \n2019-10-26 22:41:05,425 verdict DEBUG - with the following sampling ratio: 0.048828125% \n2019-10-26 22:41:05,429 verdict DEBUG - The result is ordered by: [\u0027order_dow\u0027, \u0027order_hour_of_day\u0027], [True, True] \n2019-10-26 22:41:05,433 verdict DEBUG - The result using cache: \n2019-10-26 22:41:05,433 verdict DEBUG -      order_dow  order_hour_of_day        c\n0            0                  0   540672\n1            0                  1   391168\n2            0                  2   249856\n3            0                  3   135168\n4            0                  4   122880\n..         ...                ...      ...\n163          6                 19  2852864\n164          6                 20  2099200\n165          6                 21  1681408\n166          6                 22  1357824\n167          6                 23   919552\n\n[168 rows x 3 columns] \n2019-10-26 22:41:05,446 verdict DEBUG - We need at least 0.4649565447941222% of data for accurate answers. \n2019-10-26 22:41:05,446 verdict INFO - Presto received a query: {\u0027op\u0027: \u0027agg\u0027, \u0027source\u0027: {\u0027op\u0027: \u0027groupby\u0027, \u0027source\u0027: \u0027sample s42c77785ebc246fba29fd05b1799b057_rowid [12 11 10 9 8]\u0027, \u0027arg\u0027: [\u0027attr order_dow\u0027, \u0027attr order_hour_of_day\u0027]}, \u0027arg\u0027: {\u0027c\u0027: {\u0027op\u0027: \u0027count\u0027, \u0027arg\u0027: []}}, \u0027name\u0027: \u0027t6c3d6fe9\u0027} \n2019-10-26 22:41:05,446 verdict DEBUG - sending a query to the backend Presto: SELECT order_dow, order_hour_of_day, count() AS c FROM hive.verdict.s42c77785ebc246fba29fd05b1799b057_rowid t4230f95a WHERE (((((verdictcol \u003d 12) OR (verdictcol \u003d 11)) OR (verdictcol \u003d 10)) OR (verdictcol \u003d 9)) OR (verdictcol \u003d 8)) GROUP BY order_dow, order_hour_of_day \n2019-10-26 22:41:06,748 verdict DEBUG - A raw answer from the engine:\n      order_dow  order_hour_of_day      c\n0            0                 13  67299\n1            1                 19  27409\n2            2                 10  48861\n3            1                  9  64994\n4            2                 17  40483\n..         ...                ...    ...\n163          4                 13  41099\n164          5                 19  23610\n165          0                  2   1686\n166          1                 22  11395\n167          4                  4    952\n\n[168 rows x 3 columns] \n2019-10-26 22:41:06,748 verdict DEBUG - with the following sampling ratio: 0.78125% \n2019-10-26 22:41:06,752 verdict DEBUG - The result is ordered by: [\u0027order_dow\u0027, \u0027order_hour_of_day\u0027], [True, True] \n2019-10-26 22:41:06,757 verdict DEBUG - The result using samples: \n2019-10-26 22:41:06,757 verdict DEBUG -      order_dow  order_hour_of_day        c\n0            0                  0   627200\n1            0                  1   380032\n2            0                  2   215808\n3            0                  3   153600\n4            0                  4   131456\n..         ...                ...      ...\n163          6                 19  2934272\n164          6                 20  2130176\n165          6                 21  1674880\n166          6                 22  1366528\n167          6                 23   995456\n\n[168 rows x 3 columns] \n"
+          },
+          {
+            "type": "TABLE",
+            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t627200\nSaturday\t1\t380032\nSaturday\t2\t215808\nSaturday\t3\t153600\nSaturday\t4\t131456\nSaturday\t5\t199424\nSaturday\t6\t522880\nSaturday\t7\t1978496\nSaturday\t8\t4524160\nSaturday\t9\t6513408\nSaturday\t10\t7766912\nSaturday\t11\t8219136\nSaturday\t12\t8229504\nSaturday\t13\t8614272\nSaturday\t14\t8740864\nSaturday\t15\t8660992\nSaturday\t16\t7879808\nSaturday\t17\t6414208\nSaturday\t18\t4711552\nSaturday\t19\t3615488\nSaturday\t20\t2931840\nSaturday\t21\t2316160\nSaturday\t22\t1806720\nSaturday\t23\t1114880\nSunday\t0\t587008\nSunday\t1\t286592\nSunday\t2\t183424\nSunday\t3\t123008\nSunday\t4\t125952\nSunday\t5\t268544\nSunday\t6\t848896\nSunday\t7\t2645376\nSunday\t8\t5479808\nSunday\t9\t8319232\nSunday\t10\t8846720\nSunday\t11\t8270848\nSunday\t12\t7515648\nSunday\t13\t7450112\nSunday\t14\t7458560\nSunday\t15\t7396096\nSunday\t16\t7111296\nSunday\t17\t5868160\nSunday\t18\t4618112\nSunday\t19\t3508352\nSunday\t20\t2626688\nSunday\t21\t1906176\nSunday\t22\t1458560\nSunday\t23\t901504\nMonday\t0\t475648\nMonday\t1\t258304\nMonday\t2\t142848\nMonday\t3\t116096\nMonday\t4\t131584\nMonday\t5\t212736\nMonday\t6\t758016\nMonday\t7\t2110976\nMonday\t8\t3954432\nMonday\t9\t5807232\nMonday\t10\t6254208\nMonday\t11\t6114560\nMonday\t12\t5744896\nMonday\t13\t5853056\nMonday\t14\t5924736\nMonday\t15\t6002432\nMonday\t16\t6015744\nMonday\t17\t5181824\nMonday\t18\t4257152\nMonday\t19\t3243520\nMonday\t20\t2401024\nMonday\t21\t1704704\nMonday\t22\t1299712\nMonday\t23\t879104\nTuesday\t0\t478208\nTuesday\t1\t234624\nTuesday\t2\t149120\nTuesday\t3\t101632\nTuesday\t4\t119680\nTuesday\t5\t221952\nTuesday\t6\t728704\nTuesday\t7\t1973376\nTuesday\t8\t3602560\nTuesday\t9\t5155072\nTuesday\t10\t5760896\nTuesday\t11\t5602304\nTuesday\t12\t5388288\nTuesday\t13\t5469696\nTuesday\t14\t5555456\nTuesday\t15\t5776128\nTuesday\t16\t5672832\nTuesday\t17\t4870656\nTuesday\t18\t4000896\nTuesday\t19\t3062784\nTuesday\t20\t2242176\nTuesday\t21\t1636864\nTuesday\t22\t1325312\nTuesday\t23\t850560\nWednesday\t0\t415104\nWednesday\t1\t238592\nWednesday\t2\t144896\nWednesday\t3\t114688\nWednesday\t4\t121856\nWednesday\t5\t201088\nWednesday\t6\t700032\nWednesday\t7\t1991680\nWednesday\t8\t3533696\nWednesday\t9\t5043200\nWednesday\t10\t5574016\nWednesday\t11\t5419136\nWednesday\t12\t5187200\nWednesday\t13\t5260672\nWednesday\t14\t5394176\nWednesday\t15\t5476096\nWednesday\t16\t5418112\nWednesday\t17\t4722048\nWednesday\t18\t3950208\nWednesday\t19\t3091072\nWednesday\t20\t2296704\nWednesday\t21\t1719680\nWednesday\t22\t1412096\nWednesday\t23\t903424\nThursday\t0\t516736\nThursday\t1\t269056\nThursday\t2\t169728\nThursday\t3\t133888\nThursday\t4\t139904\nThursday\t5\t253056\nThursday\t6\t789248\nThursday\t7\t2130688\nThursday\t8\t3865344\nThursday\t9\t5439744\nThursday\t10\t6132608\nThursday\t11\t6054656\nThursday\t12\t5708800\nThursday\t13\t5826688\nThursday\t14\t5962112\nThursday\t15\t6029184\nThursday\t16\t5695104\nThursday\t17\t4800384\nThursday\t18\t3929856\nThursday\t19\t3022080\nThursday\t20\t2134784\nThursday\t21\t1521152\nThursday\t22\t1182976\nThursday\t23\t831232\nFriday\t0\t520320\nFriday\t1\t302848\nFriday\t2\t190464\nFriday\t3\t131840\nFriday\t4\t134528\nFriday\t5\t177408\nFriday\t6\t519680\nFriday\t7\t1794816\nFriday\t8\t3678976\nFriday\t9\t4944640\nFriday\t10\t5676288\nFriday\t11\t5879168\nFriday\t12\t5953536\nFriday\t13\t6049408\nFriday\t14\t6190720\nFriday\t15\t6115456\nFriday\t16\t5648512\nFriday\t17\t4838016\nFriday\t18\t3882624\nFriday\t19\t2934272\nFriday\t20\t2130176\nFriday\t21\t1674880\nFriday\t22\t1366528\nFriday\t23\t995456\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572124334496_-1237705006",
+      "id": "20191026-211214_1074587644",
+      "dateCreated": "2019-10-26 21:12:14.496",
+      "dateStarted": "2019-10-26 22:41:05.230",
+      "dateFinished": "2019-10-26 22:41:06.777",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 22:18:23.975",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1572128303974_29704561",
+      "id": "20191026-221823_1543063705",
+      "dateCreated": "2019-10-26 22:18:23.974",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Let\u0027s Explore Instacart Dataset",
+  "id": "2ESF1KHY9",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "python:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

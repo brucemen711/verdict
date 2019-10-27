@@ -1,0 +1,2069 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\nimport pandas as pd\nimport verdict\n\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:08:59.096",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 90.0,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1568759726864_419872936",
+      "id": "20190917-223526_360793825",
+      "dateCreated": "2019-09-17 22:35:26.864",
+      "dateStarted": "2019-10-24 19:33:53.081",
+      "dateFinished": "2019-10-24 19:35:02.639",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndef append_errors(actual, expected):\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([actual, 100 * (expected[\u0027c\u0027] - actual[\u0027c\u0027]).abs() / expected[\u0027c\u0027]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-24 19:45:16.607",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "tableHide": false,
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1568761582836_1408065725",
+      "id": "20190917-230622_423173235",
+      "dateCreated": "2019-09-17 23:06:22.836",
+      "dateStarted": "2019-10-24 19:45:16.646",
+      "dateFinished": "2019-10-24 19:45:16.652",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Setup\n**Dataset**: TPC-H schema, 100 GB (compressed \u003d 200GB uncompressed)\n**Machine**: m5a.4xlarge (64GB memory, 16 cores)\n**Software**: Presto 318 , Verdict 0.6.0\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:34:12.642",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eSetup\u003c/h1\u003e\n\u003cp\u003e\u003cstrong\u003eDataset\u003c/strong\u003e: TPC-H schema, 100 GB (compressed \u003d 200GB uncompressed)\u003cbr/\u003e\u003cstrong\u003eMachine\u003c/strong\u003e: m5a.4xlarge (64GB memory, 16 cores)\u003cbr/\u003e\u003cstrong\u003eSoftware\u003c/strong\u003e: Presto 318 , Verdict 0.6.0\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568911757535_2010200731",
+      "id": "20190919-164917_59229034",
+      "dateCreated": "2019-09-19 16:49:17.535",
+      "dateStarted": "2019-10-16 06:34:12.642",
+      "dateFinished": "2019-10-16 06:34:12.650",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# 1. Total Number of Sales",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 16:57:26.928",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. Total Number of Sales\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568760919302_1605137673",
+      "id": "20190917-225519_566982761",
+      "dateCreated": "2019-09-17 22:55:19.302",
+      "dateStarted": "2019-09-19 16:57:26.929",
+      "dateFinished": "2019-09-19 16:57:26.934",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 16:52:42.564",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568759783966_543491963",
+      "id": "20190917-223623_636724409",
+      "dateCreated": "2019-09-17 22:36:23.966",
+      "dateStarted": "2019-09-17 22:56:19.655",
+      "dateFinished": "2019-09-17 22:56:19.662",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:25:09.315",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568760975148_861935468",
+      "id": "20190917-225615_1282863363",
+      "dateCreated": "2019-09-17 22:56:15.148",
+      "dateStarted": "2019-10-16 06:25:09.315",
+      "dateFinished": "2019-10-16 06:25:12.016",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult1 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT count(*) c\nFROM hive.tpch_sf100.lineitem\n\u0027\u0027\u0027)\nz.show(result1)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-24 19:36:02.827",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "0",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "_col0": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "c\n600037902\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568760989381_-1618259122",
+      "id": "20190917-225629_1176302775",
+      "dateCreated": "2019-09-17 22:56:29.381",
+      "dateStarted": "2019-10-24 19:36:02.976",
+      "dateFinished": "2019-10-24 19:36:14.171",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult1_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT count(*) c\nFROM hive.tpch_sf100.lineitem\n\u0027\u0027\u0027)\nz.show(result1_verdict)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-24 19:36:17.719",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "c1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "c\n599959552\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568761020509_1800399956",
+      "id": "20190917-225700_1070363107",
+      "dateCreated": "2019-09-17 22:57:00.509",
+      "dateStarted": "2019-10-24 19:36:17.882",
+      "dateFinished": "2019-10-24 19:36:18.029",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# 2. Sales by Order Priority\nGroup by with arbitrary filters",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 16:54:30.428",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. Sales by Order Priority\u003c/h1\u003e\n\u003cp\u003eGroup by with arbitrary filters\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568761058827_1004657220",
+      "id": "20190917-225738_1092645712",
+      "dateCreated": "2019-09-17 22:57:38.828",
+      "dateStarted": "2019-09-19 16:54:22.008",
+      "dateFinished": "2019-09-19 16:54:22.013",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-18 17:41:25.147",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568828469333_-1239351461",
+      "id": "20190918-174109_1469078389",
+      "dateCreated": "2019-09-18 17:41:09.334",
+      "dateStarted": "2019-09-18 17:41:14.212",
+      "dateFinished": "2019-09-18 17:41:16.799",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:26:28.596",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568828483656_-661219223",
+      "id": "20190918-174123_154224271",
+      "dateCreated": "2019-09-18 17:41:23.656",
+      "dateStarted": "2019-10-16 06:26:28.597",
+      "dateFinished": "2019-10-16 06:26:28.604",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult2 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l.l_orderkey \u003d o.o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027)\nz.show(pd.DataFrame(result2))\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:10:11.775",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "o_orderstatus": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "o_orderstatus",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "o_orderstatus": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "o_orderstatus",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "o_orderstatus\tc\nF\t290583575\nO\t290665142\nP\t18789185\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568762031081_1627377986",
+      "id": "20190917-231351_555281593",
+      "dateCreated": "2019-09-17 23:13:51.081",
+      "dateStarted": "2019-10-24 19:36:20.850",
+      "dateFinished": "2019-10-24 19:39:00.378",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult2_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l_orderkey \u003d o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027, 0.01)\nresult2_verdict \u003d append_errors(result2_verdict, result2)\nz.show(result2_verdict)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:10:11.831",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "o_orderstatus": "string",
+                      "c": "string",
+                      "rel error (%)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "o_orderstatus",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "o_orderstatus": "string",
+                      "count": "string",
+                      "rel error (%)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "o_orderstatus",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "o_orderstatus\tc\trel error (%)\nF\t287703040\t0.9912931245339658\nO\t290667520\t0.0008181235574508621\nP\t18621440\t0.8927742209148507\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568761704255_-205819166",
+      "id": "20190917-230824_637666390",
+      "dateCreated": "2019-09-17 23:08:24.255",
+      "dateStarted": "2019-10-24 20:28:18.223",
+      "dateFinished": "2019-10-24 20:28:19.494",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# 3. Number of Sold Items over Time\nTimeseries",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 17:46:15.643",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. Number of Sold Items over Time\u003c/h1\u003e\n\u003cp\u003eTimeseries\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568761737632_-367664078",
+      "id": "20190917-230857_457488457",
+      "dateCreated": "2019-09-17 23:08:57.633",
+      "dateStarted": "2019-09-19 17:46:15.643",
+      "dateFinished": "2019-09-19 17:46:15.648",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 17:15:26.961",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568828515876_1282541753",
+      "id": "20190918-174155_2127845313",
+      "dateCreated": "2019-09-18 17:41:55.876",
+      "dateStarted": "2019-09-19 17:15:26.962",
+      "dateFinished": "2019-09-19 17:15:26.965",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:29:58.715",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568828520646_-906162631",
+      "id": "20190918-174200_201362057",
+      "dateCreated": "2019-09-18 17:42:00.646",
+      "dateStarted": "2019-10-16 06:29:58.715",
+      "dateFinished": "2019-10-16 06:29:58.721",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult3 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027)\nz.show(result3)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:10:10.122",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "shipyear": "string",
+                      "shipmonth": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [
+                {
+                  "name": "shipyear",
+                  "index": 0.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "shipmonth",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "shipdate": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "shipdate",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "tableHide": false,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "shipyear\tshipmonth\tc\n1992\t1\t958726\n1992\t2\t2690170\n1992\t3\t4794764\n1992\t4\t6520179\n1992\t5\t7725009\n1992\t6\t7477563\n1992\t7\t7729799\n1992\t8\t7731952\n1992\t9\t7476902\n1992\t10\t7726882\n1992\t11\t7479770\n1992\t12\t7724585\n1993\t1\t7732429\n1993\t2\t6986055\n1993\t3\t7733607\n1993\t4\t7484268\n1993\t5\t7733172\n1993\t6\t7482858\n1993\t7\t7729877\n1993\t8\t7727830\n1993\t9\t7486538\n1993\t10\t7727699\n1993\t11\t7476189\n1993\t12\t7721567\n1994\t1\t7726413\n1994\t2\t6977488\n1994\t3\t7728727\n1994\t4\t7480625\n1994\t5\t7730305\n1994\t6\t7483021\n1994\t7\t7737289\n1994\t8\t7735355\n1994\t9\t7487446\n1994\t10\t7729088\n1994\t11\t7480738\n1994\t12\t7734163\n1995\t1\t7730692\n1995\t2\t6982932\n1995\t3\t7729723\n1995\t4\t7483417\n1995\t5\t7727131\n1995\t6\t7482668\n1995\t7\t7731994\n1995\t8\t7731271\n1995\t9\t7484260\n1995\t10\t7734472\n1995\t11\t7480080\n1995\t12\t7728627\n1996\t1\t7730246\n1996\t2\t7228645\n1996\t3\t7727610\n1996\t4\t7486348\n1996\t5\t7737708\n1996\t6\t7481712\n1996\t7\t7726793\n1996\t8\t7727219\n1996\t9\t7486165\n1996\t10\t7723068\n1996\t11\t7483890\n1996\t12\t7734519\n1997\t1\t7733776\n1997\t2\t6992052\n1997\t3\t7738727\n1997\t4\t7484912\n1997\t5\t7734805\n1997\t6\t7481881\n1997\t7\t7731002\n1997\t8\t7727229\n1997\t9\t7485872\n1997\t10\t7735757\n1997\t11\t7487485\n1997\t12\t7731617\n1998\t1\t7734916\n1998\t2\t6983732\n1998\t3\t7731565\n1998\t4\t7476651\n1998\t5\t7732476\n1998\t6\t7483149\n1998\t7\t7729954\n1998\t8\t6893847\n1998\t9\t4791303\n1998\t10\t3002565\n1998\t11\t1020321\n1998\t12\t2070\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568768071576_-132283735",
+      "id": "20190918-005431_1267396039",
+      "dateCreated": "2019-09-18 00:54:31.576",
+      "dateStarted": "2019-10-24 19:45:25.146",
+      "dateFinished": "2019-10-24 19:45:42.685",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresult3_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027, 0.01)\nresult3_verdict \u003d append_errors(result3_verdict, result3)\nz.show(result3_verdict)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-26 21:10:10.283",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "shipyear": "string",
+                      "shipmonth": "string",
+                      "c": "string",
+                      "rel error (%)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [
+                {
+                  "name": "shipyear",
+                  "index": 0.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "shipmonth",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "l_shipdate": "string",
+                      "count": "string",
+                      "rel error (%)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "l_shipdate",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "shipyear\tshipmonth\tc\trel error (%)\n1992.0\t1.0\t948992.0\t1.0153057286440548\n1992.0\t2.0\t2678784.0\t0.4232446276629358\n1992.0\t3.0\t4808512.0\t0.2867294406982283\n1992.0\t4.0\t6509696.0\t0.16077779459735692\n1992.0\t5.0\t7694016.0\t0.40120341607369003\n1992.0\t6.0\t7434688.0\t0.5733819962466381\n1992.0\t7.0\t7737024.0\t0.09346944209027945\n1992.0\t8.0\t7738560.0\t0.08546354141877756\n1992.0\t9.0\t7487744.0\t0.1450065816029152\n1992.0\t10.0\t7740800.0\t0.1801244020550592\n1992.0\t11.0\t7450880.0\t0.38624182294375364\n1992.0\t12.0\t7719936.0\t0.060184462984095584\n1993.0\t1.0\t7693120.0\t0.5083654825669915\n1993.0\t2.0\t6948096.0\t0.5433538670966661\n1993.0\t3.0\t7741632.0\t0.10376787959357128\n1993.0\t4.0\t7485120.0\t0.011383878824221687\n1993.0\t5.0\t7751488.0\t0.23684976876241728\n1993.0\t6.0\t7482944.0\t0.0011492934918716886\n1993.0\t7.0\t7769472.0\t0.5122332476959206\n1993.0\t8.0\t7713920.0\t0.17999878361713442\n1993.0\t9.0\t7474880.0\t0.1557195061322069\n1993.0\t10.0\t7699968.0\t0.35885196874257136\n1993.0\t11.0\t7476224.0\t0.0004681529586798836\n1993.0\t12.0\t7719680.0\t0.024438044764747882\n1994.0\t1.0\t7713024.0\t0.173288691660671\n1994.0\t2.0\t7017536.0\t0.5739601415294444\n1994.0\t3.0\t7740160.0\t0.14792863041999024\n1994.0\t4.0\t7512000.0\t0.4194168268025733\n1994.0\t5.0\t7747264.0\t0.2193833231677146\n1994.0\t6.0\t7543616.0\t0.8097665368037855\n1994.0\t7.0\t7746112.0\t0.11403218879377518\n1994.0\t8.0\t7693632.0\t0.5393805455599646\n1994.0\t9.0\t7493248.0\t0.0774897074382907\n1994.0\t10.0\t7747584.0\t0.23930378331829058\n1994.0\t11.0\t7475392.0\t0.07146353742104054\n1994.0\t12.0\t7721280.0\t0.16657264658114912\n1995.0\t1.0\t7705088.0\t0.3311993285982678\n1995.0\t2.0\t7003008.0\t0.28750100960456154\n1995.0\t3.0\t7737024.0\t0.09445357873755632\n1995.0\t4.0\t7495680.0\t0.16386899193242874\n1995.0\t5.0\t7728000.0\t0.011246088619437149\n1995.0\t6.0\t7435392.0\t0.6318067298990147\n1995.0\t7.0\t7728512.0\t0.04503366143326029\n1995.0\t8.0\t7719232.0\t0.15571825124226016\n1995.0\t9.0\t7468096.0\t0.21597325587299213\n1995.0\t10.0\t7719616.0\t0.19207516686336185\n1995.0\t11.0\t7486208.0\t0.08192425749457224\n1995.0\t12.0\t7729408.0\t0.010105287782681193\n1996.0\t1.0\t7723776.0\t0.08369720704877956\n1996.0\t2.0\t7230208.0\t0.021622309575307683\n1996.0\t3.0\t7760256.0\t0.42245920795692327\n1996.0\t4.0\t7458816.0\t0.36776275962592175\n1996.0\t5.0\t7737600.0\t0.001395762155925243\n1996.0\t6.0\t7471168.0\t0.14093031113734397\n1996.0\t7.0\t7703680.0\t0.2991279823336797\n1996.0\t8.0\t7742848.0\t0.20225905335412392\n1996.0\t9.0\t7438400.0\t0.638043644509572\n1996.0\t10.0\t7717632.0\t0.07038653550635576\n1996.0\t11.0\t7478144.0\t0.07677825302082206\n1996.0\t12.0\t7781568.0\t0.608298977609338\n1997.0\t1.0\t7705856.0\t0.361013817829738\n1997.0\t2.0\t7007488.0\t0.22076494854443302\n1997.0\t3.0\t7707904.0\t0.3982954819313306\n1997.0\t4.0\t7510080.0\t0.33624977822050545\n1997.0\t5.0\t7754880.0\t0.25954112611759445\n1997.0\t6.0\t7483328.0\t0.01934005633075426\n1997.0\t7.0\t7716224.0\t0.19115245345946102\n1997.0\t8.0\t7711744.0\t0.20039525164842403\n1997.0\t9.0\t7474624.0\t0.15025637627787383\n1997.0\t10.0\t7704704.0\t0.4014216061854063\n1997.0\t11.0\t7490496.0\t0.040213770044280554\n1997.0\t12.0\t7735936.0\t0.055861535821032\n1998.0\t1.0\t7739648.0\t0.061177134955311734\n1998.0\t2.0\t6948224.0\t0.5084387545226535\n1998.0\t3.0\t7694720.0\t0.47655293591918324\n1998.0\t4.0\t7479424.0\t0.03708879817982677\n1998.0\t5.0\t7737536.0\t0.06543828910687857\n1998.0\t6.0\t7470656.0\t0.16694843307276122\n1998.0\t7.0\t7738496.0\t0.11050518541248758\n1998.0\t8.0\t6847424.0\t0.6733975964363584\n1998.0\t9.0\t4810176.0\t0.39390119973627213\n1998.0\t10.0\t3021056.0\t0.6158401233611929\n1998.0\t11.0\t1018368.0\t0.19141035027212025\n1998.0\t12.0\t1984.0\t4.154589371980676\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568762177682_827939612",
+      "id": "20190917-231617_1033561785",
+      "dateCreated": "2019-09-17 23:16:17.683",
+      "dateStarted": "2019-10-24 20:28:45.354",
+      "dateFinished": "2019-10-24 20:28:47.998",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Verdict for Machine Learning: Click Prediction\n**dataset**: 128GB on disk, 45.8 millions examples, 1 million features\n**Model**: Logistic Regression (Depth-1 Neural Net)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:32:50.186",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false,
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eVerdict for Machine Learning: Click Prediction\u003c/h1\u003e\n\u003cp\u003e\u003cstrong\u003edataset\u003c/strong\u003e: 128GB on disk, 45.8 millions examples, 1 million features\u003cbr/\u003e\u003cstrong\u003eModel\u003c/strong\u003e: Logistic Regression (Depth-1 Neural Net)\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568912411082_-2013798765",
+      "id": "20190919-170011_2064467869",
+      "dateCreated": "2019-09-19 17:00:11.082",
+      "dateStarted": "2019-10-16 06:32:50.186",
+      "dateFinished": "2019-10-16 06:32:50.199",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Data loading",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 16:22:33.058",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eData loading\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568906395948_-98542072",
+      "id": "20190919-151955_2059636953",
+      "dateCreated": "2019-09-19 15:19:55.948",
+      "dateStarted": "2019-09-27 16:22:33.058",
+      "dateFinished": "2019-09-27 16:22:33.064",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nimport numpy as np\nfrom blinkml.logistic import Logistic\nfrom scipy import sparse\nfrom sklearn.decomposition import PCA\n\ntest_data \u003d sparse.load_npz(\u0027/root/blinkml/trained_models/Criteo_test.npz\u0027)[:10000]\ntest_features \u003d test_data[:, 1:]\ntest_labels \u003d test_data[:,0]\n\npca \u003d PCA(n_components\u003d2)\ntest_features2D \u003d pca.fit_transform(test_features[:,:100].toarray())",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 17:45:01.685",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1568845569656_45403182",
+      "id": "20190918-222609_420187145",
+      "dateCreated": "2019-09-18 22:26:09.656",
+      "dateStarted": "2019-09-27 17:45:01.717",
+      "dateFinished": "2019-09-27 17:45:15.494",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Training w/ SciPy (2 hours)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 16:24:00.103",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTraining w/ SciPy (2 hours)\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568819914954_-1636071512",
+      "id": "20190918-151834_492649650",
+      "dateCreated": "2019-09-18 15:18:34.954",
+      "dateStarted": "2019-09-27 16:24:00.104",
+      "dateFinished": "2019-09-27 16:24:00.108",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Training w/ SciPy+Verdict (\u003c2 mins)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:33:03.418",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTraining w/ SciPy+Verdict (\u0026lt;2 mins)\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568819935256_1708449209",
+      "id": "20190918-151855_208265605",
+      "dateCreated": "2019-09-18 15:18:55.256",
+      "dateStarted": "2019-10-16 06:33:03.418",
+      "dateFinished": "2019-10-16 06:33:03.424",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-26 23:54:17.729",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003efull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\u003cbr/\u003efull_model \u003d full_trainer.train(Logistic, training_set)\u003cbr/\u003efull_param \u003d full_model.get_param()\u003cbr/\u003enp.save(\u0026lsquo;/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0026rsquo;, full_param)\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568920911823_885224438",
+      "id": "20190919-192151_1368106256",
+      "dateCreated": "2019-09-19 19:21:51.823",
+      "dateStarted": "2019-09-26 23:54:10.510",
+      "dateFinished": "2019-09-26 23:54:13.211",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\napprox_trainer \u003d ApproxTrainer(LocalTrainer(False, beta\u003dBETA), logistic_conf)\napprox_model \u003d approx_trainer.train(Logistic, training_set)\napprox_param \u003d approx_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027, approx_param)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-26 23:54:19.810",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eapprox_trainer \u003d ApproxTrainer(LocalTrainer(False, beta\u003dBETA), logistic_conf)\u003cbr/\u003eapprox_model \u003d approx_trainer.train(Logistic, training_set)\u003cbr/\u003eapprox_param \u003d approx_model.get_param()\u003cbr/\u003enp.save(\u0026lsquo;/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0026rsquo;, approx_param)\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568920960925_1630293432",
+      "id": "20190919-192240_264312379",
+      "dateCreated": "2019-09-19 19:22:40.925",
+      "dateStarted": "2019-09-26 23:54:13.257",
+      "dateFinished": "2019-09-26 23:54:13.276",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Prediction w/ SciPy Model",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 16:29:55.842",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePrediction w/ SciPy Model\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568921042228_538524386",
+      "id": "20190919-192402_1614978242",
+      "dateCreated": "2019-09-19 19:24:02.228",
+      "dateStarted": "2019-09-27 16:29:55.843",
+      "dateFinished": "2019-09-27 16:29:55.847",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Prediction w/ SciPy + Verdict Model",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:33:15.624",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePrediction w/ SciPy + Verdict Model\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568921057397_-1652991307",
+      "id": "20190919-192417_949697575",
+      "dateCreated": "2019-09-19 19:24:17.398",
+      "dateStarted": "2019-10-16 06:33:15.625",
+      "dateFinished": "2019-10-16 06:33:15.631",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nfull_model \u003d Logistic(X\u003dnp.array([[1]]))\nfull_param_path \u003d \u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027\nfull_model.set_param(np.load(full_param_path))\nfull_predict \u003d full_model.predict(test_features)\nfull_predict.shape \u003d (10000,1)\nfull_df \u003d pd.DataFrame(np.hstack((test_features2D, full_predict)))\nz.show(full_df)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 17:49:03.934",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "0": "string",
+                      "1": "string",
+                      "2": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "0",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "1",
+                    "index": 1.0,
+                    "aggr": "sum"
+                  },
+                  "group": {
+                    "name": "2",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              },
+              "keys": [
+                {
+                  "name": "0",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "1",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "0\t1\t2\n0.3461065387569279\t0.25092360142620607\t0.0\n-0.5873050101932947\t-0.7969649835778877\t0.0\n-0.42088180650707646\t0.552624028760514\t0.0\n-0.7738260253823833\t0.7673593937151547\t0.0\n0.7001436164397219\t0.4296626701216842\t0.0\n-0.6944308379188833\t-1.190648450614663\t0.0\n-0.6504991490041817\t-0.8188387932195705\t0.0\n1.201230918282481\t0.11338622345688046\t0.0\n4.1767075428212594\t6.394169346347539\t0.0\n-1.431275844907765\t-0.26926005779192336\t0.0\n1.1392682791218005\t-0.389332989979391\t0.0\n1.9559366438833874\t2.858788809662385\t0.0\n-0.5414409358640514\t-0.046460919942680874\t0.0\n-0.3283378118807651\t-1.1261771704718029\t1.0\n-0.5927958887824312\t-0.8238849129311069\t0.0\n0.48146597270017305\t0.4437829112062347\t0.0\n-0.5748846693458475\t0.11209375178394633\t0.0\n1.6621765617995832\t0.573750530583408\t0.0\n-0.8005326946941325\t-0.2153813366411933\t0.0\n-1.3858257655390063\t-0.26066317863361155\t0.0\n-0.22230286033030675\t0.2716657490024929\t0.0\n-0.40515842354810616\t-0.2905291480835413\t0.0\n-0.79658075356119\t-0.9663335887682647\t0.0\n-0.2812185132474725\t2.190726269358902\t0.0\n-1.3526407829299099\t-0.8906719281517882\t0.0\n5.634464563825595\t0.9873038102542524\t1.0\n-0.5538494470260577\t-0.37846487735060036\t0.0\n-0.22122160987663622\t0.5301490735985187\t0.0\n-0.5549105663013792\t0.3076171865203518\t0.0\n-1.4572675278927727\t-0.37110307595644765\t0.0\n-0.531964697417359\t1.897114069380592\t0.0\n0.9135023830113379\t-0.012389238314488522\t0.0\n-0.7073251946647204\t-0.6873380661977377\t0.0\n-0.5249451003737271\t-0.19568138806512958\t0.0\n-0.3727198643982287\t-0.24559155052808462\t0.0\n-0.6254923966572841\t-0.11411108243809448\t0.0\n-0.6037366750517351\t-0.2598584191239201\t0.0\n-0.5755754516762944\t1.4155105188229327\t0.0\n-0.2634089774383163\t-0.4634714154134073\t0.0\n-1.0672728160002534\t0.05290547090895591\t0.0\n-0.9771699637936658\t-0.9830811586449647\t0.0\n0.08335335006238995\t-0.7146481573113362\t0.0\n-0.6224052205909469\t-0.43371103863614135\t0.0\n0.48879853487757435\t0.6062537994329144\t0.0\n-0.14929625996390455\t-0.4633743315919086\t0.0\n-0.6388861057543456\t-0.32666409547861275\t0.0\n0.21523766745761908\t-0.5805897333728786\t0.0\n-0.8822116025044803\t-0.727316956808735\t0.0\n1.152279552343444\t0.15198997901467742\t0.0\n-0.47428227885280067\t-0.1083212219883377\t0.0\n-0.5161679560337811\t0.304649889421222\t0.0\n-0.3628066360897812\t0.23076470359776516\t0.0\n1.7093340974638926\t3.913800177921165\t0.0\n-0.34204974647644076\t-0.5440400956861331\t0.0\n0.7453841402920954\t-0.5831644718259107\t0.0\n-0.45886024632751243\t-0.13016072580745874\t0.0\n0.08461601121737028\t-0.16453996089034456\t0.0\n0.4338128749488765\t-0.7402260805056082\t0.0\n-0.2238572543589812\t-0.16305630488494002\t0.0\n0.45342719445539725\t1.9589226647769316\t0.0\n-0.9665612562120292\t-0.8071400951061157\t0.0\n-0.699342777154404\t-0.1817722701678537\t0.0\n-0.6879732844176444\t-0.19790187122559777\t0.0\n-0.643874459325656\t-0.012882682703166422\t0.0\n0.8028891660551339\t0.06355105154692325\t0.0\n-0.19205575047411533\t0.37743453878761885\t0.0\n25.654603283886317\t-12.195299693340113\t0.0\n4.533625462583437\t-1.1622348394191857\t1.0\n-0.25221160945851406\t-1.0662759439715193\t0.0\n-1.0445192646506791\t-1.0706572625399728\t0.0\n-0.632721160087245\t-0.007277302248923022\t0.0\n-0.5999180862441157\t-0.8575036834609703\t0.0\n1.2535044137270799\t0.4608621069535132\t0.0\n-0.4712814747055337\t-0.2926552853268134\t0.0\n-0.535301999205985\t0.7624921373740287\t0.0\n-0.16065683651756849\t-0.1962941565510176\t0.0\n4.490099759091102\t-3.111945150179831\t1.0\n0.4561184333547083\t3.444940277573736\t0.0\n1.8616640337385062\t1.6876705409694004\t0.0\n-0.8098868592360761\t-0.12235069235620447\t0.0\n-0.8751893540911923\t-0.667814012608623\t0.0\n-0.3522443948506915\t-0.3391376434714333\t0.0\n0.22163558710157188\t0.24059662451483066\t0.0\n-0.8339174197258731\t-0.5320545247228861\t0.0\n-0.2912041129481094\t1.3273274787474898\t0.0\n-0.17009002778640014\t-0.199657092017646\t0.0\n-0.44954504332084966\t-1.509748247336101\t0.0\n-0.37150845510195485\t-0.20945984984191604\t0.0\n1.4559781719838663\t0.17299370089927973\t0.0\n-0.1619339162127534\t0.28062215680680347\t0.0\n-1.0475789629745154\t-0.04581804887292023\t0.0\n1.0043860539004346\t-0.8764291758883027\t0.0\n-0.6504880925189718\t-1.4660022488013096\t0.0\n-0.9852206876752563\t0.0818415980452412\t0.0\n-0.17927031757292125\t1.9447606679276053\t0.0\n-0.8935025108883743\t-1.219017142659316\t0.0\n0.5868682935652199\t2.0639527731316765\t0.0\n-0.3750089829315936\t1.854995493839751\t0.0\n-0.33091230142142053\t0.8075641442108142\t0.0\n-0.46240935540723366\t0.428459058642016\t0.0\n-0.6593894312251022\t-0.07419526275038574\t0.0\n0.1363249693199638\t-0.10825188596091932\t0.0\n-0.3319463806665128\t-0.20063120354488478\t0.0\n-0.11765446153759823\t1.500270659918282\t0.0\n-0.6676057355137346\t1.0786939037017385\t0.0\n0.3212868479199506\t0.8454825771760827\t0.0\n1.221027699694671\t1.1095360720299954\t0.0\n-0.944635680207737\t-0.8546808509699778\t0.0\n-0.5868654287594988\t0.18065031514486365\t0.0\n-0.7047219606867273\t-0.8308161640150329\t0.0\n-0.5530407339477076\t-0.952767733691635\t0.0\n-0.3325337638495363\t-0.3588817091449907\t0.0\n-0.16942697346997293\t-0.18265374767523446\t0.0\n-0.15564359014477006\t2.180057093148698\t0.0\n-0.15898806985967703\t-0.2043081312996643\t0.0\n-0.5681411886666369\t-0.18002449244419255\t0.0\n-1.2473171637332998\t0.16401034200848394\t0.0\n-0.4624481851284897\t0.07707187787725743\t0.0\n1.7831667407087155\t0.08214184917060054\t0.0\n0.12912312770908585\t0.12911373761793457\t0.0\n-0.7881581849250963\t-0.18854219774330028\t0.0\n0.39869384587517487\t1.1709650040061148\t0.0\n-0.8020940571003248\t-0.2287583655384054\t0.0\n-0.1694200986167167\t-0.29767088130597086\t0.0\n-0.13312595208986042\t0.8622080065599441\t0.0\n-1.0904549533422774\t-0.3657224550226268\t0.0\n-0.6572039852007577\t-0.4073775566462454\t0.0\n0.4307917552584718\t-1.1673949923225266\t0.0\n-0.8584555729793829\t-0.6560032579890559\t0.0\n-0.5504121560342875\t0.29411290860376726\t0.0\n-0.6784707177520974\t-0.12609600743241098\t0.0\n-1.1013191780900635\t0.11281258747962954\t0.0\n0.5414540549599025\t-1.7579641155291683\t0.0\n-0.25866374781561846\t0.15516646520532104\t0.0\n-0.19181553583162\t0.6483503690215782\t0.0\n-0.06789694236917211\t-0.16898346122438743\t0.0\n0.14939790266493477\t0.9608581515271083\t0.0\n-1.0246599477269502\t0.2863988978450123\t0.0\n-0.486200283460725\t-1.000447786462102\t0.0\n-0.7992390687263106\t-0.3456988971645478\t0.0\n-0.42493919971064203\t0.9212661144135923\t0.0\n0.47828815478155223\t2.47149248994552\t0.0\n-0.8893772554782936\t0.5542535750591124\t0.0\n-0.3969653055714567\t-0.472085072751838\t0.0\n-0.19523130596597452\t-1.4978651707302764\t0.0\n-0.6488470349154801\t-1.1876629328596577\t0.0\n9.23486595483604\t-3.989007887788697\t1.0\n0.17351091866491258\t-0.6010422231432789\t0.0\n1.5367050217188265\t-2.8549565889886006\t1.0\n-0.6324013416718154\t-0.5485754387610084\t0.0\n2.5095960876076098\t-1.3623210505286318\t1.0\n-1.0889577335496885\t0.1370638479773937\t0.0\n1.5625130433765742\t-0.4126451364099268\t0.0\n-1.1934969175940884\t-0.18656064063164637\t0.0\n-0.6012844860452471\t0.04177473141275455\t0.0\n-0.633318781875333\t-0.16171138626025652\t0.0\n-0.629860724858297\t-1.161663152428899\t1.0\n-0.9150991358253547\t-0.3697640215326235\t0.0\n-0.6322429318754728\t-0.4535722104559194\t0.0\n2.0149075975977238\t-2.036459401045595\t0.0\n2.1623617954928696\t0.7239818436738804\t0.0\n-0.6676717835974592\t-0.010135166652125431\t0.0\n0.24198474710907056\t-0.5075676383998425\t1.0\n-0.5907489132418385\t-0.4092571589240892\t0.0\n-0.277933798264996\t-0.2857153898305229\t0.0\n0.9749569177119538\t-1.3906500326008318\t0.0\n0.7371758585064737\t3.00196432283112\t0.0\n1.115684698781459\t1.4091588619691215\t0.0\n-0.7400007117955357\t0.5143849168998774\t0.0\n-0.7306735291319232\t-0.5589360834083762\t0.0\n0.6261170625757384\t1.6314706249811204\t0.0\n-0.5681534530190087\t-1.325428211226039\t0.0\n-0.35600579102928454\t-0.7577234893847313\t0.0\n-0.8254879397392709\t-0.9605382491711619\t0.0\n-0.9820706491659484\t-0.47659997730652\t0.0\n0.7986209275645134\t0.09754514366929842\t0.0\n0.1300455685913748\t-0.4372037938528222\t1.0\n-0.5786763649431654\t-0.3041475606619639\t0.0\n-0.8132854629908172\t0.25187498202822595\t0.0\n-0.7757440567846464\t-0.17547657506380962\t0.0\n-0.8770110383151147\t0.4976926957657849\t0.0\n-0.4970004502527364\t-0.5814538878016826\t0.0\n-0.15504698724190538\t-0.5270127713679473\t0.0\n-0.6252764694635179\t-0.6494789124707564\t0.0\n-0.2710054218338058\t-0.7731233915574874\t0.0\n-0.5894232406653084\t-1.0084936913367277\t0.0\n-0.7373672353503014\t-0.3278520986167564\t0.0\n0.1112363948214792\t-1.5604912850157175\t0.0\n0.9844810202532582\t-0.37022252003053274\t0.0\n-0.21386612896148804\t1.1135764313177168\t0.0\n-0.24878500337426288\t-0.6995001178605843\t0.0\n-0.3683520755007073\t1.1426665616002032\t0.0\n1.8763934284568418\t-0.5083391489238628\t0.0\n0.1811179884918731\t2.0852693512988827\t0.0\n-0.4568053777800518\t-0.4711438299898564\t0.0\n0.16966863015279599\t1.2730239909758785\t0.0\n-0.6908322500717993\t0.5373461833088018\t0.0\n-0.7564852411241016\t1.1738458941529584\t0.0\n-0.6596082104458725\t-0.10228045102629027\t0.0\n-0.7298404744425637\t-0.319513466817508\t0.0\n-0.15303812544461493\t-0.2350768907210847\t0.0\n0.5689325542067941\t1.6229759601691216\t0.0\n-0.06798088599129037\t-0.5216058714564594\t0.0\n-0.3021139656495233\t-0.192694697424706\t0.0\n0.2933360719220978\t1.7006718946741917\t0.0\n-0.6099207383644819\t-0.27683359467702007\t0.0\n0.7309271426048263\t-0.3605821944011793\t0.0\n0.5343717915717957\t-0.47504998968798795\t0.0\n1.03455827930967\t2.757619998923434\t0.0\n-0.8106394886397871\t-0.49024673695127663\t0.0\n0.761638285883477\t-0.49895192293920415\t1.0\n-1.1171025326388164\t0.15100727870214992\t0.0\n0.02251192864122554\t-0.07848503469259081\t0.0\n-0.5207295897726074\t-0.3653236717271187\t0.0\n17.262425815952263\t-8.657223032661271\t0.0\n-0.29689262552623136\t-0.8800338709367351\t0.0\n-0.46512830078062595\t-0.8524603796370219\t0.0\n-0.4680921810130224\t-0.7584968891850461\t0.0\n-0.10453838972179813\t0.46166428656835584\t0.0\n0.03471058632343616\t0.21987567117530402\t0.0\n-0.7500121466158595\t0.5408635928236756\t0.0\n-0.6441524313331148\t-0.29208578874049346\t0.0\n0.6118638457235659\t1.34077714797848\t0.0\n-0.06982865279032327\t0.5027385016836627\t0.0\n-0.7547334038249824\t-0.9221696172962502\t0.0\n-0.4300263575422756\t-0.5970504534401245\t0.0\n-0.3856692279920461\t-0.21149848648124292\t1.0\n-0.8676324457406501\t-0.6596188891669656\t0.0\n1.3276875788862854\t-0.05979700245193729\t0.0\n-1.0948263280791524\t0.36182001869313085\t0.0\n0.5081077313185496\t-1.8327821287430064\t0.0\n-0.178214302650279\t0.42094908133080533\t0.0\n2.205447498307093\t1.5127007544722144\t1.0\n0.17237962889175198\t1.6543993516515032\t0.0\n-1.1214688934826023\t-0.33682392659441496\t1.0\n-0.15847227758764154\t-0.19127379049758064\t0.0\n-0.6792874078610746\t-1.7766035894064096\t0.0\n-0.7738559892852039\t0.3453287957101336\t0.0\n-1.432473570486718\t-0.8252553419948638\t0.0\n-0.9573370309881397\t-0.47499493119930336\t0.0\n2.575864673987905\t-1.3859473531957731\t0.0\n-0.40475617151108534\t0.4641847426642947\t0.0\n-0.5850001534305311\t-0.19349583205219548\t0.0\n-0.5834833515428949\t-0.17082751310562247\t0.0\n-0.4602161441438739\t2.2502674790753656\t0.0\n2.956932657949276\t-1.5893283649292447\t0.0\n-0.48923924105024696\t-0.32718026208250106\t0.0\n0.20361822016840198\t1.015036937302921\t0.0\n-0.7059298456535522\t-0.12476266837185014\t0.0\n-0.1569522215833044\t0.9156291265022295\t0.0\n-0.46791202692925876\t-0.03357857384503053\t0.0\n0.14716341366201685\t1.8020662442649895\t0.0\n-0.12019426592946868\t2.3121496525901057\t0.0\n-0.756820273468459\t-0.20893399495650722\t0.0\n1.9922340391489402\t6.212571805296769\t0.0\n-0.42113179477670976\t0.014877101912162466\t0.0\n-0.6813190827882349\t-0.432923127011196\t0.0\n-0.7473090084623198\t1.2466334175872629\t0.0\n-0.7519423437368771\t-0.8763287872552316\t0.0\n0.14982587711517004\t1.1583343446181897\t0.0\n-0.8866744193177648\t-0.7521220539940362\t0.0\n-0.5401102610132038\t-0.2559974094390119\t0.0\n0.43581616532770007\t2.851521861499854\t0.0\n-1.0259502169296673\t-0.9945337831748522\t0.0\n-0.8899026372502538\t0.7673999910293313\t0.0\n7.624148701788502\t-6.28570399145449\t1.0\n1.3062295082826905\t1.484582092989221\t0.0\n-0.8817373924099146\t0.409907700067585\t0.0\n0.8583240900619828\t2.8309720638016067\t0.0\n-0.3163712851766332\t0.4201907303345178\t0.0\n-0.10024020051764042\t0.2458038684133556\t0.0\n-0.11204876896848798\t0.9052079958314778\t0.0\n-0.3817983624936594\t0.4601573534706436\t0.0\n-0.8629609634150924\t0.2983311460812828\t0.0\n0.41600850628909253\t-1.2512814169099946\t0.0\n0.840836345186221\t3.8985537424792\t0.0\n-0.6262525367626525\t-0.36228422283074196\t0.0\n0.13631988747564794\t-1.1066785897888705\t0.0\n0.07577938251155986\t0.4712730582302502\t0.0\n0.3455983717718182\t-0.4384634533612077\t0.0\n0.5335859014838928\t-1.1562728174084569\t0.0\n1.23015029919763\t2.9965611273982558\t0.0\n-0.6371345402860202\t-0.6939252794358486\t0.0\n0.14709351875427434\t-0.07849154355709212\t0.0\n0.11324801358144022\t-0.1910438423515009\t1.0\n-0.7138436371744125\t-1.2216697291541323\t0.0\n0.311137689407535\t-0.3117389925067928\t0.0\n1.4857742706115893\t4.023385809806763\t0.0\n-0.010799861679713692\t0.845875706135706\t0.0\n-1.148441908033358\t0.11962303689620253\t0.0\n-0.5243862451850765\t-0.8912418774743001\t0.0\n1.3884155210857831\t0.27821948288819387\t0.0\n-0.6916032682244071\t-1.1907982829499821\t0.0\n-0.722728929096975\t-0.9111883525858744\t0.0\n-0.6679392811825035\t-0.0785244959576588\t0.0\n-0.9321670504758589\t-0.7718376989688971\t0.0\n1.0500259719103433\t0.6044134276318488\t0.0\n0.008941347834887212\t-0.377227127410803\t0.0\n2.4395850111442234\t-0.9255466077793701\t0.0\n0.05470390912527383\t1.1057330082700358\t0.0\n-0.811313077227327\t0.6501100559783907\t0.0\n1.9424920471909113\t1.2118957877140522\t0.0\n-0.21042317727503485\t-0.22065414283126655\t0.0\n-0.4300793760514258\t-0.321156540262751\t0.0\n-0.9352166338236949\t-0.8715237978186569\t0.0\n4.131197476852362\t-2.681733748419059\t0.0\n-1.0127082591360417\t-1.4149332206512564\t0.0\n-0.6731030473598524\t-0.07516543324716564\t0.0\n2.8493532344696906\t-0.42189697717650154\t0.0\n-0.863235816810055\t0.5379573099022688\t0.0\n1.3744983609653028\t-0.29935529844604514\t0.0\n-1.1078737429891086\t-0.31907476627860537\t0.0\n0.011090036204239245\t1.6516122295965883\t0.0\n-0.863735352217848\t-0.6932234241919508\t0.0\n-0.3638909590729002\t-0.374061710817658\t0.0\n-0.11056749216296974\t-1.0552666029055475\t0.0\n-0.6717354255268887\t0.5190767892815598\t0.0\n-0.7528708741001064\t-0.2053955827126013\t0.0\n-0.23301569142836445\t0.0019381849833565933\t0.0\n-0.29670287349055136\t0.10172474484159016\t0.0\n-0.5878940470341464\t-0.08625399015739331\t0.0\n-0.4978219073366772\t0.4253789871229931\t0.0\n-0.6929747058466496\t0.0626586829165327\t0.0\n-0.30217148016249173\t0.05420867708132179\t0.0\n-0.13126070570423784\t-0.7294011443317756\t0.0\n-0.32480431559525613\t0.19923579958205628\t0.0\n-0.7298672428252354\t-0.3012215161476847\t0.0\n-0.520262114632561\t-0.7390016133947954\t0.0\n0.5023989060207052\t-0.4473089507503109\t0.0\n-0.7138880479235669\t-1.2217286412925354\t1.0\n1.039696821523089\t-0.7555807748747748\t0.0\n4.337802929678749\t-1.3209528526655272\t0.0\n-0.6880101029948765\t-0.22427735041238872\t0.0\n-0.09468347059852471\t0.5611148147058636\t0.0\n-0.7006768165991709\t-0.8341716043852068\t0.0\n7.187624817420379\t-3.7583661763867844\t1.0\n0.11386816299121844\t0.26827631912045735\t0.0\n0.17701935338017605\t0.11821672870355535\t0.0\n-0.760108205528904\t-0.8334712662305869\t0.0\n-0.5763756363468827\t1.0627034110784521\t0.0\n0.17196455692718102\t-0.5898585867196228\t0.0\n1.6835862257086442\t-1.8243554184098811\t1.0\n-0.5184286860967142\t-1.4107412409832651\t0.0\n-0.5349887345949066\t-0.1354823195717004\t0.0\n-0.00714779706780407\t1.511323293646002\t0.0\n-1.2828035614201487\t-0.34485788703876363\t0.0\n-0.1160123714831347\t-0.8802498329565023\t0.0\n0.8161228835456209\t1.1216638214255572\t0.0\n-0.33760610269868496\t-0.4628414350424237\t0.0\n-1.0231040979116595\t0.17354025952318697\t0.0\n-0.665204460001106\t-0.11129335967107087\t0.0\n-1.064249921608755\t0.2674178288974909\t0.0\n-0.08694165650017698\t-0.6197880127454726\t0.0\n-0.8424300348898741\t-0.5902735205508676\t0.0\n-1.1892071426969242\t-0.3298161503892784\t0.0\n-0.807201483660316\t-0.2604126969927969\t0.0\n-0.5029658405529555\t-0.044396375935856686\t0.0\n0.07255629034547297\t-0.4641087882472231\t1.0\n-1.100075215708331\t0.06101582465388978\t0.0\n-0.6523829090747242\t1.2528597887516937\t0.0\n-1.0561808165181452\t-0.11867423334760745\t0.0\n2.4792724974092666\t-1.4241960765837935\t1.0\n4.523613483487194\t0.2367442049429514\t1.0\n-0.3274968974145562\t1.7741814122145956\t0.0\n-0.2852919347682331\t-0.027932174890419416\t0.0\n1.3426224658282928\t-0.8231535116300591\t1.0\n-0.3663507497925159\t1.3248725172895017\t0.0\n-0.6060442510546881\t0.39225682285883706\t0.0\n1.7130547344083795\t-0.5209592206290743\t0.0\n0.33065194197207337\t-1.18745368593308\t0.0\n-0.5360576636257963\t-1.289384098615919\t0.0\n-0.2710452126702908\t0.926139799154085\t0.0\n-0.18937705469051222\t-0.40355662716580953\t0.0\n-0.7169820387900013\t0.8872883153082486\t0.0\n2.6011001419021884\t1.8124954542371399\t0.0\n-0.5926405769422551\t0.40327442392615814\t0.0\n-0.1235277560438681\t-0.25675942241933625\t0.0\n-0.8980622880813883\t-0.7521410612386425\t0.0\n-0.2292141530281921\t-0.2892255632340697\t0.0\n-1.0472647002558162\t-0.9250939618310537\t0.0\n0.5014915591660524\t0.1261869107563556\t0.0\n-0.7370966601853332\t-0.28762249151286967\t0.0\n0.9827850106101178\t0.4539331990409615\t0.0\n0.2471160620918422\t-0.0472721294386988\t0.0\n0.7559630269538458\t3.2099690607012055\t0.0\n-0.24594067802810726\t2.0654487475675176\t0.0\n-0.1548985417700955\t-0.3112696502554792\t0.0\n-0.9173596362024302\t0.2855021267864258\t0.0\n0.5846826487607549\t0.43753635280417813\t0.0\n0.35648710604295025\t-0.23792528183932157\t0.0\n-0.06183248332403537\t1.5962404605243181\t0.0\n0.46300677152561387\t1.3864753634829772\t1.0\n0.07515027592496712\t0.4184906381364194\t1.0\n-0.6519142760550334\t-0.30835774460623083\t0.0\n-0.5723760096759676\t-0.7768517484481753\t0.0\n-0.5893746234129745\t-0.016560122262824727\t0.0\n-1.0381612988732967\t-0.9059320672498921\t0.0\n-0.471333617832807\t-0.2444503072467962\t0.0\n-0.5409427350423601\t-0.715748699938741\t0.0\n1.4522006799184743\t-1.0375781287707802\t0.0\n-0.07104288083010732\t1.2375512944839566\t0.0\n-0.9509113796993783\t-0.8865040394596657\t0.0\n-0.7335670105965385\t-1.9321105148901134\t0.0\n-0.3370964787151796\t0.5457085732276314\t0.0\n-0.7444306038483991\t-0.20137839763947257\t0.0\n-0.22915109203120193\t-0.27841538711922625\t0.0\n-0.9669036893410207\t0.4300121540998935\t0.0\n-0.17269646226342708\t-0.2136000521400566\t0.0\n-0.7370261806587802\t-0.08973926269787735\t0.0\n0.32046552794725186\t0.504191170014509\t0.0\n0.3284590656398878\t-0.42722153842660027\t0.0\n-1.13639269960534\t-0.8283567134786105\t0.0\n0.3865740362586034\t2.5014445337977165\t0.0\n1.2514905948026072\t0.005563126770810877\t0.0\n-0.8481108207010731\t-0.83078410646491\t0.0\n-0.7720589813242263\t-0.3576181314178856\t0.0\n-1.0710601504770532\t0.39488695813710417\t0.0\n-0.49995536720399664\t-0.6394530764474984\t0.0\n-0.9797958124283599\t-0.6142757523242547\t0.0\n-1.0994866184077892\t0.2408222730712136\t0.0\n-0.9616621496181145\t-0.9139141073809688\t0.0\n-0.9616031793312413\t0.3773559978293298\t0.0\n-0.5694315032498578\t-0.2557938157123427\t0.0\n-0.5486607385765646\t-1.1263021292768873\t0.0\n-1.1138512743349804\t0.18330431769057678\t0.0\n1.8017440761097332\t-1.3251958521875788\t1.0\n-0.4963762318824818\t-0.20083270374124618\t0.0\n-0.6710240727672295\t-0.12266732844660667\t0.0\n-0.3422430617831181\t0.5732876137213776\t0.0\n0.7242309966284722\t-0.6065036529419188\t0.0\n-0.7648354902949915\t0.7827955396680483\t0.0\n-0.6508332169963753\t-0.9895235099166926\t0.0\n-0.6323769363869346\t-0.6024188748098959\t0.0\n-0.6857031857609734\t-0.6821796311122375\t0.0\n-0.9077960578253\t1.0951702791610938\t0.0\n0.10083858391742108\t0.9571564657845296\t0.0\n-0.3251373635550347\t-0.22521592708389104\t1.0\n-0.3960006300138012\t0.6710201359126472\t0.0\n-0.05522267472496647\t0.3258449318608496\t0.0\n1.0746949702407433\t3.11464819495819\t0.0\n-0.3390451856594396\t-0.8206130730394893\t0.0\n-0.22954797742395028\t0.7634385048787394\t0.0\n0.9459440256844381\t3.103332610253592\t0.0\n-0.7458601786794711\t0.45527930049761683\t0.0\n0.9222816621227785\t1.9258938521935407\t0.0\n1.3814797701698165\t-1.7092740834337738\t0.0\n-0.5859861076185325\t-0.23935881811805507\t0.0\n-0.1446214301136575\t0.7537876223873473\t0.0\n0.30202371912103415\t-2.3985113934385214\t0.0\n-0.5116245541658858\t-0.22943002221393927\t0.0\n-0.08014289993100218\t0.07961979744766919\t0.0\n-0.6914776095875862\t-0.42983741890042704\t0.0\n-0.6068899806955826\t0.8780459968833048\t0.0\n-1.271764255277017\t-0.5417529616652937\t0.0\n-0.7026460893131365\t-0.264508555424968\t0.0\n-1.2701880333422892\t-0.2877109419932255\t0.0\n0.01242044202245125\t1.0510049030382\t0.0\n-1.0613191683439163\t0.5305269126876184\t0.0\n-0.938400762922787\t-0.13587337116967518\t0.0\n-0.549249579271113\t-0.9003008895902168\t0.0\n-0.15862207168679474\t-0.20441379864414633\t0.0\n0.18790242833111356\t2.558896322593886\t0.0\n0.9985561619293879\t1.119926154015391\t0.0\n-0.9991737694585912\t0.268309341691646\t0.0\n-0.7713502463446074\t-0.22353279182824193\t0.0\n0.14541144833959607\t2.2985575850963307\t0.0\n2.1085545295694264\t-0.42056395295253973\t0.0\n-0.4539270335346892\t-0.09013917683160598\t0.0\n-0.4214248687434482\t-0.46314361262425785\t0.0\n-1.1382373147432578\t-0.10943119038915691\t0.0\n-0.33943267518711384\t-0.12197550964287295\t0.0\n2.301088117960723\t-3.1894192884741566\t0.0\n-0.31132685541136995\t0.07692508863050744\t0.0\n-0.29424141381533186\t0.9978043874634805\t0.0\n-1.0377081132402353\t-0.20165148034613423\t0.0\n-0.9994318881153678\t-0.4299368771092151\t0.0\n-0.03061237163591776\t-0.025173639963495528\t0.0\n-0.6279826176525455\t-0.049972432657866134\t0.0\n0.2899906090938299\t2.158554854284971\t0.0\n-0.21925127812048478\t0.8191197213877138\t0.0\n-0.17731626428830882\t0.2980062364457602\t0.0\n2.707607217998214\t-0.10366270972333712\t0.0\n-0.8482104441388634\t-0.5588489117050771\t0.0\n0.39226971866618454\t-0.662956111533021\t1.0\n-0.6040264422635953\t-0.32295309470749106\t0.0\n-0.7924081240994275\t-0.282994157415154\t0.0\n0.06431077507999852\t-0.4722914019957831\t0.0\n0.718574126647747\t3.1311155982511414\t0.0\n-1.242738438523533\t-0.30190355322805523\t0.0\n-0.8931643040556282\t-0.33491675013949485\t0.0\n-0.5294909165822282\t-1.0109950978756435\t0.0\n0.27091019696231444\t2.6742104250088015\t0.0\n-0.4247328649980277\t-0.29009259278756067\t0.0\n-0.945291092008339\t0.22354879786993442\t0.0\n-0.7665825131991413\t-0.12884524520864968\t0.0\n-0.5904873532437636\t-0.2594558119651952\t0.0\n-0.739005353123993\t-0.2965616674006638\t0.0\n-0.5310188736345184\t-1.0439931284168402\t0.0\n-1.0724867959437627\t-0.0029985077613825226\t0.0\n-0.37891988544571786\t0.11116428035081907\t0.0\n-1.7459252630169313\t-1.6112599791397126\t0.0\n-0.752099387885923\t-0.6925291338055081\t0.0\n0.6125042589142142\t0.2118048980601085\t0.0\n-0.306515178388878\t-0.40800080349965373\t0.0\n-0.1334985214937622\t-0.6755165108984243\t0.0\n-0.6940322862225429\t-0.891775685707038\t0.0\n0.70066433583115\t-0.6680461379995433\t0.0\n-2.5961327414610897\t-2.3286453009931654\t0.0\n1.0628003356616316\t-0.9554149487623185\t0.0\n0.3533690967794922\t2.664849917933665\t0.0\n-0.6088947852387421\t-0.9196955501993442\t0.0\n-0.11083915821384019\t-0.08505434230737682\t0.0\n-0.9657855715712846\t0.38007623408635816\t0.0\n-0.20184278049023044\t3.134411852511015\t0.0\n-0.7464939417478262\t0.0784318184083932\t0.0\n-1.0789338724210382\t0.08100507650475271\t0.0\n3.8089697504816984\t2.023795057051363\t1.0\n-0.399196327121355\t0.07119218773544149\t0.0\n0.022400507780272822\t0.24549796110181174\t0.0\n0.8566052559174963\t2.0963298926967355\t0.0\n-0.008352167519629573\t-0.3785923971108209\t0.0\n0.16905093729611373\t-0.21613389008906622\t0.0\n-0.5495834225913487\t-0.32775094960588697\t0.0\n-0.21998122143212814\t1.0403753965877345\t0.0\n-0.6407056044847648\t-0.6818111292190409\t0.0\n0.8684726842620748\t-0.32225132936707673\t1.0\n-0.8795671035408468\t-0.8272260679043859\t0.0\n-0.5895395528481806\t-0.8981942157383821\t0.0\n-1.0316268183913224\t-0.3514490189598238\t0.0\n-0.2758529006310624\t-0.40138762454442944\t0.0\n-0.8922102392730823\t0.14449724229461414\t0.0\n-0.15270770245191168\t2.212489614867934\t0.0\n0.26029214092878106\t0.019663936112767778\t0.0\n-0.613453342929651\t-0.18982211594459594\t0.0\n-0.3898417871111405\t-1.02829273971622\t0.0\n0.401256011865932\t0.6204058836815358\t0.0\n2.7452493447517354\t0.5012148746118744\t0.0\n-0.9289443838537262\t0.5035587633890403\t0.0\n-0.18616095863270224\t-0.4298482591236496\t0.0\n-0.6187282719290053\t-0.6070998827748583\t0.0\n-0.03739889240760964\t0.8222615788047187\t0.0\n-0.9181295642921635\t-0.7804948341106505\t0.0\n2.538316112158983\t3.7306664426294405\t0.0\n1.52571507397057\t-0.18023176020684584\t0.0\n-0.3058588800929988\t-1.2703594849438633\t0.0\n-0.8215261184215517\t-0.564479820680548\t0.0\n0.5694617687364243\t1.1412242158846069\t0.0\n-0.5323552124805249\t1.185248231020494\t0.0\n-1.1593043000780756\t-0.10826976573078256\t0.0\n-0.8601966235683222\t0.9706651923569439\t0.0\n-0.10467600747636804\t-0.02297419559257604\t0.0\n0.7515162417306757\t-0.13883269090755837\t1.0\n-0.4536309477681906\t0.24126511113167054\t0.0\n-0.7947228279324257\t-0.6748400782422338\t0.0\n1.7159129121440624\t-1.4402638925455842\t1.0\n-0.0576181286036533\t-0.6349855611551563\t0.0\n-0.1421759367273088\t-0.7275386527590288\t1.0\n0.04966844891881185\t-0.48247235599838345\t0.0\n-1.0654907326450136\t-0.7330018919392383\t0.0\n-0.3871746518272181\t-0.16017627288213496\t0.0\n4.859736037761537\t-0.7873127362315876\t0.0\n0.7275378143050707\t0.9884671894297735\t0.0\n-0.16003910791559045\t-0.2065282786776102\t0.0\n-0.14717189850789605\t-0.2626380667238738\t0.0\n-0.9916060914601744\t-1.4572866865544252\t0.0\n1.4994652186371067\t-0.11373762400548705\t0.0\n-0.6276397034789636\t-0.9726388069564774\t0.0\n-0.11401083828602292\t-0.2051561338386983\t0.0\n-0.45527126983694216\t0.20852997118823688\t0.0\n4.634610140554952\t-3.4046800854778896\t1.0\n0.20057380185979534\t1.8616040269763185\t0.0\n0.42458406933137854\t0.6707217723274276\t0.0\n-0.6771921806104817\t-1.277102761878348\t0.0\n-0.8450064772417833\t0.37792645846239376\t0.0\n1.4721222441422015\t1.254082785713622\t0.0\n-0.3960611394492449\t1.350834344054047\t0.0\n0.13449843403290315\t0.9930416674819431\t0.0\n0.22098045453277668\t-0.28807335940739426\t0.0\n-0.24233058298198812\t2.2127869252321197\t0.0\n-0.4492218647321667\t-0.3103714293570972\t0.0\n-0.1924242897473585\t-1.2175341331857714\t1.0\n0.06065646324950814\t0.42544267530025087\t0.0\n-0.009035967670018349\t0.36929900253701614\t0.0\n-0.32057796797434185\t0.008995911366410366\t0.0\n-0.47686409077679576\t1.3103888616836368\t0.0\n-0.15866079293454002\t-0.1919876484068248\t0.0\n0.8194933827276251\t0.27671590257150996\t0.0\n0.06554620698032435\t0.35267083114256637\t0.0\n-0.4642518763747627\t-0.6740525065525742\t0.0\n-0.3633008285311654\t-0.5843971526278532\t0.0\n-0.8507790019923851\t-0.23063318739425107\t0.0\n-0.4118674095850159\t0.20688398808272981\t0.0\n0.12177778720836542\t-0.24773422679738855\t0.0\n-0.8168737550534955\t-0.500423747094337\t0.0\n-0.6117303169691615\t-0.2570981048643087\t0.0\n-0.6896739420943895\t-0.10771148730293326\t0.0\n1.38180824992511\t-1.632909404363212\t0.0\n-0.6739258178836932\t-0.37422393248953456\t0.0\n-0.1475098796740426\t1.412442033203637\t0.0\n-1.3461980029106273\t-0.14906130660416392\t0.0\n-1.06583293201552\t-0.07081672117035215\t0.0\n0.5945527263375253\t2.450776155706945\t0.0\n3.352326153175162\t-0.900611963999897\t1.0\n2.1043886758726202\t0.4658962825397139\t0.0\n0.17516584988323347\t0.16488040411091673\t0.0\n-0.6192390003381347\t-1.116047705858337\t0.0\n-0.27012235947166896\t-0.3301307836123558\t0.0\n0.8066768414120431\t0.18223295118581134\t0.0\n-0.450327458668722\t-1.0839705691783832\t0.0\n-0.44777982429905416\t0.4549933073742597\t0.0\n9.273170193890964\t-4.042952391236625\t1.0\n-0.6224394824541054\t0.32099862517479194\t0.0\n0.8525395949770973\t2.188278136474201\t0.0\n3.5633362085952207\t0.8534689243495853\t0.0\n1.748152590489689\t-1.3568556645958438\t0.0\n-0.18947770045735776\t-0.6970705425625501\t0.0\n-1.108948083384806\t0.0364386733032392\t0.0\n0.594568455908767\t3.5367244962587256\t0.0\n-0.15406128855384127\t0.3503996316841796\t0.0\n-0.6880656560103494\t-1.1680772269251622\t0.0\n0.09675804408375584\t-0.6554399327192518\t0.0\n-0.5958940032185288\t-0.26023365651300095\t0.0\n-0.16035601137373615\t-0.5453099291479827\t0.0\n-0.37008597147467026\t-0.5111197066220734\t0.0\n0.32568555747099576\t1.422304040571919\t0.0\n-0.4567808907804048\t0.4495694233237143\t0.0\n-0.6814963931234961\t0.9082634707235443\t0.0\n-0.7667449687055701\t0.8799668343588208\t0.0\n-0.8299080099150302\t-0.4961077601572902\t0.0\n0.7979162558539973\t3.9497668610912644\t0.0\n-0.6174080441681172\t-1.2912809000205319\t0.0\n0.1340321788601147\t2.263044758805263\t0.0\n0.9141329926792078\t-0.7224319485466337\t0.0\n-0.58996082317338\t-0.2544718139544809\t0.0\n0.744849451183251\t0.3986262331037682\t0.0\n2.4134823924599123\t-1.5761940034079711\t0.0\n-0.3258844846208894\t-0.09236637287023908\t0.0\n-0.12872725440526908\t-0.09899028404323976\t0.0\n-0.5046171444486107\t2.00062869686608\t0.0\n0.19949109454859912\t-0.29001437473281233\t0.0\n-0.4138549781103201\t-0.34597232004640155\t0.0\n-0.4914445238861484\t0.26076982266516363\t0.0\n-0.7181454529305772\t-0.28123468408541025\t0.0\n-0.39135574992353567\t-0.8427512996795145\t0.0\n3.3140106204814166\t1.6373808679157562\t0.0\n1.8159518496992308\t2.6061248139654047\t0.0\n-0.727911392089412\t-0.6323491759777934\t0.0\n-0.7519831315818234\t-0.1887292223599649\t0.0\n0.11105631117046981\t0.5077574694253626\t0.0\n-0.6257030592382488\t-0.3438727589990777\t0.0\n1.3403935290325637\t0.35630085653012916\t0.0\n-0.7101709523544967\t-0.35942096638459253\t0.0\n2.0864826175287385\t1.4533626138367308\t1.0\n-0.8137070848171261\t-0.5091354265570728\t0.0\n-0.49104722946713847\t-0.8080929467200536\t0.0\n-0.16119913825739032\t-0.20122746512401046\t0.0\n0.23762384383729906\t0.7234332457671732\t0.0\n-0.4459228532766822\t-0.49661901964965505\t0.0\n-0.18374830141163276\t1.264272553213393\t0.0\n-0.30496541200706423\t-0.1250000128177136\t0.0\n-0.07055716901887857\t0.34150906438339707\t0.0\n-0.9509934629315275\t-0.9315533862532688\t0.0\n-0.4687379375323668\t-1.1194264169252475\t0.0\n-1.1336068373475583\t0.1811321380295471\t0.0\n1.0168440894535349\t0.7326595436274049\t0.0\n-0.4670424804991685\t-0.5342218429201246\t0.0\n1.129115809917297\t-0.5547618017067194\t0.0\n0.7552622529785155\t2.7676064470894346\t0.0\n-1.2999804837490443\t-0.45915992811626877\t0.0\n-0.6184020644854126\t-1.0867465292919503\t0.0\n4.048984308767932\t0.44435194900786285\t1.0\n-0.9511291097230833\t-0.24461045786017274\t0.0\n-0.5421952196004016\t0.1451138852936322\t0.0\n-0.6706461039999673\t-1.09618078159441\t0.0\n0.39293821477317353\t0.25933191912893533\t0.0\n-0.4547360646279975\t-0.4568742224430904\t0.0\n0.02691450359868969\t-0.6731648546970112\t0.0\n0.7654932096008222\t2.5574024726993136\t0.0\n0.9335575343114187\t0.1525999878249338\t0.0\n-1.5417352146261116\t-0.9623204193315738\t0.0\n-0.9115182935901053\t0.5512663975906154\t0.0\n-0.12746236508775857\t0.4848437114079797\t0.0\n1.3232524253738855\t1.663218353349214\t0.0\n-0.7161616866699347\t0.12246143256936323\t0.0\n-0.7678336304052242\t-0.5906634321805634\t0.0\n0.16778437571966187\t1.0287568334768216\t0.0\n0.623696083957816\t1.301083916301213\t0.0\n-0.380207258869346\t-1.1203011135420313\t0.0\n0.09784128916915133\t0.12880504993859837\t0.0\n0.6836996321075175\t0.007690325722218887\t0.0\n-0.21735499336387587\t0.020343901515542055\t0.0\n-0.5803207800086757\t-0.11112916578621282\t0.0\n-0.05136606935314486\t1.866508896567678\t0.0\n-0.27939829393618115\t0.31828581323581945\t0.0\n0.4040987102782717\t-0.5715138886399435\t1.0\n0.25628416665236664\t0.7299159888139377\t0.0\n-0.6432935223920011\t-0.16029762213709497\t0.0\n-0.4728487982182463\t0.5271896791340651\t0.0\n-0.4771722729276429\t-0.7025115893370377\t0.0\n-1.0013399657080417\t0.1853173618457648\t0.0\n-0.8878694858458163\t-0.6454551079540906\t0.0\n-0.8390005209852804\t-0.5619471666908903\t0.0\n-1.1323000825283895\t-0.3698251989434498\t0.0\n0.45404611022006736\t1.907403008832476\t0.0\n-0.31248646954810844\t-0.4569903620277844\t0.0\n0.1340142058015675\t-0.20687625193428066\t0.0\n0.0732684482175336\t0.718345631402395\t0.0\n7.9705833096190135\t-1.5292198032922741\t0.0\n2.6911315838911496\t-1.4921518489424348\t1.0\n0.2096062736238807\t1.4180907157217726\t0.0\n-0.6771597749264732\t-1.2452933303577913\t0.0\n-1.2467890679762061\t-1.228289225098922\t0.0\n-0.15673956041690956\t-0.4755435083951711\t0.0\n-0.7837021773352991\t-0.267701421693017\t0.0\n1.3879234702810275\t2.822196391811431\t0.0\n0.6592276029730401\t-1.5541579940780834\t1.0\n-0.4954170906172388\t-0.6565984631078979\t0.0\n-0.7543512897825425\t-0.21839064331290226\t0.0\n-0.6173272316115307\t-1.2912071854868297\t0.0\n-0.4482044098377369\t-0.9457776441568111\t0.0\n-0.5697391393237637\t0.540894917730139\t0.0\n0.9420150065552269\t1.294564212013569\t0.0\n-0.5698291694528688\t-0.45855056851660847\t1.0\n-0.44622564878610577\t-0.023317578134822426\t0.0\n-0.612382970117075\t-0.09513994357919238\t0.0\n0.11027549427449906\t-0.4088982556009475\t1.0\n-0.7413653394728968\t-0.20257229811849395\t0.0\n-0.919236902999368\t-0.8215540733647343\t0.0\n-1.1183276103644466\t-0.5212649302706754\t0.0\n-0.9551479059694792\t-1.251800645201031\t0.0\n-0.04755692108588465\t-0.06969539403276274\t0.0\n-0.6711876119593866\t-0.4904507785333927\t0.0\n-0.1962804920472509\t-0.05140993713469618\t0.0\n2.182888145918201\t-1.780517294837218\t1.0\n0.09243641531715079\t0.29170771880484014\t0.0\n-0.18485823846781274\t-0.21717215555494007\t0.0\n-0.9570640619598941\t-0.45413600639500445\t0.0\n1.0554858425257243\t0.4399410152167618\t0.0\n-0.47836624264954924\t-0.42114814979810666\t0.0\n-0.5680306129255587\t-0.5482082348468723\t0.0\n-1.2504988566687985\t-0.08146970445593368\t0.0\n-0.6896138336854679\t-0.09986384600023065\t0.0\n1.2922719629908872\t-0.4050136622432297\t0.0\n-0.12324677569768783\t-0.13434614527436722\t0.0\n-0.5787883272001345\t0.03572164348884193\t0.0\n-0.5510025247371905\t-0.3008396148889667\t0.0\n-0.6069412977734124\t-0.6385397922904162\t0.0\n-0.35046052043023557\t0.08965731298482514\t0.0\n-0.3261974592238068\t-1.330701241289039\t0.0\n-0.9414014260210077\t0.743888375147262\t0.0\n-0.5269643229213178\t-0.21242763139522405\t0.0\n-0.3138638217049836\t0.05598719548225191\t0.0\n7.616058051438749\t-2.8948340449917276\t1.0\n-0.5354371120651698\t-0.7235816827418635\t0.0\n-0.31977234253212355\t-0.3934507188906539\t0.0\n1.5774483359190994\t-0.11999287918841674\t0.0\n-0.7045841984303525\t-0.5361494801660359\t0.0\n-0.6144868769444004\t2.0177324705449258\t0.0\n0.10974503076569646\t-0.680066928773028\t0.0\n-0.4923327385812227\t-0.9402224826174088\t0.0\n-0.23720579489534577\t-0.33081967740919527\t0.0\n-0.3773636427329446\t-0.8964866234638594\t0.0\n-0.5718389707361065\t-1.0423236655175134\t0.0\n-0.9700946164082992\t0.6816070343415\t0.0\n-0.6790541096788469\t-0.8056341018192091\t0.0\n0.29586444441728266\t1.957542798640708\t0.0\n-0.8461487946369441\t-0.28213024240077633\t0.0\n1.059437660375624\t1.4515773976574047\t0.0\n8.697599549572\t0.16747593329485164\t1.0\n-0.32004538351365397\t0.27173371708595156\t0.0\n-0.5183660130669295\t-0.14345969204669407\t0.0\n-1.0008088954288603\t-0.43513418813075455\t0.0\n0.49575316717864165\t0.18890729628150218\t0.0\n-0.9043359698208091\t-0.15168922477634\t0.0\n-0.1646255406037988\t-0.2097260062392102\t0.0\n-0.2771798118615\t-0.09531187289341846\t0.0\n2.905911220472018\t3.4281702384417914\t0.0\n1.3294131851182185\t-0.8410275967396543\t1.0\n0.014747907834283385\t-0.8929843867140974\t0.0\n-0.12497256855553088\t0.9200927871715815\t0.0\n-0.7232617949651241\t0.24458404690932067\t0.0\n0.41813212447515846\t0.5166326602582854\t0.0\n-0.36954438119314553\t0.0008165854767032799\t0.0\n2.0990630587081256\t6.820242716176327\t0.0\n1.2397155547185326\t-1.0384903451696257\t0.0\n1.7646042084480567\t-0.19528643911075425\t0.0\n-0.40353387734234225\t1.4457602128820122\t0.0\n-1.1704593778079486\t-0.18977774172721146\t0.0\n-0.6438080816418573\t-0.3071894165772343\t0.0\n-0.7872416102017691\t0.20924382303417313\t0.0\n-0.8466015614913678\t-0.4700069349073089\t0.0\n1.3957051796467737\t0.13391368052219194\t0.0\n-0.7949704534806477\t0.17847369723447498\t0.0\n-0.9827249471439153\t0.03343767771799542\t0.0\n-0.2127576000170433\t-0.4827630696382923\t0.0\n-1.0272794531152178\t0.42161076334577846\t0.0\n-0.6465656822952127\t-0.15864331526369616\t0.0\n0.8822768244455389\t0.788500023330922\t0.0\n3.3455768216893533\t4.404844842098232\t0.0\n-1.2259818154623594\t-0.23132936626930076\t0.0\n2.568160272250422\t0.058271595400728037\t0.0\n-0.6222528391233046\t-0.29243895294042044\t0.0\n1.1531232220439065\t3.661726286404741\t0.0\n0.05688460973671507\t1.0002579309721937\t0.0\n-0.12187359398232166\t-0.24514180825522874\t0.0\n-0.45146194206317114\t-0.09445903876970478\t0.0\n-0.4547983631264561\t-0.46680891227293053\t0.0\n-0.3197103492860792\t-0.19061755428833974\t0.0\n0.05102666489793133\t2.023843840659541\t0.0\n-0.3809008011503508\t1.1015374348977123\t0.0\n-1.011223453830358\t0.2100791097812819\t0.0\n8.23114843354246\t1.5688037371360894\t0.0\n2.275058511458365\t0.2886902174010459\t0.0\n-0.5545485160832547\t-1.3018559035335588\t1.0\n-0.4285749566670379\t0.358929943033723\t0.0\n1.64179541324888\t-0.2130007337883804\t0.0\n2.092402838252488\t0.05871297765910577\t0.0\n-0.2520342156196339\t-0.3437911343083981\t0.0\n-0.7034696417366529\t0.6279985044209124\t0.0\n-0.3164061530620221\t0.06886857192795286\t0.0\n-0.4029411735287608\t0.10535268664334843\t0.0\n-1.051261919918598\t-0.9776111183711249\t0.0\n-0.7682661773740181\t0.29238579193839376\t0.0\n-0.16316971218945772\t-0.20886420751829324\t0.0\n-0.06850440402049669\t-1.3723179226574016\t0.0\n0.2730144362215184\t0.29449908848164846\t0.0\n-0.5697587342491771\t-0.37835682151646627\t1.0\n0.6911312037478927\t-1.6703036974360492\t0.0\n-1.0381095137668082\t0.6692230884967125\t0.0\n-0.015563331947141532\t-1.16201344398112\t0.0\n-0.6239737170814252\t-0.30636087356328134\t0.0\n-0.7083489435154425\t-0.8205073716830287\t0.0\n0.6310011810403036\t0.6319571540058565\t0.0\n-0.25583046999425735\t-0.7291299153766457\t0.0\n0.6149976416051814\t-0.261632376285569\t1.0\n-0.2633438304074001\t-0.2876615275249617\t0.0\n-0.28089329410792513\t-0.9839802330611293\t0.0\n-0.841877355669815\t0.086815264446764\t0.0\n0.07207131453604518\t-0.5282119099463899\t0.0\n-1.0509116839343235\t-0.8095975560351842\t0.0\n-0.5063136986632648\t-0.21225621317130672\t0.0\n-0.9201054881592952\t-0.7902910016624227\t0.0\n-0.9028062235637557\t-0.8250078987276026\t0.0\n-0.7726785461494083\t-0.19194152305363216\t0.0\n-0.4380937716720891\t-2.125768134110309\t0.0\n-0.7397085706456928\t0.5972459122420738\t0.0\n-0.8111168870124131\t-0.9703420341349488\t0.0\n0.497950288067553\t-1.6836792881453027\t0.0\n0.1887275334902482\t0.7888861553053266\t0.0\n-0.17577589959970788\t1.2807310469743298\t0.0\n0.07080647351979329\t1.4590752696517797\t0.0\n0.8487948961917718\t-0.2625972208295865\t0.0\n0.5429524210326935\t-1.2123642311030534\t1.0\n-0.8020717883795938\t-0.9720224949555244\t0.0\n-0.703344904905295\t-0.3853579939812974\t0.0\n-0.2769030625602598\t0.33099998560624866\t0.0\n-1.116775952501418\t-1.0075091478373173\t0.0\n-0.7381769710771509\t-0.26265570424618523\t0.0\n7.746506614016386\t-3.0570324563216373\t1.0\n0.8199362762527218\t1.788987107235095\t0.0\n-0.5661392896790683\t0.11639713426151711\t0.0\n0.10636540724484427\t2.4838576772907714\t0.0\n-0.30980084041565137\t-0.45201065791576805\t0.0\n-1.1766741168749626\t-2.0682403908876856\t1.0\n1.836578880658263\t-0.4631219198773913\t1.0\n-0.6159545882697387\t-1.2788001036670882\t0.0\n-0.5843228369370402\t-1.151583166400155\t0.0\n-0.4274875043769015\t0.7995759561716682\t0.0\n0.9469481597735994\t0.13571397328728846\t0.0\n-1.469504104327304\t1.1190367547452116\t1.0\n-0.47556696637806023\t-0.32017408307475054\t0.0\n1.6052279923599784\t-1.0342524828785358\t1.0\n-0.1909193173050063\t0.38479459360476864\t0.0\n-0.3100919905911327\t0.8858183544892123\t0.0\n0.8320686906737286\t1.5918287290209776\t0.0\n-0.307153771256315\t-0.12208437848508899\t0.0\n-0.4098181994314034\t-0.027310547822640086\t0.0\n-0.5657782450145435\t0.053696890750167876\t0.0\n-0.5293889465251485\t-0.4774764904750931\t0.0\n-0.25122117959615625\t-0.1232099900739661\t1.0\n-0.5121750067564566\t-0.7679188285939524\t0.0\n-0.42512958815906693\t1.2044272564920777\t0.0\n-0.4847367523796957\t0.07161268430988793\t0.0\n-1.2278377278074397\t0.6542364073736984\t0.0\n-0.7409561777639249\t0.35401534603169343\t0.0\n-0.923175713594125\t-1.0681338494798354\t0.0\n-0.7772266922499981\t-0.760066824961404\t0.0\n0.46165475584752463\t0.37697247290760166\t0.0\n-0.9021157645627015\t-0.8446017620600473\t0.0\n1.289428086983397\t2.974690137732547\t0.0\n-1.0183928625422674\t0.6134404260030026\t0.0\n-0.11050449265538598\t0.14367944589538403\t0.0\n-0.8206723752895961\t0.3586789030461648\t0.0\n-0.7399127174911438\t-0.19542514263216382\t0.0\n-0.8691132325646614\t-0.7800123525677595\t0.0\n0.10534756879270825\t1.3169800274752406\t0.0\n0.8767294885025577\t0.951581639341013\t0.0\n-0.894857833413349\t-0.6630175119858538\t0.0\n-0.6383567349335343\t-1.005938059872864\t0.0\n11.248984190611726\t-1.9024563292943637\t1.0\n0.28581326220819586\t-0.21816371677363688\t0.0\n-0.8467069684704571\t-0.6547254940629809\t0.0\n-0.7836297679252338\t-0.2700819259987169\t0.0\n-0.8394790833283424\t0.35323033321384584\t0.0\n0.7464834481761434\t-1.0879025091875414\t1.0\n-0.24632047125522488\t0.22510244055844017\t0.0\n-0.964061648374936\t-0.8327547927257444\t0.0\n-0.2604415294002771\t-0.6546188816601658\t0.0\n-0.8738613267220746\t-0.7298414038335866\t0.0\n0.05812524874202599\t0.6643178047111141\t0.0\n-0.6139827730277928\t-1.2749450512311944\t0.0\n-0.3575568334729333\t-0.7656004748558728\t0.0\n-0.4974589020197533\t1.6957843148370773\t0.0\n-0.763543945463993\t-0.8132294312506068\t0.0\n-0.5662626073630624\t-0.2460972922789884\t0.0\n0.04472597303520033\t-0.9586047612843742\t0.0\n2.831912645638356\t-0.6007707984208926\t0.0\n-0.9771513435828141\t0.045098991847801306\t0.0\n-0.8689034879386408\t-0.3747306093842382\t0.0\n2.4198562636587284\t1.7841513647530016\t0.0\n-0.2130910893428635\t-0.5026436112787568\t0.0\n-0.2371997961354835\t-0.3859596921206651\t0.0\n-0.9733530672462037\t-0.145680006192101\t0.0\n-1.5705317205808487\t0.09556547866676567\t0.0\n-0.4897002897984861\t-0.44498492703655934\t0.0\n-0.8135727009844302\t0.27484699366804133\t0.0\n0.15531676351316742\t1.6813508395414598\t0.0\n0.453832237664485\t1.606000060334212\t0.0\n0.5463040101969735\t-0.8596806076598414\t0.0\n-0.27655844273256486\t1.444157456094211\t0.0\n-0.21270664613867055\t-1.2833615310899547\t0.0\n-0.045551300983748814\t1.547643130308227\t0.0\n-0.5331225615633925\t1.812555131362314\t0.0\n-0.42476825305495647\t-1.3092892004981262\t1.0\n-0.569061509685454\t-0.38105227347426185\t0.0\n-0.3020192764045403\t0.6213157910127539\t0.0\n-0.9031105136051206\t0.5395707082944435\t0.0\n2.91445100375107\t-2.1066803813726613\t1.0\n0.8229039612998877\t0.3834586743143715\t0.0\n-0.2610814492511569\t-0.23368055786037906\t0.0\n-0.93736354601896\t-0.8766319383282056\t0.0\n0.0192945582780326\t1.1967739705972529\t0.0\n-0.1588244313971085\t-0.19814788985324464\t0.0\n-0.38542453978182106\t-0.8930067419078995\t0.0\n-0.28830850410045883\t-0.25043327803659154\t0.0\n0.5980561299693883\t-0.23344495414353106\t0.0\n-0.15909283412730818\t0.2936033400991811\t0.0\n-0.8802488738443445\t0.6224963371345288\t0.0\n-0.9383976227995025\t-0.8865916526715553\t0.0\n0.7005252624849513\t-0.36266439700767533\t0.0\n-0.19226395945929553\t1.2095954641534998\t0.0\n-0.8329218754937492\t-1.0667953585282062\t0.0\n-0.31174281770413115\t-0.651122540276785\t0.0\n0.7091656664057142\t0.09422939698793972\t0.0\n1.7500960313554927\t-0.9422495635689269\t0.0\n0.050800725174364986\t-0.0813659783038568\t0.0\n7.095718490226174\t-1.7095669322361895\t1.0\n0.7427352887170048\t2.639164898641093\t0.0\n-0.6665323874723377\t0.6405612625784075\t0.0\n-0.9752592635952049\t-0.7537531598960517\t0.0\n2.745973188052017\t-1.980037236459184\t0.0\n-1.1887599899161603\t-0.19365043864841414\t0.0\n-0.10772937289257757\t-0.32249630465568074\t0.0\n0.1217345718087294\t0.8996619166270895\t0.0\n-0.41594915745850547\t0.8217644849692124\t0.0\n-0.09583683480890713\t0.7566240473313859\t0.0\n-0.6289786324306835\t-0.0624142015561223\t0.0\n0.44056873961064374\t0.852894666018583\t0.0\n-0.7805732644209824\t-0.7583490771886875\t0.0\n0.4820910901102148\t-0.06396823816371065\t0.0\n-0.7845097653721096\t-1.0657515034309513\t0.0\n2.4993935403776524\t-0.25828143991050284\t1.0\n-0.9681707976174667\t-0.9676641180693026\t0.0\n-0.6348455830025601\t-0.10508022333351766\t0.0\n-0.11555533763808329\t1.39877373816863\t0.0\n-0.6833222840729366\t-1.6171589529037338\t1.0\n0.10556188113998075\t-1.4629790824263447\t0.0\n-1.113449365793959\t-0.1215638464228948\t0.0\n0.21258384023820237\t-0.1309721459714493\t0.0\n1.2488499294656874\t5.403876549663937\t0.0\n0.060639035071972505\t1.0036703618169807\t0.0\n-0.8885823343751532\t-0.7367399773189177\t0.0\n-1.1413294299257453\t0.23273624345614838\t0.0\n-0.6319969787552031\t-1.0439400594358454\t0.0\n-0.2250292939560353\t-0.41974695162030284\t0.0\n-0.1446867409651606\t0.0944847505944242\t0.0\n-0.805333682170612\t-0.44381897310806695\t0.0\n-0.1727577682602594\t-0.22761244226160698\t0.0\n-0.3891760185000778\t0.10185246974788069\t0.0\n0.6400401067623048\t-0.8966618029959645\t1.0\n-0.4372513492458588\t0.01755830306294673\t0.0\n-0.5631691293014446\t-0.11795276043807609\t0.0\n-1.062872558898619\t0.13723345031633996\t0.0\n-0.6444992155736214\t0.4259369191510951\t0.0\n0.8578334358070365\t-1.537822368495699\t0.0\n-0.6968708334564271\t0.9975633199465616\t0.0\n3.1382342074958\t-2.5329210178932593\t1.0\n2.0727341396122205\t0.12048752070368311\t1.0\n-0.37306969982800214\t1.143136633705829\t0.0\n-0.7658604644146707\t-0.3875017839866189\t0.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568844041051_-1865758930",
+      "id": "20190918-220041_14973952",
+      "dateCreated": "2019-09-18 22:00:41.051",
+      "dateStarted": "2019-09-27 17:48:30.411",
+      "dateFinished": "2019-09-27 17:48:30.471",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\napprox_model \u003d Logistic(X\u003dnp.array([[1]]))\napprox_param_path \u003d \u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027\napprox_model.set_param(np.load(approx_param_path))\napprox_predict \u003d approx_model.predict(test_features)\napprox_predict.shape \u003d (10000,1)\ndf_approx \u003d pd.DataFrame(np.hstack((test_features2D, approx_predict)))\nz.show(df_approx)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 17:49:07.998",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "0": "string",
+                      "1": "string",
+                      "2": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "0",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "1",
+                    "index": 1.0,
+                    "aggr": "sum"
+                  },
+                  "group": {
+                    "name": "2",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              }
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "0\t1\t2\n0.3461065387569279\t0.25092360142620607\t0.0\n-0.5873050101932947\t-0.7969649835778877\t0.0\n-0.42088180650707646\t0.552624028760514\t0.0\n-0.7738260253823833\t0.7673593937151547\t0.0\n0.7001436164397219\t0.4296626701216842\t0.0\n-0.6944308379188833\t-1.190648450614663\t0.0\n-0.6504991490041817\t-0.8188387932195705\t0.0\n1.201230918282481\t0.11338622345688046\t0.0\n4.1767075428212594\t6.394169346347539\t0.0\n-1.431275844907765\t-0.26926005779192336\t0.0\n1.1392682791218005\t-0.389332989979391\t0.0\n1.9559366438833874\t2.858788809662385\t0.0\n-0.5414409358640514\t-0.046460919942680874\t0.0\n-0.3283378118807651\t-1.1261771704718029\t1.0\n-0.5927958887824312\t-0.8238849129311069\t0.0\n0.48146597270017305\t0.4437829112062347\t0.0\n-0.5748846693458475\t0.11209375178394633\t0.0\n1.6621765617995832\t0.573750530583408\t0.0\n-0.8005326946941325\t-0.2153813366411933\t0.0\n-1.3858257655390063\t-0.26066317863361155\t0.0\n-0.22230286033030675\t0.2716657490024929\t0.0\n-0.40515842354810616\t-0.2905291480835413\t0.0\n-0.79658075356119\t-0.9663335887682647\t0.0\n-0.2812185132474725\t2.190726269358902\t0.0\n-1.3526407829299099\t-0.8906719281517882\t0.0\n5.634464563825595\t0.9873038102542524\t1.0\n-0.5538494470260577\t-0.37846487735060036\t0.0\n-0.22122160987663622\t0.5301490735985187\t0.0\n-0.5549105663013792\t0.3076171865203518\t0.0\n-1.4572675278927727\t-0.37110307595644765\t0.0\n-0.531964697417359\t1.897114069380592\t0.0\n0.9135023830113379\t-0.012389238314488522\t0.0\n-0.7073251946647204\t-0.6873380661977377\t0.0\n-0.5249451003737271\t-0.19568138806512958\t0.0\n-0.3727198643982287\t-0.24559155052808462\t0.0\n-0.6254923966572841\t-0.11411108243809448\t0.0\n-0.6037366750517351\t-0.2598584191239201\t0.0\n-0.5755754516762944\t1.4155105188229327\t0.0\n-0.2634089774383163\t-0.4634714154134073\t0.0\n-1.0672728160002534\t0.05290547090895591\t0.0\n-0.9771699637936658\t-0.9830811586449647\t0.0\n0.08335335006238995\t-0.7146481573113362\t0.0\n-0.6224052205909469\t-0.43371103863614135\t0.0\n0.48879853487757435\t0.6062537994329144\t0.0\n-0.14929625996390455\t-0.4633743315919086\t0.0\n-0.6388861057543456\t-0.32666409547861275\t0.0\n0.21523766745761908\t-0.5805897333728786\t0.0\n-0.8822116025044803\t-0.727316956808735\t0.0\n1.152279552343444\t0.15198997901467742\t0.0\n-0.47428227885280067\t-0.1083212219883377\t0.0\n-0.5161679560337811\t0.304649889421222\t0.0\n-0.3628066360897812\t0.23076470359776516\t0.0\n1.7093340974638926\t3.913800177921165\t0.0\n-0.34204974647644076\t-0.5440400956861331\t0.0\n0.7453841402920954\t-0.5831644718259107\t0.0\n-0.45886024632751243\t-0.13016072580745874\t0.0\n0.08461601121737028\t-0.16453996089034456\t0.0\n0.4338128749488765\t-0.7402260805056082\t0.0\n-0.2238572543589812\t-0.16305630488494002\t0.0\n0.45342719445539725\t1.9589226647769316\t0.0\n-0.9665612562120292\t-0.8071400951061157\t0.0\n-0.699342777154404\t-0.1817722701678537\t0.0\n-0.6879732844176444\t-0.19790187122559777\t0.0\n-0.643874459325656\t-0.012882682703166422\t0.0\n0.8028891660551339\t0.06355105154692325\t0.0\n-0.19205575047411533\t0.37743453878761885\t0.0\n25.654603283886317\t-12.195299693340113\t0.0\n4.533625462583437\t-1.1622348394191857\t1.0\n-0.25221160945851406\t-1.0662759439715193\t0.0\n-1.0445192646506791\t-1.0706572625399728\t0.0\n-0.632721160087245\t-0.007277302248923022\t0.0\n-0.5999180862441157\t-0.8575036834609703\t0.0\n1.2535044137270799\t0.4608621069535132\t0.0\n-0.4712814747055337\t-0.2926552853268134\t0.0\n-0.535301999205985\t0.7624921373740287\t0.0\n-0.16065683651756849\t-0.1962941565510176\t0.0\n4.490099759091102\t-3.111945150179831\t1.0\n0.4561184333547083\t3.444940277573736\t0.0\n1.8616640337385062\t1.6876705409694004\t0.0\n-0.8098868592360761\t-0.12235069235620447\t0.0\n-0.8751893540911923\t-0.667814012608623\t0.0\n-0.3522443948506915\t-0.3391376434714333\t0.0\n0.22163558710157188\t0.24059662451483066\t0.0\n-0.8339174197258731\t-0.5320545247228861\t0.0\n-0.2912041129481094\t1.3273274787474898\t0.0\n-0.17009002778640014\t-0.199657092017646\t0.0\n-0.44954504332084966\t-1.509748247336101\t0.0\n-0.37150845510195485\t-0.20945984984191604\t0.0\n1.4559781719838663\t0.17299370089927973\t0.0\n-0.1619339162127534\t0.28062215680680347\t0.0\n-1.0475789629745154\t-0.04581804887292023\t0.0\n1.0043860539004346\t-0.8764291758883027\t0.0\n-0.6504880925189718\t-1.4660022488013096\t0.0\n-0.9852206876752563\t0.0818415980452412\t0.0\n-0.17927031757292125\t1.9447606679276053\t0.0\n-0.8935025108883743\t-1.219017142659316\t0.0\n0.5868682935652199\t2.0639527731316765\t0.0\n-0.3750089829315936\t1.854995493839751\t0.0\n-0.33091230142142053\t0.8075641442108142\t0.0\n-0.46240935540723366\t0.428459058642016\t0.0\n-0.6593894312251022\t-0.07419526275038574\t0.0\n0.1363249693199638\t-0.10825188596091932\t0.0\n-0.3319463806665128\t-0.20063120354488478\t0.0\n-0.11765446153759823\t1.500270659918282\t0.0\n-0.6676057355137346\t1.0786939037017385\t0.0\n0.3212868479199506\t0.8454825771760827\t0.0\n1.221027699694671\t1.1095360720299954\t0.0\n-0.944635680207737\t-0.8546808509699778\t0.0\n-0.5868654287594988\t0.18065031514486365\t0.0\n-0.7047219606867273\t-0.8308161640150329\t0.0\n-0.5530407339477076\t-0.952767733691635\t1.0\n-0.3325337638495363\t-0.3588817091449907\t0.0\n-0.16942697346997293\t-0.18265374767523446\t0.0\n-0.15564359014477006\t2.180057093148698\t0.0\n-0.15898806985967703\t-0.2043081312996643\t0.0\n-0.5681411886666369\t-0.18002449244419255\t0.0\n-1.2473171637332998\t0.16401034200848394\t0.0\n-0.4624481851284897\t0.07707187787725743\t0.0\n1.7831667407087155\t0.08214184917060054\t0.0\n0.12912312770908585\t0.12911373761793457\t0.0\n-0.7881581849250963\t-0.18854219774330028\t0.0\n0.39869384587517487\t1.1709650040061148\t0.0\n-0.8020940571003248\t-0.2287583655384054\t0.0\n-0.1694200986167167\t-0.29767088130597086\t0.0\n-0.13312595208986042\t0.8622080065599441\t0.0\n-1.0904549533422774\t-0.3657224550226268\t0.0\n-0.6572039852007577\t-0.4073775566462454\t0.0\n0.4307917552584718\t-1.1673949923225266\t0.0\n-0.8584555729793829\t-0.6560032579890559\t0.0\n-0.5504121560342875\t0.29411290860376726\t0.0\n-0.6784707177520974\t-0.12609600743241098\t0.0\n-1.1013191780900635\t0.11281258747962954\t0.0\n0.5414540549599025\t-1.7579641155291683\t0.0\n-0.25866374781561846\t0.15516646520532104\t0.0\n-0.19181553583162\t0.6483503690215782\t0.0\n-0.06789694236917211\t-0.16898346122438743\t0.0\n0.14939790266493477\t0.9608581515271083\t0.0\n-1.0246599477269502\t0.2863988978450123\t0.0\n-0.486200283460725\t-1.000447786462102\t0.0\n-0.7992390687263106\t-0.3456988971645478\t0.0\n-0.42493919971064203\t0.9212661144135923\t0.0\n0.47828815478155223\t2.47149248994552\t0.0\n-0.8893772554782936\t0.5542535750591124\t0.0\n-0.3969653055714567\t-0.472085072751838\t0.0\n-0.19523130596597452\t-1.4978651707302764\t0.0\n-0.6488470349154801\t-1.1876629328596577\t0.0\n9.23486595483604\t-3.989007887788697\t1.0\n0.17351091866491258\t-0.6010422231432789\t0.0\n1.5367050217188265\t-2.8549565889886006\t0.0\n-0.6324013416718154\t-0.5485754387610084\t0.0\n2.5095960876076098\t-1.3623210505286318\t1.0\n-1.0889577335496885\t0.1370638479773937\t0.0\n1.5625130433765742\t-0.4126451364099268\t0.0\n-1.1934969175940884\t-0.18656064063164637\t0.0\n-0.6012844860452471\t0.04177473141275455\t0.0\n-0.633318781875333\t-0.16171138626025652\t0.0\n-0.629860724858297\t-1.161663152428899\t1.0\n-0.9150991358253547\t-0.3697640215326235\t0.0\n-0.6322429318754728\t-0.4535722104559194\t0.0\n2.0149075975977238\t-2.036459401045595\t1.0\n2.1623617954928696\t0.7239818436738804\t0.0\n-0.6676717835974592\t-0.010135166652125431\t0.0\n0.24198474710907056\t-0.5075676383998425\t1.0\n-0.5907489132418385\t-0.4092571589240892\t0.0\n-0.277933798264996\t-0.2857153898305229\t0.0\n0.9749569177119538\t-1.3906500326008318\t0.0\n0.7371758585064737\t3.00196432283112\t0.0\n1.115684698781459\t1.4091588619691215\t0.0\n-0.7400007117955357\t0.5143849168998774\t0.0\n-0.7306735291319232\t-0.5589360834083762\t0.0\n0.6261170625757384\t1.6314706249811204\t0.0\n-0.5681534530190087\t-1.325428211226039\t0.0\n-0.35600579102928454\t-0.7577234893847313\t0.0\n-0.8254879397392709\t-0.9605382491711619\t0.0\n-0.9820706491659484\t-0.47659997730652\t0.0\n0.7986209275645134\t0.09754514366929842\t0.0\n0.1300455685913748\t-0.4372037938528222\t1.0\n-0.5786763649431654\t-0.3041475606619639\t0.0\n-0.8132854629908172\t0.25187498202822595\t0.0\n-0.7757440567846464\t-0.17547657506380962\t0.0\n-0.8770110383151147\t0.4976926957657849\t0.0\n-0.4970004502527364\t-0.5814538878016826\t0.0\n-0.15504698724190538\t-0.5270127713679473\t0.0\n-0.6252764694635179\t-0.6494789124707564\t0.0\n-0.2710054218338058\t-0.7731233915574874\t0.0\n-0.5894232406653084\t-1.0084936913367277\t0.0\n-0.7373672353503014\t-0.3278520986167564\t0.0\n0.1112363948214792\t-1.5604912850157175\t0.0\n0.9844810202532582\t-0.37022252003053274\t0.0\n-0.21386612896148804\t1.1135764313177168\t0.0\n-0.24878500337426288\t-0.6995001178605843\t0.0\n-0.3683520755007073\t1.1426665616002032\t0.0\n1.8763934284568418\t-0.5083391489238628\t0.0\n0.1811179884918731\t2.0852693512988827\t0.0\n-0.4568053777800518\t-0.4711438299898564\t0.0\n0.16966863015279599\t1.2730239909758785\t0.0\n-0.6908322500717993\t0.5373461833088018\t0.0\n-0.7564852411241016\t1.1738458941529584\t0.0\n-0.6596082104458725\t-0.10228045102629027\t0.0\n-0.7298404744425637\t-0.319513466817508\t0.0\n-0.15303812544461493\t-0.2350768907210847\t0.0\n0.5689325542067941\t1.6229759601691216\t0.0\n-0.06798088599129037\t-0.5216058714564594\t0.0\n-0.3021139656495233\t-0.192694697424706\t0.0\n0.2933360719220978\t1.7006718946741917\t0.0\n-0.6099207383644819\t-0.27683359467702007\t0.0\n0.7309271426048263\t-0.3605821944011793\t0.0\n0.5343717915717957\t-0.47504998968798795\t0.0\n1.03455827930967\t2.757619998923434\t0.0\n-0.8106394886397871\t-0.49024673695127663\t0.0\n0.761638285883477\t-0.49895192293920415\t1.0\n-1.1171025326388164\t0.15100727870214992\t0.0\n0.02251192864122554\t-0.07848503469259081\t0.0\n-0.5207295897726074\t-0.3653236717271187\t0.0\n17.262425815952263\t-8.657223032661271\t1.0\n-0.29689262552623136\t-0.8800338709367351\t0.0\n-0.46512830078062595\t-0.8524603796370219\t0.0\n-0.4680921810130224\t-0.7584968891850461\t0.0\n-0.10453838972179813\t0.46166428656835584\t0.0\n0.03471058632343616\t0.21987567117530402\t0.0\n-0.7500121466158595\t0.5408635928236756\t0.0\n-0.6441524313331148\t-0.29208578874049346\t0.0\n0.6118638457235659\t1.34077714797848\t0.0\n-0.06982865279032327\t0.5027385016836627\t0.0\n-0.7547334038249824\t-0.9221696172962502\t0.0\n-0.4300263575422756\t-0.5970504534401245\t0.0\n-0.3856692279920461\t-0.21149848648124292\t1.0\n-0.8676324457406501\t-0.6596188891669656\t0.0\n1.3276875788862854\t-0.05979700245193729\t0.0\n-1.0948263280791524\t0.36182001869313085\t0.0\n0.5081077313185496\t-1.8327821287430064\t0.0\n-0.178214302650279\t0.42094908133080533\t0.0\n2.205447498307093\t1.5127007544722144\t1.0\n0.17237962889175198\t1.6543993516515032\t0.0\n-1.1214688934826023\t-0.33682392659441496\t1.0\n-0.15847227758764154\t-0.19127379049758064\t0.0\n-0.6792874078610746\t-1.7766035894064096\t0.0\n-0.7738559892852039\t0.3453287957101336\t0.0\n-1.432473570486718\t-0.8252553419948638\t0.0\n-0.9573370309881397\t-0.47499493119930336\t0.0\n2.575864673987905\t-1.3859473531957731\t0.0\n-0.40475617151108534\t0.4641847426642947\t0.0\n-0.5850001534305311\t-0.19349583205219548\t0.0\n-0.5834833515428949\t-0.17082751310562247\t0.0\n-0.4602161441438739\t2.2502674790753656\t0.0\n2.956932657949276\t-1.5893283649292447\t1.0\n-0.48923924105024696\t-0.32718026208250106\t0.0\n0.20361822016840198\t1.015036937302921\t0.0\n-0.7059298456535522\t-0.12476266837185014\t0.0\n-0.1569522215833044\t0.9156291265022295\t0.0\n-0.46791202692925876\t-0.03357857384503053\t0.0\n0.14716341366201685\t1.8020662442649895\t0.0\n-0.12019426592946868\t2.3121496525901057\t0.0\n-0.756820273468459\t-0.20893399495650722\t0.0\n1.9922340391489402\t6.212571805296769\t0.0\n-0.42113179477670976\t0.014877101912162466\t0.0\n-0.6813190827882349\t-0.432923127011196\t0.0\n-0.7473090084623198\t1.2466334175872629\t0.0\n-0.7519423437368771\t-0.8763287872552316\t0.0\n0.14982587711517004\t1.1583343446181897\t0.0\n-0.8866744193177648\t-0.7521220539940362\t0.0\n-0.5401102610132038\t-0.2559974094390119\t0.0\n0.43581616532770007\t2.851521861499854\t0.0\n-1.0259502169296673\t-0.9945337831748522\t0.0\n-0.8899026372502538\t0.7673999910293313\t0.0\n7.624148701788502\t-6.28570399145449\t1.0\n1.3062295082826905\t1.484582092989221\t0.0\n-0.8817373924099146\t0.409907700067585\t0.0\n0.8583240900619828\t2.8309720638016067\t0.0\n-0.3163712851766332\t0.4201907303345178\t0.0\n-0.10024020051764042\t0.2458038684133556\t0.0\n-0.11204876896848798\t0.9052079958314778\t0.0\n-0.3817983624936594\t0.4601573534706436\t0.0\n-0.8629609634150924\t0.2983311460812828\t0.0\n0.41600850628909253\t-1.2512814169099946\t0.0\n0.840836345186221\t3.8985537424792\t0.0\n-0.6262525367626525\t-0.36228422283074196\t0.0\n0.13631988747564794\t-1.1066785897888705\t0.0\n0.07577938251155986\t0.4712730582302502\t1.0\n0.3455983717718182\t-0.4384634533612077\t0.0\n0.5335859014838928\t-1.1562728174084569\t0.0\n1.23015029919763\t2.9965611273982558\t0.0\n-0.6371345402860202\t-0.6939252794358486\t0.0\n0.14709351875427434\t-0.07849154355709212\t0.0\n0.11324801358144022\t-0.1910438423515009\t1.0\n-0.7138436371744125\t-1.2216697291541323\t0.0\n0.311137689407535\t-0.3117389925067928\t0.0\n1.4857742706115893\t4.023385809806763\t0.0\n-0.010799861679713692\t0.845875706135706\t0.0\n-1.148441908033358\t0.11962303689620253\t0.0\n-0.5243862451850765\t-0.8912418774743001\t0.0\n1.3884155210857831\t0.27821948288819387\t0.0\n-0.6916032682244071\t-1.1907982829499821\t0.0\n-0.722728929096975\t-0.9111883525858744\t0.0\n-0.6679392811825035\t-0.0785244959576588\t0.0\n-0.9321670504758589\t-0.7718376989688971\t0.0\n1.0500259719103433\t0.6044134276318488\t0.0\n0.008941347834887212\t-0.377227127410803\t0.0\n2.4395850111442234\t-0.9255466077793701\t0.0\n0.05470390912527383\t1.1057330082700358\t0.0\n-0.811313077227327\t0.6501100559783907\t0.0\n1.9424920471909113\t1.2118957877140522\t0.0\n-0.21042317727503485\t-0.22065414283126655\t0.0\n-0.4300793760514258\t-0.321156540262751\t0.0\n-0.9352166338236949\t-0.8715237978186569\t0.0\n4.131197476852362\t-2.681733748419059\t1.0\n-1.0127082591360417\t-1.4149332206512564\t0.0\n-0.6731030473598524\t-0.07516543324716564\t0.0\n2.8493532344696906\t-0.42189697717650154\t0.0\n-0.863235816810055\t0.5379573099022688\t0.0\n1.3744983609653028\t-0.29935529844604514\t0.0\n-1.1078737429891086\t-0.31907476627860537\t1.0\n0.011090036204239245\t1.6516122295965883\t0.0\n-0.863735352217848\t-0.6932234241919508\t0.0\n-0.3638909590729002\t-0.374061710817658\t0.0\n-0.11056749216296974\t-1.0552666029055475\t0.0\n-0.6717354255268887\t0.5190767892815598\t0.0\n-0.7528708741001064\t-0.2053955827126013\t0.0\n-0.23301569142836445\t0.0019381849833565933\t0.0\n-0.29670287349055136\t0.10172474484159016\t0.0\n-0.5878940470341464\t-0.08625399015739331\t0.0\n-0.4978219073366772\t0.4253789871229931\t0.0\n-0.6929747058466496\t0.0626586829165327\t0.0\n-0.30217148016249173\t0.05420867708132179\t0.0\n-0.13126070570423784\t-0.7294011443317756\t0.0\n-0.32480431559525613\t0.19923579958205628\t0.0\n-0.7298672428252354\t-0.3012215161476847\t0.0\n-0.520262114632561\t-0.7390016133947954\t0.0\n0.5023989060207052\t-0.4473089507503109\t1.0\n-0.7138880479235669\t-1.2217286412925354\t1.0\n1.039696821523089\t-0.7555807748747748\t0.0\n4.337802929678749\t-1.3209528526655272\t1.0\n-0.6880101029948765\t-0.22427735041238872\t0.0\n-0.09468347059852471\t0.5611148147058636\t0.0\n-0.7006768165991709\t-0.8341716043852068\t0.0\n7.187624817420379\t-3.7583661763867844\t1.0\n0.11386816299121844\t0.26827631912045735\t0.0\n0.17701935338017605\t0.11821672870355535\t0.0\n-0.760108205528904\t-0.8334712662305869\t0.0\n-0.5763756363468827\t1.0627034110784521\t0.0\n0.17196455692718102\t-0.5898585867196228\t0.0\n1.6835862257086442\t-1.8243554184098811\t1.0\n-0.5184286860967142\t-1.4107412409832651\t0.0\n-0.5349887345949066\t-0.1354823195717004\t0.0\n-0.00714779706780407\t1.511323293646002\t0.0\n-1.2828035614201487\t-0.34485788703876363\t0.0\n-0.1160123714831347\t-0.8802498329565023\t0.0\n0.8161228835456209\t1.1216638214255572\t0.0\n-0.33760610269868496\t-0.4628414350424237\t0.0\n-1.0231040979116595\t0.17354025952318697\t0.0\n-0.665204460001106\t-0.11129335967107087\t0.0\n-1.064249921608755\t0.2674178288974909\t0.0\n-0.08694165650017698\t-0.6197880127454726\t0.0\n-0.8424300348898741\t-0.5902735205508676\t0.0\n-1.1892071426969242\t-0.3298161503892784\t0.0\n-0.807201483660316\t-0.2604126969927969\t0.0\n-0.5029658405529555\t-0.044396375935856686\t0.0\n0.07255629034547297\t-0.4641087882472231\t1.0\n-1.100075215708331\t0.06101582465388978\t0.0\n-0.6523829090747242\t1.2528597887516937\t0.0\n-1.0561808165181452\t-0.11867423334760745\t0.0\n2.4792724974092666\t-1.4241960765837935\t1.0\n4.523613483487194\t0.2367442049429514\t1.0\n-0.3274968974145562\t1.7741814122145956\t0.0\n-0.2852919347682331\t-0.027932174890419416\t0.0\n1.3426224658282928\t-0.8231535116300591\t1.0\n-0.3663507497925159\t1.3248725172895017\t0.0\n-0.6060442510546881\t0.39225682285883706\t0.0\n1.7130547344083795\t-0.5209592206290743\t0.0\n0.33065194197207337\t-1.18745368593308\t0.0\n-0.5360576636257963\t-1.289384098615919\t0.0\n-0.2710452126702908\t0.926139799154085\t0.0\n-0.18937705469051222\t-0.40355662716580953\t0.0\n-0.7169820387900013\t0.8872883153082486\t0.0\n2.6011001419021884\t1.8124954542371399\t0.0\n-0.5926405769422551\t0.40327442392615814\t0.0\n-0.1235277560438681\t-0.25675942241933625\t0.0\n-0.8980622880813883\t-0.7521410612386425\t0.0\n-0.2292141530281921\t-0.2892255632340697\t0.0\n-1.0472647002558162\t-0.9250939618310537\t0.0\n0.5014915591660524\t0.1261869107563556\t0.0\n-0.7370966601853332\t-0.28762249151286967\t0.0\n0.9827850106101178\t0.4539331990409615\t0.0\n0.2471160620918422\t-0.0472721294386988\t0.0\n0.7559630269538458\t3.2099690607012055\t0.0\n-0.24594067802810726\t2.0654487475675176\t0.0\n-0.1548985417700955\t-0.3112696502554792\t0.0\n-0.9173596362024302\t0.2855021267864258\t0.0\n0.5846826487607549\t0.43753635280417813\t0.0\n0.35648710604295025\t-0.23792528183932157\t0.0\n-0.06183248332403537\t1.5962404605243181\t0.0\n0.46300677152561387\t1.3864753634829772\t1.0\n0.07515027592496712\t0.4184906381364194\t1.0\n-0.6519142760550334\t-0.30835774460623083\t0.0\n-0.5723760096759676\t-0.7768517484481753\t0.0\n-0.5893746234129745\t-0.016560122262824727\t0.0\n-1.0381612988732967\t-0.9059320672498921\t0.0\n-0.471333617832807\t-0.2444503072467962\t0.0\n-0.5409427350423601\t-0.715748699938741\t0.0\n1.4522006799184743\t-1.0375781287707802\t0.0\n-0.07104288083010732\t1.2375512944839566\t0.0\n-0.9509113796993783\t-0.8865040394596657\t0.0\n-0.7335670105965385\t-1.9321105148901134\t0.0\n-0.3370964787151796\t0.5457085732276314\t0.0\n-0.7444306038483991\t-0.20137839763947257\t0.0\n-0.22915109203120193\t-0.27841538711922625\t0.0\n-0.9669036893410207\t0.4300121540998935\t0.0\n-0.17269646226342708\t-0.2136000521400566\t0.0\n-0.7370261806587802\t-0.08973926269787735\t0.0\n0.32046552794725186\t0.504191170014509\t0.0\n0.3284590656398878\t-0.42722153842660027\t0.0\n-1.13639269960534\t-0.8283567134786105\t0.0\n0.3865740362586034\t2.5014445337977165\t0.0\n1.2514905948026072\t0.005563126770810877\t0.0\n-0.8481108207010731\t-0.83078410646491\t0.0\n-0.7720589813242263\t-0.3576181314178856\t0.0\n-1.0710601504770532\t0.39488695813710417\t0.0\n-0.49995536720399664\t-0.6394530764474984\t0.0\n-0.9797958124283599\t-0.6142757523242547\t0.0\n-1.0994866184077892\t0.2408222730712136\t0.0\n-0.9616621496181145\t-0.9139141073809688\t0.0\n-0.9616031793312413\t0.3773559978293298\t0.0\n-0.5694315032498578\t-0.2557938157123427\t0.0\n-0.5486607385765646\t-1.1263021292768873\t0.0\n-1.1138512743349804\t0.18330431769057678\t0.0\n1.8017440761097332\t-1.3251958521875788\t0.0\n-0.4963762318824818\t-0.20083270374124618\t0.0\n-0.6710240727672295\t-0.12266732844660667\t0.0\n-0.3422430617831181\t0.5732876137213776\t0.0\n0.7242309966284722\t-0.6065036529419188\t1.0\n-0.7648354902949915\t0.7827955396680483\t0.0\n-0.6508332169963753\t-0.9895235099166926\t0.0\n-0.6323769363869346\t-0.6024188748098959\t0.0\n-0.6857031857609734\t-0.6821796311122375\t0.0\n-0.9077960578253\t1.0951702791610938\t0.0\n0.10083858391742108\t0.9571564657845296\t0.0\n-0.3251373635550347\t-0.22521592708389104\t1.0\n-0.3960006300138012\t0.6710201359126472\t0.0\n-0.05522267472496647\t0.3258449318608496\t0.0\n1.0746949702407433\t3.11464819495819\t0.0\n-0.3390451856594396\t-0.8206130730394893\t0.0\n-0.22954797742395028\t0.7634385048787394\t0.0\n0.9459440256844381\t3.103332610253592\t0.0\n-0.7458601786794711\t0.45527930049761683\t0.0\n0.9222816621227785\t1.9258938521935407\t0.0\n1.3814797701698165\t-1.7092740834337738\t1.0\n-0.5859861076185325\t-0.23935881811805507\t0.0\n-0.1446214301136575\t0.7537876223873473\t0.0\n0.30202371912103415\t-2.3985113934385214\t0.0\n-0.5116245541658858\t-0.22943002221393927\t0.0\n-0.08014289993100218\t0.07961979744766919\t0.0\n-0.6914776095875862\t-0.42983741890042704\t0.0\n-0.6068899806955826\t0.8780459968833048\t0.0\n-1.271764255277017\t-0.5417529616652937\t0.0\n-0.7026460893131365\t-0.264508555424968\t0.0\n-1.2701880333422892\t-0.2877109419932255\t0.0\n0.01242044202245125\t1.0510049030382\t0.0\n-1.0613191683439163\t0.5305269126876184\t0.0\n-0.938400762922787\t-0.13587337116967518\t0.0\n-0.549249579271113\t-0.9003008895902168\t1.0\n-0.15862207168679474\t-0.20441379864414633\t0.0\n0.18790242833111356\t2.558896322593886\t0.0\n0.9985561619293879\t1.119926154015391\t0.0\n-0.9991737694585912\t0.268309341691646\t0.0\n-0.7713502463446074\t-0.22353279182824193\t0.0\n0.14541144833959607\t2.2985575850963307\t0.0\n2.1085545295694264\t-0.42056395295253973\t0.0\n-0.4539270335346892\t-0.09013917683160598\t0.0\n-0.4214248687434482\t-0.46314361262425785\t0.0\n-1.1382373147432578\t-0.10943119038915691\t0.0\n-0.33943267518711384\t-0.12197550964287295\t0.0\n2.301088117960723\t-3.1894192884741566\t1.0\n-0.31132685541136995\t0.07692508863050744\t0.0\n-0.29424141381533186\t0.9978043874634805\t0.0\n-1.0377081132402353\t-0.20165148034613423\t0.0\n-0.9994318881153678\t-0.4299368771092151\t0.0\n-0.03061237163591776\t-0.025173639963495528\t0.0\n-0.6279826176525455\t-0.049972432657866134\t0.0\n0.2899906090938299\t2.158554854284971\t0.0\n-0.21925127812048478\t0.8191197213877138\t0.0\n-0.17731626428830882\t0.2980062364457602\t0.0\n2.707607217998214\t-0.10366270972333712\t0.0\n-0.8482104441388634\t-0.5588489117050771\t0.0\n0.39226971866618454\t-0.662956111533021\t0.0\n-0.6040264422635953\t-0.32295309470749106\t0.0\n-0.7924081240994275\t-0.282994157415154\t0.0\n0.06431077507999852\t-0.4722914019957831\t0.0\n0.718574126647747\t3.1311155982511414\t0.0\n-1.242738438523533\t-0.30190355322805523\t0.0\n-0.8931643040556282\t-0.33491675013949485\t0.0\n-0.5294909165822282\t-1.0109950978756435\t0.0\n0.27091019696231444\t2.6742104250088015\t0.0\n-0.4247328649980277\t-0.29009259278756067\t0.0\n-0.945291092008339\t0.22354879786993442\t0.0\n-0.7665825131991413\t-0.12884524520864968\t0.0\n-0.5904873532437636\t-0.2594558119651952\t0.0\n-0.739005353123993\t-0.2965616674006638\t0.0\n-0.5310188736345184\t-1.0439931284168402\t0.0\n-1.0724867959437627\t-0.0029985077613825226\t0.0\n-0.37891988544571786\t0.11116428035081907\t0.0\n-1.7459252630169313\t-1.6112599791397126\t0.0\n-0.752099387885923\t-0.6925291338055081\t0.0\n0.6125042589142142\t0.2118048980601085\t0.0\n-0.306515178388878\t-0.40800080349965373\t0.0\n-0.1334985214937622\t-0.6755165108984243\t0.0\n-0.6940322862225429\t-0.891775685707038\t0.0\n0.70066433583115\t-0.6680461379995433\t0.0\n-2.5961327414610897\t-2.3286453009931654\t0.0\n1.0628003356616316\t-0.9554149487623185\t0.0\n0.3533690967794922\t2.664849917933665\t0.0\n-0.6088947852387421\t-0.9196955501993442\t0.0\n-0.11083915821384019\t-0.08505434230737682\t0.0\n-0.9657855715712846\t0.38007623408635816\t0.0\n-0.20184278049023044\t3.134411852511015\t0.0\n-0.7464939417478262\t0.0784318184083932\t0.0\n-1.0789338724210382\t0.08100507650475271\t0.0\n3.8089697504816984\t2.023795057051363\t1.0\n-0.399196327121355\t0.07119218773544149\t0.0\n0.022400507780272822\t0.24549796110181174\t0.0\n0.8566052559174963\t2.0963298926967355\t0.0\n-0.008352167519629573\t-0.3785923971108209\t0.0\n0.16905093729611373\t-0.21613389008906622\t0.0\n-0.5495834225913487\t-0.32775094960588697\t0.0\n-0.21998122143212814\t1.0403753965877345\t0.0\n-0.6407056044847648\t-0.6818111292190409\t0.0\n0.8684726842620748\t-0.32225132936707673\t1.0\n-0.8795671035408468\t-0.8272260679043859\t0.0\n-0.5895395528481806\t-0.8981942157383821\t0.0\n-1.0316268183913224\t-0.3514490189598238\t0.0\n-0.2758529006310624\t-0.40138762454442944\t0.0\n-0.8922102392730823\t0.14449724229461414\t0.0\n-0.15270770245191168\t2.212489614867934\t0.0\n0.26029214092878106\t0.019663936112767778\t0.0\n-0.613453342929651\t-0.18982211594459594\t0.0\n-0.3898417871111405\t-1.02829273971622\t0.0\n0.401256011865932\t0.6204058836815358\t0.0\n2.7452493447517354\t0.5012148746118744\t1.0\n-0.9289443838537262\t0.5035587633890403\t0.0\n-0.18616095863270224\t-0.4298482591236496\t0.0\n-0.6187282719290053\t-0.6070998827748583\t0.0\n-0.03739889240760964\t0.8222615788047187\t0.0\n-0.9181295642921635\t-0.7804948341106505\t0.0\n2.538316112158983\t3.7306664426294405\t0.0\n1.52571507397057\t-0.18023176020684584\t0.0\n-0.3058588800929988\t-1.2703594849438633\t0.0\n-0.8215261184215517\t-0.564479820680548\t0.0\n0.5694617687364243\t1.1412242158846069\t0.0\n-0.5323552124805249\t1.185248231020494\t0.0\n-1.1593043000780756\t-0.10826976573078256\t0.0\n-0.8601966235683222\t0.9706651923569439\t0.0\n-0.10467600747636804\t-0.02297419559257604\t0.0\n0.7515162417306757\t-0.13883269090755837\t1.0\n-0.4536309477681906\t0.24126511113167054\t0.0\n-0.7947228279324257\t-0.6748400782422338\t0.0\n1.7159129121440624\t-1.4402638925455842\t1.0\n-0.0576181286036533\t-0.6349855611551563\t0.0\n-0.1421759367273088\t-0.7275386527590288\t1.0\n0.04966844891881185\t-0.48247235599838345\t0.0\n-1.0654907326450136\t-0.7330018919392383\t0.0\n-0.3871746518272181\t-0.16017627288213496\t1.0\n4.859736037761537\t-0.7873127362315876\t0.0\n0.7275378143050707\t0.9884671894297735\t0.0\n-0.16003910791559045\t-0.2065282786776102\t0.0\n-0.14717189850789605\t-0.2626380667238738\t0.0\n-0.9916060914601744\t-1.4572866865544252\t0.0\n1.4994652186371067\t-0.11373762400548705\t0.0\n-0.6276397034789636\t-0.9726388069564774\t0.0\n-0.11401083828602292\t-0.2051561338386983\t0.0\n-0.45527126983694216\t0.20852997118823688\t0.0\n4.634610140554952\t-3.4046800854778896\t1.0\n0.20057380185979534\t1.8616040269763185\t0.0\n0.42458406933137854\t0.6707217723274276\t0.0\n-0.6771921806104817\t-1.277102761878348\t0.0\n-0.8450064772417833\t0.37792645846239376\t0.0\n1.4721222441422015\t1.254082785713622\t1.0\n-0.3960611394492449\t1.350834344054047\t0.0\n0.13449843403290315\t0.9930416674819431\t0.0\n0.22098045453277668\t-0.28807335940739426\t0.0\n-0.24233058298198812\t2.2127869252321197\t0.0\n-0.4492218647321667\t-0.3103714293570972\t0.0\n-0.1924242897473585\t-1.2175341331857714\t1.0\n0.06065646324950814\t0.42544267530025087\t0.0\n-0.009035967670018349\t0.36929900253701614\t0.0\n-0.32057796797434185\t0.008995911366410366\t0.0\n-0.47686409077679576\t1.3103888616836368\t0.0\n-0.15866079293454002\t-0.1919876484068248\t0.0\n0.8194933827276251\t0.27671590257150996\t0.0\n0.06554620698032435\t0.35267083114256637\t0.0\n-0.4642518763747627\t-0.6740525065525742\t0.0\n-0.3633008285311654\t-0.5843971526278532\t0.0\n-0.8507790019923851\t-0.23063318739425107\t0.0\n-0.4118674095850159\t0.20688398808272981\t0.0\n0.12177778720836542\t-0.24773422679738855\t0.0\n-0.8168737550534955\t-0.500423747094337\t0.0\n-0.6117303169691615\t-0.2570981048643087\t0.0\n-0.6896739420943895\t-0.10771148730293326\t0.0\n1.38180824992511\t-1.632909404363212\t0.0\n-0.6739258178836932\t-0.37422393248953456\t0.0\n-0.1475098796740426\t1.412442033203637\t0.0\n-1.3461980029106273\t-0.14906130660416392\t0.0\n-1.06583293201552\t-0.07081672117035215\t0.0\n0.5945527263375253\t2.450776155706945\t0.0\n3.352326153175162\t-0.900611963999897\t1.0\n2.1043886758726202\t0.4658962825397139\t0.0\n0.17516584988323347\t0.16488040411091673\t0.0\n-0.6192390003381347\t-1.116047705858337\t0.0\n-0.27012235947166896\t-0.3301307836123558\t0.0\n0.8066768414120431\t0.18223295118581134\t0.0\n-0.450327458668722\t-1.0839705691783832\t0.0\n-0.44777982429905416\t0.4549933073742597\t0.0\n9.273170193890964\t-4.042952391236625\t1.0\n-0.6224394824541054\t0.32099862517479194\t0.0\n0.8525395949770973\t2.188278136474201\t0.0\n3.5633362085952207\t0.8534689243495853\t1.0\n1.748152590489689\t-1.3568556645958438\t0.0\n-0.18947770045735776\t-0.6970705425625501\t0.0\n-1.108948083384806\t0.0364386733032392\t0.0\n0.594568455908767\t3.5367244962587256\t0.0\n-0.15406128855384127\t0.3503996316841796\t0.0\n-0.6880656560103494\t-1.1680772269251622\t0.0\n0.09675804408375584\t-0.6554399327192518\t0.0\n-0.5958940032185288\t-0.26023365651300095\t0.0\n-0.16035601137373615\t-0.5453099291479827\t0.0\n-0.37008597147467026\t-0.5111197066220734\t0.0\n0.32568555747099576\t1.422304040571919\t0.0\n-0.4567808907804048\t0.4495694233237143\t0.0\n-0.6814963931234961\t0.9082634707235443\t0.0\n-0.7667449687055701\t0.8799668343588208\t0.0\n-0.8299080099150302\t-0.4961077601572902\t0.0\n0.7979162558539973\t3.9497668610912644\t0.0\n-0.6174080441681172\t-1.2912809000205319\t0.0\n0.1340321788601147\t2.263044758805263\t0.0\n0.9141329926792078\t-0.7224319485466337\t0.0\n-0.58996082317338\t-0.2544718139544809\t0.0\n0.744849451183251\t0.3986262331037682\t0.0\n2.4134823924599123\t-1.5761940034079711\t0.0\n-0.3258844846208894\t-0.09236637287023908\t0.0\n-0.12872725440526908\t-0.09899028404323976\t0.0\n-0.5046171444486107\t2.00062869686608\t0.0\n0.19949109454859912\t-0.29001437473281233\t0.0\n-0.4138549781103201\t-0.34597232004640155\t0.0\n-0.4914445238861484\t0.26076982266516363\t0.0\n-0.7181454529305772\t-0.28123468408541025\t0.0\n-0.39135574992353567\t-0.8427512996795145\t0.0\n3.3140106204814166\t1.6373808679157562\t0.0\n1.8159518496992308\t2.6061248139654047\t0.0\n-0.727911392089412\t-0.6323491759777934\t0.0\n-0.7519831315818234\t-0.1887292223599649\t0.0\n0.11105631117046981\t0.5077574694253626\t0.0\n-0.6257030592382488\t-0.3438727589990777\t0.0\n1.3403935290325637\t0.35630085653012916\t0.0\n-0.7101709523544967\t-0.35942096638459253\t0.0\n2.0864826175287385\t1.4533626138367308\t1.0\n-0.8137070848171261\t-0.5091354265570728\t0.0\n-0.49104722946713847\t-0.8080929467200536\t0.0\n-0.16119913825739032\t-0.20122746512401046\t0.0\n0.23762384383729906\t0.7234332457671732\t0.0\n-0.4459228532766822\t-0.49661901964965505\t0.0\n-0.18374830141163276\t1.264272553213393\t0.0\n-0.30496541200706423\t-0.1250000128177136\t0.0\n-0.07055716901887857\t0.34150906438339707\t0.0\n-0.9509934629315275\t-0.9315533862532688\t0.0\n-0.4687379375323668\t-1.1194264169252475\t0.0\n-1.1336068373475583\t0.1811321380295471\t0.0\n1.0168440894535349\t0.7326595436274049\t0.0\n-0.4670424804991685\t-0.5342218429201246\t0.0\n1.129115809917297\t-0.5547618017067194\t0.0\n0.7552622529785155\t2.7676064470894346\t0.0\n-1.2999804837490443\t-0.45915992811626877\t0.0\n-0.6184020644854126\t-1.0867465292919503\t0.0\n4.048984308767932\t0.44435194900786285\t1.0\n-0.9511291097230833\t-0.24461045786017274\t0.0\n-0.5421952196004016\t0.1451138852936322\t0.0\n-0.6706461039999673\t-1.09618078159441\t0.0\n0.39293821477317353\t0.25933191912893533\t0.0\n-0.4547360646279975\t-0.4568742224430904\t0.0\n0.02691450359868969\t-0.6731648546970112\t0.0\n0.7654932096008222\t2.5574024726993136\t0.0\n0.9335575343114187\t0.1525999878249338\t0.0\n-1.5417352146261116\t-0.9623204193315738\t0.0\n-0.9115182935901053\t0.5512663975906154\t0.0\n-0.12746236508775857\t0.4848437114079797\t0.0\n1.3232524253738855\t1.663218353349214\t0.0\n-0.7161616866699347\t0.12246143256936323\t0.0\n-0.7678336304052242\t-0.5906634321805634\t0.0\n0.16778437571966187\t1.0287568334768216\t0.0\n0.623696083957816\t1.301083916301213\t0.0\n-0.380207258869346\t-1.1203011135420313\t0.0\n0.09784128916915133\t0.12880504993859837\t0.0\n0.6836996321075175\t0.007690325722218887\t0.0\n-0.21735499336387587\t0.020343901515542055\t0.0\n-0.5803207800086757\t-0.11112916578621282\t0.0\n-0.05136606935314486\t1.866508896567678\t0.0\n-0.27939829393618115\t0.31828581323581945\t0.0\n0.4040987102782717\t-0.5715138886399435\t1.0\n0.25628416665236664\t0.7299159888139377\t0.0\n-0.6432935223920011\t-0.16029762213709497\t0.0\n-0.4728487982182463\t0.5271896791340651\t0.0\n-0.4771722729276429\t-0.7025115893370377\t0.0\n-1.0013399657080417\t0.1853173618457648\t0.0\n-0.8878694858458163\t-0.6454551079540906\t0.0\n-0.8390005209852804\t-0.5619471666908903\t0.0\n-1.1323000825283895\t-0.3698251989434498\t0.0\n0.45404611022006736\t1.907403008832476\t0.0\n-0.31248646954810844\t-0.4569903620277844\t0.0\n0.1340142058015675\t-0.20687625193428066\t0.0\n0.0732684482175336\t0.718345631402395\t0.0\n7.9705833096190135\t-1.5292198032922741\t0.0\n2.6911315838911496\t-1.4921518489424348\t1.0\n0.2096062736238807\t1.4180907157217726\t0.0\n-0.6771597749264732\t-1.2452933303577913\t0.0\n-1.2467890679762061\t-1.228289225098922\t0.0\n-0.15673956041690956\t-0.4755435083951711\t0.0\n-0.7837021773352991\t-0.267701421693017\t0.0\n1.3879234702810275\t2.822196391811431\t0.0\n0.6592276029730401\t-1.5541579940780834\t1.0\n-0.4954170906172388\t-0.6565984631078979\t0.0\n-0.7543512897825425\t-0.21839064331290226\t0.0\n-0.6173272316115307\t-1.2912071854868297\t0.0\n-0.4482044098377369\t-0.9457776441568111\t0.0\n-0.5697391393237637\t0.540894917730139\t0.0\n0.9420150065552269\t1.294564212013569\t0.0\n-0.5698291694528688\t-0.45855056851660847\t1.0\n-0.44622564878610577\t-0.023317578134822426\t0.0\n-0.612382970117075\t-0.09513994357919238\t0.0\n0.11027549427449906\t-0.4088982556009475\t0.0\n-0.7413653394728968\t-0.20257229811849395\t0.0\n-0.919236902999368\t-0.8215540733647343\t0.0\n-1.1183276103644466\t-0.5212649302706754\t0.0\n-0.9551479059694792\t-1.251800645201031\t0.0\n-0.04755692108588465\t-0.06969539403276274\t0.0\n-0.6711876119593866\t-0.4904507785333927\t0.0\n-0.1962804920472509\t-0.05140993713469618\t0.0\n2.182888145918201\t-1.780517294837218\t1.0\n0.09243641531715079\t0.29170771880484014\t0.0\n-0.18485823846781274\t-0.21717215555494007\t0.0\n-0.9570640619598941\t-0.45413600639500445\t0.0\n1.0554858425257243\t0.4399410152167618\t0.0\n-0.47836624264954924\t-0.42114814979810666\t0.0\n-0.5680306129255587\t-0.5482082348468723\t0.0\n-1.2504988566687985\t-0.08146970445593368\t0.0\n-0.6896138336854679\t-0.09986384600023065\t0.0\n1.2922719629908872\t-0.4050136622432297\t0.0\n-0.12324677569768783\t-0.13434614527436722\t0.0\n-0.5787883272001345\t0.03572164348884193\t0.0\n-0.5510025247371905\t-0.3008396148889667\t0.0\n-0.6069412977734124\t-0.6385397922904162\t0.0\n-0.35046052043023557\t0.08965731298482514\t0.0\n-0.3261974592238068\t-1.330701241289039\t0.0\n-0.9414014260210077\t0.743888375147262\t0.0\n-0.5269643229213178\t-0.21242763139522405\t0.0\n-0.3138638217049836\t0.05598719548225191\t0.0\n7.616058051438749\t-2.8948340449917276\t1.0\n-0.5354371120651698\t-0.7235816827418635\t0.0\n-0.31977234253212355\t-0.3934507188906539\t0.0\n1.5774483359190994\t-0.11999287918841674\t0.0\n-0.7045841984303525\t-0.5361494801660359\t0.0\n-0.6144868769444004\t2.0177324705449258\t0.0\n0.10974503076569646\t-0.680066928773028\t0.0\n-0.4923327385812227\t-0.9402224826174088\t0.0\n-0.23720579489534577\t-0.33081967740919527\t0.0\n-0.3773636427329446\t-0.8964866234638594\t0.0\n-0.5718389707361065\t-1.0423236655175134\t0.0\n-0.9700946164082992\t0.6816070343415\t0.0\n-0.6790541096788469\t-0.8056341018192091\t0.0\n0.29586444441728266\t1.957542798640708\t0.0\n-0.8461487946369441\t-0.28213024240077633\t0.0\n1.059437660375624\t1.4515773976574047\t0.0\n8.697599549572\t0.16747593329485164\t1.0\n-0.32004538351365397\t0.27173371708595156\t0.0\n-0.5183660130669295\t-0.14345969204669407\t0.0\n-1.0008088954288603\t-0.43513418813075455\t0.0\n0.49575316717864165\t0.18890729628150218\t0.0\n-0.9043359698208091\t-0.15168922477634\t0.0\n-0.1646255406037988\t-0.2097260062392102\t0.0\n-0.2771798118615\t-0.09531187289341846\t0.0\n2.905911220472018\t3.4281702384417914\t0.0\n1.3294131851182185\t-0.8410275967396543\t1.0\n0.014747907834283385\t-0.8929843867140974\t0.0\n-0.12497256855553088\t0.9200927871715815\t0.0\n-0.7232617949651241\t0.24458404690932067\t0.0\n0.41813212447515846\t0.5166326602582854\t0.0\n-0.36954438119314553\t0.0008165854767032799\t0.0\n2.0990630587081256\t6.820242716176327\t0.0\n1.2397155547185326\t-1.0384903451696257\t0.0\n1.7646042084480567\t-0.19528643911075425\t0.0\n-0.40353387734234225\t1.4457602128820122\t0.0\n-1.1704593778079486\t-0.18977774172721146\t0.0\n-0.6438080816418573\t-0.3071894165772343\t0.0\n-0.7872416102017691\t0.20924382303417313\t0.0\n-0.8466015614913678\t-0.4700069349073089\t0.0\n1.3957051796467737\t0.13391368052219194\t0.0\n-0.7949704534806477\t0.17847369723447498\t0.0\n-0.9827249471439153\t0.03343767771799542\t0.0\n-0.2127576000170433\t-0.4827630696382923\t0.0\n-1.0272794531152178\t0.42161076334577846\t0.0\n-0.6465656822952127\t-0.15864331526369616\t0.0\n0.8822768244455389\t0.788500023330922\t0.0\n3.3455768216893533\t4.404844842098232\t0.0\n-1.2259818154623594\t-0.23132936626930076\t0.0\n2.568160272250422\t0.058271595400728037\t0.0\n-0.6222528391233046\t-0.29243895294042044\t1.0\n1.1531232220439065\t3.661726286404741\t0.0\n0.05688460973671507\t1.0002579309721937\t0.0\n-0.12187359398232166\t-0.24514180825522874\t0.0\n-0.45146194206317114\t-0.09445903876970478\t0.0\n-0.4547983631264561\t-0.46680891227293053\t0.0\n-0.3197103492860792\t-0.19061755428833974\t0.0\n0.05102666489793133\t2.023843840659541\t0.0\n-0.3809008011503508\t1.1015374348977123\t0.0\n-1.011223453830358\t0.2100791097812819\t0.0\n8.23114843354246\t1.5688037371360894\t0.0\n2.275058511458365\t0.2886902174010459\t0.0\n-0.5545485160832547\t-1.3018559035335588\t1.0\n-0.4285749566670379\t0.358929943033723\t0.0\n1.64179541324888\t-0.2130007337883804\t0.0\n2.092402838252488\t0.05871297765910577\t1.0\n-0.2520342156196339\t-0.3437911343083981\t0.0\n-0.7034696417366529\t0.6279985044209124\t0.0\n-0.3164061530620221\t0.06886857192795286\t0.0\n-0.4029411735287608\t0.10535268664334843\t0.0\n-1.051261919918598\t-0.9776111183711249\t0.0\n-0.7682661773740181\t0.29238579193839376\t0.0\n-0.16316971218945772\t-0.20886420751829324\t0.0\n-0.06850440402049669\t-1.3723179226574016\t0.0\n0.2730144362215184\t0.29449908848164846\t0.0\n-0.5697587342491771\t-0.37835682151646627\t1.0\n0.6911312037478927\t-1.6703036974360492\t0.0\n-1.0381095137668082\t0.6692230884967125\t0.0\n-0.015563331947141532\t-1.16201344398112\t0.0\n-0.6239737170814252\t-0.30636087356328134\t0.0\n-0.7083489435154425\t-0.8205073716830287\t0.0\n0.6310011810403036\t0.6319571540058565\t0.0\n-0.25583046999425735\t-0.7291299153766457\t0.0\n0.6149976416051814\t-0.261632376285569\t1.0\n-0.2633438304074001\t-0.2876615275249617\t0.0\n-0.28089329410792513\t-0.9839802330611293\t0.0\n-0.841877355669815\t0.086815264446764\t0.0\n0.07207131453604518\t-0.5282119099463899\t0.0\n-1.0509116839343235\t-0.8095975560351842\t0.0\n-0.5063136986632648\t-0.21225621317130672\t0.0\n-0.9201054881592952\t-0.7902910016624227\t0.0\n-0.9028062235637557\t-0.8250078987276026\t0.0\n-0.7726785461494083\t-0.19194152305363216\t0.0\n-0.4380937716720891\t-2.125768134110309\t0.0\n-0.7397085706456928\t0.5972459122420738\t0.0\n-0.8111168870124131\t-0.9703420341349488\t0.0\n0.497950288067553\t-1.6836792881453027\t0.0\n0.1887275334902482\t0.7888861553053266\t0.0\n-0.17577589959970788\t1.2807310469743298\t0.0\n0.07080647351979329\t1.4590752696517797\t0.0\n0.8487948961917718\t-0.2625972208295865\t0.0\n0.5429524210326935\t-1.2123642311030534\t0.0\n-0.8020717883795938\t-0.9720224949555244\t0.0\n-0.703344904905295\t-0.3853579939812974\t0.0\n-0.2769030625602598\t0.33099998560624866\t0.0\n-1.116775952501418\t-1.0075091478373173\t0.0\n-0.7381769710771509\t-0.26265570424618523\t0.0\n7.746506614016386\t-3.0570324563216373\t1.0\n0.8199362762527218\t1.788987107235095\t0.0\n-0.5661392896790683\t0.11639713426151711\t0.0\n0.10636540724484427\t2.4838576772907714\t0.0\n-0.30980084041565137\t-0.45201065791576805\t0.0\n-1.1766741168749626\t-2.0682403908876856\t0.0\n1.836578880658263\t-0.4631219198773913\t1.0\n-0.6159545882697387\t-1.2788001036670882\t0.0\n-0.5843228369370402\t-1.151583166400155\t0.0\n-0.4274875043769015\t0.7995759561716682\t0.0\n0.9469481597735994\t0.13571397328728846\t0.0\n-1.469504104327304\t1.1190367547452116\t1.0\n-0.47556696637806023\t-0.32017408307475054\t0.0\n1.6052279923599784\t-1.0342524828785358\t1.0\n-0.1909193173050063\t0.38479459360476864\t0.0\n-0.3100919905911327\t0.8858183544892123\t0.0\n0.8320686906737286\t1.5918287290209776\t0.0\n-0.307153771256315\t-0.12208437848508899\t0.0\n-0.4098181994314034\t-0.027310547822640086\t0.0\n-0.5657782450145435\t0.053696890750167876\t0.0\n-0.5293889465251485\t-0.4774764904750931\t0.0\n-0.25122117959615625\t-0.1232099900739661\t1.0\n-0.5121750067564566\t-0.7679188285939524\t0.0\n-0.42512958815906693\t1.2044272564920777\t0.0\n-0.4847367523796957\t0.07161268430988793\t0.0\n-1.2278377278074397\t0.6542364073736984\t0.0\n-0.7409561777639249\t0.35401534603169343\t0.0\n-0.923175713594125\t-1.0681338494798354\t0.0\n-0.7772266922499981\t-0.760066824961404\t0.0\n0.46165475584752463\t0.37697247290760166\t0.0\n-0.9021157645627015\t-0.8446017620600473\t0.0\n1.289428086983397\t2.974690137732547\t0.0\n-1.0183928625422674\t0.6134404260030026\t0.0\n-0.11050449265538598\t0.14367944589538403\t0.0\n-0.8206723752895961\t0.3586789030461648\t0.0\n-0.7399127174911438\t-0.19542514263216382\t0.0\n-0.8691132325646614\t-0.7800123525677595\t0.0\n0.10534756879270825\t1.3169800274752406\t0.0\n0.8767294885025577\t0.951581639341013\t0.0\n-0.894857833413349\t-0.6630175119858538\t0.0\n-0.6383567349335343\t-1.005938059872864\t0.0\n11.248984190611726\t-1.9024563292943637\t1.0\n0.28581326220819586\t-0.21816371677363688\t0.0\n-0.8467069684704571\t-0.6547254940629809\t0.0\n-0.7836297679252338\t-0.2700819259987169\t0.0\n-0.8394790833283424\t0.35323033321384584\t0.0\n0.7464834481761434\t-1.0879025091875414\t1.0\n-0.24632047125522488\t0.22510244055844017\t0.0\n-0.964061648374936\t-0.8327547927257444\t0.0\n-0.2604415294002771\t-0.6546188816601658\t0.0\n-0.8738613267220746\t-0.7298414038335866\t0.0\n0.05812524874202599\t0.6643178047111141\t0.0\n-0.6139827730277928\t-1.2749450512311944\t0.0\n-0.3575568334729333\t-0.7656004748558728\t0.0\n-0.4974589020197533\t1.6957843148370773\t0.0\n-0.763543945463993\t-0.8132294312506068\t0.0\n-0.5662626073630624\t-0.2460972922789884\t0.0\n0.04472597303520033\t-0.9586047612843742\t0.0\n2.831912645638356\t-0.6007707984208926\t0.0\n-0.9771513435828141\t0.045098991847801306\t0.0\n-0.8689034879386408\t-0.3747306093842382\t0.0\n2.4198562636587284\t1.7841513647530016\t0.0\n-0.2130910893428635\t-0.5026436112787568\t0.0\n-0.2371997961354835\t-0.3859596921206651\t0.0\n-0.9733530672462037\t-0.145680006192101\t0.0\n-1.5705317205808487\t0.09556547866676567\t0.0\n-0.4897002897984861\t-0.44498492703655934\t0.0\n-0.8135727009844302\t0.27484699366804133\t0.0\n0.15531676351316742\t1.6813508395414598\t0.0\n0.453832237664485\t1.606000060334212\t0.0\n0.5463040101969735\t-0.8596806076598414\t0.0\n-0.27655844273256486\t1.444157456094211\t0.0\n-0.21270664613867055\t-1.2833615310899547\t0.0\n-0.045551300983748814\t1.547643130308227\t0.0\n-0.5331225615633925\t1.812555131362314\t0.0\n-0.42476825305495647\t-1.3092892004981262\t1.0\n-0.569061509685454\t-0.38105227347426185\t0.0\n-0.3020192764045403\t0.6213157910127539\t0.0\n-0.9031105136051206\t0.5395707082944435\t0.0\n2.91445100375107\t-2.1066803813726613\t1.0\n0.8229039612998877\t0.3834586743143715\t0.0\n-0.2610814492511569\t-0.23368055786037906\t0.0\n-0.93736354601896\t-0.8766319383282056\t0.0\n0.0192945582780326\t1.1967739705972529\t0.0\n-0.1588244313971085\t-0.19814788985324464\t0.0\n-0.38542453978182106\t-0.8930067419078995\t0.0\n-0.28830850410045883\t-0.25043327803659154\t0.0\n0.5980561299693883\t-0.23344495414353106\t1.0\n-0.15909283412730818\t0.2936033400991811\t0.0\n-0.8802488738443445\t0.6224963371345288\t0.0\n-0.9383976227995025\t-0.8865916526715553\t0.0\n0.7005252624849513\t-0.36266439700767533\t0.0\n-0.19226395945929553\t1.2095954641534998\t0.0\n-0.8329218754937492\t-1.0667953585282062\t0.0\n-0.31174281770413115\t-0.651122540276785\t0.0\n0.7091656664057142\t0.09422939698793972\t0.0\n1.7500960313554927\t-0.9422495635689269\t0.0\n0.050800725174364986\t-0.0813659783038568\t0.0\n7.095718490226174\t-1.7095669322361895\t1.0\n0.7427352887170048\t2.639164898641093\t0.0\n-0.6665323874723377\t0.6405612625784075\t0.0\n-0.9752592635952049\t-0.7537531598960517\t0.0\n2.745973188052017\t-1.980037236459184\t0.0\n-1.1887599899161603\t-0.19365043864841414\t0.0\n-0.10772937289257757\t-0.32249630465568074\t0.0\n0.1217345718087294\t0.8996619166270895\t0.0\n-0.41594915745850547\t0.8217644849692124\t0.0\n-0.09583683480890713\t0.7566240473313859\t0.0\n-0.6289786324306835\t-0.0624142015561223\t0.0\n0.44056873961064374\t0.852894666018583\t0.0\n-0.7805732644209824\t-0.7583490771886875\t0.0\n0.4820910901102148\t-0.06396823816371065\t0.0\n-0.7845097653721096\t-1.0657515034309513\t0.0\n2.4993935403776524\t-0.25828143991050284\t0.0\n-0.9681707976174667\t-0.9676641180693026\t0.0\n-0.6348455830025601\t-0.10508022333351766\t0.0\n-0.11555533763808329\t1.39877373816863\t0.0\n-0.6833222840729366\t-1.6171589529037338\t1.0\n0.10556188113998075\t-1.4629790824263447\t0.0\n-1.113449365793959\t-0.1215638464228948\t0.0\n0.21258384023820237\t-0.1309721459714493\t0.0\n1.2488499294656874\t5.403876549663937\t0.0\n0.060639035071972505\t1.0036703618169807\t0.0\n-0.8885823343751532\t-0.7367399773189177\t0.0\n-1.1413294299257453\t0.23273624345614838\t0.0\n-0.6319969787552031\t-1.0439400594358454\t0.0\n-0.2250292939560353\t-0.41974695162030284\t0.0\n-0.1446867409651606\t0.0944847505944242\t0.0\n-0.805333682170612\t-0.44381897310806695\t0.0\n-0.1727577682602594\t-0.22761244226160698\t0.0\n-0.3891760185000778\t0.10185246974788069\t0.0\n0.6400401067623048\t-0.8966618029959645\t0.0\n-0.4372513492458588\t0.01755830306294673\t0.0\n-0.5631691293014446\t-0.11795276043807609\t0.0\n-1.062872558898619\t0.13723345031633996\t0.0\n-0.6444992155736214\t0.4259369191510951\t0.0\n0.8578334358070365\t-1.537822368495699\t0.0\n-0.6968708334564271\t0.9975633199465616\t0.0\n3.1382342074958\t-2.5329210178932593\t1.0\n2.0727341396122205\t0.12048752070368311\t1.0\n-0.37306969982800214\t1.143136633705829\t0.0\n-0.7658604644146707\t-0.3875017839866189\t0.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568844974011_-620555149",
+      "id": "20190918-221614_1908546599",
+      "dateCreated": "2019-09-18 22:16:14.011",
+      "dateStarted": "2019-09-27 17:48:33.536",
+      "dateFinished": "2019-09-27 17:48:33.597",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## SciPy Model Accuracy",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 16:29:04.667",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSciPy Model Accuracy\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568845938245_1985470761",
+      "id": "20190918-223218_932544041",
+      "dateCreated": "2019-09-18 22:32:18.245",
+      "dateStarted": "2019-09-27 16:29:04.669",
+      "dateFinished": "2019-09-27 16:29:04.673",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## SciPy + Verdict Model Accuracy",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-16 06:33:26.347",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSciPy + Verdict Model Accuracy\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568913349525_-136105025",
+      "id": "20190919-171549_2063887305",
+      "dateCreated": "2019-09-19 17:15:49.525",
+      "dateStarted": "2019-10-16 06:33:26.347",
+      "dateFinished": "2019-10-16 06:33:26.352",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ngroundtrough \u003d test_data[:,0]\nfull_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - full_predict) \u003c 0.01)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 17:49:13.406",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.7608\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568845648544_1355548830",
+      "id": "20190918-222728_1646193170",
+      "dateCreated": "2019-09-18 22:27:28.544",
+      "dateStarted": "2019-09-27 17:49:13.436",
+      "dateFinished": "2019-09-27 17:49:13.444",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ngroundtrough \u003d test_data[:,0]\napprox_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - approx_predict) \u003c 0.01)",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-27 17:49:14.655",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.7607\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1568845932456_1535260553",
+      "id": "20190918-223212_652351861",
+      "dateCreated": "2019-09-18 22:32:12.456",
+      "dateStarted": "2019-09-27 17:49:14.688",
+      "dateFinished": "2019-09-27 17:49:14.695",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 17:10:23.594",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1568913023594_-1693241778",
+      "id": "20190919-171023_747452954",
+      "dateCreated": "2019-09-19 17:10:23.594",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-09-19 17:16:42.524",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1568913402523_1287387075",
+      "id": "20190919-171642_936317389",
+      "dateCreated": "2019-09-19 17:16:42.523",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Quickstart",
+  "id": "2EMM5HJDB",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "python:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
