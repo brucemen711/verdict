@@ -102,7 +102,7 @@ class VerdictSession(object):
 
 
     # QUERYING METHODS
-    def sql(self, sql, rel_err_bound=0.01):
+    def sql(self, sql, rel_err_bound=0.05):
         """Processes a SQL query, and makes a prediction that satisfies the specified relative error.
 
         :param sql: A SQL query.
@@ -161,7 +161,7 @@ class VerdictSession(object):
         return itr
 
 
-    def json(self, query_request, rel_err_bound=0.01):
+    def json(self, query_request, rel_err_bound=0.05):
         """Processes a query in the json format. Using this method eliminates the overhead of
         converting SQL to a json representation (performed by the sql() method).
 
