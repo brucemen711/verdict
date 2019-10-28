@@ -397,7 +397,7 @@ class Querying(object):
         log(unbiased_result, 'debug')
 
         # Check if we can simply use the cache
-        required_ratio = self.estimate_required_sampling_ratio(query_to_run)
+        required_ratio = self.estimate_required_sampling_ratio(query_to_run, rel_err_bound)
         log(f"We need at least {required_ratio*100}% of data for accurate answers.", 'debug')
 
         # is_accurate = self.is_accurate(query_to_run)
@@ -473,7 +473,7 @@ class Querying(object):
         return result, ratio
 
 
-    def estimate_required_sampling_ratio(self, query, rel_err_bound=0.01):
+    def estimate_required_sampling_ratio(self, query, rel_err_bound):
         """Estimates the minimum sample size that is large enough to satisfy the specified error.
 
         :param required_rel_acc:  A relative error requirement
