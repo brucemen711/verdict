@@ -81,10 +81,19 @@ class PandasSQL(object):
         return new_df
 
     def load_table(self, table_name, file_path, if_not_exists=False):
+        if table_name in self._tables:
+            if if_not_exists:
+                pass
+            else:
+                # if_not_exists == False means that the caller was expecting no specified table
+                # exists. 
+                raise ValueError(f"The specified table, {table_name}, already exists.")
+
         with open(file_path, 'rb') as f:
             df = pickle.load(f)
             assert isinstance(df, pd.core.frame.DataFrame)
             self._tables[table_name] = df
+            self._log(f"The table, {table_name}, has been loaded.")
         return len(self._tables[table_name].index)
 
     def drop_table(self, name, if_exists=False):

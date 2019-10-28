@@ -44,8 +44,7 @@ the [documentation](https://verdict.readthedocs.org).
 
 ## Quickstart
 
-Using `docker-compose`, you can quickly start Verdict (with Presto for its backend engine) in
-a single line.
+Start Verdict in a single line with `docker-compose` (with Presto for its backend engine).
 
 ```bash
 curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-compose-64gb.yaml \

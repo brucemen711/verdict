@@ -3,9 +3,8 @@
 # start redis server
 redis-server --daemonize yes
 
-# start verdict server
-#python /root/bootstrap/wait_for_presto.py
-#nohup verdict-server --cache-server-host presto start &
+# start pandas sql server
+nohup pandas-sql-server --preload-cache &
 
 # This starts Zeppelin
 /root/zeppelin-0.8.1-bin-all/bin/zeppelin-daemon.sh start
