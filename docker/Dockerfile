@@ -45,8 +45,9 @@ RUN chmod 700 /root/bootstrap/*.sh
 COPY docker/*.py /root/bootstrap/
 
 # Copy zeppelin notebook
-RUN mkdir /root/zeppelin-0.8.1-bin-all/notebook/2EMM5HJDB
+RUN mkdir /root/zeppelin-0.8.1-bin-all/notebook/2EMM5HJDB /root/zeppelin-0.8.1-bin-all/notebook/2ESF1KHY9
 COPY docker/zeppelin_notebook/2EMM5HJDB/note.json /root/zeppelin-0.8.1-bin-all/notebook/2EMM5HJDB/note.json
+COPY docker/zeppelin_notebook/2ESF1KHY9/note.json /root/zeppelin-0.8.1-bin-all/notebook/2ESF1KHY9/note.json
 
 # Copy Jupyter notebook
 COPY docker/jupyter_notebook/WithVerdict.ipynb /opt/notebooks/WithVerdict.ipynb
