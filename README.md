@@ -21,7 +21,8 @@
 <img src="http://verdictdb.org/image/verdict-for-impala-speedup.png" width="600px" />
 </p>
 
-Verdict brings interactive-speed, resource-efficient data analytics.
+Verdict brings interactive-speed, resource-efficient data analytics,
+with the following key features:
 
 1. **200x faster by sacrificing only 1% accuracy**
    Verdict can give you 99% accurate answers for your big data queries in a fraction of the time 
@@ -41,7 +42,7 @@ Verdict brings interactive-speed, resource-efficient data analytics.
 <!-- the [documentation](https://verdict.readthedocs.org). -->
 
 
-# Quickstart
+# Installation
 
 Launch verdict in a single line (with Presto for its backend engine).
 
@@ -50,7 +51,11 @@ curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-c
     | docker-compose -f - up
 ```
 
-Once the docker containers run, start the Python shell.
+
+# Simple Example
+
+
+Once the docker containers run, start the Python shell as follows:
 
 ```python
 # bash
@@ -58,15 +63,12 @@ docker exec -it docker-verdict python
 
 # Python shell
 import verdict
-v = verdict.presto(presto_host='presto')     # connected to Presto
+v = verdict.presto(presto_host='presto')     # connects to Presto via Verdict
 v.sql("bypass show catalogs")
 ```
 
 
-# Simple Example
-
-
-## Queries Run **Slow** Originally
+## Originally, a query is quite slow
 
 ```python
 v.sql('bypass select count(*) from tpch.sf1.orders')
@@ -78,14 +80,14 @@ v.sql('bypass select count(*) from tpch.sf1.orders')
 The `bypass` keyword makes the query processed directly by the backend engine.
 
 
-## Create a sample (one time)
+## Let verdict do some one-time operations for the table
 
 ```python
 v.create_sample('tpch.sf1.orders')
 ```
 
 
-## Now Queries Run Fast
+## Now the query runs faster
 
 The same count query:
 
@@ -110,23 +112,23 @@ v.sql('select orderpriority, count(*) from tpch.sf1.orders group by orderpriorit
 # 4            5-LOW  300628
 ```
 
-These comparisons are to help you quickly see the potential performance gains (than
-being scientific).
+You can issue more complex queries including joins or subqueries. See our 
+[documentation](https://verdict.readthedocs.io) for more examples.
 
-For more large-scale (controlled) examples, see our 
-[Quickstart documentation](https://verdict.readthedocs.io/en/latest/quickstart.html).
+*Note: The above latency comparisons are for quick demo of Verdict and are not meant to be
+scientific.*
 
 
 
-# How Verdict Works
+# How Verdict is Platform-Independent
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-architecture.png" width="500px" />
 </p>
 
 1. Verdict rewrites your queries to use special types of *samples* (instead of original tables).
-2. The rewritten queries are processed by the backend engine.
-3. Given the answers from the engine, Verdict compose statistically unbiased estimates 
+2. The rewritten queries are processed by the backend engine in the regular way.
+3. Given the answers from the engine, Verdict composes statistically unbiased estimates 
    (for your final answers), which are returned.
 
 Even the samples are stored in your engines/stores (database, S3, and so on).
@@ -136,7 +138,13 @@ Even the samples are stored in your engines/stores (database, S3, and so on).
 
 # More information
 
-- Research: https://verdictdb.org/documentation/research/
+- **User Story**: https://verdictdb.org/documentation/success/
+- **Research**: https://verdictdb.org/documentation/research/
+- **License**: Apache License 2.0
+- **Project Maintainers**: Alumni of the database group at University of Michigan, Ann Arbor
+- **How to Contact**: Use [our Gitter room](https://gitter.im/verdictdb/chat) or 
+   directly email us ([Yongjoo](https://yongjoopark.com) and 
+   [Barzan](https://web.eecs.umich.edu/~mozafari/)).
 
 
 <!-- ## Free for all
