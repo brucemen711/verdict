@@ -3,11 +3,6 @@
 
 **We are making lots of changes right now.**
 
-Project website: https://verdictdb.org
-
-Documentation: https://verdict.readthedocs.org
-
-
 <!-- [![Build Status](https://circleci.com/gh/mozafari/verdictdb/tree/master.svg?style=shield&circle-token=16a7386340ff7022b21ce007434f8caa2fa97aec)](https://circleci.com/gh/mozafari/verdictdb/tree/master)
 [![Code Coverage](https://codecov.io/gh/mozafari/verdictdb/branch/master/graph/badge.svg)](https://codecov.io/gh/mozafari/verdictdb)
 [![JDK](https://img.shields.io/badge/JDK-7,%208-green.svg)]()
@@ -15,8 +10,12 @@ Documentation: https://verdict.readthedocs.org
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/verdictdb/chat)
 
 
+1. Project website: https://verdictdb.org
+2. Documentation: https://verdict.readthedocs.org
 
-# However Big, Instant Analytics
+
+
+# Instant Analytics with Exponential Speedups
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-for-impala-speedup.png" width="600px" />
@@ -38,13 +37,13 @@ Verdict brings interactive-speed, resource-efficient data analytics.
    Verdict is a light-weight client-side library: no servers, no port configurations, no extra user 
    authentication, etc., beyond what you already have.
 
-Find out more about Verdict by visiting [verdict.org](https://verdictdb.org) and 
-the [documentation](https://verdict.readthedocs.org).
+<!-- Find out more about Verdict by visiting [verdict.org](https://verdictdb.org) and  -->
+<!-- the [documentation](https://verdict.readthedocs.org). -->
 
 
-## Quickstart
+# Quickstart
 
-Start Verdict in a single line with `docker-compose` (with Presto for its backend engine).
+Launch verdict in a single line (with Presto for its backend engine).
 
 ```bash
 curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-compose-64gb.yaml \
@@ -54,19 +53,20 @@ curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-c
 Once the docker containers run, start the Python shell.
 
 ```python
+# bash
 docker exec -it docker-verdict python
 
-# In the shell
+# Python shell
 import verdict
 v = verdict.presto(presto_host='presto')     # connected to Presto
 v.sql("bypass show catalogs")
 ```
 
 
-## Simple Example
+# Simple Example
 
 
-### Queries Run **Slow** Originally
+## Queries Run **Slow** Originally
 
 ```python
 v.sql('bypass select count(*) from tpch.sf1.orders')
@@ -78,14 +78,16 @@ v.sql('bypass select count(*) from tpch.sf1.orders')
 The `bypass` keyword makes the query processed directly by the backend engine.
 
 
-### Create a sample (one time)
+## Create a sample (one time)
 
 ```python
 v.create_sample('tpch.sf1.orders')
 ```
 
 
-### Now Queries Run Fast
+## Now Queries Run Fast
+
+The same count query:
 
 ```python
 v.sql('select count(*) from tpch.sf1.orders')
@@ -94,15 +96,11 @@ v.sql('select count(*) from tpch.sf1.orders')
 # 0  1503884
 ```
 
-You can run more and enjoy almost instant answers.
+Another query:
 
 
 ```python
-v.sql('''\
-   select orderpriority, count(*) 
-   from tpch.sf1.orders 
-   group by orderpriority 
-   order by orderpriority''')
+v.sql('select orderpriority, count(*) from tpch.sf1.orders group by orderpriority')
 # Returning an answer in 0.14169764518737793 sec(s). 
 #      orderpriority      c1
 # 0         1-URGENT  300784
@@ -112,15 +110,15 @@ v.sql('''\
 # 4            5-LOW  300628
 ```
 
-These comparisons above are more to help you quickly see the potential performance gains (than
+These comparisons are to help you quickly see the potential performance gains (than
 being scientific).
 
 For more large-scale (controlled) examples, see our 
-[quickstart guide](https://verdict.readthedocs.io/en/latest/quickstart.html).
+[Quickstart documentation](https://verdict.readthedocs.io/en/latest/quickstart.html).
 
 
 
-## How Verdict Works
+# How Verdict Works
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-architecture.png" width="500px" />
@@ -131,13 +129,12 @@ For more large-scale (controlled) examples, see our
 3. Given the answers from the engine, Verdict compose statistically unbiased estimates 
    (for your final answers), which are returned.
 
-Even the samples are stored in your engines/stores (database, S3, and so on). Thus, almost no
-privacy issues.
+Even the samples are stored in your engines/stores (database, S3, and so on).
 
 
 
 
-## More information
+# More information
 
 - Research: https://verdictdb.org/documentation/research/
 
