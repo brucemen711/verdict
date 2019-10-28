@@ -16,7 +16,7 @@ Documentation: https://verdict.readthedocs.org
 
 
 
-# Instant analytics, however big your data is
+# However Big, Instant Analytics
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-for-impala-speedup.png" width="600px" />
@@ -53,37 +53,29 @@ curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-c
 
 Once the docker containers run, start the Python shell.
 
-```bash
-docker exec -it docker-verdict python
-```
-
 ```python
+docker exec -it docker-verdict python
+
+# In the shell
 import verdict
-v = verdict.presto(presto_host='presto')
+v = verdict.presto(presto_host='presto')     # connected to Presto
+v.sql("bypass show catalogs")
 ```
 
 
-### Queries run slower originally
+## Simple Example
+
+
+### Queries Run **Slow** Originally
 
 ```python
 v.sql('bypass select count(*) from tpch.sf1.orders')
 # Returning an answer in 8.863600015640259 sec(s). 
 #      _col0
 # 0  1500000
-
-v.sql('''\
-   bypass select orderpriority, count(*) 
-   from tpch.sf1.lineitem 
-   group by orderpriority 
-   order by orderpriority''')
-# Returning an answer in 9.716013669967651 sec(s). 
-#     _col0
-# 0  300343
-# 1  300091
-# 2  298723
-# 3  300254
-# 4  300589
 ```
+
+The `bypass` keyword makes the query processed directly by the backend engine.
 
 
 ### Create a sample (one time)
@@ -93,14 +85,19 @@ v.create_sample('tpch.sf1.orders')
 ```
 
 
-### Now queries run fast
+### Now Queries Run Fast
 
 ```python
 v.sql('select count(*) from tpch.sf1.orders')
 # Returning an answer in 0.17403197288513184 sec(s). 
 #         c1
 # 0  1503884
+```
 
+You can run more and enjoy almost instant answers.
+
+
+```python
 v.sql('''\
    select orderpriority, count(*) 
    from tpch.sf1.orders 
@@ -122,7 +119,8 @@ For more large-scale (controlled) examples, see our
 [quickstart guide](https://verdict.readthedocs.io/en/latest/quickstart.html).
 
 
-## How it works
+
+## How Verdict Works
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-architecture.png" width="500px" />
