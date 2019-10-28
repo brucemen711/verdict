@@ -26,9 +26,9 @@ services:
     environment:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
-      - QUERY_MAX_MEMORY=20GB
-      - QUERY_MAX_MEMORY_PER_NODE=15GB
-      - QUERY_MAX_TOTAL_MEMORY_PER_NODE=30GB
+      - QUERY_MAX_MEMORY=30GB
+      - QUERY_MAX_MEMORY_PER_NODE=25GB
+      - QUERY_MAX_TOTAL_MEMORY_PER_NODE=40GB
       - JAVA_HEAP_SIZE=50G
     hostname: "presto"
     container_name: "docker-presto"
