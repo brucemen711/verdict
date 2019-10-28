@@ -53,15 +53,14 @@ class CacheManager(object):
             self._cache_engine = PandasSQLClient()
         else:
             self._cache_engine = PandasSQL()
+            if preload_cache:
+                # initializes by loading cached data
+                log(f"Starting: loading persisted cache into an in-memory engine.")
+                self.load_all_cache()
+                log(f"Done: the cache has been all loaded.")
         self._cache_catalog = cache_presto_catalog
         self._cache_schema = cache_presto_schema
         self.r = redis.Redis(host=cache_redis_host)
-
-        if preload_cache:
-            # initializes by loading cached data
-            log(f"Starting: loading persisted cache into an in-memory engine.")
-            self.load_all_cache()
-            log(f"Done: the cache has been all loaded.")
 
     def load_all_cache(self):
         """Checks the metadata and loads all cached tables.
@@ -193,7 +192,7 @@ class CacheManager(object):
             raise ValueError(f'Not found in cache: {sample_id}')
         data, col_def = data_col
         cache_dest = f"{self._cache_catalog}.{self._cache_schema}.{sample_id}"
-        self._cache_engine.drop_table(cache_dest, exists=True)
+        self._cache_engine.drop_table(cache_dest, if_exists=True)
         rows_count = self._cache_engine.create_table(cache_dest, data, col_def)
         return rows_count
 
@@ -262,14 +261,16 @@ class CacheManager(object):
         assert_type(data, List)
         assert_type(col_def, List)
         cache_filename = self.get_cache_filename(sample_id)
-        df = self._cache_engine.frame_from_data(data, col_def)
+        df = PandasSQL.frame_from_data(data, col_def)
         with open(cache_filename, 'wb') as f:
             pickle.dump(df, f)
             log(f"The cache of (sample_id = {sample_id}) is saved to {cache_filename}.", "debug")
+        self._cache_engine.load_table(sample_id, cache_filename)
 
     def drop_cache_data(self, sample_id):
         cache_filename = self.get_cache_filename(sample_id)
-        os.remove(cache_filename)
+        if os.path.exists(cache_filename):
+            os.remove(cache_filename)
 
 
     cache_meta_id_prefix = "verdict.cache_meta."
@@ -284,7 +285,7 @@ class CacheManager(object):
         """
         @param sample_id  Mostly, sample_id
         """
-        return f'verdict.cache_data.{sample_id}'
+        return sample_id
 
     def get(self, key):
         assert_type(key, str)

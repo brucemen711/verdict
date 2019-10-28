@@ -16,7 +16,7 @@ Documentation: https://verdict.readthedocs.org
 
 
 
-# Same DB, Instant Analytics, However Larger Your Data
+# Instant analytics, however big your data is
 
 <p align="center">
 <img src="http://verdictdb.org/image/verdict-for-impala-speedup.png" width="600px" />
@@ -51,7 +51,7 @@ curl -s https://raw.githubusercontent.com/verdictproject/verdict/master/docker-c
     | docker-compose -f - up
 ```
 
-Then, import verdict from the standard Python shell.
+Once the docker containers run, start the Python shell.
 
 ```bash
 docker exec -it docker-verdict python
@@ -60,13 +60,86 @@ docker exec -it docker-verdict python
 ```python
 import verdict
 v = verdict.presto(presto_host='presto')
-v.sql('select count(*) from hive.tpch_sf100.lineitem')
 ```
 
-See more in our [quickstart guide](https://verdict.readthedocs.io/en/latest/quickstart.html).
+
+### Queries run slower originally
+
+```python
+v.sql('bypass select count(*) from tpch.sf1.orders')
+# Returning an answer in 8.863600015640259 sec(s). 
+#      _col0
+# 0  1500000
+
+v.sql('''\
+   bypass select orderpriority, count(*) 
+   from tpch.sf1.lineitem 
+   group by orderpriority 
+   order by orderpriority''')
+# Returning an answer in 9.716013669967651 sec(s). 
+#     _col0
+# 0  300343
+# 1  300091
+# 2  298723
+# 3  300254
+# 4  300589
+```
 
 
-## More Information
+### Create a sample (one time)
+
+```python
+v.create_sample('tpch.sf1.orders')
+```
+
+
+### Now queries run fast
+
+```python
+v.sql('select count(*) from tpch.sf1.orders')
+# Returning an answer in 0.17403197288513184 sec(s). 
+#         c1
+# 0  1503884
+
+v.sql('''\
+   select orderpriority, count(*) 
+   from tpch.sf1.orders 
+   group by orderpriority 
+   order by orderpriority''')
+# Returning an answer in 0.14169764518737793 sec(s). 
+#      orderpriority      c1
+# 0         1-URGENT  300784
+# 1           2-HIGH  301540
+# 2         3-MEDIUM  298872
+# 3  4-NOT SPECIFIED  302060
+# 4            5-LOW  300628
+```
+
+These comparisons above are more to help you quickly see the potential performance gains (than
+being scientific).
+
+For more large-scale (controlled) examples, see our 
+[quickstart guide](https://verdict.readthedocs.io/en/latest/quickstart.html).
+
+
+## How it works
+
+<p align="center">
+<img src="http://verdictdb.org/image/verdict-architecture.png" width="500px" />
+</p>
+
+1. Verdict rewrites your queries to use special types of *samples* (instead of original tables).
+2. The rewritten queries are processed by the backend engine.
+3. Given the answers from the engine, Verdict compose statistically unbiased estimates 
+   (for your final answers), which are returned.
+
+Even the samples are stored in your engines/stores (database, S3, and so on). Thus, almost no
+privacy issues.
+
+
+
+
+## More information
 
 - Research: https://verdictdb.org/documentation/research/
 

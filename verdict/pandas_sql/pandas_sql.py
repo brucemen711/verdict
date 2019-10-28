@@ -67,7 +67,8 @@ class PandasSQL(object):
         self._tables[name] = new_df
         return len(new_df.index)
 
-    def frame_from_data(self, data, col_def):
+    @staticmethod
+    def frame_from_data(data, col_def):
         col_names = [c[0] for c in col_def]
         col_types = [c[1] for c in col_def]
         intermediate = pd.DataFrame(data, columns=col_names)
@@ -89,12 +90,19 @@ class PandasSQL(object):
                 # exists. 
                 raise ValueError(f"The specified table, {table_name}, already exists.")
 
-        with open(file_path, 'rb') as f:
-            df = pickle.load(f)
-            assert isinstance(df, pd.core.frame.DataFrame)
-            self._tables[table_name] = df
-            self._log(f"The table, {table_name}, has been loaded.")
+        else:
+            with open(file_path, 'rb') as f:
+                df = pickle.load(f)
+                assert isinstance(df, pd.core.frame.DataFrame)
+                self.register_table(table_name, df)
+                self._log(f"The table, {table_name}, has been loaded.")
+                
         return len(self._tables[table_name].index)
+
+    def register_table(self, table_name, frame):
+        if table_name in self._tables:
+            raise ValueError(f"The table name ({table_name}) already exists.")
+        self._tables[table_name] = frame
 
     def drop_table(self, name, if_exists=False):
         if name not in self._tables:

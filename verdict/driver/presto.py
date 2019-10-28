@@ -54,7 +54,7 @@ class PrestoDriver(BaseDriver):
             self.drop_table(full_table_name)
             log(f"Dropped {full_table_name}.", 'info')
 
-    def drop_table(self, table_name, exists=False):
+    def drop_table(self, table_name, if_exists=False):
         """
         @param table_name  A full name of the table to drop
         @param exists  If true, include 'if exists'
@@ -123,6 +123,17 @@ class PrestoDriver(BaseDriver):
         return cache_meta, result, desc
 
 
+    def create_schema(self, schema_name, if_not_exists=True):
+        """
+        :param schema_name:
+            The schema to create. Recommended to prepend the catalog name too, e.g., "hive.verdict"
+        """
+        if if_not_exists:
+            self._sql(f"CREATE SCHEMA IF NOT EXISTS {schema_name}")
+        else:
+            self._sql(f"CREATE SCHEMA {schema_name}")
+
+
     def create_sample(self, table_name, key_col, sampling_predicate, output_sql_only):
         """
         @param table_name  The source table name
@@ -150,6 +161,8 @@ class PrestoDriver(BaseDriver):
             return None
 
         try:
+            self.create_schema(f"{self._sample_catalog}.{self._sample_schema}")
+
             result, desc = self._sql_with_meta(sql)
             new_row_count = result[0][0]
             if new_row_count == 0:
@@ -170,8 +183,8 @@ class PrestoDriver(BaseDriver):
             }
 
         except Exception:
-            log("Error occurred. We drop sample tables that may have been created.")
-            self.drop_table(target_table, exists=True)
+            log("Error(s) occurred. We drop the sample tables that may have been created.")
+            self.drop_table(target_table, if_exists=True)
             raise
 
     def _sample_table_name(self, sample_id):
@@ -294,7 +307,7 @@ class PrestoDriver(BaseDriver):
         @return  A result in json string format
         """
         assert_type(query, dict)
-        log(f'Presto received a query: {query}')
+        log(f'Presto received a query: {query}', 'debug')
 
         query_obj = from_verdict_query(query)
         assert_type(query_obj, DerivedTable)

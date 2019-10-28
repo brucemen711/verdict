@@ -6,6 +6,7 @@ import os
 import pandas as pd
 import pickle
 import time
+import traceback
 from threading import Thread
 from tornado.ioloop import IOLoop
 from tornado.web import Application, RequestHandler
@@ -48,11 +49,13 @@ class PandasSQLHandler(RequestHandler):
             response = pickle.dumps(result)
             self.write(response)
         except Exception as e:
-            pandas_server_log(f"{e}", "error")
+            var = traceback.format_exc()
+            pandas_server_log(f"{var}", "error")
             response = pickle.dumps({
                 "status": "error",
                 "type": "result",
-                "result": e
+                "result": var,
+                "error": e,
                 })
             self.write(response)
 
@@ -76,7 +79,9 @@ class PandasSQLHandler(RequestHandler):
             assert 'table-name' in request
             table_name = request['table-name']
             file_path = request['file-path']
-            row_count = get_pandas_sql().load_table(table_name, file_path, if_not_exists=True)
+            if_not_exists = request['if-not-exists']
+            row_count = get_pandas_sql().load_table(table_name, file_path, 
+                                                    if_not_exists=if_not_exists)
             pandas_server_log(f"The requested table has been loaded: {table_name}.")
             return {
                 "status": "ok",

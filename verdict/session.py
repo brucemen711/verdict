@@ -4,6 +4,7 @@ import pathlib
 import pdb
 import pprint
 import threading
+import time
 from .common.tools import *
 from .core.cache import CacheManager
 from .core.querying2 import Querying
@@ -114,6 +115,8 @@ class VerdictSession(object):
         :return: An answer as pandas.DataFrame. This answer is expected to satisfy the specified
                  error level with high probability.
         """
+        start = time.time()
+
         assert_type(sql, str)
         sql = sql.strip()
         sql = ' '.join(sql.split())
@@ -121,11 +124,14 @@ class VerdictSession(object):
 
         if len(sql) >= 7 and sql[:7].lower().startswith('bypass '):    # bypass
             sql = sql[7:]
-            return self.execute_bypass(sql)
+            result = self.execute_bypass(sql)
+        else:
+            request = sql2verdict_query(sql)
+            request["type"] = "single_agg"
 
-        request = sql2verdict_query(sql)
-        request["type"] = "single_agg"
-        return self.json(request, rel_err_bound)
+            result = self.json(request, rel_err_bound)
+        log(f"Returning an answer in {time.time() - start} sec(s).")
+        return result
 
 
     def sql_stream(self, sql):
@@ -140,6 +146,8 @@ class VerdictSession(object):
                 for result in v.json_stream(query):
                     print(result)
         """
+        start = time.time()
+
         assert_type(sql, str)
         sql = sql.strip()
         sql = ' '.join(sql.split())
@@ -147,7 +155,10 @@ class VerdictSession(object):
 
         request = sql2verdict_query(sql)
         request["type"] = "stream_agg"
-        return self.json_stream(request)
+        itr = self.json_stream(request)
+
+        log(f"Returning an iterator (for answers) in {time.time() - start} sec(s).")
+        return itr
 
 
     def json(self, query_request, rel_err_bound=0.01):
@@ -274,7 +285,8 @@ class VerdictSession(object):
 
 
     # SAMPLING METHODS
-    def create_sample(self, table_name, key_col, output_sql_only=False, cache_size=int(5e5)):
+    def create_sample(self, table_name, key_col='_rowid', output_sql_only=False, 
+                      cache_size=int(5e5)):
         """Creates a sample of the designated source table using the key column.
 
         In more detail, this method performs the following additional operations:
@@ -308,17 +320,23 @@ class VerdictSession(object):
         sample_id = sample_meta["sample_id"]
         log(f"A sample table has been created (sample_id: {sample_id}).")
 
-        # Store sample_meta
-        # sample_meta = self.create_accurate_sample_meta(sample_meta)
-        sample_meta['source_name'] = table_name
-        meta.store_sample_meta(table_name, sample_id, sample_meta)
-        log(f"Sample metadata stored (sample_id: {sample_id}).")
+        try:
+            # Store sample_meta
+            # sample_meta = self.create_accurate_sample_meta(sample_meta)
+            sample_meta['source_name'] = table_name
+            meta.store_sample_meta(table_name, sample_id, sample_meta)
+            log(f"Sample metadata stored (sample_id: {sample_id}).")
 
-        # Cache the sample table
-        cache_meta, cache_data, col_def = engine.get_cache(sample_id, sampling_predicate)
-        cache_engine.store_cache_meta(sample_id, cache_meta)
-        cache_engine.store_cache_data(sample_id, cache_data, col_def)
-        return sample_id
+            # Cache the sample table
+            cache_meta, cache_data, col_def = engine.get_cache(sample_id, sampling_predicate)
+            cache_engine.store_cache_meta(sample_id, cache_meta)
+            cache_engine.store_cache_data(sample_id, cache_data, col_def)
+            return sample_id
+        except Exception:
+            log(f"Error(s) occurred. We remove the tables and metadata that may have been created.")
+            engine.drop_sample(sample_id)
+            cache_engine.drop_cache_meta(sample_id)
+            cache_engine.drop_cache_data(sample_id)
 
 
     def drop_sample(self, sample_id):

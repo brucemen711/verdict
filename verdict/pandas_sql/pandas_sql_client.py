@@ -40,7 +40,7 @@ class PandasSQLClient(object):
     def _log(self, msg):
         self._logger.debug(msg)
 
-    def load_table(self, table_name, file_path):
+    def load_table(self, table_name, file_path, if_not_exists=True):
         """
         return:
             The number of rows in the loaded table.
@@ -48,7 +48,8 @@ class PandasSQLClient(object):
         response = self.request({
             "type": "load-table",
             "table-name": table_name,
-            "file-path": file_path
+            "file-path": file_path,
+            "if-not-exists": if_not_exists,
             })
         return response["result"]
 
@@ -67,7 +68,9 @@ class PandasSQLClient(object):
 
         # error check
         if response["status"] == "error":
-            e = response["result"]
+            trace = response["result"]
+            e = response["error"]
+            self._logger.error(trace)
             raise e
 
         return response
