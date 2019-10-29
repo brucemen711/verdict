@@ -5,6 +5,7 @@ import json
 import os
 import pandas as pd
 import pickle
+import psutil
 import time
 import traceback
 from threading import Thread
@@ -152,10 +153,23 @@ def pandas_server_start(port=PANDAS_SQL_DEFAULT_PORT, in_thread=False):
         start_app(port)
 
 
-def main():
-    pandas_server_log(f"Pandas SQL server mode")
+def find_pandas_sql_process():
+    for process in psutil.process_iter():
+        try:
+            cmd = process.cmdline()
+            if (len(cmd) >= 2) and ("pandas-sql-server" in cmd[1]):
+                return process
+        except (psutil.AccessDenied, psutil.ZombieProcess):
+            continue
+    return None
 
+
+def main():
     parser = argparse.ArgumentParser(description='PandasSQL server')
+
+    # main command
+    parser.add_argument('command', type=str, nargs='?', choices=['start', 'stop'],
+                        default='start', const='start', help='The main command: start or stop')
 
     # cache loading option
     parser.add_argument('--preload-cache', dest='preload-cache', action='store_true')
@@ -171,11 +185,23 @@ def main():
 
     args = parser.parse_args()
 
-    if args.preload_cache:
-        cache_dir = args.cache_dir
-        for name in os.listdir(cache_dir):
-            full_path = os.path.join(cache_dir, name)
-            cache_to_load.append(full_path)
+    if args.command == 'stop':
+        # do something
+        pandas_sql_process = find_pandas_sql_process()
+        if pandas_sql_process is None:
+            print(f"Failed: didn't find any verdict servers.")
+        else:
+            pandas_sql_pid = pandas_sql_process.pid
+            pandas_sql_process.kill()
+            print(f"Success: killed the Pandas SQL server (pid={pandas_sql_pid}).")
 
-    listening_port = args.port
-    pandas_server_start(listening_port)
+    else:
+        pandas_server_log(f"Pandas SQL server mode")
+        if args.preload_cache:
+            cache_dir = args.cache_dir
+            for name in os.listdir(cache_dir):
+                full_path = os.path.join(cache_dir, name)
+                cache_to_load.append(full_path)
+
+        listening_port = args.port
+        pandas_server_start(listening_port)

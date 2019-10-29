@@ -15,7 +15,9 @@ redis-server --daemonize yes
 popd
 
 # download cache
+pandas-sql-server stop
 aws s3 cp --recursive s3://verdictpublic/verdict_cache/0.1.6/ /usr/local/var/verdict/cache/
+nohup pandas-sql-server --preload-cache &
 
 #echo "waiting for 10 secs for redis to load data from the dump"
 #sleep 10
