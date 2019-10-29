@@ -1,7 +1,13 @@
 FROM ubuntu:18.04
 
 RUN apt -y update
-RUN apt install -y default-jre vim redis curl
+RUN apt install -y vim redis curl openjdk-11-jdk
+
+# # Install Oracle Java10
+# RUN add-apt-repository ppa:webupd8team/java
+# RUN apt update
+# RUN apt install oracle-java8-installer
+# RUN apt-get install oracle-java10-set-default
 
 RUN curl -s -o /root/Miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
 RUN bash /root/Miniconda.sh -b -p /root/miniconda
