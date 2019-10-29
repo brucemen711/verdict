@@ -21,8 +21,9 @@ RUN jupyter lab build
 RUN unset NODE_OPTIONS
 
 RUN mkdir /opt/notebooks
-RUN curl -s http://mirror.reverse.net/pub/apache/zeppelin/zeppelin-0.8.1/zeppelin-0.8.1-bin-all.tgz \
-    | tar -xz -C /root
+RUN curl -s -o /root/zeppelin-0.8.1-bin-all.tgz http://apache.cs.utah.edu/zeppelin/zeppelin-0.8.1/zeppelin-0.8.1-bin-all.tgz
+RUN tar xzf /root/zeppelin-0.8.1-bin-all.tgz -C /root 
+RUN chown -R root:root /root/zeppelin-0.8.1-bin-all		# weirdly, the owner is set to 503 after unzip
 
 # Copy and install verdict package
 RUN mkdir /root/verdict
