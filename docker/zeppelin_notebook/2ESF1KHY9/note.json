@@ -3,7 +3,7 @@
     {
       "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thursday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:17:22.189",
+      "dateUpdated": "2019-10-29 19:51:08.755",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -28,8 +28,8 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-10-28 23:17:22.209",
-      "dateFinished": "2019-10-28 23:17:30.844",
+      "dateStarted": "2019-10-29 19:51:08.821",
+      "dateFinished": "2019-10-29 19:51:11.921",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -153,9 +153,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# People purchase the most on Saturday followed by Sunday",
+      "text": "%md\n# 1. People \u003cspan style\u003d\"color:red\"\u003epurchase the most\u003c/span\u003e on Saturday followed by Sunday",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 22:44:56.306",
+      "dateUpdated": "2019-10-29 20:06:00.403",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -179,7 +179,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePeople purchase the most on Saturday followed by Sunday\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. People \u003cspan style\u003d\"color:red\"\u003epurchase the most\u003c/span\u003e on Saturday followed by Sunday\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -187,15 +187,15 @@
       "jobName": "paragraph_1572125345747_-611159523",
       "id": "20191026-212905_822270821",
       "dateCreated": "2019-10-26 21:29:05.747",
-      "dateStarted": "2019-10-26 22:44:56.307",
-      "dateFinished": "2019-10-26 22:44:56.311",
+      "dateStarted": "2019-10-29 20:06:00.406",
+      "dateFinished": "2019-10-29 20:06:00.438",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:08:03.711",
+      "dateUpdated": "2019-10-29 20:11:56.911",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -279,15 +279,15 @@
       "jobName": "paragraph_1572302853114_1067630594",
       "id": "20191028-224733_424578856",
       "dateCreated": "2019-10-28 22:47:33.114",
-      "dateStarted": "2019-10-28 22:54:49.036",
-      "dateFinished": "2019-10-28 22:54:55.921",
+      "dateStarted": "2019-10-29 19:52:28.813",
+      "dateFinished": "2019-10-29 19:52:37.425",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:08:03.872",
+      "dateUpdated": "2019-10-29 20:17:19.030",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -295,7 +295,7 @@
         "results": {
           "0": {
             "graph": {
-              "mode": "multiBarChart",
+              "mode": "table",
               "height": 300.0,
               "optionOpen": false,
               "setting": {
@@ -418,15 +418,15 @@
       "jobName": "paragraph_1572124882764_-1543086177",
       "id": "20191026-212122_1751757888",
       "dateCreated": "2019-10-26 21:21:22.764",
-      "dateStarted": "2019-10-28 22:55:02.253",
-      "dateFinished": "2019-10-28 22:55:02.408",
+      "dateStarted": "2019-10-29 19:52:22.027",
+      "dateFinished": "2019-10-29 19:52:22.227",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# \"Produce\" drives Weekend sales",
+      "text": "%md\n# 2. \u003cspan style\u003d\"color:red\"\u003eWhat products\u003c/span\u003e are sold the most on weekend? \"Produce\"",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:09:28.290",
+      "dateUpdated": "2019-10-29 20:06:47.980",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -450,7 +450,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u0026ldquo;Produce\u0026rdquo; drives Weekend sales\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. \u003cspan style\u003d\"color:red\"\u003eWhat products\u003c/span\u003e are sold the most on weekend? \u0026ldquo;Produce\u0026rdquo;\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -458,15 +458,15 @@
       "jobName": "paragraph_1572125395527_1856302582",
       "id": "20191026-212955_1420239986",
       "dateCreated": "2019-10-26 21:29:55.528",
-      "dateStarted": "2019-10-28 23:09:28.290",
-      "dateFinished": "2019-10-28 23:09:30.954",
+      "dateStarted": "2019-10-29 20:06:47.982",
+      "dateFinished": "2019-10-29 20:06:47.993",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\npresto_sales_by_department \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n     ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nz.show(replace_dow(presto_sales_by_department))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:18:39.576",
+      "dateUpdated": "2019-10-29 20:11:56.969",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -556,15 +556,15 @@
       "jobName": "paragraph_1572301684564_-840481688",
       "id": "20191028-222804_1103152124",
       "dateCreated": "2019-10-28 22:28:04.564",
-      "dateStarted": "2019-10-28 22:36:33.461",
-      "dateFinished": "2019-10-28 22:51:10.649",
+      "dateStarted": "2019-10-29 19:52:52.923",
+      "dateFinished": "2019-10-29 20:02:55.164",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nverdict_sales_by_department \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nz.show(replace_dow(verdict_sales_by_department))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:18:31.950",
+      "dateUpdated": "2019-10-29 20:17:14.168",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -572,7 +572,7 @@
         "results": {
           "0": {
             "graph": {
-              "mode": "multiBarChart",
+              "mode": "table",
               "height": 364.0,
               "optionOpen": false,
               "setting": {
@@ -723,15 +723,15 @@
       "jobName": "paragraph_1572124234413_-1358816919",
       "id": "20191026-211034_426820453",
       "dateCreated": "2019-10-26 21:10:34.414",
-      "dateStarted": "2019-10-28 23:01:50.578",
-      "dateFinished": "2019-10-28 23:01:53.934",
+      "dateStarted": "2019-10-29 19:52:41.177",
+      "dateFinished": "2019-10-29 19:52:47.845",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# \"Produce\" is most orderd on Saturday afternoon",
+      "text": "%md\n# 3. Any \u003cspan style\u003d\"color:red\"\u003etime-sensitive\u003c/span\u003e sales pattern?\n\n## 3.1 \"Produce\" is most sold on Saturday afternoon",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:15:31.972",
+      "dateUpdated": "2019-10-29 20:07:43.999",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -756,7 +756,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u0026ldquo;Produce\u0026rdquo; is most orderd on Saturday afternoon\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. Any \u003cspan style\u003d\"color:red\"\u003etime-sensitive\u003c/span\u003e sales pattern?\u003c/h1\u003e\n\u003ch2\u003e3.1 \u0026ldquo;Produce\u0026rdquo; is most sold on Saturday afternoon\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -764,20 +764,78 @@
       "jobName": "paragraph_1572304370961_-1144247186",
       "id": "20191028-231250_45515445",
       "dateCreated": "2019-10-28 23:12:50.961",
-      "dateStarted": "2019-10-28 23:15:31.973",
-      "dateFinished": "2019-10-28 23:15:31.979",
+      "dateStarted": "2019-10-29 20:07:43.999",
+      "dateFinished": "2019-10-29 20:07:44.005",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nsales_by_department \u003d v.sql(\"\"\"\\\nbypass select order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\nwhere department \u003d \u0027produce\u0027\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(sales_by_department))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:18:01.975",
+      "dateUpdated": "2019-10-29 20:11:56.151",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "order_dow": "string",
+                      "order_hour_of_day": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_hour_of_day",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "order_dow",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
@@ -791,11 +849,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-15115398881519165325.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 8, in \u003cmodule\u003e\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/session.py\", line 127, in sql\n    result \u003d self.execute_bypass(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/session.py\", line 284, in execute_bypass\n    return self._engine.sql(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/driver/presto.py\", line 329, in sql\n    result, desc \u003d self._sql_with_meta(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/driver/presto.py\", line 739, in _sql_with_meta\n    result \u003d cursor.fetchall()\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/dbapi.py\", line 292, in fetchall\n    return list(self.genall())\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 467, in __iter__\n    rows \u003d self._query.fetch()\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 534, in fetch\n    status \u003d self._request.process(response)\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 412, in process\n    raise self._process_error(response[\u0027error\u0027], response.get(\u0027id\u0027))\nprestodb.exceptions.PrestoQueryError: PrestoQueryError(type\u003dINSUFFICIENT_RESOURCES, name\u003dEXCEEDED_LOCAL_MEMORY_LIMIT, message\u003d\"Query exceeded per-node user memory limit of 18GB [Allocated: 17.74GB, Delta: 287.62MB, Top Consumers: {HashBuilderOperator\u003d17.74GB, ScanFilterAndProjectOperator\u003d2.41GB, PartitionedOutputOperator\u003d44.39MB}]\", query_id\u003d20191028_231802_00036_nyt72)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-15115398881519165325.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-15115398881519165325.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 8, in \u003cmodule\u003e\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/session.py\", line 127, in sql\n    result \u003d self.execute_bypass(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/session.py\", line 284, in execute_bypass\n    return self._engine.sql(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/driver/presto.py\", line 329, in sql\n    result, desc \u003d self._sql_with_meta(sql)\n  File \"/root/miniconda/lib/python3.7/site-packages/verdict/driver/presto.py\", line 739, in _sql_with_meta\n    result \u003d cursor.fetchall()\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/dbapi.py\", line 292, in fetchall\n    return list(self.genall())\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 467, in __iter__\n    rows \u003d self._query.fetch()\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 534, in fetch\n    status \u003d self._request.process(response)\n  File \"/root/miniconda/lib/python3.7/site-packages/prestodb/client.py\", line 412, in process\n    raise self._process_error(response[\u0027error\u0027], response.get(\u0027id\u0027))\nprestodb.exceptions.PrestoQueryError: PrestoQueryError(type\u003dINSUFFICIENT_RESOURCES, name\u003dEXCEEDED_LOCAL_MEMORY_LIMIT, message\u003d\"Query exceeded per-node user memory limit of 18GB [Allocated: 17.74GB, Delta: 287.62MB, Top Consumers: {HashBuilderOperator\u003d17.74GB, ScanFilterAndProjectOperator\u003d2.41GB, PartitionedOutputOperator\u003d44.39MB}]\", query_id\u003d20191028_231802_00036_nyt72)\n\n"
+            "type": "TABLE",
+            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t1288221\nSaturday\t1\t721818\nSaturday\t2\t410694\nSaturday\t3\t268916\nSaturday\t4\t255787\nSaturday\t5\t372717\nSaturday\t6\t1080318\nSaturday\t7\t4341914\nSaturday\t8\t9958126\nSaturday\t9\t14374123\nSaturday\t10\t16954818\nSaturday\t11\t17417425\nSaturday\t12\t17342102\nSaturday\t13\t18023158\nSaturday\t14\t18153148\nSaturday\t15\t17708954\nSaturday\t16\t15901592\nSaturday\t17\t12374133\nSaturday\t18\t8882190\nSaturday\t19\t6781273\nSaturday\t20\t5936620\nSaturday\t21\t5136865\nSaturday\t22\t4025103\nSaturday\t23\t2376187\nSunday\t0\t1218575\nSunday\t1\t560098\nSunday\t2\t319687\nSunday\t3\t206392\nSunday\t4\t234569\nSunday\t5\t479334\nSunday\t6\t1673110\nSunday\t7\t5205135\nSunday\t8\t10230500\nSunday\t9\t14815558\nSunday\t10\t16047934\nSunday\t11\t15027824\nSunday\t12\t13973315\nSunday\t13\t13850566\nSunday\t14\t13790551\nSunday\t15\t13392936\nSunday\t16\t12648023\nSunday\t17\t10025148\nSunday\t18\t7598465\nSunday\t19\t5720878\nSunday\t20\t4488986\nSunday\t21\t3704311\nSunday\t22\t2903745\nSunday\t23\t1781824\nMonday\t0\t926692\nMonday\t1\t454267\nMonday\t2\t237141\nMonday\t3\t203461\nMonday\t4\t197327\nMonday\t5\t401221\nMonday\t6\t1316416\nMonday\t7\t3715437\nMonday\t8\t6412796\nMonday\t9\t9183908\nMonday\t10\t10038885\nMonday\t11\t9945766\nMonday\t12\t9485390\nMonday\t13\t9640901\nMonday\t14\t9655564\nMonday\t15\t9678032\nMonday\t16\t9542763\nMonday\t17\t7822235\nMonday\t18\t6331216\nMonday\t19\t4808471\nMonday\t20\t3755260\nMonday\t21\t3104286\nMonday\t22\t2515383\nMonday\t23\t1619474\nTuesday\t0\t834773\nTuesday\t1\t402858\nTuesday\t2\t257299\nTuesday\t3\t159521\nTuesday\t4\t192285\nTuesday\t5\t360464\nTuesday\t6\t1195354\nTuesday\t7\t3245205\nTuesday\t8\t5689923\nTuesday\t9\t7670355\nTuesday\t10\t8582678\nTuesday\t11\t8617914\nTuesday\t12\t8311194\nTuesday\t13\t8561524\nTuesday\t14\t8531278\nTuesday\t15\t8869116\nTuesday\t16\t8479360\nTuesday\t17\t7195763\nTuesday\t18\t5843517\nTuesday\t19\t4495329\nTuesday\t20\t3466679\nTuesday\t21\t3083415\nTuesday\t22\t2554863\nTuesday\t23\t1553625\nWednesday\t0\t766587\nWednesday\t1\t422246\nWednesday\t2\t240571\nWednesday\t3\t182748\nWednesday\t4\t192389\nWednesday\t5\t352177\nWednesday\t6\t1184875\nWednesday\t7\t3308956\nWednesday\t8\t5554085\nWednesday\t9\t7496934\nWednesday\t10\t8332981\nWednesday\t11\t8305432\nWednesday\t12\t8088905\nWednesday\t13\t8233381\nWednesday\t14\t8237042\nWednesday\t15\t8277826\nWednesday\t16\t8304890\nWednesday\t17\t6978803\nWednesday\t18\t5637864\nWednesday\t19\t4669451\nWednesday\t20\t3807014\nWednesday\t21\t3359148\nWednesday\t22\t2887686\nWednesday\t23\t1712713\nThursday\t0\t916801\nThursday\t1\t462084\nThursday\t2\t250936\nThursday\t3\t228430\nThursday\t4\t255155\nThursday\t5\t435977\nThursday\t6\t1365938\nThursday\t7\t3856338\nThursday\t8\t6537800\nThursday\t9\t8928217\nThursday\t10\t9912997\nThursday\t11\t9976241\nThursday\t12\t9554809\nThursday\t13\t9440729\nThursday\t14\t9753264\nThursday\t15\t9627517\nThursday\t16\t9123510\nThursday\t17\t7466630\nThursday\t18\t6008098\nThursday\t19\t4621943\nThursday\t20\t3676307\nThursday\t21\t3085422\nThursday\t22\t2532900\nThursday\t23\t1713811\nFriday\t0\t974233\nFriday\t1\t549431\nFriday\t2\t327188\nFriday\t3\t209692\nFriday\t4\t226125\nFriday\t5\t316576\nFriday\t6\t993183\nFriday\t7\t3550798\nFriday\t8\t7279080\nFriday\t9\t9697398\nFriday\t10\t11093626\nFriday\t11\t11350644\nFriday\t12\t11254920\nFriday\t13\t11336278\nFriday\t14\t11804699\nFriday\t15\t11361522\nFriday\t16\t10603525\nFriday\t17\t8641983\nFriday\t18\t6696889\nFriday\t19\t5091904\nFriday\t20\t4022275\nFriday\t21\t3662787\nFriday\t22\t3083492\nFriday\t23\t2070766\n"
           }
         ]
       },
@@ -803,15 +861,15 @@
       "jobName": "paragraph_1572304374295_89249475",
       "id": "20191028-231254_757572290",
       "dateCreated": "2019-10-28 23:12:54.295",
-      "dateStarted": "2019-10-28 23:18:02.005",
-      "dateFinished": "2019-10-28 23:19:17.815",
-      "status": "ERROR",
+      "dateStarted": "2019-10-29 20:03:32.075",
+      "dateFinished": "2019-10-29 20:07:28.550",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nverdict_produce_sales_by_hours \u003d v.sql(\"\"\"\\\nselect order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027produce\u0027\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\", 0.1)\nz.show(replace_dow(verdict_produce_sales_by_hours))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:18:25.727",
+      "dateUpdated": "2019-10-29 20:11:56.703",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -969,15 +1027,15 @@
       "jobName": "paragraph_1572304181478_1641062225",
       "id": "20191028-230941_2055384765",
       "dateCreated": "2019-10-28 23:09:41.479",
-      "dateStarted": "2019-10-28 23:17:51.092",
-      "dateFinished": "2019-10-28 23:17:56.328",
+      "dateStarted": "2019-10-29 20:03:23.677",
+      "dateFinished": "2019-10-29 20:03:29.038",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# Frozen products are ordered more in the afternoon",
+      "text": "%md\n## 3.2 Frozen products are ordered more in the afternoon",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 22:43:23.032",
+      "dateUpdated": "2019-10-29 20:07:48.693",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1001,7 +1059,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eFrozen products are ordered more in the afternoon\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3.2 Frozen products are ordered more in the afternoon\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1009,15 +1067,15 @@
       "jobName": "paragraph_1572128115868_-396332900",
       "id": "20191026-221515_136520021",
       "dateCreated": "2019-10-26 22:15:15.868",
-      "dateStarted": "2019-10-26 22:43:23.033",
-      "dateFinished": "2019-10-26 22:43:23.037",
+      "dateStarted": "2019-10-29 20:07:48.693",
+      "dateFinished": "2019-10-29 20:07:48.699",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\npresto_frozen_by_hour \u003d v.sql(\"\"\"\\\nbypass select order_hour_of_day, department, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n    ON p.order_id \u003d o.order_id\nwhere department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027\ngroup by order_hour_of_day, department\norder by order_hour_of_day, department\"\"\")\nz.show(presto_frozen_by_hour)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:19:31.491",
+      "dateUpdated": "2019-10-29 20:11:56.886",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1108,15 +1166,15 @@
       "jobName": "paragraph_1572302470296_748894594",
       "id": "20191028-224110_1440582116",
       "dateCreated": "2019-10-28 22:41:10.296",
-      "dateStarted": "2019-10-28 22:55:19.191",
-      "dateFinished": "2019-10-28 23:01:07.848",
+      "dateStarted": "2019-10-29 20:08:39.838",
+      "dateFinished": "2019-10-29 20:11:53.476",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nverdict_frozen_by_hour \u003d v.sql(\"\"\"\\\nselect order_hour_of_day, department, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n    ON order_id \u003d order_id\nwhere department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027\ngroup by order_hour_of_day, department\norder by order_hour_of_day, department\"\"\")\nz.show(verdict_frozen_by_hour)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:19:14.394",
+      "dateUpdated": "2019-10-29 20:11:56.752",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1275,15 +1333,15 @@
       "jobName": "paragraph_1572125842286_808400136",
       "id": "20191026-213722_701436767",
       "dateCreated": "2019-10-26 21:37:22.286",
-      "dateStarted": "2019-10-28 23:01:37.349",
-      "dateFinished": "2019-10-28 23:01:41.043",
+      "dateStarted": "2019-10-29 20:08:33.834",
+      "dateFinished": "2019-10-29 20:08:37.842",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# People order more on Sunday morning",
+      "text": "%md\n## 3.3 People order \u003cspan style\u003d\"color:red\"\u003ethe most\u003c/span\u003e on Sunday morning \n# (We May want to remove this because the regular query is too fast)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 22:42:49.699",
+      "dateUpdated": "2019-10-29 20:12:58.986",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1307,7 +1365,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003ePeople order more on Sunday morning\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3.3 People order \u003cspan style\u003d\"color:red\"\u003ethe most\u003c/span\u003e on Sunday morning\u003c/h2\u003e\n\u003ch1\u003e(We May want to remove this because the regular query is too fast)\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1315,15 +1373,15 @@
       "jobName": "paragraph_1572125495340_-624403078",
       "id": "20191026-213135_958375413",
       "dateCreated": "2019-10-26 21:31:35.340",
-      "dateStarted": "2019-10-26 22:42:49.701",
-      "dateFinished": "2019-10-26 22:42:49.705",
+      "dateStarted": "2019-10-29 20:12:48.634",
+      "dateFinished": "2019-10-29 20:12:48.640",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ntime_dow_correlation \u003d v.sql(\"\"\"\\\nbypass select order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.orders o\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(time_dow_correlation))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:08:04.216",
+      "dateUpdated": "2019-10-29 20:12:22.712",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1414,15 +1472,15 @@
       "jobName": "paragraph_1572302545488_1858780584",
       "id": "20191028-224225_1943653690",
       "dateCreated": "2019-10-28 22:42:25.488",
-      "dateStarted": "2019-10-28 23:02:26.594",
-      "dateFinished": "2019-10-28 23:02:37.768",
+      "dateStarted": "2019-10-29 20:12:15.509",
+      "dateFinished": "2019-10-29 20:12:22.018",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ntime_dow_correlation \u003d v.sql(\"\"\"\\\nselect order_dow, order_hour_of_day, count(*) c\nfrom \n  hive.instacart.orders o\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(time_dow_correlation))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:08:04.277",
+      "dateUpdated": "2019-10-29 20:12:14.192",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1566,8 +1624,8 @@
       "jobName": "paragraph_1572124334496_-1237705006",
       "id": "20191026-211214_1074587644",
       "dateCreated": "2019-10-26 21:12:14.496",
-      "dateStarted": "2019-10-28 23:03:32.177",
-      "dateFinished": "2019-10-28 23:03:34.081",
+      "dateStarted": "2019-10-29 20:12:11.219",
+      "dateFinished": "2019-10-29 20:12:13.315",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
