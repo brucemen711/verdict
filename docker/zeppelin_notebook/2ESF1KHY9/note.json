@@ -3,10 +3,10 @@
     {
       "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thusday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 21:53:50.984",
+      "dateUpdated": "2019-10-30 02:59:19.514",
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -28,15 +28,49 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-10-29 21:53:51.024",
-      "dateFinished": "2019-10-29 21:53:51.054",
+      "dateStarted": "2019-10-30 02:59:19.546",
+      "dateFinished": "2019-10-30 02:59:19.563",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nv.info()",
+      "text": "%python\ndef append_errors(actual, expected, col\u003d\u0027c\u0027):\n    actual \u003d actual.reset_index(drop\u003dTrue)\n    expected \u003d expected.reset_index(drop\u003dTrue)\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([expected, 100 * (expected[col] - actual[col]).abs() / expected[col]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 22:12:19.566",
+      "dateUpdated": "2019-10-30 04:16:58.584",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1572395350062_-1755198401",
+      "id": "20191030-002910_1376654274",
+      "dateCreated": "2019-10-30 00:29:10.062",
+      "dateStarted": "2019-10-30 04:16:58.611",
+      "dateFinished": "2019-10-30 04:16:58.617",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 04:29:52.964",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -61,7 +95,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "{   \u0027Registered Tables\u0027: [   \u0027hive.instacart.order_products\u0027,\n                             \u0027hive.instacart.orders\u0027,\n                             \u0027hive.tpch_sf1.lineitem\u0027,\n                             \u0027hive.tpch_sf1.orders\u0027,\n                             \u0027hive.tpch_sf100.lineitem\u0027,\n                             \u0027hive.tpch_sf100.orders\u0027]}\n"
+            "data": "{   \u0027Column Names and Types\u0027: {   \u0027add_to_car_order\u0027: \u0027integer\u0027,\n                                  \u0027aisle\u0027: \u0027varchar\u0027,\n                                  \u0027aisle_id\u0027: \u0027integer\u0027,\n                                  \u0027department\u0027: \u0027varchar\u0027,\n                                  \u0027department_id\u0027: \u0027integer\u0027,\n                                  \u0027order_id\u0027: \u0027integer\u0027,\n                                  \u0027product_id\u0027: \u0027integer\u0027,\n                                  \u0027product_name\u0027: \u0027varchar\u0027,\n                                  \u0027reordered\u0027: \u0027integer\u0027},\n    \u0027Created Samples\u0027: [   \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027,\n                           \u0027s8adf84d5a3374d85b847c581e7416145order_id\u0027],\n    \u0027Row Count\u0027: 3288764416}\n"
           }
         ]
       },
@@ -69,8 +103,47 @@
       "jobName": "paragraph_1572124227592_-1911750028",
       "id": "20191026-211027_1391026417",
       "dateCreated": "2019-10-26 21:10:27.592",
-      "dateStarted": "2019-10-28 22:35:09.009",
-      "dateFinished": "2019-10-28 22:35:09.014",
+      "dateStarted": "2019-10-30 04:29:52.995",
+      "dateFinished": "2019-10-30 04:29:53.003",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nv.info(\u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 04:30:06.250",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{   \u0027key_col\u0027: \u0027_rowid\u0027,\n    \u0027part_col\u0027: \u0027verdictcol\u0027,\n    \u0027partitions\u0027: [   {\u0027col_value\u0027: 1, \u0027sampling_ratio\u0027: 0.5},\n                      {\u0027col_value\u0027: 2, \u0027sampling_ratio\u0027: 0.25},\n                      {\u0027col_value\u0027: 3, \u0027sampling_ratio\u0027: 0.125},\n                      {\u0027col_value\u0027: 4, \u0027sampling_ratio\u0027: 0.0625},\n                      {\u0027col_value\u0027: 5, \u0027sampling_ratio\u0027: 0.03125},\n                      {\u0027col_value\u0027: 6, \u0027sampling_ratio\u0027: 0.015625},\n                      {\u0027col_value\u0027: 7, \u0027sampling_ratio\u0027: 0.0078125},\n                      {\u0027col_value\u0027: 8, \u0027sampling_ratio\u0027: 0.00390625},\n                      {\u0027col_value\u0027: 9, \u0027sampling_ratio\u0027: 0.001953125},\n                      {\u0027col_value\u0027: 10, \u0027sampling_ratio\u0027: 0.0009765625},\n                      {\u0027col_value\u0027: 11, \u0027sampling_ratio\u0027: 0.00048828125},\n                      {\u0027col_value\u0027: 12, \u0027sampling_ratio\u0027: 0.000244140625},\n                      {\u0027col_value\u0027: 13, \u0027sampling_ratio\u0027: 0.0001220703125},\n                      {\u0027col_value\u0027: 14, \u0027sampling_ratio\u0027: 0.0001220703125}],\n    \u0027sample_id\u0027: \u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027,\n    \u0027source_name\u0027: \u0027hive.instacart.order_products\u0027,\n    \u0027table_name\u0027: \u0027hive.verdict.sd56a949e5d404a58b633e387a3401cc0_rowid\u0027}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572409800179_76174315",
+      "id": "20191030-043000_5877588",
+      "dateCreated": "2019-10-30 04:30:00.179",
+      "dateStarted": "2019-10-30 04:30:06.277",
+      "dateFinished": "2019-10-30 04:30:06.284",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -116,7 +189,7 @@
     {
       "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 22:12:28.788",
+      "dateUpdated": "2019-10-30 00:26:39.545",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -147,8 +220,8 @@
       "jobName": "paragraph_1572125722389_-1540892106",
       "id": "20191026-213522_509501608",
       "dateCreated": "2019-10-26 21:35:22.389",
-      "dateStarted": "2019-10-29 22:12:27.827",
-      "dateFinished": "2019-10-29 22:12:27.846",
+      "dateStarted": "2019-10-30 00:26:39.603",
+      "dateFinished": "2019-10-30 00:26:39.622",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -193,9 +266,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))",
+      "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:57:47.010",
+      "dateUpdated": "2019-10-30 03:10:38.556",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -271,7 +344,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tc\nSaturday\t96144800\nSunday\t93996480\nMonday\t74761440\nTuesday\t69915520\nWednesday\t68214240\nThursday\t72538880\nFriday\t71801760\n"
+            "data": "order_dow\tc\nSaturday\t96144800\nSunday\t93996480\nMonday\t74761440\nTuesday\t69915520\nWednesday\t68214240\nThusday\t72538880\nFriday\t71801760\n"
           }
         ]
       },
@@ -279,15 +352,15 @@
       "jobName": "paragraph_1572302853114_1067630594",
       "id": "20191028-224733_424578856",
       "dateCreated": "2019-10-28 22:47:33.114",
-      "dateStarted": "2019-10-29 19:52:28.813",
-      "dateFinished": "2019-10-29 19:52:37.425",
+      "dateStarted": "2019-10-30 02:59:22.212",
+      "dateFinished": "2019-10-30 02:59:30.306",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_sales_by_days \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", cache_only\u003dTrue)\nz.show(replace_dow())",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", 0.005)\nverdict_sales_by_days \u003d append_errors(sales_by_days, replace_dow(df))\nz.show(verdict_sales_by_days)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:08:29.003",
+      "dateUpdated": "2019-10-30 03:31:24.273",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -304,7 +377,8 @@
                   "tableColumnTypeState": {
                     "names": {
                       "order_dow": "string",
-                      "c": "string"
+                      "c": "string",
+                      "rel error (%)": "string"
                     },
                     "updated": false
                   },
@@ -361,7 +435,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tc\nSaturday\t96360448\nSunday\t94119936\nMonday\t74885120\nTuesday\t69437440\nWednesday\t67915776\nThusday\t72654848\nFriday\t70946816\n"
+            "data": "order_dow\tc\trel error (%)\nSaturday\t96144800\t0.19727855905269087\nSunday\t93996480\t0.13574654463340932\nMonday\t74761440\t0.06266682636369858\nTuesday\t69915520\t0.7642896146637347\nWednesday\t68214240\t0.34112390606877646\nThusday\t72538880\t0.08724585670486175\nFriday\t71801760\t0.7918960585326587\n"
           }
         ]
       },
@@ -369,8 +443,8 @@
       "jobName": "paragraph_1572393982394_-817530277",
       "id": "20191030-000622_1429015947",
       "dateCreated": "2019-10-30 00:06:22.394",
-      "dateStarted": "2019-10-30 00:06:43.016",
-      "dateFinished": "2019-10-30 00:06:43.199",
+      "dateStarted": "2019-10-30 03:03:11.561",
+      "dateFinished": "2019-10-30 03:03:13.071",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -415,9 +489,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\npresto_sales_by_department \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n     ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nz.show(replace_dow(presto_sales_by_department))",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nsales_by_department \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nz.show(sales_by_department)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:57:50.131",
+      "dateUpdated": "2019-10-30 03:15:06.148",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -499,7 +573,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1767244\nalcohol\tSunday\t2065459\nalcohol\tMonday\t2041032\nalcohol\tTuesday\t2265006\nalcohol\tWednesday\t2638034\nalcohol\tThursday\t2769233\nalcohol\tFriday\t1948860\nbabies\tSaturday\t8279140\nbabies\tSunday\t7322883\nbabies\tMonday\t5697107\nbabies\tTuesday\t5278996\nbabies\tWednesday\t5177980\nbabies\tThursday\t5211562\nbabies\tFriday\t5724212\nbakery\tSaturday\t23016055\nbakery\tSunday\t20567025\nbakery\tMonday\t15398890\nbakery\tTuesday\t14072455\nbakery\tWednesday\t13920642\nbakery\tThursday\t15575228\nbakery\tFriday\t16585453\nbeverages\tSaturday\t44318183\nbeverages\tSunday\t48599937\nbeverages\tMonday\t37488582\nbeverages\tTuesday\t34881431\nbeverages\tWednesday\t34446440\nbeverages\tThursday\t38142815\nbeverages\tFriday\t34815614\nbreakfast\tSaturday\t13014692\nbreakfast\tSunday\t13035956\nbreakfast\tMonday\t9668000\nbreakfast\tTuesday\t8803389\nbreakfast\tWednesday\t8625353\nbreakfast\tThursday\t9550900\nbreakfast\tFriday\t9171260\nbulk\tSaturday\t625183\nbulk\tSunday\t635185\nbulk\tMonday\t459406\nbulk\tTuesday\t428979\nbulk\tWednesday\t403493\nbulk\tThursday\t463373\nbulk\tFriday\t478242\ncanned goods\tSaturday\t23313898\ncanned goods\tSunday\t18185898\ncanned goods\tMonday\t13415572\ncanned goods\tTuesday\t12094139\ncanned goods\tWednesday\t11684305\ncanned goods\tThursday\t13098588\ncanned goods\tFriday\t16604000\ndairy eggs\tSaturday\t104133592\ndairy eggs\tSunday\t96265990\ndairy eggs\tMonday\t71367725\ndairy eggs\tTuesday\t64714352\ndairy eggs\tWednesday\t64222325\ndairy eggs\tThursday\t71994518\ndairy eggs\tFriday\t74872681\ndeli\tSaturday\t21408216\ndeli\tSunday\t18629544\ndeli\tMonday\t13681605\ndeli\tTuesday\t12343016\ndeli\tWednesday\t12096350\ndeli\tThursday\t13617682\ndeli\tFriday\t14753255\ndry goods pasta\tSaturday\t18644349\ndry goods pasta\tSunday\t14946602\ndry goods pasta\tMonday\t11236392\ndry goods pasta\tTuesday\t10007702\ndry goods pasta\tWednesday\t9728047\ndry goods pasta\tThursday\t10528503\ndry goods pasta\tFriday\t12955637\nfrozen\tSaturday\t44953065\nfrozen\tSunday\t36462224\nfrozen\tMonday\t28591628\nfrozen\tTuesday\t26996624\nfrozen\tWednesday\t26378186\nfrozen\tThursday\t29542046\nfrozen\tFriday\t34334829\nhousehold\tSaturday\t12998237\nhousehold\tSunday\t12284904\nhousehold\tMonday\t10174002\nhousehold\tTuesday\t9715306\nhousehold\tWednesday\t9512963\nhousehold\tThursday\t10141323\nhousehold\tFriday\t10501115\ninternational\tSaturday\t5708160\ninternational\tSunday\t4685966\ninternational\tMonday\t3478092\ninternational\tTuesday\t3197924\ninternational\tWednesday\t3002655\ninternational\tThursday\t3326541\ninternational\tFriday\t3944835\nmeat seafood\tSaturday\t15487434\nmeat seafood\tSunday\t12004555\nmeat seafood\tMonday\t8758717\nmeat seafood\tTuesday\t7886340\nmeat seafood\tWednesday\t7790226\nmeat seafood\tThursday\t8914769\nmeat seafood\tFriday\t11050921\nmissing\tSaturday\t1484035\nmissing\tSunday\t1210823\nmissing\tMonday\t920684\nmissing\tTuesday\t898478\nmissing\tWednesday\t879011\nmissing\tThursday\t1023473\nmissing\tFriday\t1113547\nother\tSaturday\t625905\nother\tSunday\t606166\nother\tMonday\t502657\nother\tTuesday\t471259\nother\tWednesday\t463198\nother\tThursday\t515169\nother\tFriday\t517785\npantry\tSaturday\t36008576\npantry\tSunday\t30788523\npantry\tMonday\t24328384\npantry\tTuesday\t23027517\npantry\tWednesday\t22797472\npantry\tThursday\t25221289\npantry\tFriday\t28106694\npersonal care\tSaturday\t8271606\npersonal care\tSunday\t7318334\npersonal care\tMonday\t6081665\npersonal care\tTuesday\t5818254\npersonal care\tWednesday\t5599254\npersonal care\tThursday\t5900085\npersonal care\tFriday\t6581341\npets\tSaturday\t1756804\npets\tSunday\t1475947\npets\tMonday\t1206019\npets\tTuesday\t1276037\npets\tWednesday\t1256821\npets\tThursday\t1396951\npets\tFriday\t1578744\nproduce\tSaturday\t200086202\nproduce\tSunday\t169897464\nproduce\tMonday\t120992292\nproduce\tTuesday\t108154292\nproduce\tWednesday\t106534704\nproduce\tThursday\t119731854\nproduce\tFriday\t136199014\nsnacks\tSaturday\t49464672\nsnacks\tSunday\t54098620\nsnacks\tMonday\t40258847\nsnacks\tTuesday\t36512770\nsnacks\tWednesday\t36158407\nsnacks\tThursday\t39906426\nsnacks\tFriday\t35992911\n"
+            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1767244\nalcohol\tSunday\t2065459\nalcohol\tMonday\t2041032\nalcohol\tTuesday\t2265006\nalcohol\tWednesday\t2638034\nalcohol\tThusday\t2769233\nalcohol\tFriday\t1948860\nbulk\tSaturday\t625183\nbulk\tSunday\t635185\nbulk\tMonday\t459406\nbulk\tTuesday\t428979\nbulk\tWednesday\t403493\nbulk\tThusday\t463373\nbulk\tFriday\t478242\nmissing\tSaturday\t1484035\nmissing\tSunday\t1210823\nmissing\tMonday\t920684\nmissing\tTuesday\t898478\nmissing\tWednesday\t879011\nmissing\tThusday\t1023473\nmissing\tFriday\t1113547\nother\tSaturday\t625905\nother\tSunday\t606166\nother\tMonday\t502657\nother\tTuesday\t471259\nother\tWednesday\t463198\nother\tThusday\t515169\nother\tFriday\t517785\npets\tSaturday\t1756804\npets\tSunday\t1475947\npets\tMonday\t1206019\npets\tTuesday\t1276037\npets\tWednesday\t1256821\npets\tThusday\t1396951\npets\tFriday\t1578744\n"
           }
         ]
       },
@@ -507,15 +581,15 @@
       "jobName": "paragraph_1572301684564_-840481688",
       "id": "20191028-222804_1103152124",
       "dateCreated": "2019-10-28 22:28:04.564",
-      "dateStarted": "2019-10-29 19:52:52.923",
-      "dateFinished": "2019-10-29 20:02:55.164",
+      "dateStarted": "2019-10-30 03:04:07.050",
+      "dateFinished": "2019-10-30 03:14:53.850",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_sales_by_department \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027bulk\u0027 \n   or department \u003d \u0027other\u0027 or department \u003d \u0027missing\u0027 \n   or department \u003d \u0027pets\u0027\ngroup by department, order_dow\norder by department, order_dow\"\"\", cache_only\u003dTrue)\nz.show(replace_dow(verdict_sales_by_department))",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\ndf \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nverdict_sales_by_department \u003d append_errors(sales_by_department, df)\nz.show(verdict_sales_by_department)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:10:24.410",
+      "dateUpdated": "2019-10-30 03:23:39.369",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -533,7 +607,8 @@
                     "names": {
                       "department": "string",
                       "order_dow": "string",
-                      "c": "string"
+                      "c": "string",
+                      "rel error (%)": "string"
                     },
                     "updated": false
                   },
@@ -678,7 +753,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1826816\nalcohol\tSunday\t1826816\nalcohol\tMonday\t2260992\nalcohol\tTuesday\t2170880\nalcohol\tWednesday\t3055616\nalcohol\tThusday\t2646016\nalcohol\tFriday\t1835008\nbulk\tSaturday\t622592\nbulk\tSunday\t638976\nbulk\tMonday\t548864\nbulk\tTuesday\t409600\nbulk\tWednesday\t327680\nbulk\tThusday\t475136\nbulk\tFriday\t393216\nmissing\tSaturday\t1515520\nmissing\tSunday\t1155072\nmissing\tMonday\t868352\nmissing\tTuesday\t843776\nmissing\tWednesday\t892928\nmissing\tThusday\t1007616\nmissing\tFriday\t1089536\nother\tSaturday\t655360\nother\tSunday\t557056\nother\tMonday\t491520\nother\tTuesday\t565248\nother\tWednesday\t450560\nother\tThusday\t483328\nother\tFriday\t557056\npets\tSaturday\t1720320\npets\tSunday\t1343488\npets\tMonday\t1138688\npets\tTuesday\t1335296\npets\tWednesday\t1220608\npets\tThusday\t1474560\npets\tFriday\t1703936\n"
+            "data": "department\torder_dow\tc\trel error (%)\nalcohol\tSaturday\t1784320\t0.9570032281205165\nalcohol\tSunday\t2099712\t1.631318961838576\nalcohol\tMonday\t2029056\t0.5902252081756245\nalcohol\tTuesday\t2277376\t0.5431689804406474\nalcohol\tWednesday\t2629632\t0.31951238804517135\nalcohol\tThusday\t2726912\t1.55197527459632\nalcohol\tFriday\t1972736\t1.210298793148196\nbulk\tSaturday\t599552\t4.2750253522630235\nbulk\tSunday\t626176\t1.438732880212592\nbulk\tMonday\t480256\t4.3414345682302775\nbulk\tTuesday\t430080\t0.25599888392857145\nbulk\tWednesday\t380416\t6.066253785329744\nbulk\tThusday\t482816\t4.026999933722164\nbulk\tFriday\t473088\t1.089437905844156\nmissing\tSaturday\t1471488\t0.852674299756437\nmissing\tSunday\t1206784\t0.3346912123462028\nmissing\tMonday\t907264\t1.4791725451467268\nmissing\tTuesday\t877568\t2.382721338973162\nmissing\tWednesday\t885760\t0.7619445447976878\nmissing\tThusday\t985600\t3.8426339285714284\nmissing\tFriday\t1118208\t0.416827638507326\nother\tSaturday\t640512\t2.280519334532374\nother\tSunday\t582144\t4.126470426561125\nother\tMonday\t485376\t3.560332608122363\nother\tTuesday\t512512\t8.049177385114884\nother\tWednesday\t453120\t2.2241348870056497\nother\tThusday\t513024\t0.41810909431137727\nother\tFriday\t535040\t3.224992523923445\npets\tSaturday\t1732608\t1.3965074615839244\npets\tSunday\t1507840\t2.1151448429541597\npets\tMonday\t1170432\t3.0405012849956257\npets\tTuesday\t1315328\t2.9871636580381473\npets\tWednesday\t1288704\t2.4740359306714343\npets\tThusday\t1366016\t2.2646147629310347\npets\tFriday\t1616896\t2.3595828055731474\n"
           }
         ]
       },
@@ -686,8 +761,8 @@
       "jobName": "paragraph_1572124234413_-1358816919",
       "id": "20191026-211034_426820453",
       "dateCreated": "2019-10-26 21:10:34.414",
-      "dateStarted": "2019-10-30 00:10:21.855",
-      "dateFinished": "2019-10-30 00:10:23.734",
+      "dateStarted": "2019-10-30 03:19:04.753",
+      "dateFinished": "2019-10-30 03:19:08.104",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -733,9 +808,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_reorder_rates \u003d v.sql(\"\"\"\\\nbypass select department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\nz.show(verdict_reorder_rates)",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department\norder by a1 desc\"\"\")\nreorder_rates \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027,\n    \u0027pantry\u0027, \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nz.show(reorder_rates)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:11:23.284",
+      "dateUpdated": "2019-10-30 03:37:54.166",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -743,7 +818,7 @@
         "results": {
           "0": {
             "graph": {
-              "mode": "lineChart",
+              "mode": "multiBarChart",
               "height": 300.0,
               "optionOpen": false,
               "setting": {
@@ -771,27 +846,27 @@
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
               "commonSetting": {},
               "keys": [
                 {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_dow",
+                  "name": "department",
                   "index": 0.0,
                   "aggr": "sum"
                 }
               ],
+              "groups": [],
               "values": [
                 {
-                  "name": "c",
-                  "index": 2.0,
+                  "name": "a1",
+                  "index": 1.0,
                   "aggr": "sum"
                 }
               ]
@@ -816,7 +891,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t1288221\nSaturday\t1\t721818\nSaturday\t2\t410694\nSaturday\t3\t268916\nSaturday\t4\t255787\nSaturday\t5\t372717\nSaturday\t6\t1080318\nSaturday\t7\t4341914\nSaturday\t8\t9958126\nSaturday\t9\t14374123\nSaturday\t10\t16954818\nSaturday\t11\t17417425\nSaturday\t12\t17342102\nSaturday\t13\t18023158\nSaturday\t14\t18153148\nSaturday\t15\t17708954\nSaturday\t16\t15901592\nSaturday\t17\t12374133\nSaturday\t18\t8882190\nSaturday\t19\t6781273\nSaturday\t20\t5936620\nSaturday\t21\t5136865\nSaturday\t22\t4025103\nSaturday\t23\t2376187\nSunday\t0\t1218575\nSunday\t1\t560098\nSunday\t2\t319687\nSunday\t3\t206392\nSunday\t4\t234569\nSunday\t5\t479334\nSunday\t6\t1673110\nSunday\t7\t5205135\nSunday\t8\t10230500\nSunday\t9\t14815558\nSunday\t10\t16047934\nSunday\t11\t15027824\nSunday\t12\t13973315\nSunday\t13\t13850566\nSunday\t14\t13790551\nSunday\t15\t13392936\nSunday\t16\t12648023\nSunday\t17\t10025148\nSunday\t18\t7598465\nSunday\t19\t5720878\nSunday\t20\t4488986\nSunday\t21\t3704311\nSunday\t22\t2903745\nSunday\t23\t1781824\nMonday\t0\t926692\nMonday\t1\t454267\nMonday\t2\t237141\nMonday\t3\t203461\nMonday\t4\t197327\nMonday\t5\t401221\nMonday\t6\t1316416\nMonday\t7\t3715437\nMonday\t8\t6412796\nMonday\t9\t9183908\nMonday\t10\t10038885\nMonday\t11\t9945766\nMonday\t12\t9485390\nMonday\t13\t9640901\nMonday\t14\t9655564\nMonday\t15\t9678032\nMonday\t16\t9542763\nMonday\t17\t7822235\nMonday\t18\t6331216\nMonday\t19\t4808471\nMonday\t20\t3755260\nMonday\t21\t3104286\nMonday\t22\t2515383\nMonday\t23\t1619474\nTuesday\t0\t834773\nTuesday\t1\t402858\nTuesday\t2\t257299\nTuesday\t3\t159521\nTuesday\t4\t192285\nTuesday\t5\t360464\nTuesday\t6\t1195354\nTuesday\t7\t3245205\nTuesday\t8\t5689923\nTuesday\t9\t7670355\nTuesday\t10\t8582678\nTuesday\t11\t8617914\nTuesday\t12\t8311194\nTuesday\t13\t8561524\nTuesday\t14\t8531278\nTuesday\t15\t8869116\nTuesday\t16\t8479360\nTuesday\t17\t7195763\nTuesday\t18\t5843517\nTuesday\t19\t4495329\nTuesday\t20\t3466679\nTuesday\t21\t3083415\nTuesday\t22\t2554863\nTuesday\t23\t1553625\nWednesday\t0\t766587\nWednesday\t1\t422246\nWednesday\t2\t240571\nWednesday\t3\t182748\nWednesday\t4\t192389\nWednesday\t5\t352177\nWednesday\t6\t1184875\nWednesday\t7\t3308956\nWednesday\t8\t5554085\nWednesday\t9\t7496934\nWednesday\t10\t8332981\nWednesday\t11\t8305432\nWednesday\t12\t8088905\nWednesday\t13\t8233381\nWednesday\t14\t8237042\nWednesday\t15\t8277826\nWednesday\t16\t8304890\nWednesday\t17\t6978803\nWednesday\t18\t5637864\nWednesday\t19\t4669451\nWednesday\t20\t3807014\nWednesday\t21\t3359148\nWednesday\t22\t2887686\nWednesday\t23\t1712713\nThursday\t0\t916801\nThursday\t1\t462084\nThursday\t2\t250936\nThursday\t3\t228430\nThursday\t4\t255155\nThursday\t5\t435977\nThursday\t6\t1365938\nThursday\t7\t3856338\nThursday\t8\t6537800\nThursday\t9\t8928217\nThursday\t10\t9912997\nThursday\t11\t9976241\nThursday\t12\t9554809\nThursday\t13\t9440729\nThursday\t14\t9753264\nThursday\t15\t9627517\nThursday\t16\t9123510\nThursday\t17\t7466630\nThursday\t18\t6008098\nThursday\t19\t4621943\nThursday\t20\t3676307\nThursday\t21\t3085422\nThursday\t22\t2532900\nThursday\t23\t1713811\nFriday\t0\t974233\nFriday\t1\t549431\nFriday\t2\t327188\nFriday\t3\t209692\nFriday\t4\t226125\nFriday\t5\t316576\nFriday\t6\t993183\nFriday\t7\t3550798\nFriday\t8\t7279080\nFriday\t9\t9697398\nFriday\t10\t11093626\nFriday\t11\t11350644\nFriday\t12\t11254920\nFriday\t13\t11336278\nFriday\t14\t11804699\nFriday\t15\t11361522\nFriday\t16\t10603525\nFriday\t17\t8641983\nFriday\t18\t6696889\nFriday\t19\t5091904\nFriday\t20\t4022275\nFriday\t21\t3662787\nFriday\t22\t3083492\nFriday\t23\t2070766\n"
+            "data": "department\ta1\nproduce\t0.6504809283582765\npets\t0.6025383914848246\nbabies\t0.5776046873550661\nalcohol\t0.5713089004694973\ndry goods pasta\t0.4621970171646055\npantry\t0.34734411733582765\npersonal care\t0.3218135954020645\n"
           }
         ]
       },
@@ -824,15 +899,15 @@
       "jobName": "paragraph_1572304374295_89249475",
       "id": "20191028-231254_757572290",
       "dateCreated": "2019-10-28 23:12:54.295",
-      "dateStarted": "2019-10-29 20:03:32.075",
-      "dateFinished": "2019-10-29 20:07:28.550",
+      "dateStarted": "2019-10-30 03:20:40.598",
+      "dateFinished": "2019-10-30 03:28:54.048",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_reorder_rates \u003d v.sql(\"\"\"\\\nselect department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\nz.show(verdict_reorder_rates)",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\ndf \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027,\n        \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_reorder_rates \u003d append_errors(reorder_rates, df, \u0027a1\u0027)\nz.show(verdict_reorder_rates)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:11:10.814",
+      "dateUpdated": "2019-10-30 03:39:32.699",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -849,7 +924,8 @@
                   "tableColumnTypeState": {
                     "names": {
                       "department": "string",
-                      "a1": "string"
+                      "a1": "string",
+                      "rel error (%)": "string"
                     },
                     "updated": false
                   },
@@ -975,7 +1051,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "department\ta1\nproduce\t0.6534528372282332\nalcohol\t0.5988463555322496\nbabies\t0.5809935205183585\npets\t0.5647155812036274\ndry goods pasta\t0.46294576523031206\npantry\t0.34445262747476496\npersonal care\t0.31072248719307544\n"
+            "data": "department\ta1\trel error (%)\nproduce\t0.6534528372282332\t0.45480082121346405\nalcohol\t0.5988463555322496\t0.6165247426935571\nbabies\t0.5809935205183585\t0.5832824366559064\npets\t0.5647155812036274\t1.1675469006569659\ndry goods pasta\t0.46294576523031206\t0.16173559020117098\npantry\t0.34445262747476496\t0.8394448555264757\npersonal care\t0.31072248719307544\t3.569457849408021\n"
           }
         ]
       },
@@ -983,8 +1059,8 @@
       "jobName": "paragraph_1572304181478_1641062225",
       "id": "20191028-230941_2055384765",
       "dateCreated": "2019-10-28 23:09:41.479",
-      "dateStarted": "2019-10-29 22:21:06.545",
-      "dateFinished": "2019-10-29 22:21:07.911",
+      "dateStarted": "2019-10-30 03:31:13.330",
+      "dateFinished": "2019-10-30 03:31:13.812",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1029,9 +1105,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ncart_order \u003d v.sql(\"\"\"\\\nbypass select department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere order_dow \u003d 4 and\n   (department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027)\ngroup by department\norder by a1\"\"\")\nz.show(cart_order)",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ncart_order \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n    df[\u0027department\u0027].isin(\n    [\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \u0027personal care\u0027, \n     \u0027dry goods pasta\u0027])]\nz.show(cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:17:57.502",
+      "dateUpdated": "2019-10-30 04:17:52.956",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1047,9 +1123,9 @@
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "order_hour_of_day": "string",
+                      "order_dow": "string",
                       "department": "string",
-                      "c": "string"
+                      "a1": "string"
                     },
                     "updated": false
                   },
@@ -1077,16 +1153,10 @@
                   "aggr": "sum"
                 }
               ],
-              "groups": [
-                {
-                  "name": "order_hour_of_day",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
+              "groups": [],
               "values": [
                 {
-                  "name": "c",
+                  "name": "a1",
                   "index": 2.0,
                   "aggr": "sum"
                 }
@@ -1114,7 +1184,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_hour_of_day\tdepartment\tc\n0\tbeverages\t1775525\n0\tfrozen\t1592991\n0\tsnacks\t1803511\n1\tbeverages\t1021678\n1\tfrozen\t911935\n1\tsnacks\t933953\n2\tbeverages\t631649\n2\tfrozen\t554147\n2\tsnacks\t573122\n3\tbeverages\t480946\n3\tfrozen\t413813\n3\tsnacks\t427178\n4\tbeverages\t488940\n4\tfrozen\t421093\n4\tsnacks\t407169\n5\tbeverages\t764074\n5\tfrozen\t656890\n5\tsnacks\t674209\n6\tbeverages\t2336695\n6\tfrozen\t1962426\n6\tsnacks\t2348902\n7\tbeverages\t6969472\n7\tfrozen\t5760736\n7\tsnacks\t7330037\n8\tbeverages\t14170282\n8\tfrozen\t10638024\n8\tsnacks\t15195275\n9\tbeverages\t22106695\n9\tfrozen\t14854725\n9\tsnacks\t23495837\n10\tbeverages\t24797232\n10\tfrozen\t17210312\n10\tsnacks\t26546830\n11\tbeverages\t23729564\n11\tfrozen\t18028382\n11\tsnacks\t25774329\n12\tbeverages\t21758675\n12\tfrozen\t18061367\n12\tsnacks\t23757853\n13\tbeverages\t22265841\n13\tfrozen\t18644419\n13\tsnacks\t23989084\n14\tbeverages\t22510305\n14\tfrozen\t18945898\n14\tsnacks\t24343254\n15\tbeverages\t22212249\n15\tfrozen\t19226088\n15\tsnacks\t23930813\n16\tbeverages\t21236475\n16\tfrozen\t18867628\n16\tsnacks\t22912873\n17\tbeverages\t17785356\n17\tfrozen\t16460691\n17\tsnacks\t18846349\n18\tbeverages\t14068882\n18\tfrozen\t13402103\n18\tsnacks\t14446089\n19\tbeverages\t10757976\n19\tfrozen\t10346037\n19\tsnacks\t11116702\n20\tbeverages\t7689701\n20\tfrozen\t7537367\n20\tsnacks\t8357413\n21\tbeverages\t5681299\n21\tfrozen\t5577166\n21\tsnacks\t6605223\n22\tbeverages\t4417482\n22\tfrozen\t4358964\n22\tsnacks\t5199250\n23\tbeverages\t3036009\n23\tfrozen\t2825400\n23\tsnacks\t3377398\n"
+            "data": "order_dow\tdepartment\ta1\n4\talcohol\t5.293533366135539\n4\tbabies\t10.07978690531829\n4\tdry goods pasta\t9.94836928727832\n4\tpantry\t9.1571164557193\n4\tpersonal care\t8.344505178725594\n4\tpets\t7.497460656688582\n4\tproduce\t7.763728061796652\n"
           }
         ]
       },
@@ -1122,15 +1192,15 @@
       "jobName": "paragraph_1572302470296_748894594",
       "id": "20191028-224110_1440582116",
       "dateCreated": "2019-10-28 22:41:10.296",
-      "dateStarted": "2019-10-29 20:08:39.838",
-      "dateFinished": "2019-10-29 20:11:53.476",
+      "dateStarted": "2019-10-30 03:52:20.088",
+      "dateFinished": "2019-10-30 04:08:44.289",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_cart_order \u003d v.sql(\"\"\"\\\nselect department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere order_dow \u003d 4 and\n   (department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027)\ngroup by department\norder by a1\"\"\", cache_only\u003dTrue)\nz.show(verdict_cart_order)",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ndf \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n         df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n            \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_cart_order \u003d append_errors(cart_order, df, \u0027a1\u0027)\nz.show(verdict_cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:16:51.824",
+      "dateUpdated": "2019-10-30 04:17:34.598",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1146,9 +1216,10 @@
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "order_hour_of_day": "string",
+                      "order_dow": "string",
                       "department": "string",
-                      "c": "string"
+                      "a1": "string",
+                      "rel error (%)": "string"
                     },
                     "updated": false
                   },
@@ -1179,7 +1250,7 @@
               "keys": [
                 {
                   "name": "department",
-                  "index": 0.0,
+                  "index": 1.0,
                   "aggr": "sum"
                 }
               ],
@@ -1187,7 +1258,7 @@
               "values": [
                 {
                   "name": "a1",
-                  "index": 1.0,
+                  "index": 2.0,
                   "aggr": "sum"
                 }
               ]
@@ -1275,7 +1346,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "department\ta1\nalcohol\t5.560321715817694\nproduce\t7.769494887837632\npets\t8.228187919463087\npersonal care\t8.524682651622003\npantry\t9.23065693430657\ndry goods pasta\t9.89646672144618\nbabies\t10.76530612244898\n"
+            "data": "order_dow\tdepartment\ta1\trel error (%)\n4\talcohol\t5.560321715817694\t4.7980739841583375\n4\tbabies\t10.76530612244898\t6.367856234958065\n4\tdry goods pasta\t9.89646672144618\t0.5244555182473831\n4\tpantry\t9.23065693430657\t0.7966982102210844\n4\tpersonal care\t8.524682651622003\t2.1135974236193547\n4\tpets\t8.228187919463087\t8.880779947259484\n4\tproduce\t7.769494887837632\t0.0742239505171358\n"
           }
         ]
       },
@@ -1283,8 +1354,8 @@
       "jobName": "paragraph_1572125842286_808400136",
       "id": "20191026-213722_701436767",
       "dateCreated": "2019-10-26 21:37:22.286",
-      "dateStarted": "2019-10-30 00:16:46.353",
-      "dateFinished": "2019-10-30 00:16:49.132",
+      "dateStarted": "2019-10-30 04:17:19.797",
+      "dateFinished": "2019-10-30 04:17:20.351",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1370,12 +1441,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nimport numpy as np\nfrom blinkml.logistic import Logistic\nfrom scipy import sparse\nfrom sklearn.decomposition import PCA\n\ntest_data \u003d sparse.load_npz(\u0027/root/blinkml/trained_models/Criteo_test.npz\u0027)[:10000]\ntest_features \u003d test_data[:, 1:]\ntest_labels \u003d test_data[:,0]\n\npca \u003d PCA(n_components\u003d2)\ntest_features2D \u003d pca.fit_transform(test_features[:,:100].toarray())",
+      "text": "%python\nimport numpy as np\nfrom blinkml.logistic import Logistic\nfrom scipy import sparse\nfrom sklearn.decomposition import PCA\n\ntest_data \u003d sparse.load_npz(\u0027/root/blinkml-models/Criteo_test.npz\u0027)[:10000]\ntest_features \u003d test_data[:, 1:]\ntest_labels \u003d test_data[:,0]\n\npca \u003d PCA(n_components\u003d2)\ntest_features2D \u003d pca.fit_transform(test_features[:,:100].toarray())",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:00:51.068",
+      "dateUpdated": "2019-10-30 02:27:08.102",
       "config": {
         "colWidth": 12.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -1391,21 +1462,16 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nModuleNotFoundError: No module named \u0027blinkml\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nModuleNotFoundError: No module named \u0027blinkml\u0027\n\n"
-          }
-        ]
+        "code": "SUCCESS",
+        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1572393623260_1711094423",
       "id": "20191030-000023_1292263738",
       "dateCreated": "2019-10-30 00:00:23.261",
-      "dateStarted": "2019-10-30 00:00:51.099",
-      "dateFinished": "2019-10-30 00:00:51.115",
-      "status": "ERROR",
+      "dateStarted": "2019-10-30 02:27:02.793",
+      "dateFinished": "2019-10-30 02:27:16.485",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1490,12 +1556,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)",
+      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:02:05.872",
+      "dateUpdated": "2019-10-30 02:57:25.294",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -1518,21 +1584,21 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\napprox_trainer \u003d ApproxTrainer(LocalTrainer(False, beta\u003dBETA), logistic_conf)\napprox_model \u003d approx_trainer.train(Logistic, training_set)\napprox_param \u003d approx_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027, approx_param)\n",
+      "text": "%md\napprox_trainer \u003d ApproxTrainer(LocalTrainer(False, beta\u003dBETA), logistic_conf)\napprox_model \u003d approx_trainer.train(Logistic, training_set)\napprox_param \u003d approx_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027, approx_param)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:02:09.233",
+      "dateUpdated": "2019-10-30 02:57:14.685",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
+          "language": "markdown",
+          "editOnDblClick": true,
           "completionKey": "TAB",
-          "completionSupport": true
+          "completionSupport": false
         },
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/markdown"
       },
       "settings": {
         "params": {},
@@ -1627,14 +1693,61 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nfull_model \u003d Logistic(X\u003dnp.array([[1]]))\nfull_param_path \u003d \u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027\nfull_model.set_param(np.load(full_param_path))\nfull_predict \u003d full_model.predict(test_features)\nfull_predict.shape \u003d (10000,1)\nfull_df \u003d pd.DataFrame(np.hstack((test_features2D, full_predict)))\nz.show(full_df)\n",
+      "text": "%python\nfull_model \u003d Logistic(X\u003dnp.array([[1]]))\nfull_param_path \u003d \u0027/root/blinkml-models/criteo_full_param_0.001.npy\u0027\nfull_model.set_param(np.load(full_param_path))\nfull_predict \u003d full_model.predict(test_features)\nfull_predict.shape \u003d (10000,1)\nfull_df \u003d pd.DataFrame(np.hstack((test_features2D, full_predict)))\nz.show(full_df)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:03:52.379",
+      "dateUpdated": "2019-10-30 02:28:35.945",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "colWidth": 6.0,
+        "fontSize": 12.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "0": "string",
+                      "1": "string",
+                      "2": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "0",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "1",
+                    "index": 1.0,
+                    "aggr": "sum"
+                  },
+                  "group": {
+                    "name": "2",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              }
+            },
+            "helium": {}
+          }
+        },
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
@@ -1646,23 +1759,81 @@
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "0\t1\t2\n0.3461065674409421\t0.25092367985235337\t0.0\n-0.5873049660364718\t-0.7969648414445847\t0.0\n-0.4208818197817909\t0.5526239448862158\t0.0\n-0.7738260465250378\t0.7673593533348488\t0.0\n0.7001436467739843\t0.42966265558120215\t0.0\n-0.6944308128826617\t-1.1906483875685323\t0.0\n-0.6504991459714475\t-0.8188387912911238\t0.0\n1.2012309253387798\t0.11338619048955184\t0.0\n4.176707597453662\t6.394169625768443\t0.0\n-1.4312758348327506\t-0.26926002816786504\t0.0\n1.139268321942693\t-0.3893328666315023\t0.0\n1.9559366584583235\t2.8587886973694396\t0.0\n-0.5414409123114284\t-0.046460856325045694\t0.0\n-0.3283378067630879\t-1.1261771662667728\t1.0\n-0.5927958859532143\t-0.8238849049600353\t0.0\n0.4814659193856307\t0.44378277037969616\t0.0\n-0.5748846593651463\t0.11209376967002135\t0.0\n1.6621766137848022\t0.5737509890691604\t0.0\n-0.8005326931582044\t-0.21538133193257367\t0.0\n-1.3858257544119692\t-0.2606631457231446\t0.0\n-0.22230286191144993\t0.2716657568414037\t0.0\n-0.40515838346027744\t-0.2905290296043779\t0.0\n-0.7965807341466394\t-0.9663335002779101\t0.0\n-0.28121854235833066\t2.190726108135479\t0.0\n-1.3526407980910808\t-0.8906719817897144\t0.0\n5.634464549620881\t0.9873033332530887\t1.0\n-0.5538494577372111\t-0.37846492584677494\t0.0\n-0.22122160366638705\t0.5301490846590025\t0.0\n-0.5549106066187738\t0.30761700905516054\t0.0\n-1.4572675443746619\t-0.37110315810238037\t0.0\n-0.5319646137637941\t1.897114489144901\t0.0\n0.9135023567536864\t-0.012389319629290145\t0.0\n-0.7073251785245619\t-0.6873379929417779\t0.0\n-0.5249451064164299\t-0.19568141167780967\t0.0\n-0.3727197997903899\t-0.24559115243042487\t0.0\n-0.6254924021626581\t-0.11411112902240857\t0.0\n-0.6037366868316272\t-0.2598584574884638\t0.0\n-0.5755754805623243\t1.4155103746522495\t0.0\n-0.2634089631421197\t-0.46347139032746915\t0.0\n-1.0672728305812262\t0.0529053989847158\t0.0\n-0.9771699410059858\t-0.9830810721725647\t0.0\n0.0833533532483339\t-0.7146481556822403\t0.0\n-0.6224051967905511\t-0.4337109749603354\t0.0\n0.488798577418392\t0.6062539404991658\t0.0\n-0.14929623793232108\t-0.46337426878622257\t0.0\n-0.6388861160700532\t-0.32666412473711637\t0.0\n0.21523766983799109\t-0.5805896791979027\t0.0\n-0.8822116063977603\t-0.7273169847104469\t0.0\n1.1522794903207516\t0.1519898694999265\t0.0\n-0.47428229186082094\t-0.10832128130582512\t0.0\n-0.5161679388007245\t0.30464993550431124\t0.0\n-0.3628066446160858\t0.23076467163047712\t0.0\n1.7093340625324578\t3.9137998449329205\t0.0\n-0.3420497140124607\t-0.5440399657704438\t0.0\n0.7453840330420178\t-0.5831649544719187\t0.0\n-0.45886022692859224\t-0.13016066165374005\t0.0\n0.08461604327268199\t-0.16453987883277338\t0.0\n0.4338129219866912\t-0.7402259632843501\t0.0\n-0.22385725028017905\t-0.16305634162724916\t0.0\n0.45342730802900766\t1.9589232007852817\t0.0\n-0.9665612601460849\t-0.8071401217510877\t0.0\n-0.6993427834140754\t-0.18177230828494892\t0.0\n-0.6879732857171661\t-0.19790187265179954\t0.0\n-0.6438744452973565\t-0.01288264190642671\t0.0\n0.8028891018157696\t0.06355090072086153\t0.0\n-0.1920557619299186\t0.37743446726265\t0.0\n25.654604681608472\t-12.195296468703502\t0.0\n4.533625470182918\t-1.1622349290464586\t1.0\n-0.25221161664469754\t-1.066275954593299\t0.0\n-1.0445192708822097\t-1.0706573011526095\t0.0\n-0.6327211385190709\t-0.007277221561855832\t0.0\n-0.5999180779500739\t-0.8575036643435789\t0.0\n1.253504444460962\t0.46086219981442694\t0.0\n-0.4712814942858747\t-0.29265533466209837\t0.0\n-0.5353019771448736\t0.7624922097663559\t0.0\n-0.1606568533180259\t-0.19629421557608756\t0.0\n4.490099718359956\t-3.1119451078716853\t1.0\n0.4561184054786054\t3.4449400760417617\t0.0\n1.8616639903088879\t1.6876703479794926\t0.0\n-0.809886857769594\t-0.12235068802078987\t0.0\n-0.8751893353731075\t-0.6678139468807401\t0.0\n-0.3522443658470309\t-0.339137567162477\t0.0\n0.2216355647987557\t0.2405965958197523\t0.0\n-0.8339174266217045\t-0.5320545666959544\t0.0\n-0.2912041694302813\t1.3273272498948157\t0.0\n-0.17009004453930796\t-0.19965715121609037\t0.0\n-0.44954506003923733\t-1.509748322900628\t0.0\n-0.37150843912264864\t-0.2094598326981603\t0.0\n1.4559781611036513\t0.17299351840805213\t0.0\n-0.1619339355681399\t0.28062207934763267\t0.0\n-1.0475789887575533\t-0.0458181816751273\t0.0\n1.004385998635152\t-0.8764292925834345\t0.0\n-0.6504881240401396\t-1.466002397651873\t0.0\n-0.9852206938302736\t0.08184159221823975\t0.0\n-0.17927031344064465\t1.9447606448790922\t0.0\n-0.8935024834723511\t-1.219017034864841\t0.0\n0.5868682857954552\t2.063952708642725\t0.0\n-0.37500890836894946\t1.8549959068620532\t0.0\n-0.33091232747373117\t0.8075640698305412\t0.0\n-0.46240934504844133\t0.42845904663755924\t0.0\n-0.6593894173120946\t-0.07419521900400558\t0.0\n0.13632494263096226\t-0.10825202008445164\t0.0\n-0.3319463751509932\t-0.20063117224795676\t0.0\n-0.11765445580333077\t1.5002706492895217\t0.0\n-0.6676057278685952\t1.0786939152952895\t0.0\n0.3212868504197028\t0.8454825631348796\t0.0\n1.2210277117016302\t1.1095360516494348\t0.0\n-0.9446356591836352\t-0.8546807744841132\t0.0\n-0.5868654388172609\t0.1806502509442193\t0.0\n-0.7047219644381979\t-0.8308161781733766\t0.0\n-0.5530407092296543\t-0.9527676980911889\t0.0\n-0.3325337116250506\t-0.35888154896309493\t0.0\n-0.1694269908577576\t-0.18265380984414914\t0.0\n-0.15564363687509983\t2.180056821623029\t0.0\n-0.15898806201361618\t-0.20430808783971469\t0.0\n-0.5681411820949887\t-0.18002445568565625\t0.0\n-1.2473172012753282\t0.16401015238257372\t0.0\n-0.4624481797162032\t0.07707189696279898\t0.0\n1.7831668197592563\t0.08214210152091839\t0.0\n0.12912315004035102\t0.12911376902556332\t0.0\n-0.7881581666166784\t-0.18854212521032357\t0.0\n0.39869377804810113\t1.1709645172102934\t0.0\n-0.8020940408460678\t-0.2287582990377568\t0.0\n-0.1694200503338186\t-0.2976707179976192\t0.0\n-0.13312591470357063\t0.8622081903143943\t0.0\n-1.0904549779902912\t-0.3657225389081481\t0.0\n-0.6572039848880392\t-0.4073775958237154\t0.0\n0.430791819665451\t-1.1673947580028592\t0.0\n-0.8584555540865246\t-0.6560031919659931\t0.0\n-0.5504121648448568\t0.29411285012501553\t0.0\n-0.6784707272270223\t-0.126096064068895\t0.0\n-1.1013191956846988\t0.11281251751092698\t0.0\n0.541454004204064\t-1.7579641508124968\t0.0\n-0.25866370975260616\t0.15516657179149043\t0.0\n-0.19181554937034265\t0.648350292394605\t0.0\n-0.067896956095006\t-0.16898346852181031\t0.0\n0.14939786160761406\t0.9608579577662898\t0.0\n-1.0246599946294763\t0.28639868449521405\t0.0\n-0.48620021112900674\t-1.0004474743444443\t0.0\n-0.7992390798325123\t-0.3456989574189337\t0.0\n-0.4249391962947301\t0.9212661215933802\t0.0\n0.4782881665816626\t2.471492464634991\t0.0\n-0.8893772684832159\t0.5542535177760826\t0.0\n-0.3969652802578459\t-0.47208502102707167\t0.0\n-0.19523134482490506\t-1.4978653586059807\t0.0\n-0.6488469867732004\t-1.1876627351182667\t0.0\n9.234866051842914\t-3.9890076122760867\t1.0\n0.17351092429005782\t-0.6010421854592614\t0.0\n1.53670509442669\t-2.854956331768198\t1.0\n-0.6324013418259279\t-0.5485754292527598\t0.0\n2.509596007928676\t-1.3623211353279865\t1.0\n-1.0889577483771573\t0.1370637887766874\t0.0\n1.5625130671165548\t-0.41264510886193556\t0.0\n-1.1934969154557948\t-0.18656063222427097\t0.0\n-0.601284470678698\t0.04177477221113361\t0.0\n-0.6333188088563416\t-0.16171148568209742\t0.0\n-0.6298607108957986\t-1.1616631370953767\t1.0\n-0.9150991209753017\t-0.3697639720823505\t0.0\n-0.6322429330640184\t-0.45357225288631725\t0.0\n2.0149077375796156\t-2.0364590263583193\t0.0\n2.1623618735198344\t0.7239820619242631\t0.0\n-0.667671786622697\t-0.010135188142876967\t0.0\n0.24198468593572003\t-0.5075679962318862\t1.0\n-0.5907489273010467\t-0.4092572202541165\t0.0\n-0.27793381957000385\t-0.2857154235878464\t0.0\n0.9749569232563273\t-1.3906499457364672\t0.0\n0.7371758344181146\t3.001964153157397\t0.0\n1.115684702989887\t1.4091588507423707\t0.0\n-0.7400007406572846\t0.5143848028040134\t0.0\n-0.7306735042716446\t-0.5589360079229929\t0.0\n0.6261170413540843\t1.6314705137832928\t0.0\n-0.5681534400660755\t-1.3254281696283403\t0.0\n-0.35600578494248736\t-0.7577234807933328\t0.0\n-0.8254879472522763\t-0.9605382724594971\t0.0\n-0.9820706362230526\t-0.4765999341640062\t0.0\n0.7986208766741936\t0.09754499761748854\t0.0\n0.13004561074337417\t-0.4372036237221498\t1.0\n-0.5786763702370175\t-0.3041475748854244\t0.0\n-0.8132854052257551\t0.2518753598860456\t0.0\n-0.7757440802418701\t-0.1754766922669166\t0.0\n-0.8770110950040839\t0.49769247561357133\t0.0\n-0.49700040538921175\t-0.5814537466511714\t0.0\n-0.15504702404931708\t-0.5270128727117003\t0.0\n-0.6252764511095704\t-0.6494788442567108\t0.0\n-0.27100543609236105\t-0.77312345292378\t0.0\n-0.5894232218673208\t-1.0084936077142785\t0.0\n-0.7373672170077216\t-0.32785203845835353\t0.0\n0.11123636051727587\t-1.5604913365028543\t0.0\n0.9844809341483807\t-0.370222719450603\t0.0\n-0.2138661315011656\t1.1135763783706425\t0.0\n-0.24878501335550685\t-0.6995001895803462\t0.0\n-0.36835209095907867\t1.142666471989008\t0.0\n1.876393496882293\t-0.5083389582910626\t0.0\n0.1811179855457292\t2.085269310749394\t0.0\n-0.4568053589984483\t-0.4711437988322498\t0.0\n0.16966864985005042\t1.2730240007556364\t0.0\n-0.6908322489013479\t0.537346116884898\t0.0\n-0.756485284438614\t1.1738456978765706\t0.0\n-0.6596082266920819\t-0.10228054155779447\t0.0\n-0.7298404657770478\t-0.31951342763624163\t0.0\n-0.15303808589091533\t-0.23507681368787206\t0.0\n0.5689325580772988\t1.6229759520997207\t0.0\n-0.06798089013722208\t-0.5216059075970864\t0.0\n-0.3021139783645118\t-0.1926947423183274\t0.0\n0.2933362014795219\t1.7006726465393145\t0.0\n-0.6099207239279022\t-0.2768335175594396\t0.0\n0.7309271538415977\t-0.3605819371547934\t0.0\n0.5343717400151269\t-0.4750501360739351\t0.0\n1.0345583087885935\t2.757619986811013\t0.0\n-0.8106394699197514\t-0.4902466737162134\t0.0\n0.7616382628477122\t-0.49895197912617717\t1.0\n-1.1171025261926815\t0.1510073159784785\t0.0\n0.02251197339295681\t-0.07848478293826427\t0.0\n-0.5207295773027267\t-0.36532363679313457\t0.0\n17.262425938273903\t-8.65722252083172\t0.0\n-0.2968925960858145\t-0.8800337561361787\t0.0\n-0.4651283066958209\t-0.8524604649548488\t0.0\n-0.46809220450849803\t-0.7584969782083915\t0.0\n-0.10453834882214207\t0.4616644760950555\t0.0\n0.03471056577932064\t0.21987548210520985\t0.0\n-0.7500121273894774\t0.54086363811582\t0.0\n-0.6441524202137179\t-0.29208572415771367\t0.0\n0.6118639617816171\t1.3407777045366096\t0.0\n-0.06982865589284515\t0.5027385071374503\t0.0\n-0.7547333993721583\t-0.9221695893968384\t0.0\n-0.4300263091225425\t-0.5970503059718947\t0.0\n-0.38566919672399697\t-0.21149837888227854\t1.0\n-0.8676324232102093\t-0.6596188097358993\t0.0\n1.3276875059436322\t-0.05979716901638217\t0.0\n-1.0948263784462717\t0.36181971154271747\t0.0\n0.5081077748823691\t-1.8327819631763473\t0.0\n-0.17821427457410663\t0.42094918573585627\t0.0\n2.205447173466197\t1.512699148731169\t1.0\n0.17237962145737104\t1.6543992901705928\t0.0\n-1.121468921016873\t-0.3368240168229507\t1.0\n-0.15847226951430143\t-0.1912737457929834\t0.0\n-0.6792873954761206\t-1.7766035835381768\t0.0\n-0.7738559866806658\t0.3453288279738389\t0.0\n-1.4324735625367697\t-0.8252552968812594\t0.0\n-0.9573370429326029\t-0.4749949923135714\t0.0\n2.575864745654675\t-1.3859471021577112\t0.0\n-0.40475620913079363\t0.46418459008520785\t0.0\n-0.5850001904366231\t-0.19349596208513548\t0.0\n-0.5834833460027049\t-0.1708274761724531\t0.0\n-0.4602162837096536\t2.2502667939893253\t0.0\n2.956932589181745\t-1.5893284568701571\t0.0\n-0.48923923739326003\t-0.3271802605178149\t0.0\n0.20361816861532056\t1.0150367341005366\t0.0\n-0.7059298513090422\t-0.1247626964935442\t0.0\n-0.15695221843678053\t0.9156291291718244\t0.0\n-0.4679120083232803\t-0.03357848963377972\t0.0\n0.14716342138820176\t1.8020662785561696\t0.0\n-0.12019428050370251\t2.3121495220611994\t0.0\n-0.7568202560172982\t-0.20893392436219602\t0.0\n1.99223414324755\t6.212572333555391\t0.0\n-0.42113179963422415\t0.014877080568751458\t0.0\n-0.6813190521901404\t-0.4329230246745308\t0.0\n-0.7473090207047128\t1.2466333239015466\t0.0\n-0.751942352581805\t-0.876328821640309\t0.0\n0.14982593776503383\t1.1583346518016175\t0.0\n-0.886674398834047\t-0.7521219811860581\t0.0\n-0.5401103275538967\t-0.2559976720446764\t0.0\n0.43581614683189185\t2.8515216959166074\t0.0\n-1.0259502159604288\t-0.9945337879616514\t0.0\n-0.8899026649299892\t0.7673998713028954\t0.0\n7.624148812407559\t-6.285703732626049\t1.0\n1.306229525186223\t1.4845820932512483\t0.0\n-0.8817374062102166\t0.40990761835186057\t0.0\n0.8583240995245708\t2.8309720348512077\t0.0\n-0.31637129847483675\t0.420190694321726\t0.0\n-0.1002402652502644\t0.2458033876909041\t0.0\n-0.11204875509692033\t0.9052079318041816\t0.0\n-0.381798355809478\t0.46015735554262216\t0.0\n-0.8629609669822786\t0.2983311106300714\t0.0\n0.41600860057988087\t-1.2512811144256601\t0.0\n0.8408362941251969\t3.8985534877310752\t0.0\n-0.6262525272843507\t-0.362284179469094\t0.0\n0.13631987037940516\t-1.1066785844596005\t0.0\n0.07577928817119231\t0.47127247025704483\t0.0\n0.34559838564309364\t-0.4384634120639656\t0.0\n0.5335859379699369\t-1.1562726933248113\t0.0\n1.230150341071243\t2.9965614296191934\t0.0\n-0.6371345295399864\t-0.6939252501725119\t0.0\n0.1470934796065337\t-0.07849165176048743\t0.0\n0.11324795298989664\t-0.1910442093846655\t1.0\n-0.7138435871238421\t-1.2216695601693357\t0.0\n0.3111377259664995\t-0.31173883187543744\t0.0\n1.4857741436896466\t4.023385095478355\t0.0\n-0.010799904066228638\t0.8458755503807603\t0.0\n-1.1484418968138586\t0.11962304987621972\t0.0\n-0.5243862669504078\t-0.8912419568089879\t0.0\n1.3884154802140682\t0.2782193932909784\t0.0\n-0.6916032422786629\t-1.1907982167890006\t0.0\n-0.7227289021257187\t-0.9111882484784337\t0.0\n-0.6679392609569409\t-0.07852442026382671\t0.0\n-0.9321670303265954\t-0.7718376251117754\t0.0\n1.0500259350841046\t0.6044133610945119\t0.0\n0.008941296301724374\t-0.377227229533543\t0.0\n2.4395849402612115\t-0.9255467536029565\t0.0\n0.054703866123806254\t1.1057328274354008\t0.0\n-0.8113131035703386\t0.650109911348401\t0.0\n1.9424922552170723\t1.211897038224939\t0.0\n-0.21042319446905797\t-0.22065423163600767\t0.0\n-0.4300793885912946\t-0.32115656919176916\t0.0\n-0.9352166123158226\t-0.8715237178320335\t0.0\n4.1311974825121025\t-2.6817336475344904\t0.0\n-1.0127082992511978\t-1.4149333278933411\t0.0\n-0.6731030519131864\t-0.07516545979624586\t0.0\n2.8493530639835143\t-0.421897294056497\t0.0\n-0.8632358108676028\t0.5379573215909921\t0.0\n1.3744983528253985\t-0.29935525698712917\t0.0\n-1.1078737668375833\t-0.3190748332862666\t0.0\n0.01109003530858075\t1.651612316320268\t0.0\n-0.8637353518226639\t-0.6932234370499889\t0.0\n-0.36389097292918854\t-0.37406176649194367\t0.0\n-0.1105674933237123\t-1.0552666015920518\t0.0\n-0.6717354425202313\t0.5190767158398429\t0.0\n-0.7528708566467177\t-0.2053955115765534\t0.0\n-0.23301565617304298\t0.0019382890977167116\t0.0\n-0.29670286608586066\t0.10172472570198668\t0.0\n-0.5878940725658621\t-0.08625408518962159\t0.0\n-0.49782189508341756\t0.4253790158300883\t0.0\n-0.6929746889239029\t0.06265872537114181\t0.0\n-0.30217146004166917\t0.054208733505056124\t0.0\n-0.13126072337111783\t-0.7294011931886261\t0.0\n-0.32480429460941185\t0.19923587983416385\t0.0\n-0.7298672548329977\t-0.3012215974778817\t0.0\n-0.5202621304922981\t-0.739001665823669\t0.0\n0.5023989019613786\t-0.4473089304709451\t0.0\n-0.713887997875554\t-1.221728472302314\t1.0\n1.0396968162056033\t-0.755580798874671\t0.0\n4.337803015486082\t-1.320952680251698\t0.0\n-0.6880100630888561\t-0.2242771737947025\t0.0\n-0.09468344242257733\t0.5611149131341506\t0.0\n-0.7006768292183183\t-0.8341716586386742\t0.0\n7.187624705054379\t-3.7583662719038275\t1.0\n0.11386818065403573\t0.2682763871364511\t0.0\n0.177019489015804\t0.11821756822919804\t0.0\n-0.7601082129001759\t-0.8334712885228531\t0.0\n-0.5763756451626408\t1.0627033428634634\t0.0\n0.17196454877000297\t-0.5898586695318079\t0.0\n1.683586196297898\t-1.824355520829698\t1.0\n-0.5184286533262432\t-1.4107411091652053\t0.0\n-0.5349887082085654\t-0.1354822472966242\t0.0\n-0.0071477765288037905\t1.5113233319450599\t0.0\n-1.2828035825223936\t-0.34485796858656925\t0.0\n-0.11601236845991034\t-0.8802498386337793\t0.0\n0.8161228199913972\t1.121663612999087\t0.0\n-0.3376061329343691\t-0.46284151308013477\t0.0\n-1.0231041090748594\t0.17354025000077017\t0.0\n-0.6652044779922973\t-0.11129344441776733\t0.0\n-1.0642499454087555\t0.2674177303525799\t0.0\n-0.08694163701236127\t-0.6197879669453199\t0.0\n-0.8424300395537591\t-0.5902735529804269\t0.0\n-1.1892071640183954\t-0.3298162259517964\t0.0\n-0.8072014917459365\t-0.2604127326462077\t0.0\n-0.5029658376709146\t-0.044396377522117926\t0.0\n0.07255626696399936\t-0.46410883314863494\t1.0\n-1.1000752065777573\t0.061015882161488545\t0.0\n-0.6523828816957651\t1.2528598602782388\t0.0\n-1.0561808137857984\t-0.11867421775522237\t0.0\n2.479272550593686\t-1.4241958608518743\t1.0\n4.5236133910570775\t0.2367440622528142\t1.0\n-0.32749691587595736\t1.7741812908808634\t0.0\n-0.2852917072184525\t-0.027930850227752727\t0.0\n1.3426224322367315\t-0.8231535397107235\t1.0\n-0.36635074900588893\t1.3248725880612562\t0.0\n-0.6060442760817528\t0.3922567237357076\t0.0\n1.7130546059386342\t-0.5209595140751583\t0.0\n0.33065197796831663\t-1.187453648337737\t0.0\n-0.5360576519867454\t-1.2893840612976664\t0.0\n-0.2710452357998041\t0.9261397044188928\t0.0\n-0.1893770268036254\t-0.40355650953946814\t0.0\n-0.7169820335244315\t0.8872883102557362\t0.0\n2.6011000029522755\t1.8124950854006119\t0.0\n-0.592640601752561\t0.4032743250777236\t0.0\n-0.12352774905455192\t-0.2567594216375088\t0.0\n-0.8980622675293495\t-0.7521409882189606\t0.0\n-0.22921414634084825\t-0.28922552521135225\t0.0\n-1.04726468235376\t-0.9250938986197754\t0.0\n0.5014915853000319\t0.1261870227492486\t0.0\n-0.7370966441405067\t-0.28762244311156293\t0.0\n0.9827850430309382\t0.45393330216044386\t0.0\n0.24711608165735785\t-0.047272095183313365\t0.0\n0.755962999031127\t3.2099689328321332\t0.0\n-0.24594071145935034\t2.0654485479054348\t0.0\n-0.15489853578070215\t-0.311269617569816\t0.0\n-0.9173596632849181\t0.28550203768256566\t0.0\n0.5846826831470812\t0.43753646594048706\t0.0\n0.3564871286928987\t-0.23792525581207286\t0.0\n-0.06183248863267046\t1.596240399066614\t0.0\n0.46300669847917414\t1.386474818910561\t1.0\n0.07515017461248026\t0.41848998949749616\t1.0\n-0.6519142499936659\t-0.3083576617679084\t0.0\n-0.5723759714371701\t-0.7768516447580215\t0.0\n-0.5893745962171415\t-0.01656002484788853\t0.0\n-1.0381613033352644\t-0.905932094250507\t0.0\n-0.47133363147923224\t-0.24445037582219994\t0.0\n-0.5409426892155241\t-0.7157485534783543\t0.0\n1.4522005434137384\t-1.0375784427916375\t0.0\n-0.0710428848884244\t1.2375512622232898\t0.0\n-0.9509113584312375\t-0.8865039601773678\t0.0\n-0.7335669973280443\t-1.9321105198020183\t0.0\n-0.33709648145631105\t0.5457085259133262\t0.0\n-0.7444306110646035\t-0.20137843012414944\t0.0\n-0.22915110958131882\t-0.2784154527655497\t0.0\n-0.9669037065954571\t0.4300120838190439\t0.0\n-0.17269644696794859\t-0.21360001249645905\t0.0\n-0.7370261834936394\t-0.08973925497152427\t0.0\n0.3204654239057066\t0.504190525342329\t0.0\n0.32845908590089934\t-0.4272214521303169\t0.0\n-1.136392729252299\t-0.8283568409580806\t0.0\n0.3865740013834705\t2.501444362371717\t0.0\n1.2514905885033343\t0.005563128153604236\t0.0\n-0.8481108444990044\t-0.8307841950912788\t0.0\n-0.7720589975191954\t-0.35761821607088423\t0.0\n-1.071060130578584\t0.39488706067557605\t0.0\n-0.49995532454643143\t-0.6394529131351969\t0.0\n-0.9797958125400713\t-0.6142757517875778\t0.0\n-1.0994866384925082\t0.24082220295354195\t0.0\n-0.9616621287999985\t-0.9139140302731933\t0.0\n-0.9616031935976024\t0.37735594091042324\t0.0\n-0.5694314869151845\t-0.2557937393181025\t0.0\n-0.5486607241414093\t-1.1263020898290153\t0.0\n-1.1138512951523023\t0.1833042444006211\t0.0\n1.8017441568486545\t-1.3251956016633726\t1.0\n-0.4963762262657719\t-0.2008326692167968\t0.0\n-0.6710240782188625\t-0.12266735999684078\t0.0\n-0.3422429780490865\t0.5732880801757748\t0.0\n0.7242309562387158\t-0.6065037694188908\t0.0\n-0.7648354843187211\t0.7827955285837462\t0.0\n-0.6508332049596676\t-0.9895234367431279\t0.0\n-0.6323769147322945\t-0.6024187838615561\t0.0\n-0.6857031910270911\t-0.6821796506742915\t0.0\n-0.9077960665326141\t1.0951702335625193\t0.0\n0.10083859859294692\t0.9571564518891131\t0.0\n-0.3251373845291514\t-0.22521617840327\t1.0\n-0.3960006244331625\t0.6710201618384597\t0.0\n-0.055222649588287605\t0.32584499739854583\t0.0\n1.0746949478220627\t3.114648119289544\t0.0\n-0.339045191854945\t-0.820613085767668\t0.0\n-0.22954798114474595\t0.7634384809260836\t0.0\n0.9459439707264865\t3.103332244717209\t0.0\n-0.7458601827561905\t0.455279291720309\t0.0\n0.922281648709736\t1.9258936197888088\t0.0\n1.3814796597217445\t-1.7092742303390835\t0.0\n-0.5859861013954698\t-0.23935882244871992\t0.0\n-0.1446213965405952\t0.7537877113414213\t0.0\n0.3020236552607414\t-2.3985116028065447\t0.0\n-0.5116245421738944\t-0.22942997552193753\t0.0\n-0.08014287353238518\t0.07961988101834946\t0.0\n-0.6914775900899744\t-0.42983736801559397\t0.0\n-0.6068899951673332\t0.878045930116509\t0.0\n-1.2717642484935352\t-0.541752937385497\t0.0\n-0.7026460696757612\t-0.2645084917572741\t0.0\n-1.270188065882003\t-0.2877110778174738\t0.0\n0.012420365760188502\t1.0510046759570464\t0.0\n-1.0613191934263302\t0.5305268131321402\t0.0\n-0.9384007708556822\t-0.13587339996877248\t0.0\n-0.5492495618794323\t-0.9003008507172297\t0.0\n-0.1586220638850587\t-0.20441375498252318\t0.0\n0.187902430259762\t2.5588962259874597\t0.0\n0.9985560930403748\t1.1199259225381195\t0.0\n-0.9991738055003837\t0.2683091729159137\t0.0\n-0.7713502536759483\t-0.22353282705281682\t0.0\n0.14541142611434185\t2.2985574625913783\t0.0\n2.108554483824875\t-0.4205640625470944\t0.0\n-0.4539270205654368\t-0.09013912263082333\t0.0\n-0.42142488972168207\t-0.46314368430019237\t0.0\n-1.1382372875499687\t-0.1094310482325581\t0.0\n-0.3394326829579038\t-0.12197550764246796\t0.0\n2.301087994588761\t-3.189419476268858\t0.0\n-0.31132683297618996\t0.07692513257411251\t0.0\n-0.2942414077170965\t0.9978043849749975\t0.0\n-1.0377081289111032\t-0.20165153498345798\t0.0\n-0.9994319002912715\t-0.42993692519569326\t0.0\n-0.030612379038758845\t-0.025173804768911567\t0.0\n-0.6279825398860516\t-0.04997203034658766\t0.0\n0.289990607195169\t2.158554862269828\t0.0\n-0.21925127842328915\t0.8191196764384037\t0.0\n-0.1773162844235162\t0.29800610711901\t0.0\n2.70760716500545\t-0.10366302418433722\t0.0\n-0.8482104692292278\t-0.5588490258616788\t0.0\n0.3922696705086678\t-0.6629562662925024\t1.0\n-0.6040264233593124\t-0.322953007645032\t0.0\n-0.7924081027694502\t-0.28299407042965685\t0.0\n0.06431076438707199\t-0.47229139649087143\t0.0\n0.7185740944822808\t3.1311154038619575\t0.0\n-1.242738494387925\t-0.30190375959597493\t0.0\n-0.8931643133216703\t-0.3349167883243432\t0.0\n-0.5294909270267384\t-1.010995177170836\t0.0\n0.27091016251733463\t2.6742102383778974\t0.0\n-0.4247328571984412\t-0.2900925331267214\t0.0\n-0.9452911340227517\t0.22354858459085583\t0.0\n-0.7665825292369105\t-0.1288452900789469\t0.0\n-0.5904873634261709\t-0.25945584224437246\t0.0\n-0.7390053670698155\t-0.296561681263449\t0.0\n-0.5310188587872275\t-1.0439930905902914\t0.0\n-1.0724867857749019\t-0.002998345627899123\t0.0\n-0.37891984720189403\t0.11116439702200089\t0.0\n-1.7459252529086589\t-1.6112599298887416\t0.0\n-0.7520993790530671\t-0.6925290938267475\t0.0\n0.6125042691563011\t0.21180502708008456\t0.0\n-0.30651516977601795\t-0.40800084241235185\t0.0\n-0.13349857029727372\t-0.6755165852441194\t0.0\n-0.6940322879926826\t-0.8917757022461321\t0.0\n0.7006643149878947\t-0.6680461768797042\t0.0\n-2.5961327701710175\t-2.328645397162524\t0.0\n1.0628004245127705\t-0.9554146692244578\t0.0\n0.3533689908951827\t2.664849373614981\t0.0\n-0.608894775455068\t-0.919695489238381\t0.0\n-0.11083914777471197\t-0.08505429186109455\t0.0\n-0.9657855910621558\t0.38007613708494625\t0.0\n-0.20184282300374534\t3.134411677908612\t0.0\n-0.7464939211826194\t0.07843200577073721\t0.0\n-1.0789339635709927\t0.08100469579062083\t0.0\n3.8089694398363956\t2.023793600437996\t1.0\n-0.39919633018053163\t0.0711921770570548\t0.0\n0.022400453711403024\t0.24549784507539613\t0.0\n0.856605228838908\t2.0963297791111675\t0.0\n-0.008352174117821258\t-0.37859239323680943\t0.0\n0.16905099430788034\t-0.21613370716340005\t0.0\n-0.5495834241056199\t-0.32775095973957397\t0.0\n-0.2199812060462153\t1.0403754683742301\t0.0\n-0.6407055814508704\t-0.6818110419753447\t0.0\n0.8684726057760844\t-0.32225161381564427\t1.0\n-0.8795671056336004\t-0.8272260924532493\t0.0\n-0.5895395305052444\t-0.8981941689088475\t0.0\n-1.0316268187214166\t-0.35144901069528345\t0.0\n-0.2758528994003613\t-0.40138758984934864\t0.0\n-0.8922102528284827\t0.14449719821733872\t0.0\n-0.15270772338386865\t2.2124895100276945\t0.0\n0.2602921305488988\t0.0196639263363584\t0.0\n-0.6134533427127646\t-0.18982214178364015\t0.0\n-0.3898418056955545\t-1.028292949539337\t0.0\n0.4012560629813056\t0.6204060270417505\t0.0\n2.7452492350394286\t0.5012142665078705\t0.0\n-0.9289443736607099\t0.5035588074338405\t0.0\n-0.1861609562160419\t-0.42984826321733643\t0.0\n-0.6187282868867129\t-0.6070999447132439\t0.0\n-0.03739888856542258\t0.8222615352499816\t0.0\n-0.9181295443475497\t-0.7804947616718986\t0.0\n2.5383160749936513\t3.730666316680156\t0.0\n1.5257150340467966\t-0.18023179080490428\t0.0\n-0.30585884470721225\t-1.27035935930333\t0.0\n-0.8215261223949095\t-0.5644798529249707\t0.0\n0.5694618258549861\t1.1412244479670004\t0.0\n-0.5323551509180141\t1.185248579050902\t0.0\n-1.1593043249936017\t-0.10826987247272198\t0.0\n-0.8601966369260728\t0.9706651304191137\t0.0\n-0.10467599903562791\t-0.022974201093182378\t0.0\n0.7515162597118044\t-0.13883265985152876\t1.0\n-0.45363092484246015\t0.2412651753280539\t0.0\n-0.7947228269494566\t-0.6748400956491246\t0.0\n1.7159128499530882\t-1.440264067318997\t1.0\n-0.05761815207115854\t-0.6349856334838355\t0.0\n-0.1421759521042084\t-0.72753877807478\t1.0\n0.04966849982730689\t-0.48247212315431925\t0.0\n-1.0654907426205396\t-0.7330019416305208\t0.0\n-0.38717467052446936\t-0.16017637135926055\t0.0\n4.8597361275449344\t-0.787312332229671\t0.0\n0.7275376924368359\t0.988466953905764\t0.0\n-0.1600391001444781\t-0.20652823517003513\t0.0\n-0.14717189158830116\t-0.262638030047101\t0.0\n-0.9916061014915252\t-1.4572867503072287\t0.0\n1.4994651767141058\t-0.11373772354465102\t0.0\n-0.6276396556115141\t-0.9726386495884021\t0.0\n-0.11401087681693423\t-0.20515622508142914\t0.0\n-0.45527127229348835\t0.20852992808002788\t0.0\n4.634610114648617\t-3.4046802148418966\t1.0\n0.20057396078392792\t1.8616048611557188\t0.0\n0.4245840494761798\t0.6707216581011304\t0.0\n-0.6771921536136968\t-1.2771026892978488\t0.0\n-0.8450064802719259\t0.3779264675627874\t0.0\n1.472122237129415\t1.2540826374357008\t0.0\n-0.3960611200988332\t1.3508343873806132\t0.0\n0.1344986086303904\t0.9930426164685113\t0.0\n0.22098047192208686\t-0.288073254255165\t0.0\n-0.24233057941677286\t2.212786900890474\t0.0\n-0.44922188722723144\t-0.31037151333218527\t0.0\n-0.1924242682697777\t-1.2175340261522876\t1.0\n0.06065644208643554\t0.42544262918495757\t0.0\n-0.00903598433462258\t0.369298927598528\t0.0\n-0.3205779338108078\t0.008996125122033221\t0.0\n-0.4768640982800538\t1.3103888250332751\t0.0\n-0.15866078487967689\t-0.19198760372719365\t0.0\n0.8194933421172108\t0.27671579185760203\t0.0\n0.06554619088782557\t0.3526707994719615\t0.0\n-0.4642518262531528\t-0.6740523500219315\t0.0\n-0.36330082105179395\t-0.5843971274625679\t0.0\n-0.8507789880629594\t-0.23063319312362776\t0.0\n-0.41186740207194195\t0.20688401782971508\t0.0\n0.12177781952752409\t-0.2477340943123613\t0.0\n-0.8168737611755957\t-0.5004237885595584\t0.0\n-0.6117303047430035\t-0.257098037336638\t0.0\n-0.6896739225631061\t-0.10771141224368301\t0.0\n1.3818082538870387\t-1.632909320357281\t0.0\n-0.6739257938198834\t-0.37422386704146965\t0.0\n-0.147509807737648\t1.412442448350869\t0.0\n-1.3461979866147868\t-0.14906121378026105\t0.0\n-1.0658329267478732\t-0.07081669186114659\t0.0\n0.5945526962049765\t2.450776001561032\t0.0\n3.3523260697771478\t-0.9006121210982577\t1.0\n2.1043885741787114\t0.4658959965372388\t0.0\n0.17516584593747436\t0.16488042861906485\t0.0\n-0.6192389727623882\t-1.1160476390171823\t0.0\n-0.27012235037296245\t-0.33013077539571184\t0.0\n0.8066767289957814\t0.1822323490747999\t0.0\n-0.45032742398241143\t-1.0839704434000623\t0.0\n-0.44777981570300596\t0.4549933135888051\t0.0\n9.27316992544568\t-4.042952797333746\t1.0\n-0.6224395116802786\t0.3209985241796942\t0.0\n0.8525395651593388\t2.188278012549843\t0.0\n3.5633360444233064\t0.853468482532626\t0.0\n1.7481526272801442\t-1.3568556842234987\t0.0\n-0.18947773830145434\t-0.697070662471824\t0.0\n-1.1089481062651385\t0.03643857172203571\t0.0\n0.5945684544257018\t3.53672440386527\t0.0\n-0.15406131401341044\t0.3503995791093128\t0.0\n-0.6880656734379273\t-1.1680772893644062\t0.0\n0.09675803003926528\t-0.6554399516301552\t0.0\n-0.5958939894956885\t-0.26023358905091676\t0.0\n-0.16035602351617487\t-0.545309977381119\t0.0\n-0.37008595939916256\t-0.5111196517072382\t0.0\n0.32568582596402357\t1.4223055194826437\t0.0\n-0.45678090264640636\t0.44956934728483555\t0.0\n-0.6814963984344676\t0.9082634318448272\t0.0\n-0.7667449942738648\t0.879966695314266\t0.0\n-0.8299080514529447\t-0.4961078795992353\t0.0\n0.7979161954371892\t3.949766589155945\t0.0\n-0.6174080271158245\t-1.2912808504361748\t0.0\n0.13403214931345706\t2.263044574014494\t0.0\n0.9141330095760637\t-0.722431834442976\t0.0\n-0.5899608340160247\t-0.25447184477980694\t0.0\n0.7448494356956173\t0.398626202973316\t0.0\n2.4134822849080826\t-1.5761942806898843\t0.0\n-0.32588444431793706\t-0.0923662555432471\t0.0\n-0.1287272601073244\t-0.09899033689421223\t0.0\n-0.5046170839865809\t2.0006290648343232\t0.0\n0.19949112640063615\t-0.29001430545530205\t0.0\n-0.41385496041458714\t-0.34597229459179085\t0.0\n-0.49144450807146894\t0.2607699134851267\t0.0\n-0.718145438084558\t-0.2812346425220491\t0.0\n-0.3913557098216854\t-0.8427511646191101\t0.0\n3.314010612464216\t1.6373808411101016\t0.0\n1.815951826955753\t2.606124616551908\t0.0\n-0.7279113895470586\t-0.632349165501704\t0.0\n-0.7519831383589061\t-0.1887292540933264\t0.0\n0.11105632336437198\t0.5077574679217114\t0.0\n-0.6257030422210492\t-0.3438726773271165\t0.0\n1.3403935757647822\t0.3563010411890792\t0.0\n-0.7101709297469002\t-0.35942089166982355\t0.0\n2.0864824955380823\t1.4533618807136912\t1.0\n-0.8137070912064921\t-0.5091354680749144\t0.0\n-0.49104717654950236\t-0.8080926732380659\t0.0\n-0.16119915515692718\t-0.2012275245266051\t0.0\n0.23762385070168435\t0.7234332419529012\t0.0\n-0.445922866138306\t-0.4966191769755036\t0.0\n-0.18374830257135563\t1.2642725053338895\t0.0\n-0.3049653894986428\t-0.12499995170616056\t0.0\n-0.0705571345099972\t0.34150916030457046\t0.0\n-0.9509934423358395\t-0.9315533118425009\t0.0\n-0.46873790161124135\t-1.1194262814476883\t0.0\n-1.1336068339289218\t0.18113216771939988\t0.0\n1.0168440511032115\t0.7326594279540339\t0.0\n-0.46704247434369073\t-0.5342218014815472\t0.0\n1.1291158133428347\t-0.5547617217291868\t0.0\n0.7552621939010998\t2.767606209158818\t0.0\n-1.2999805026565274\t-0.459160007240293\t0.0\n-0.6184020435069285\t-1.086746474010189\t0.0\n4.048984091142481\t0.44435083416719007\t1.0\n-0.9511290856923085\t-0.24461039033207807\t0.0\n-0.542195194885473\t0.1451139736172371\t0.0\n-0.6706460550221293\t-1.0961806183387781\t0.0\n0.3929382072537938\t0.25933182900183777\t0.0\n-0.454736021189319\t-0.45687408840006255\t0.0\n0.026914495378697056\t-0.6731648328573451\t0.0\n0.765493355989885\t2.557403345002439\t0.0\n0.933557504028111\t0.15259998227507307\t0.0\n-1.5417352369760067\t-0.9623205141174677\t0.0\n-0.9115182991022369\t0.5512663688639237\t0.0\n-0.12746237207593406\t0.4848436002022982\t0.0\n1.3232524303037843\t1.6632182960628732\t0.0\n-0.7161616751733937\t0.12246146918931619\t0.0\n-0.7678336289151251\t-0.5906634471274809\t0.0\n0.16778467603881816\t1.0287584345446719\t0.0\n0.6236960155470491\t1.3010835731064452\t0.0\n-0.3802072786445788\t-1.1203012048100525\t0.0\n0.09784133995228984\t0.1288052092425716\t0.0\n0.6836996137146527\t0.007690244972337889\t0.0\n-0.21735494329209434\t0.02034404842203386\t0.0\n-0.580320779066407\t-0.11112915972988686\t0.0\n-0.051366071156329955\t1.8665088528809388\t0.0\n-0.2793983082907449\t0.3182857307700755\t0.0\n0.4040986305017197\t-0.5715143100580576\t1.0\n0.25628420769512594\t0.7299161023410351\t0.0\n-0.6432935140749894\t-0.16029758953560946\t0.0\n-0.47284880323114836\t0.5271896762600039\t0.0\n-0.4771722302377658\t-0.7025114477116574\t0.0\n-1.00134002854555\t0.1853171101105502\t0.0\n-0.8878694663569112\t-0.6454550417952412\t0.0\n-0.8390005259638592\t-0.5619472014670075\t0.0\n-1.132300075238732\t-0.36982516499177787\t0.0\n0.4540462678833676\t1.9074038505294686\t0.0\n-0.3124864572718669\t-0.4569903423719458\t0.0\n0.1340142352057501\t-0.20687616144479135\t0.0\n0.07326844810827275\t0.7183455896883674\t0.0\n7.970583175680239\t-1.529219941645799\t0.0\n2.691131551449197\t-1.4921519076698604\t1.0\n0.20960636471082705\t1.418091235554497\t0.0\n-0.677159729659045\t-1.245293172501156\t0.0\n-1.2467890519063656\t-1.228289165594181\t0.0\n-0.15673960560880484\t-0.4755435918692101\t0.0\n-0.783702156294874\t-0.2677013373430644\t0.0\n1.3879234999026915\t2.822196479290492\t0.0\n0.6592275721842902\t-1.5541580727809465\t1.0\n-0.4954170452157701\t-0.6565983226316898\t0.0\n-0.7543512722798169\t-0.2183905754569805\t0.0\n-0.6173272145581025\t-1.2912071358994148\t0.0\n-0.44820441658408716\t-0.9457777220683876\t0.0\n-0.5697391362155217\t0.5408949248560389\t0.0\n0.9420151055602649\t1.2945645481555454\t0.0\n-0.5698291505718098\t-0.4585504898749622\t1.0\n-0.446225570489363\t-0.02331714725084772\t0.0\n-0.6123829478456231\t-0.09513987606743644\t0.0\n0.11027549541027003\t-0.40889824156854204\t1.0\n-0.7413653466585826\t-0.20257233161840565\t0.0\n-0.9192368804581829\t-0.821553990609193\t0.0\n-1.118327618418203\t-0.5212649715305008\t0.0\n-0.95514791881421\t-1.2518007213530526\t0.0\n-0.04755687338946324\t-0.06969526644980038\t0.0\n-0.6711876072303854\t-0.49045075904618757\t0.0\n-0.19628046128708704\t-0.0514098419369766\t0.0\n2.182888001721466\t-1.780517650555028\t1.0\n0.09243646605114948\t0.2917078738146147\t0.0\n-0.18485823080281105\t-0.21717211199568143\t0.0\n-0.9570640700801961\t-0.45413599844124536\t0.0\n1.0554859503703375\t0.4399412130978587\t0.0\n-0.47836622225479947\t-0.42114808416261873\t0.0\n-0.5680306347498587\t-0.5482083086778806\t0.0\n-1.2504988433710569\t-0.08146967859558821\t0.0\n-0.6896138388089004\t-0.09986387316080869\t0.0\n1.2922719256426085\t-0.40501367877953975\t0.0\n-0.12324674935271929\t-0.1343460904978939\t0.0\n-0.5787883119780526\t0.03572168245335605\t0.0\n-0.5510025366764126\t-0.3008396665579748\t0.0\n-0.6069412825547579\t-0.6385397357796282\t0.0\n-0.35046050051936317\t0.08965738733197894\t0.0\n-0.3261974388562794\t-1.3307011335138617\t0.0\n-0.9414014488858624\t0.7438882999070415\t0.0\n-0.5269643059912009\t-0.21242755461885807\t0.0\n-0.3138638542809896\t0.055987071872192117\t0.0\n7.616058222974892\t-2.8948335988978617\t1.0\n-0.535437091123601\t-0.7235816410798381\t0.0\n-0.3197723035439523\t-0.3934505758525746\t0.0\n1.577448255951632\t-0.11999307933708497\t0.0\n-0.7045841418507296\t-0.5361492180750093\t0.0\n-0.6144868808947952\t2.0177324169161492\t0.0\n0.10974500162198236\t-0.6800670677218863\t0.0\n-0.4923327060045211\t-0.9402223829784081\t0.0\n-0.2372057752601888\t-0.33081961174171653\t0.0\n-0.3773636282410301\t-0.8964865841169115\t0.0\n-0.5718389242463326\t-1.0423235066430188\t0.0\n-0.9700946006985302\t0.6816070749618549\t0.0\n-0.6790541083691664\t-0.8056341047237194\t0.0\n0.29586444762667335\t1.95754277587517\t0.0\n-0.8461488030355548\t-0.28213027775697846\t0.0\n1.0594376815560504\t1.45157743090227\t0.0\n8.697599289358026\t0.16747497047668525\t1.0\n-0.3200454194276144\t0.2717335977290173\t0.0\n-0.5183660222007512\t-0.14345972376099222\t0.0\n-1.000808936160916\t-0.4351343221521927\t0.0\n0.4957530987950932\t0.18890711293021006\t0.0\n-0.9043359642024413\t-0.15168919957290675\t0.0\n-0.1646255576621817\t-0.20972606620359194\t0.0\n-0.27717980111814183\t-0.09531186451524262\t0.0\n2.905911132467909\t3.4281697090949033\t0.0\n1.3294131738383708\t-0.8410275836617905\t1.0\n0.014747815180801498\t-0.8929846035586112\t0.0\n-0.1249726403265444\t0.9200925703238264\t0.0\n-0.7232618378639043\t0.24458389065179623\t0.0\n0.418132133477048\t0.5166326788471276\t0.0\n-0.3695443608134013\t0.0008166275465023552\t0.0\n2.099063100380868\t6.8202427745091265\t0.0\n1.2397155397437307\t-1.0384903572073003\t0.0\n1.7646041731388742\t-0.19528652977233102\t0.0\n-0.40353391349029666\t1.4457600535514141\t0.0\n-1.1704593153188723\t-0.1897773977989315\t0.0\n-0.6438080721851133\t-0.30718935922368323\t0.0\n-0.7872416082792378\t0.20924382764219135\t0.0\n-0.846601545866077\t-0.4700068858120657\t0.0\n1.3957051655732036\t0.1339136000457718\t0.0\n-0.794970456124014\t0.17847369549553063\t0.0\n-0.9827249305363376\t0.03343772982915465\t0.0\n-0.2127575944559064\t-0.48276304720108604\t0.0\n-1.0272794760166086\t0.42161067515186773\t0.0\n-0.6465656639071459\t-0.15864326163717718\t0.0\n0.8822768535867264\t0.788500047754569\t0.0\n3.3455767686402393\t4.404844362256084\t0.0\n-1.225981809216511\t-0.23132933656899216\t0.0\n2.56816027804537\t0.05827168625184506\t0.0\n-0.6222528494461109\t-0.2924389782988306\t0.0\n1.1531232447044377\t3.6617263387799355\t0.0\n0.05688466361074024\t1.0002581693209165\t0.0\n-0.12187363360587987\t-0.2451419084193197\t0.0\n-0.4514619477339274\t-0.0944590688129225\t0.0\n-0.4547983194874447\t-0.4668087774173116\t0.0\n-0.31971034035101376\t-0.19061751073393135\t0.0\n0.05102663875352869\t2.0238436927162335\t0.0\n-0.3809007896931298\t1.101537416673627\t0.0\n-1.0112234877181734\t0.21007895236506327\t0.0\n8.231148329189262\t1.5688035274716152\t0.0\n2.2750585008078787\t0.28869010997206973\t0.0\n-0.5545484778735396\t-1.3018557572635925\t1.0\n-0.4285749631726811\t0.35892988298578427\t0.0\n1.641795420809811\t-0.21300078104072437\t0.0\n2.092402761370813\t0.058712770019137585\t0.0\n-0.2520342104168734\t-0.34379107699788\t0.0\n-0.7034696389980014\t0.6279985246786934\t0.0\n-0.31640614375754433\t0.06886858184632923\t0.0\n-0.4029411489049739\t0.10535278696304412\t0.0\n-1.0512619000527372\t-0.9776110428418525\t0.0\n-0.7682662437390084\t0.29238549165208294\t0.0\n-0.1631697292385511\t-0.20886426745651307\t0.0\n-0.06850441495115168\t-1.372317936631273\t0.0\n0.2730144914660983\t0.2944992701574113\t0.0\n-0.5697587435644615\t-0.37835685460636775\t1.0\n0.6911311284779194\t-1.6703039753806452\t0.0\n-1.0381094985967387\t0.6692231345309573\t0.0\n-0.01556334869507727\t-1.162013494869214\t0.0\n-0.62397372775404\t-0.30636090020624557\t0.0\n-0.7083489241339426\t-0.8205072898273551\t0.0\n0.6310011881070657\t0.6319571388238531\t0.0\n-0.2558304385014178\t-0.729129829419256\t0.0\n0.6149976296408126\t-0.2616324125379653\t1.0\n-0.2633438487253363\t-0.28766165037894836\t0.0\n-0.2808933116336552\t-0.9839803909182911\t0.0\n-0.8418773819529619\t0.08681516494503068\t0.0\n0.07207129426850802\t-0.5282119621647837\t0.0\n-1.050911692064973\t-0.8095975849995685\t0.0\n-0.506313712103651\t-0.21225626527165195\t0.0\n-0.9201054931567952\t-0.7902910335165583\t0.0\n-0.9028062008822958\t-0.8250078184230252\t0.0\n-0.7726785553904416\t-0.19194156579542557\t0.0\n-0.4380937828023603\t-2.125768185848443\t0.0\n-0.7397085930164904\t0.5972458180887709\t0.0\n-0.811116893489736\t-0.9703420514389224\t0.0\n0.4979502586035614\t-1.6836792772581683\t0.0\n0.18872752480118085\t0.7888860513540384\t0.0\n-0.17577591675713977\t1.2807309401545632\t0.0\n0.07080647550823574\t1.4590752513113734\t0.0\n0.8487949137958876\t-0.2625972230868233\t0.0\n0.542952477722088\t-1.2123640115889547\t1.0\n-0.802071795291039\t-0.9720225153655039\t0.0\n-0.7033448767919876\t-0.3853579002278316\t0.0\n-0.27690309831929794\t0.33099984623757644\t0.0\n-1.116775958626589\t-1.00750918036643\t0.0\n-0.7381769549137208\t-0.2626556523334307\t0.0\n7.746506575801475\t-3.0570325035516284\t1.0\n0.819936211967306\t1.7889868235585935\t0.0\n-0.5661392655681525\t0.11639722154697418\t0.0\n0.10636537835026526\t2.4838575503487927\t0.0\n-0.3098008007319234\t-0.4520105405499909\t0.0\n-1.1766741611791829\t-2.0682405761413376\t1.0\n1.836578893986538\t-0.4631219769197227\t1.0\n-0.6159545709671717\t-1.278800053130525\t0.0\n-0.5843228278855035\t-1.1515831214616434\t0.0\n-0.4274874983707042\t0.7995759570413785\t0.0\n0.946948116275836\t0.13571371725934334\t0.0\n-1.469504379372968\t1.1190356429522104\t1.0\n-0.47556695280368155\t-0.3201740433721378\t0.0\n1.6052279901324262\t-1.0342524137322422\t1.0\n-0.1909192058548902\t0.38479512559269907\t0.0\n-0.31009198069349814\t0.8858183841663081\t0.0\n0.8320686346175107\t1.5918283530383057\t0.0\n-0.30715379549253785\t-0.12208445275426706\t0.0\n-0.40981818292392863\t-0.027310490513622786\t0.0\n-0.5657782467397399\t0.05369686635412807\t0.0\n-0.5293889298045238\t-0.4774764342885304\t0.0\n-0.25122117899456814\t-0.12321005395259887\t1.0\n-0.5121749805543548\t-0.7679187688586129\t0.0\n-0.4251296158527861\t1.2044271466263283\t0.0\n-0.48473675049502174\t0.07161265902531967\t0.0\n-1.2278377757058163\t0.6542361933322528\t0.0\n-0.7409561708306862\t0.35401536909843523\t0.0\n-0.9231757199442723\t-1.068133895541837\t0.0\n-0.7772266586186746\t-0.7600667044925692\t0.0\n0.46165478722065034\t0.37697257014782515\t0.0\n-0.9021157671881399\t-0.8446017864873907\t0.0\n1.2894280552143784\t2.9746898445580516\t0.0\n-1.0183928735297594\t0.6134403500662665\t0.0\n-0.11050449143133546\t0.14367938036419975\t0.0\n-0.8206723676162611\t0.3586789051045519\t0.0\n-0.7399126996607975\t-0.19542507265845113\t0.0\n-0.8691132091003672\t-0.780012270060971\t0.0\n0.10534754072208823\t1.3169798715904348\t0.0\n0.8767294760664696\t0.9515815783353069\t0.0\n-0.8948578145869394\t-0.6630174447096547\t0.0\n-0.6383566989617553\t-1.0059379742407217\t0.0\n11.248984334161346\t-1.9024562292725162\t1.0\n0.2858132300506949\t-0.2181638252568465\t0.0\n-0.8467069432569556\t-0.6547254059685832\t0.0\n-0.7836297761442336\t-0.2700819643603404\t0.0\n-0.8394791102486756\t0.3532302404124301\t0.0\n0.7464834527423911\t-1.0879026157633132\t1.0\n-0.24632048999900993\t0.22510233571402863\t0.0\n-0.9640616175579004\t-0.8327546566727034\t0.0\n-0.26044151356635387\t-0.6546188430650653\t0.0\n-0.8738613298169081\t-0.7298414393257379\t0.0\n0.05812525093546974\t0.664317745574953\t0.0\n-0.6139827308775381\t-1.2749448970339645\t0.0\n-0.35755685498441314\t-0.7656006393039353\t0.0\n-0.4974587687923063\t1.6957850627696052\t0.0\n-0.7635439330635315\t-0.8132293739056453\t0.0\n-0.5662626177214819\t-0.2460973244654012\t0.0\n0.04472594315942508\t-0.9586048783664143\t0.0\n2.831912668898599\t-0.6007707003718512\t0.0\n-0.9771513517546083\t0.04509899696350716\t0.0\n-0.8689034904334109\t-0.37473061969196175\t0.0\n2.419856227224876\t1.7841512616463102\t0.0\n-0.21309107155567106\t-0.5026435508095002\t0.0\n-0.23719981336629486\t-0.3859597192694003\t0.0\n-0.9733530752040424\t-0.14568001592577887\t0.0\n-1.5705317930721754\t0.09556516641544809\t0.0\n-0.4897002450989814\t-0.4449847734802404\t0.0\n-0.8135727313610769\t0.2748468868588071\t0.0\n0.1553167355681792\t1.6813506597516643\t0.0\n0.4538322557456174\t1.606000043287114\t0.0\n0.5463039975727454\t-0.8596805483446978\t0.0\n-0.2765584636109667\t1.4441573926922056\t0.0\n-0.21270662051758651\t-1.2833614152828208\t0.0\n-0.04555131429185966\t1.5476430125517293\t0.0\n-0.533122575396788\t1.812555058560032\t0.0\n-0.4247682252462113\t-1.3092890816685496\t1.0\n-0.569061494163487\t-0.38105221368168507\t0.0\n-0.30201927289591346\t0.6213157556832521\t0.0\n-0.9031105089023338\t0.53957068074596\t0.0\n2.9144509434709036\t-2.10668043933442\t1.0\n0.8229039372938732\t0.38345838716901165\t0.0\n-0.2610814663450277\t-0.23368061632354672\t0.0\n-0.9373635493878023\t-0.8766319621626024\t0.0\n0.019294859248970283\t1.1967756823271736\t0.0\n-0.1588244234466465\t-0.1981478457834542\t0.0\n-0.3854245227167205\t-0.8930067054089771\t0.0\n-0.28830851832839505\t-0.2504333745284997\t0.0\n0.5980560321959882\t-0.23344537695132475\t0.0\n-0.15909282557172671\t0.2936033441915553\t0.0\n-0.8802488908149402\t0.622496265275278\t0.0\n-0.9383976263360241\t-0.8865916774505455\t0.0\n0.7005253269534107\t-0.3626642161412251\t0.0\n-0.19226387695419359\t1.2095958949395862\t0.0\n-0.8329218545606251\t-1.0667952623333488\t0.0\n-0.3117428221687518\t-0.6511225595781098\t0.0\n0.7091655789593713\t0.09422892246579125\t0.0\n1.750096000636769\t-0.9422495556722715\t0.0\n0.050800758072117605\t-0.08136593948462773\t0.0\n7.095718541921863\t-1.7095668154931525\t1.0\n0.7427352607665081\t2.6391648325223374\t0.0\n-0.6665324324846583\t0.6405610745299529\t0.0\n-0.9752592578467126\t-0.7537531517071552\t0.0\n2.745973330002549\t-1.980036855812296\t0.0\n-1.1887599842956447\t-0.1936504158777964\t0.0\n-0.1077293450287533\t-0.32249623903573044\t0.0\n0.12173453163769325\t0.8996617186697147\t0.0\n-0.41594917576782975\t0.8217643835565875\t0.0\n-0.09583685390174501\t0.7566239497643807\t0.0\n-0.6289786116933824\t-0.062414129574404544\t0.0\n0.44056878487509554\t0.8528947906841121\t0.0\n-0.7805732564996873\t-0.7583490349451663\t0.0\n0.4820910756313843\t-0.06396829524288726\t0.0\n-0.7845097730321949\t-1.0657515330015914\t0.0\n2.499393559768473\t-0.2582813621529944\t1.0\n-0.9681708055582526\t-0.9676641651513564\t0.0\n-0.634845559964113\t-0.1050801501223183\t0.0\n-0.11555543133323741\t1.398773281054492\t0.0\n-0.683322305375424\t-1.6171590376352787\t1.0\n0.10556187341643346\t-1.4629790811954684\t0.0\n-1.1134493819020563\t-0.1215639210770019\t0.0\n0.2125838574248442\t-0.13097211114256493\t0.0\n1.248849895299848\t5.403876308895876\t0.0\n0.060638989087770746\t1.0036701535743477\t0.0\n-0.8885823136406529\t-0.7367399026796697\t0.0\n-1.1413294327601267\t0.2327362476703175\t0.0\n-0.6319969568372515\t-1.0439400125964373\t0.0\n-0.2250292972611848\t-0.4197469587873218\t0.0\n-0.14468663870198628\t0.09448526913763225\t0.0\n-0.8053336870164347\t-0.4438190102340533\t0.0\n-0.1727577608321134\t-0.2276124001695501\t0.0\n-0.38917604029292285\t0.1018524371959219\t0.0\n0.6400401539862273\t-0.8966616584737405\t1.0\n-0.437251364558041\t0.017558235459412874\t0.0\n-0.5631691517820323\t-0.11795284574063362\t0.0\n-1.0628725621953894\t0.13723342608752717\t0.0\n-0.6444992282529024\t0.4259368458262106\t0.0\n0.8578333860228979\t-1.5378223955763088\t0.0\n-0.6968708619074508\t0.9975631768817814\t0.0\n3.138234016374084\t-2.532921397906276\t1.0\n2.072734102677874\t0.12048741516835908\t1.0\n-0.37306974102972035\t1.1431364716906827\t0.0\n-0.7658604720368749\t-0.3875018307936322\t0.0\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1572393745819_1508778223",
       "id": "20191030-000225_1082070227",
       "dateCreated": "2019-10-30 00:02:25.819",
-      "status": "READY",
+      "dateStarted": "2019-10-30 02:28:13.941",
+      "dateFinished": "2019-10-30 02:28:14.043",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\napprox_model \u003d Logistic(X\u003dnp.array([[1]]))\napprox_param_path \u003d \u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027\napprox_model.set_param(np.load(approx_param_path))\napprox_predict \u003d approx_model.predict(test_features)\napprox_predict.shape \u003d (10000,1)\ndf_approx \u003d pd.DataFrame(np.hstack((test_features2D, approx_predict)))\nz.show(df_approx)\n",
+      "text": "%python\napprox_model \u003d Logistic(X\u003dnp.array([[1]]))\napprox_param_path \u003d \u0027/root/blinkml-models/criteo_approx_param_0.001_delta_0.1.npy\u0027\napprox_model.set_param(np.load(approx_param_path))\napprox_predict \u003d approx_model.predict(test_features)\napprox_predict.shape \u003d (10000,1)\ndf_approx \u003d pd.DataFrame(np.hstack((test_features2D, approx_predict)))\nz.show(df_approx)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:03:57.501",
+      "dateUpdated": "2019-10-30 02:28:41.359",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "colWidth": 6.0,
+        "fontSize": 12.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "0": "string",
+                      "1": "string",
+                      "2": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "0",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "1",
+                    "index": 1.0,
+                    "aggr": "sum"
+                  },
+                  "group": {
+                    "name": "2",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              }
+            },
+            "helium": {}
+          }
+        },
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
@@ -1675,11 +1846,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "0\t1\t2\n0.3461065674409421\t0.25092367985235337\t0.0\n-0.5873049660364718\t-0.7969648414445847\t0.0\n-0.4208818197817909\t0.5526239448862158\t0.0\n-0.7738260465250378\t0.7673593533348488\t0.0\n0.7001436467739843\t0.42966265558120215\t0.0\n-0.6944308128826617\t-1.1906483875685323\t0.0\n-0.6504991459714475\t-0.8188387912911238\t0.0\n1.2012309253387798\t0.11338619048955184\t0.0\n4.176707597453662\t6.394169625768443\t0.0\n-1.4312758348327506\t-0.26926002816786504\t0.0\n1.139268321942693\t-0.3893328666315023\t0.0\n1.9559366584583235\t2.8587886973694396\t0.0\n-0.5414409123114284\t-0.046460856325045694\t0.0\n-0.3283378067630879\t-1.1261771662667728\t1.0\n-0.5927958859532143\t-0.8238849049600353\t0.0\n0.4814659193856307\t0.44378277037969616\t0.0\n-0.5748846593651463\t0.11209376967002135\t0.0\n1.6621766137848022\t0.5737509890691604\t0.0\n-0.8005326931582044\t-0.21538133193257367\t0.0\n-1.3858257544119692\t-0.2606631457231446\t0.0\n-0.22230286191144993\t0.2716657568414037\t0.0\n-0.40515838346027744\t-0.2905290296043779\t0.0\n-0.7965807341466394\t-0.9663335002779101\t0.0\n-0.28121854235833066\t2.190726108135479\t0.0\n-1.3526407980910808\t-0.8906719817897144\t0.0\n5.634464549620881\t0.9873033332530887\t1.0\n-0.5538494577372111\t-0.37846492584677494\t0.0\n-0.22122160366638705\t0.5301490846590025\t0.0\n-0.5549106066187738\t0.30761700905516054\t0.0\n-1.4572675443746619\t-0.37110315810238037\t0.0\n-0.5319646137637941\t1.897114489144901\t0.0\n0.9135023567536864\t-0.012389319629290145\t0.0\n-0.7073251785245619\t-0.6873379929417779\t0.0\n-0.5249451064164299\t-0.19568141167780967\t0.0\n-0.3727197997903899\t-0.24559115243042487\t0.0\n-0.6254924021626581\t-0.11411112902240857\t0.0\n-0.6037366868316272\t-0.2598584574884638\t0.0\n-0.5755754805623243\t1.4155103746522495\t0.0\n-0.2634089631421197\t-0.46347139032746915\t0.0\n-1.0672728305812262\t0.0529053989847158\t0.0\n-0.9771699410059858\t-0.9830810721725647\t0.0\n0.0833533532483339\t-0.7146481556822403\t0.0\n-0.6224051967905511\t-0.4337109749603354\t0.0\n0.488798577418392\t0.6062539404991658\t0.0\n-0.14929623793232108\t-0.46337426878622257\t0.0\n-0.6388861160700532\t-0.32666412473711637\t0.0\n0.21523766983799109\t-0.5805896791979027\t0.0\n-0.8822116063977603\t-0.7273169847104469\t0.0\n1.1522794903207516\t0.1519898694999265\t0.0\n-0.47428229186082094\t-0.10832128130582512\t0.0\n-0.5161679388007245\t0.30464993550431124\t0.0\n-0.3628066446160858\t0.23076467163047712\t0.0\n1.7093340625324578\t3.9137998449329205\t0.0\n-0.3420497140124607\t-0.5440399657704438\t0.0\n0.7453840330420178\t-0.5831649544719187\t0.0\n-0.45886022692859224\t-0.13016066165374005\t0.0\n0.08461604327268199\t-0.16453987883277338\t0.0\n0.4338129219866912\t-0.7402259632843501\t0.0\n-0.22385725028017905\t-0.16305634162724916\t0.0\n0.45342730802900766\t1.9589232007852817\t0.0\n-0.9665612601460849\t-0.8071401217510877\t0.0\n-0.6993427834140754\t-0.18177230828494892\t0.0\n-0.6879732857171661\t-0.19790187265179954\t0.0\n-0.6438744452973565\t-0.01288264190642671\t0.0\n0.8028891018157696\t0.06355090072086153\t0.0\n-0.1920557619299186\t0.37743446726265\t0.0\n25.654604681608472\t-12.195296468703502\t0.0\n4.533625470182918\t-1.1622349290464586\t1.0\n-0.25221161664469754\t-1.066275954593299\t0.0\n-1.0445192708822097\t-1.0706573011526095\t0.0\n-0.6327211385190709\t-0.007277221561855832\t0.0\n-0.5999180779500739\t-0.8575036643435789\t0.0\n1.253504444460962\t0.46086219981442694\t0.0\n-0.4712814942858747\t-0.29265533466209837\t0.0\n-0.5353019771448736\t0.7624922097663559\t0.0\n-0.1606568533180259\t-0.19629421557608756\t0.0\n4.490099718359956\t-3.1119451078716853\t1.0\n0.4561184054786054\t3.4449400760417617\t0.0\n1.8616639903088879\t1.6876703479794926\t0.0\n-0.809886857769594\t-0.12235068802078987\t0.0\n-0.8751893353731075\t-0.6678139468807401\t0.0\n-0.3522443658470309\t-0.339137567162477\t0.0\n0.2216355647987557\t0.2405965958197523\t0.0\n-0.8339174266217045\t-0.5320545666959544\t0.0\n-0.2912041694302813\t1.3273272498948157\t0.0\n-0.17009004453930796\t-0.19965715121609037\t0.0\n-0.44954506003923733\t-1.509748322900628\t0.0\n-0.37150843912264864\t-0.2094598326981603\t0.0\n1.4559781611036513\t0.17299351840805213\t0.0\n-0.1619339355681399\t0.28062207934763267\t0.0\n-1.0475789887575533\t-0.0458181816751273\t0.0\n1.004385998635152\t-0.8764292925834345\t0.0\n-0.6504881240401396\t-1.466002397651873\t0.0\n-0.9852206938302736\t0.08184159221823975\t0.0\n-0.17927031344064465\t1.9447606448790922\t0.0\n-0.8935024834723511\t-1.219017034864841\t0.0\n0.5868682857954552\t2.063952708642725\t0.0\n-0.37500890836894946\t1.8549959068620532\t0.0\n-0.33091232747373117\t0.8075640698305412\t0.0\n-0.46240934504844133\t0.42845904663755924\t0.0\n-0.6593894173120946\t-0.07419521900400558\t0.0\n0.13632494263096226\t-0.10825202008445164\t0.0\n-0.3319463751509932\t-0.20063117224795676\t0.0\n-0.11765445580333077\t1.5002706492895217\t0.0\n-0.6676057278685952\t1.0786939152952895\t0.0\n0.3212868504197028\t0.8454825631348796\t0.0\n1.2210277117016302\t1.1095360516494348\t0.0\n-0.9446356591836352\t-0.8546807744841132\t0.0\n-0.5868654388172609\t0.1806502509442193\t0.0\n-0.7047219644381979\t-0.8308161781733766\t0.0\n-0.5530407092296543\t-0.9527676980911889\t1.0\n-0.3325337116250506\t-0.35888154896309493\t0.0\n-0.1694269908577576\t-0.18265380984414914\t0.0\n-0.15564363687509983\t2.180056821623029\t0.0\n-0.15898806201361618\t-0.20430808783971469\t0.0\n-0.5681411820949887\t-0.18002445568565625\t0.0\n-1.2473172012753282\t0.16401015238257372\t0.0\n-0.4624481797162032\t0.07707189696279898\t0.0\n1.7831668197592563\t0.08214210152091839\t0.0\n0.12912315004035102\t0.12911376902556332\t0.0\n-0.7881581666166784\t-0.18854212521032357\t0.0\n0.39869377804810113\t1.1709645172102934\t0.0\n-0.8020940408460678\t-0.2287582990377568\t0.0\n-0.1694200503338186\t-0.2976707179976192\t0.0\n-0.13312591470357063\t0.8622081903143943\t0.0\n-1.0904549779902912\t-0.3657225389081481\t0.0\n-0.6572039848880392\t-0.4073775958237154\t0.0\n0.430791819665451\t-1.1673947580028592\t0.0\n-0.8584555540865246\t-0.6560031919659931\t0.0\n-0.5504121648448568\t0.29411285012501553\t0.0\n-0.6784707272270223\t-0.126096064068895\t0.0\n-1.1013191956846988\t0.11281251751092698\t0.0\n0.541454004204064\t-1.7579641508124968\t0.0\n-0.25866370975260616\t0.15516657179149043\t0.0\n-0.19181554937034265\t0.648350292394605\t0.0\n-0.067896956095006\t-0.16898346852181031\t0.0\n0.14939786160761406\t0.9608579577662898\t0.0\n-1.0246599946294763\t0.28639868449521405\t0.0\n-0.48620021112900674\t-1.0004474743444443\t0.0\n-0.7992390798325123\t-0.3456989574189337\t0.0\n-0.4249391962947301\t0.9212661215933802\t0.0\n0.4782881665816626\t2.471492464634991\t0.0\n-0.8893772684832159\t0.5542535177760826\t0.0\n-0.3969652802578459\t-0.47208502102707167\t0.0\n-0.19523134482490506\t-1.4978653586059807\t0.0\n-0.6488469867732004\t-1.1876627351182667\t0.0\n9.234866051842914\t-3.9890076122760867\t1.0\n0.17351092429005782\t-0.6010421854592614\t0.0\n1.53670509442669\t-2.854956331768198\t0.0\n-0.6324013418259279\t-0.5485754292527598\t0.0\n2.509596007928676\t-1.3623211353279865\t1.0\n-1.0889577483771573\t0.1370637887766874\t0.0\n1.5625130671165548\t-0.41264510886193556\t0.0\n-1.1934969154557948\t-0.18656063222427097\t0.0\n-0.601284470678698\t0.04177477221113361\t0.0\n-0.6333188088563416\t-0.16171148568209742\t0.0\n-0.6298607108957986\t-1.1616631370953767\t1.0\n-0.9150991209753017\t-0.3697639720823505\t0.0\n-0.6322429330640184\t-0.45357225288631725\t0.0\n2.0149077375796156\t-2.0364590263583193\t1.0\n2.1623618735198344\t0.7239820619242631\t0.0\n-0.667671786622697\t-0.010135188142876967\t0.0\n0.24198468593572003\t-0.5075679962318862\t1.0\n-0.5907489273010467\t-0.4092572202541165\t0.0\n-0.27793381957000385\t-0.2857154235878464\t0.0\n0.9749569232563273\t-1.3906499457364672\t0.0\n0.7371758344181146\t3.001964153157397\t0.0\n1.115684702989887\t1.4091588507423707\t0.0\n-0.7400007406572846\t0.5143848028040134\t0.0\n-0.7306735042716446\t-0.5589360079229929\t0.0\n0.6261170413540843\t1.6314705137832928\t0.0\n-0.5681534400660755\t-1.3254281696283403\t0.0\n-0.35600578494248736\t-0.7577234807933328\t0.0\n-0.8254879472522763\t-0.9605382724594971\t0.0\n-0.9820706362230526\t-0.4765999341640062\t0.0\n0.7986208766741936\t0.09754499761748854\t0.0\n0.13004561074337417\t-0.4372036237221498\t1.0\n-0.5786763702370175\t-0.3041475748854244\t0.0\n-0.8132854052257551\t0.2518753598860456\t0.0\n-0.7757440802418701\t-0.1754766922669166\t0.0\n-0.8770110950040839\t0.49769247561357133\t0.0\n-0.49700040538921175\t-0.5814537466511714\t0.0\n-0.15504702404931708\t-0.5270128727117003\t0.0\n-0.6252764511095704\t-0.6494788442567108\t0.0\n-0.27100543609236105\t-0.77312345292378\t0.0\n-0.5894232218673208\t-1.0084936077142785\t0.0\n-0.7373672170077216\t-0.32785203845835353\t0.0\n0.11123636051727587\t-1.5604913365028543\t0.0\n0.9844809341483807\t-0.370222719450603\t0.0\n-0.2138661315011656\t1.1135763783706425\t0.0\n-0.24878501335550685\t-0.6995001895803462\t0.0\n-0.36835209095907867\t1.142666471989008\t0.0\n1.876393496882293\t-0.5083389582910626\t0.0\n0.1811179855457292\t2.085269310749394\t0.0\n-0.4568053589984483\t-0.4711437988322498\t0.0\n0.16966864985005042\t1.2730240007556364\t0.0\n-0.6908322489013479\t0.537346116884898\t0.0\n-0.756485284438614\t1.1738456978765706\t0.0\n-0.6596082266920819\t-0.10228054155779447\t0.0\n-0.7298404657770478\t-0.31951342763624163\t0.0\n-0.15303808589091533\t-0.23507681368787206\t0.0\n0.5689325580772988\t1.6229759520997207\t0.0\n-0.06798089013722208\t-0.5216059075970864\t0.0\n-0.3021139783645118\t-0.1926947423183274\t0.0\n0.2933362014795219\t1.7006726465393145\t0.0\n-0.6099207239279022\t-0.2768335175594396\t0.0\n0.7309271538415977\t-0.3605819371547934\t0.0\n0.5343717400151269\t-0.4750501360739351\t0.0\n1.0345583087885935\t2.757619986811013\t0.0\n-0.8106394699197514\t-0.4902466737162134\t0.0\n0.7616382628477122\t-0.49895197912617717\t1.0\n-1.1171025261926815\t0.1510073159784785\t0.0\n0.02251197339295681\t-0.07848478293826427\t0.0\n-0.5207295773027267\t-0.36532363679313457\t0.0\n17.262425938273903\t-8.65722252083172\t1.0\n-0.2968925960858145\t-0.8800337561361787\t0.0\n-0.4651283066958209\t-0.8524604649548488\t0.0\n-0.46809220450849803\t-0.7584969782083915\t0.0\n-0.10453834882214207\t0.4616644760950555\t0.0\n0.03471056577932064\t0.21987548210520985\t0.0\n-0.7500121273894774\t0.54086363811582\t0.0\n-0.6441524202137179\t-0.29208572415771367\t0.0\n0.6118639617816171\t1.3407777045366096\t0.0\n-0.06982865589284515\t0.5027385071374503\t0.0\n-0.7547333993721583\t-0.9221695893968384\t0.0\n-0.4300263091225425\t-0.5970503059718947\t0.0\n-0.38566919672399697\t-0.21149837888227854\t1.0\n-0.8676324232102093\t-0.6596188097358993\t0.0\n1.3276875059436322\t-0.05979716901638217\t0.0\n-1.0948263784462717\t0.36181971154271747\t0.0\n0.5081077748823691\t-1.8327819631763473\t0.0\n-0.17821427457410663\t0.42094918573585627\t0.0\n2.205447173466197\t1.512699148731169\t1.0\n0.17237962145737104\t1.6543992901705928\t0.0\n-1.121468921016873\t-0.3368240168229507\t1.0\n-0.15847226951430143\t-0.1912737457929834\t0.0\n-0.6792873954761206\t-1.7766035835381768\t0.0\n-0.7738559866806658\t0.3453288279738389\t0.0\n-1.4324735625367697\t-0.8252552968812594\t0.0\n-0.9573370429326029\t-0.4749949923135714\t0.0\n2.575864745654675\t-1.3859471021577112\t0.0\n-0.40475620913079363\t0.46418459008520785\t0.0\n-0.5850001904366231\t-0.19349596208513548\t0.0\n-0.5834833460027049\t-0.1708274761724531\t0.0\n-0.4602162837096536\t2.2502667939893253\t0.0\n2.956932589181745\t-1.5893284568701571\t1.0\n-0.48923923739326003\t-0.3271802605178149\t0.0\n0.20361816861532056\t1.0150367341005366\t0.0\n-0.7059298513090422\t-0.1247626964935442\t0.0\n-0.15695221843678053\t0.9156291291718244\t0.0\n-0.4679120083232803\t-0.03357848963377972\t0.0\n0.14716342138820176\t1.8020662785561696\t0.0\n-0.12019428050370251\t2.3121495220611994\t0.0\n-0.7568202560172982\t-0.20893392436219602\t0.0\n1.99223414324755\t6.212572333555391\t0.0\n-0.42113179963422415\t0.014877080568751458\t0.0\n-0.6813190521901404\t-0.4329230246745308\t0.0\n-0.7473090207047128\t1.2466333239015466\t0.0\n-0.751942352581805\t-0.876328821640309\t0.0\n0.14982593776503383\t1.1583346518016175\t0.0\n-0.886674398834047\t-0.7521219811860581\t0.0\n-0.5401103275538967\t-0.2559976720446764\t0.0\n0.43581614683189185\t2.8515216959166074\t0.0\n-1.0259502159604288\t-0.9945337879616514\t0.0\n-0.8899026649299892\t0.7673998713028954\t0.0\n7.624148812407559\t-6.285703732626049\t1.0\n1.306229525186223\t1.4845820932512483\t0.0\n-0.8817374062102166\t0.40990761835186057\t0.0\n0.8583240995245708\t2.8309720348512077\t0.0\n-0.31637129847483675\t0.420190694321726\t0.0\n-0.1002402652502644\t0.2458033876909041\t0.0\n-0.11204875509692033\t0.9052079318041816\t0.0\n-0.381798355809478\t0.46015735554262216\t0.0\n-0.8629609669822786\t0.2983311106300714\t0.0\n0.41600860057988087\t-1.2512811144256601\t0.0\n0.8408362941251969\t3.8985534877310752\t0.0\n-0.6262525272843507\t-0.362284179469094\t0.0\n0.13631987037940516\t-1.1066785844596005\t0.0\n0.07577928817119231\t0.47127247025704483\t1.0\n0.34559838564309364\t-0.4384634120639656\t0.0\n0.5335859379699369\t-1.1562726933248113\t0.0\n1.230150341071243\t2.9965614296191934\t0.0\n-0.6371345295399864\t-0.6939252501725119\t0.0\n0.1470934796065337\t-0.07849165176048743\t0.0\n0.11324795298989664\t-0.1910442093846655\t1.0\n-0.7138435871238421\t-1.2216695601693357\t0.0\n0.3111377259664995\t-0.31173883187543744\t0.0\n1.4857741436896466\t4.023385095478355\t0.0\n-0.010799904066228638\t0.8458755503807603\t0.0\n-1.1484418968138586\t0.11962304987621972\t0.0\n-0.5243862669504078\t-0.8912419568089879\t0.0\n1.3884154802140682\t0.2782193932909784\t0.0\n-0.6916032422786629\t-1.1907982167890006\t0.0\n-0.7227289021257187\t-0.9111882484784337\t0.0\n-0.6679392609569409\t-0.07852442026382671\t0.0\n-0.9321670303265954\t-0.7718376251117754\t0.0\n1.0500259350841046\t0.6044133610945119\t0.0\n0.008941296301724374\t-0.377227229533543\t0.0\n2.4395849402612115\t-0.9255467536029565\t0.0\n0.054703866123806254\t1.1057328274354008\t0.0\n-0.8113131035703386\t0.650109911348401\t0.0\n1.9424922552170723\t1.211897038224939\t0.0\n-0.21042319446905797\t-0.22065423163600767\t0.0\n-0.4300793885912946\t-0.32115656919176916\t0.0\n-0.9352166123158226\t-0.8715237178320335\t0.0\n4.1311974825121025\t-2.6817336475344904\t1.0\n-1.0127082992511978\t-1.4149333278933411\t0.0\n-0.6731030519131864\t-0.07516545979624586\t0.0\n2.8493530639835143\t-0.421897294056497\t0.0\n-0.8632358108676028\t0.5379573215909921\t0.0\n1.3744983528253985\t-0.29935525698712917\t0.0\n-1.1078737668375833\t-0.3190748332862666\t1.0\n0.01109003530858075\t1.651612316320268\t0.0\n-0.8637353518226639\t-0.6932234370499889\t0.0\n-0.36389097292918854\t-0.37406176649194367\t0.0\n-0.1105674933237123\t-1.0552666015920518\t0.0\n-0.6717354425202313\t0.5190767158398429\t0.0\n-0.7528708566467177\t-0.2053955115765534\t0.0\n-0.23301565617304298\t0.0019382890977167116\t0.0\n-0.29670286608586066\t0.10172472570198668\t0.0\n-0.5878940725658621\t-0.08625408518962159\t0.0\n-0.49782189508341756\t0.4253790158300883\t0.0\n-0.6929746889239029\t0.06265872537114181\t0.0\n-0.30217146004166917\t0.054208733505056124\t0.0\n-0.13126072337111783\t-0.7294011931886261\t0.0\n-0.32480429460941185\t0.19923587983416385\t0.0\n-0.7298672548329977\t-0.3012215974778817\t0.0\n-0.5202621304922981\t-0.739001665823669\t0.0\n0.5023989019613786\t-0.4473089304709451\t1.0\n-0.713887997875554\t-1.221728472302314\t1.0\n1.0396968162056033\t-0.755580798874671\t0.0\n4.337803015486082\t-1.320952680251698\t1.0\n-0.6880100630888561\t-0.2242771737947025\t0.0\n-0.09468344242257733\t0.5611149131341506\t0.0\n-0.7006768292183183\t-0.8341716586386742\t0.0\n7.187624705054379\t-3.7583662719038275\t1.0\n0.11386818065403573\t0.2682763871364511\t0.0\n0.177019489015804\t0.11821756822919804\t0.0\n-0.7601082129001759\t-0.8334712885228531\t0.0\n-0.5763756451626408\t1.0627033428634634\t0.0\n0.17196454877000297\t-0.5898586695318079\t0.0\n1.683586196297898\t-1.824355520829698\t1.0\n-0.5184286533262432\t-1.4107411091652053\t0.0\n-0.5349887082085654\t-0.1354822472966242\t0.0\n-0.0071477765288037905\t1.5113233319450599\t0.0\n-1.2828035825223936\t-0.34485796858656925\t0.0\n-0.11601236845991034\t-0.8802498386337793\t0.0\n0.8161228199913972\t1.121663612999087\t0.0\n-0.3376061329343691\t-0.46284151308013477\t0.0\n-1.0231041090748594\t0.17354025000077017\t0.0\n-0.6652044779922973\t-0.11129344441776733\t0.0\n-1.0642499454087555\t0.2674177303525799\t0.0\n-0.08694163701236127\t-0.6197879669453199\t0.0\n-0.8424300395537591\t-0.5902735529804269\t0.0\n-1.1892071640183954\t-0.3298162259517964\t0.0\n-0.8072014917459365\t-0.2604127326462077\t0.0\n-0.5029658376709146\t-0.044396377522117926\t0.0\n0.07255626696399936\t-0.46410883314863494\t1.0\n-1.1000752065777573\t0.061015882161488545\t0.0\n-0.6523828816957651\t1.2528598602782388\t0.0\n-1.0561808137857984\t-0.11867421775522237\t0.0\n2.479272550593686\t-1.4241958608518743\t1.0\n4.5236133910570775\t0.2367440622528142\t1.0\n-0.32749691587595736\t1.7741812908808634\t0.0\n-0.2852917072184525\t-0.027930850227752727\t0.0\n1.3426224322367315\t-0.8231535397107235\t1.0\n-0.36635074900588893\t1.3248725880612562\t0.0\n-0.6060442760817528\t0.3922567237357076\t0.0\n1.7130546059386342\t-0.5209595140751583\t0.0\n0.33065197796831663\t-1.187453648337737\t0.0\n-0.5360576519867454\t-1.2893840612976664\t0.0\n-0.2710452357998041\t0.9261397044188928\t0.0\n-0.1893770268036254\t-0.40355650953946814\t0.0\n-0.7169820335244315\t0.8872883102557362\t0.0\n2.6011000029522755\t1.8124950854006119\t0.0\n-0.592640601752561\t0.4032743250777236\t0.0\n-0.12352774905455192\t-0.2567594216375088\t0.0\n-0.8980622675293495\t-0.7521409882189606\t0.0\n-0.22921414634084825\t-0.28922552521135225\t0.0\n-1.04726468235376\t-0.9250938986197754\t0.0\n0.5014915853000319\t0.1261870227492486\t0.0\n-0.7370966441405067\t-0.28762244311156293\t0.0\n0.9827850430309382\t0.45393330216044386\t0.0\n0.24711608165735785\t-0.047272095183313365\t0.0\n0.755962999031127\t3.2099689328321332\t0.0\n-0.24594071145935034\t2.0654485479054348\t0.0\n-0.15489853578070215\t-0.311269617569816\t0.0\n-0.9173596632849181\t0.28550203768256566\t0.0\n0.5846826831470812\t0.43753646594048706\t0.0\n0.3564871286928987\t-0.23792525581207286\t0.0\n-0.06183248863267046\t1.596240399066614\t0.0\n0.46300669847917414\t1.386474818910561\t1.0\n0.07515017461248026\t0.41848998949749616\t1.0\n-0.6519142499936659\t-0.3083576617679084\t0.0\n-0.5723759714371701\t-0.7768516447580215\t0.0\n-0.5893745962171415\t-0.01656002484788853\t0.0\n-1.0381613033352644\t-0.905932094250507\t0.0\n-0.47133363147923224\t-0.24445037582219994\t0.0\n-0.5409426892155241\t-0.7157485534783543\t0.0\n1.4522005434137384\t-1.0375784427916375\t0.0\n-0.0710428848884244\t1.2375512622232898\t0.0\n-0.9509113584312375\t-0.8865039601773678\t0.0\n-0.7335669973280443\t-1.9321105198020183\t0.0\n-0.33709648145631105\t0.5457085259133262\t0.0\n-0.7444306110646035\t-0.20137843012414944\t0.0\n-0.22915110958131882\t-0.2784154527655497\t0.0\n-0.9669037065954571\t0.4300120838190439\t0.0\n-0.17269644696794859\t-0.21360001249645905\t0.0\n-0.7370261834936394\t-0.08973925497152427\t0.0\n0.3204654239057066\t0.504190525342329\t0.0\n0.32845908590089934\t-0.4272214521303169\t0.0\n-1.136392729252299\t-0.8283568409580806\t0.0\n0.3865740013834705\t2.501444362371717\t0.0\n1.2514905885033343\t0.005563128153604236\t0.0\n-0.8481108444990044\t-0.8307841950912788\t0.0\n-0.7720589975191954\t-0.35761821607088423\t0.0\n-1.071060130578584\t0.39488706067557605\t0.0\n-0.49995532454643143\t-0.6394529131351969\t0.0\n-0.9797958125400713\t-0.6142757517875778\t0.0\n-1.0994866384925082\t0.24082220295354195\t0.0\n-0.9616621287999985\t-0.9139140302731933\t0.0\n-0.9616031935976024\t0.37735594091042324\t0.0\n-0.5694314869151845\t-0.2557937393181025\t0.0\n-0.5486607241414093\t-1.1263020898290153\t0.0\n-1.1138512951523023\t0.1833042444006211\t0.0\n1.8017441568486545\t-1.3251956016633726\t0.0\n-0.4963762262657719\t-0.2008326692167968\t0.0\n-0.6710240782188625\t-0.12266735999684078\t0.0\n-0.3422429780490865\t0.5732880801757748\t0.0\n0.7242309562387158\t-0.6065037694188908\t1.0\n-0.7648354843187211\t0.7827955285837462\t0.0\n-0.6508332049596676\t-0.9895234367431279\t0.0\n-0.6323769147322945\t-0.6024187838615561\t0.0\n-0.6857031910270911\t-0.6821796506742915\t0.0\n-0.9077960665326141\t1.0951702335625193\t0.0\n0.10083859859294692\t0.9571564518891131\t0.0\n-0.3251373845291514\t-0.22521617840327\t1.0\n-0.3960006244331625\t0.6710201618384597\t0.0\n-0.055222649588287605\t0.32584499739854583\t0.0\n1.0746949478220627\t3.114648119289544\t0.0\n-0.339045191854945\t-0.820613085767668\t0.0\n-0.22954798114474595\t0.7634384809260836\t0.0\n0.9459439707264865\t3.103332244717209\t0.0\n-0.7458601827561905\t0.455279291720309\t0.0\n0.922281648709736\t1.9258936197888088\t0.0\n1.3814796597217445\t-1.7092742303390835\t1.0\n-0.5859861013954698\t-0.23935882244871992\t0.0\n-0.1446213965405952\t0.7537877113414213\t0.0\n0.3020236552607414\t-2.3985116028065447\t0.0\n-0.5116245421738944\t-0.22942997552193753\t0.0\n-0.08014287353238518\t0.07961988101834946\t0.0\n-0.6914775900899744\t-0.42983736801559397\t0.0\n-0.6068899951673332\t0.878045930116509\t0.0\n-1.2717642484935352\t-0.541752937385497\t0.0\n-0.7026460696757612\t-0.2645084917572741\t0.0\n-1.270188065882003\t-0.2877110778174738\t0.0\n0.012420365760188502\t1.0510046759570464\t0.0\n-1.0613191934263302\t0.5305268131321402\t0.0\n-0.9384007708556822\t-0.13587339996877248\t0.0\n-0.5492495618794323\t-0.9003008507172297\t1.0\n-0.1586220638850587\t-0.20441375498252318\t0.0\n0.187902430259762\t2.5588962259874597\t0.0\n0.9985560930403748\t1.1199259225381195\t0.0\n-0.9991738055003837\t0.2683091729159137\t0.0\n-0.7713502536759483\t-0.22353282705281682\t0.0\n0.14541142611434185\t2.2985574625913783\t0.0\n2.108554483824875\t-0.4205640625470944\t0.0\n-0.4539270205654368\t-0.09013912263082333\t0.0\n-0.42142488972168207\t-0.46314368430019237\t0.0\n-1.1382372875499687\t-0.1094310482325581\t0.0\n-0.3394326829579038\t-0.12197550764246796\t0.0\n2.301087994588761\t-3.189419476268858\t1.0\n-0.31132683297618996\t0.07692513257411251\t0.0\n-0.2942414077170965\t0.9978043849749975\t0.0\n-1.0377081289111032\t-0.20165153498345798\t0.0\n-0.9994319002912715\t-0.42993692519569326\t0.0\n-0.030612379038758845\t-0.025173804768911567\t0.0\n-0.6279825398860516\t-0.04997203034658766\t0.0\n0.289990607195169\t2.158554862269828\t0.0\n-0.21925127842328915\t0.8191196764384037\t0.0\n-0.1773162844235162\t0.29800610711901\t0.0\n2.70760716500545\t-0.10366302418433722\t0.0\n-0.8482104692292278\t-0.5588490258616788\t0.0\n0.3922696705086678\t-0.6629562662925024\t0.0\n-0.6040264233593124\t-0.322953007645032\t0.0\n-0.7924081027694502\t-0.28299407042965685\t0.0\n0.06431076438707199\t-0.47229139649087143\t0.0\n0.7185740944822808\t3.1311154038619575\t0.0\n-1.242738494387925\t-0.30190375959597493\t0.0\n-0.8931643133216703\t-0.3349167883243432\t0.0\n-0.5294909270267384\t-1.010995177170836\t0.0\n0.27091016251733463\t2.6742102383778974\t0.0\n-0.4247328571984412\t-0.2900925331267214\t0.0\n-0.9452911340227517\t0.22354858459085583\t0.0\n-0.7665825292369105\t-0.1288452900789469\t0.0\n-0.5904873634261709\t-0.25945584224437246\t0.0\n-0.7390053670698155\t-0.296561681263449\t0.0\n-0.5310188587872275\t-1.0439930905902914\t0.0\n-1.0724867857749019\t-0.002998345627899123\t0.0\n-0.37891984720189403\t0.11116439702200089\t0.0\n-1.7459252529086589\t-1.6112599298887416\t0.0\n-0.7520993790530671\t-0.6925290938267475\t0.0\n0.6125042691563011\t0.21180502708008456\t0.0\n-0.30651516977601795\t-0.40800084241235185\t0.0\n-0.13349857029727372\t-0.6755165852441194\t0.0\n-0.6940322879926826\t-0.8917757022461321\t0.0\n0.7006643149878947\t-0.6680461768797042\t0.0\n-2.5961327701710175\t-2.328645397162524\t0.0\n1.0628004245127705\t-0.9554146692244578\t0.0\n0.3533689908951827\t2.664849373614981\t0.0\n-0.608894775455068\t-0.919695489238381\t0.0\n-0.11083914777471197\t-0.08505429186109455\t0.0\n-0.9657855910621558\t0.38007613708494625\t0.0\n-0.20184282300374534\t3.134411677908612\t0.0\n-0.7464939211826194\t0.07843200577073721\t0.0\n-1.0789339635709927\t0.08100469579062083\t0.0\n3.8089694398363956\t2.023793600437996\t1.0\n-0.39919633018053163\t0.0711921770570548\t0.0\n0.022400453711403024\t0.24549784507539613\t0.0\n0.856605228838908\t2.0963297791111675\t0.0\n-0.008352174117821258\t-0.37859239323680943\t0.0\n0.16905099430788034\t-0.21613370716340005\t0.0\n-0.5495834241056199\t-0.32775095973957397\t0.0\n-0.2199812060462153\t1.0403754683742301\t0.0\n-0.6407055814508704\t-0.6818110419753447\t0.0\n0.8684726057760844\t-0.32225161381564427\t1.0\n-0.8795671056336004\t-0.8272260924532493\t0.0\n-0.5895395305052444\t-0.8981941689088475\t0.0\n-1.0316268187214166\t-0.35144901069528345\t0.0\n-0.2758528994003613\t-0.40138758984934864\t0.0\n-0.8922102528284827\t0.14449719821733872\t0.0\n-0.15270772338386865\t2.2124895100276945\t0.0\n0.2602921305488988\t0.0196639263363584\t0.0\n-0.6134533427127646\t-0.18982214178364015\t0.0\n-0.3898418056955545\t-1.028292949539337\t0.0\n0.4012560629813056\t0.6204060270417505\t0.0\n2.7452492350394286\t0.5012142665078705\t1.0\n-0.9289443736607099\t0.5035588074338405\t0.0\n-0.1861609562160419\t-0.42984826321733643\t0.0\n-0.6187282868867129\t-0.6070999447132439\t0.0\n-0.03739888856542258\t0.8222615352499816\t0.0\n-0.9181295443475497\t-0.7804947616718986\t0.0\n2.5383160749936513\t3.730666316680156\t0.0\n1.5257150340467966\t-0.18023179080490428\t0.0\n-0.30585884470721225\t-1.27035935930333\t0.0\n-0.8215261223949095\t-0.5644798529249707\t0.0\n0.5694618258549861\t1.1412244479670004\t0.0\n-0.5323551509180141\t1.185248579050902\t0.0\n-1.1593043249936017\t-0.10826987247272198\t0.0\n-0.8601966369260728\t0.9706651304191137\t0.0\n-0.10467599903562791\t-0.022974201093182378\t0.0\n0.7515162597118044\t-0.13883265985152876\t1.0\n-0.45363092484246015\t0.2412651753280539\t0.0\n-0.7947228269494566\t-0.6748400956491246\t0.0\n1.7159128499530882\t-1.440264067318997\t1.0\n-0.05761815207115854\t-0.6349856334838355\t0.0\n-0.1421759521042084\t-0.72753877807478\t1.0\n0.04966849982730689\t-0.48247212315431925\t0.0\n-1.0654907426205396\t-0.7330019416305208\t0.0\n-0.38717467052446936\t-0.16017637135926055\t1.0\n4.8597361275449344\t-0.787312332229671\t0.0\n0.7275376924368359\t0.988466953905764\t0.0\n-0.1600391001444781\t-0.20652823517003513\t0.0\n-0.14717189158830116\t-0.262638030047101\t0.0\n-0.9916061014915252\t-1.4572867503072287\t0.0\n1.4994651767141058\t-0.11373772354465102\t0.0\n-0.6276396556115141\t-0.9726386495884021\t0.0\n-0.11401087681693423\t-0.20515622508142914\t0.0\n-0.45527127229348835\t0.20852992808002788\t0.0\n4.634610114648617\t-3.4046802148418966\t1.0\n0.20057396078392792\t1.8616048611557188\t0.0\n0.4245840494761798\t0.6707216581011304\t0.0\n-0.6771921536136968\t-1.2771026892978488\t0.0\n-0.8450064802719259\t0.3779264675627874\t0.0\n1.472122237129415\t1.2540826374357008\t1.0\n-0.3960611200988332\t1.3508343873806132\t0.0\n0.1344986086303904\t0.9930426164685113\t0.0\n0.22098047192208686\t-0.288073254255165\t0.0\n-0.24233057941677286\t2.212786900890474\t0.0\n-0.44922188722723144\t-0.31037151333218527\t0.0\n-0.1924242682697777\t-1.2175340261522876\t1.0\n0.06065644208643554\t0.42544262918495757\t0.0\n-0.00903598433462258\t0.369298927598528\t0.0\n-0.3205779338108078\t0.008996125122033221\t0.0\n-0.4768640982800538\t1.3103888250332751\t0.0\n-0.15866078487967689\t-0.19198760372719365\t0.0\n0.8194933421172108\t0.27671579185760203\t0.0\n0.06554619088782557\t0.3526707994719615\t0.0\n-0.4642518262531528\t-0.6740523500219315\t0.0\n-0.36330082105179395\t-0.5843971274625679\t0.0\n-0.8507789880629594\t-0.23063319312362776\t0.0\n-0.41186740207194195\t0.20688401782971508\t0.0\n0.12177781952752409\t-0.2477340943123613\t0.0\n-0.8168737611755957\t-0.5004237885595584\t0.0\n-0.6117303047430035\t-0.257098037336638\t0.0\n-0.6896739225631061\t-0.10771141224368301\t0.0\n1.3818082538870387\t-1.632909320357281\t0.0\n-0.6739257938198834\t-0.37422386704146965\t0.0\n-0.147509807737648\t1.412442448350869\t0.0\n-1.3461979866147868\t-0.14906121378026105\t0.0\n-1.0658329267478732\t-0.07081669186114659\t0.0\n0.5945526962049765\t2.450776001561032\t0.0\n3.3523260697771478\t-0.9006121210982577\t1.0\n2.1043885741787114\t0.4658959965372388\t0.0\n0.17516584593747436\t0.16488042861906485\t0.0\n-0.6192389727623882\t-1.1160476390171823\t0.0\n-0.27012235037296245\t-0.33013077539571184\t0.0\n0.8066767289957814\t0.1822323490747999\t0.0\n-0.45032742398241143\t-1.0839704434000623\t0.0\n-0.44777981570300596\t0.4549933135888051\t0.0\n9.27316992544568\t-4.042952797333746\t1.0\n-0.6224395116802786\t0.3209985241796942\t0.0\n0.8525395651593388\t2.188278012549843\t0.0\n3.5633360444233064\t0.853468482532626\t1.0\n1.7481526272801442\t-1.3568556842234987\t0.0\n-0.18947773830145434\t-0.697070662471824\t0.0\n-1.1089481062651385\t0.03643857172203571\t0.0\n0.5945684544257018\t3.53672440386527\t0.0\n-0.15406131401341044\t0.3503995791093128\t0.0\n-0.6880656734379273\t-1.1680772893644062\t0.0\n0.09675803003926528\t-0.6554399516301552\t0.0\n-0.5958939894956885\t-0.26023358905091676\t0.0\n-0.16035602351617487\t-0.545309977381119\t0.0\n-0.37008595939916256\t-0.5111196517072382\t0.0\n0.32568582596402357\t1.4223055194826437\t0.0\n-0.45678090264640636\t0.44956934728483555\t0.0\n-0.6814963984344676\t0.9082634318448272\t0.0\n-0.7667449942738648\t0.879966695314266\t0.0\n-0.8299080514529447\t-0.4961078795992353\t0.0\n0.7979161954371892\t3.949766589155945\t0.0\n-0.6174080271158245\t-1.2912808504361748\t0.0\n0.13403214931345706\t2.263044574014494\t0.0\n0.9141330095760637\t-0.722431834442976\t0.0\n-0.5899608340160247\t-0.25447184477980694\t0.0\n0.7448494356956173\t0.398626202973316\t0.0\n2.4134822849080826\t-1.5761942806898843\t0.0\n-0.32588444431793706\t-0.0923662555432471\t0.0\n-0.1287272601073244\t-0.09899033689421223\t0.0\n-0.5046170839865809\t2.0006290648343232\t0.0\n0.19949112640063615\t-0.29001430545530205\t0.0\n-0.41385496041458714\t-0.34597229459179085\t0.0\n-0.49144450807146894\t0.2607699134851267\t0.0\n-0.718145438084558\t-0.2812346425220491\t0.0\n-0.3913557098216854\t-0.8427511646191101\t0.0\n3.314010612464216\t1.6373808411101016\t0.0\n1.815951826955753\t2.606124616551908\t0.0\n-0.7279113895470586\t-0.632349165501704\t0.0\n-0.7519831383589061\t-0.1887292540933264\t0.0\n0.11105632336437198\t0.5077574679217114\t0.0\n-0.6257030422210492\t-0.3438726773271165\t0.0\n1.3403935757647822\t0.3563010411890792\t0.0\n-0.7101709297469002\t-0.35942089166982355\t0.0\n2.0864824955380823\t1.4533618807136912\t1.0\n-0.8137070912064921\t-0.5091354680749144\t0.0\n-0.49104717654950236\t-0.8080926732380659\t0.0\n-0.16119915515692718\t-0.2012275245266051\t0.0\n0.23762385070168435\t0.7234332419529012\t0.0\n-0.445922866138306\t-0.4966191769755036\t0.0\n-0.18374830257135563\t1.2642725053338895\t0.0\n-0.3049653894986428\t-0.12499995170616056\t0.0\n-0.0705571345099972\t0.34150916030457046\t0.0\n-0.9509934423358395\t-0.9315533118425009\t0.0\n-0.46873790161124135\t-1.1194262814476883\t0.0\n-1.1336068339289218\t0.18113216771939988\t0.0\n1.0168440511032115\t0.7326594279540339\t0.0\n-0.46704247434369073\t-0.5342218014815472\t0.0\n1.1291158133428347\t-0.5547617217291868\t0.0\n0.7552621939010998\t2.767606209158818\t0.0\n-1.2999805026565274\t-0.459160007240293\t0.0\n-0.6184020435069285\t-1.086746474010189\t0.0\n4.048984091142481\t0.44435083416719007\t1.0\n-0.9511290856923085\t-0.24461039033207807\t0.0\n-0.542195194885473\t0.1451139736172371\t0.0\n-0.6706460550221293\t-1.0961806183387781\t0.0\n0.3929382072537938\t0.25933182900183777\t0.0\n-0.454736021189319\t-0.45687408840006255\t0.0\n0.026914495378697056\t-0.6731648328573451\t0.0\n0.765493355989885\t2.557403345002439\t0.0\n0.933557504028111\t0.15259998227507307\t0.0\n-1.5417352369760067\t-0.9623205141174677\t0.0\n-0.9115182991022369\t0.5512663688639237\t0.0\n-0.12746237207593406\t0.4848436002022982\t0.0\n1.3232524303037843\t1.6632182960628732\t0.0\n-0.7161616751733937\t0.12246146918931619\t0.0\n-0.7678336289151251\t-0.5906634471274809\t0.0\n0.16778467603881816\t1.0287584345446719\t0.0\n0.6236960155470491\t1.3010835731064452\t0.0\n-0.3802072786445788\t-1.1203012048100525\t0.0\n0.09784133995228984\t0.1288052092425716\t0.0\n0.6836996137146527\t0.007690244972337889\t0.0\n-0.21735494329209434\t0.02034404842203386\t0.0\n-0.580320779066407\t-0.11112915972988686\t0.0\n-0.051366071156329955\t1.8665088528809388\t0.0\n-0.2793983082907449\t0.3182857307700755\t0.0\n0.4040986305017197\t-0.5715143100580576\t1.0\n0.25628420769512594\t0.7299161023410351\t0.0\n-0.6432935140749894\t-0.16029758953560946\t0.0\n-0.47284880323114836\t0.5271896762600039\t0.0\n-0.4771722302377658\t-0.7025114477116574\t0.0\n-1.00134002854555\t0.1853171101105502\t0.0\n-0.8878694663569112\t-0.6454550417952412\t0.0\n-0.8390005259638592\t-0.5619472014670075\t0.0\n-1.132300075238732\t-0.36982516499177787\t0.0\n0.4540462678833676\t1.9074038505294686\t0.0\n-0.3124864572718669\t-0.4569903423719458\t0.0\n0.1340142352057501\t-0.20687616144479135\t0.0\n0.07326844810827275\t0.7183455896883674\t0.0\n7.970583175680239\t-1.529219941645799\t0.0\n2.691131551449197\t-1.4921519076698604\t1.0\n0.20960636471082705\t1.418091235554497\t0.0\n-0.677159729659045\t-1.245293172501156\t0.0\n-1.2467890519063656\t-1.228289165594181\t0.0\n-0.15673960560880484\t-0.4755435918692101\t0.0\n-0.783702156294874\t-0.2677013373430644\t0.0\n1.3879234999026915\t2.822196479290492\t0.0\n0.6592275721842902\t-1.5541580727809465\t1.0\n-0.4954170452157701\t-0.6565983226316898\t0.0\n-0.7543512722798169\t-0.2183905754569805\t0.0\n-0.6173272145581025\t-1.2912071358994148\t0.0\n-0.44820441658408716\t-0.9457777220683876\t0.0\n-0.5697391362155217\t0.5408949248560389\t0.0\n0.9420151055602649\t1.2945645481555454\t0.0\n-0.5698291505718098\t-0.4585504898749622\t1.0\n-0.446225570489363\t-0.02331714725084772\t0.0\n-0.6123829478456231\t-0.09513987606743644\t0.0\n0.11027549541027003\t-0.40889824156854204\t0.0\n-0.7413653466585826\t-0.20257233161840565\t0.0\n-0.9192368804581829\t-0.821553990609193\t0.0\n-1.118327618418203\t-0.5212649715305008\t0.0\n-0.95514791881421\t-1.2518007213530526\t0.0\n-0.04755687338946324\t-0.06969526644980038\t0.0\n-0.6711876072303854\t-0.49045075904618757\t0.0\n-0.19628046128708704\t-0.0514098419369766\t0.0\n2.182888001721466\t-1.780517650555028\t1.0\n0.09243646605114948\t0.2917078738146147\t0.0\n-0.18485823080281105\t-0.21717211199568143\t0.0\n-0.9570640700801961\t-0.45413599844124536\t0.0\n1.0554859503703375\t0.4399412130978587\t0.0\n-0.47836622225479947\t-0.42114808416261873\t0.0\n-0.5680306347498587\t-0.5482083086778806\t0.0\n-1.2504988433710569\t-0.08146967859558821\t0.0\n-0.6896138388089004\t-0.09986387316080869\t0.0\n1.2922719256426085\t-0.40501367877953975\t0.0\n-0.12324674935271929\t-0.1343460904978939\t0.0\n-0.5787883119780526\t0.03572168245335605\t0.0\n-0.5510025366764126\t-0.3008396665579748\t0.0\n-0.6069412825547579\t-0.6385397357796282\t0.0\n-0.35046050051936317\t0.08965738733197894\t0.0\n-0.3261974388562794\t-1.3307011335138617\t0.0\n-0.9414014488858624\t0.7438882999070415\t0.0\n-0.5269643059912009\t-0.21242755461885807\t0.0\n-0.3138638542809896\t0.055987071872192117\t0.0\n7.616058222974892\t-2.8948335988978617\t1.0\n-0.535437091123601\t-0.7235816410798381\t0.0\n-0.3197723035439523\t-0.3934505758525746\t0.0\n1.577448255951632\t-0.11999307933708497\t0.0\n-0.7045841418507296\t-0.5361492180750093\t0.0\n-0.6144868808947952\t2.0177324169161492\t0.0\n0.10974500162198236\t-0.6800670677218863\t0.0\n-0.4923327060045211\t-0.9402223829784081\t0.0\n-0.2372057752601888\t-0.33081961174171653\t0.0\n-0.3773636282410301\t-0.8964865841169115\t0.0\n-0.5718389242463326\t-1.0423235066430188\t0.0\n-0.9700946006985302\t0.6816070749618549\t0.0\n-0.6790541083691664\t-0.8056341047237194\t0.0\n0.29586444762667335\t1.95754277587517\t0.0\n-0.8461488030355548\t-0.28213027775697846\t0.0\n1.0594376815560504\t1.45157743090227\t0.0\n8.697599289358026\t0.16747497047668525\t1.0\n-0.3200454194276144\t0.2717335977290173\t0.0\n-0.5183660222007512\t-0.14345972376099222\t0.0\n-1.000808936160916\t-0.4351343221521927\t0.0\n0.4957530987950932\t0.18890711293021006\t0.0\n-0.9043359642024413\t-0.15168919957290675\t0.0\n-0.1646255576621817\t-0.20972606620359194\t0.0\n-0.27717980111814183\t-0.09531186451524262\t0.0\n2.905911132467909\t3.4281697090949033\t0.0\n1.3294131738383708\t-0.8410275836617905\t1.0\n0.014747815180801498\t-0.8929846035586112\t0.0\n-0.1249726403265444\t0.9200925703238264\t0.0\n-0.7232618378639043\t0.24458389065179623\t0.0\n0.418132133477048\t0.5166326788471276\t0.0\n-0.3695443608134013\t0.0008166275465023552\t0.0\n2.099063100380868\t6.8202427745091265\t0.0\n1.2397155397437307\t-1.0384903572073003\t0.0\n1.7646041731388742\t-0.19528652977233102\t0.0\n-0.40353391349029666\t1.4457600535514141\t0.0\n-1.1704593153188723\t-0.1897773977989315\t0.0\n-0.6438080721851133\t-0.30718935922368323\t0.0\n-0.7872416082792378\t0.20924382764219135\t0.0\n-0.846601545866077\t-0.4700068858120657\t0.0\n1.3957051655732036\t0.1339136000457718\t0.0\n-0.794970456124014\t0.17847369549553063\t0.0\n-0.9827249305363376\t0.03343772982915465\t0.0\n-0.2127575944559064\t-0.48276304720108604\t0.0\n-1.0272794760166086\t0.42161067515186773\t0.0\n-0.6465656639071459\t-0.15864326163717718\t0.0\n0.8822768535867264\t0.788500047754569\t0.0\n3.3455767686402393\t4.404844362256084\t0.0\n-1.225981809216511\t-0.23132933656899216\t0.0\n2.56816027804537\t0.05827168625184506\t0.0\n-0.6222528494461109\t-0.2924389782988306\t1.0\n1.1531232447044377\t3.6617263387799355\t0.0\n0.05688466361074024\t1.0002581693209165\t0.0\n-0.12187363360587987\t-0.2451419084193197\t0.0\n-0.4514619477339274\t-0.0944590688129225\t0.0\n-0.4547983194874447\t-0.4668087774173116\t0.0\n-0.31971034035101376\t-0.19061751073393135\t0.0\n0.05102663875352869\t2.0238436927162335\t0.0\n-0.3809007896931298\t1.101537416673627\t0.0\n-1.0112234877181734\t0.21007895236506327\t0.0\n8.231148329189262\t1.5688035274716152\t0.0\n2.2750585008078787\t0.28869010997206973\t0.0\n-0.5545484778735396\t-1.3018557572635925\t1.0\n-0.4285749631726811\t0.35892988298578427\t0.0\n1.641795420809811\t-0.21300078104072437\t0.0\n2.092402761370813\t0.058712770019137585\t1.0\n-0.2520342104168734\t-0.34379107699788\t0.0\n-0.7034696389980014\t0.6279985246786934\t0.0\n-0.31640614375754433\t0.06886858184632923\t0.0\n-0.4029411489049739\t0.10535278696304412\t0.0\n-1.0512619000527372\t-0.9776110428418525\t0.0\n-0.7682662437390084\t0.29238549165208294\t0.0\n-0.1631697292385511\t-0.20886426745651307\t0.0\n-0.06850441495115168\t-1.372317936631273\t0.0\n0.2730144914660983\t0.2944992701574113\t0.0\n-0.5697587435644615\t-0.37835685460636775\t1.0\n0.6911311284779194\t-1.6703039753806452\t0.0\n-1.0381094985967387\t0.6692231345309573\t0.0\n-0.01556334869507727\t-1.162013494869214\t0.0\n-0.62397372775404\t-0.30636090020624557\t0.0\n-0.7083489241339426\t-0.8205072898273551\t0.0\n0.6310011881070657\t0.6319571388238531\t0.0\n-0.2558304385014178\t-0.729129829419256\t0.0\n0.6149976296408126\t-0.2616324125379653\t1.0\n-0.2633438487253363\t-0.28766165037894836\t0.0\n-0.2808933116336552\t-0.9839803909182911\t0.0\n-0.8418773819529619\t0.08681516494503068\t0.0\n0.07207129426850802\t-0.5282119621647837\t0.0\n-1.050911692064973\t-0.8095975849995685\t0.0\n-0.506313712103651\t-0.21225626527165195\t0.0\n-0.9201054931567952\t-0.7902910335165583\t0.0\n-0.9028062008822958\t-0.8250078184230252\t0.0\n-0.7726785553904416\t-0.19194156579542557\t0.0\n-0.4380937828023603\t-2.125768185848443\t0.0\n-0.7397085930164904\t0.5972458180887709\t0.0\n-0.811116893489736\t-0.9703420514389224\t0.0\n0.4979502586035614\t-1.6836792772581683\t0.0\n0.18872752480118085\t0.7888860513540384\t0.0\n-0.17577591675713977\t1.2807309401545632\t0.0\n0.07080647550823574\t1.4590752513113734\t0.0\n0.8487949137958876\t-0.2625972230868233\t0.0\n0.542952477722088\t-1.2123640115889547\t0.0\n-0.802071795291039\t-0.9720225153655039\t0.0\n-0.7033448767919876\t-0.3853579002278316\t0.0\n-0.27690309831929794\t0.33099984623757644\t0.0\n-1.116775958626589\t-1.00750918036643\t0.0\n-0.7381769549137208\t-0.2626556523334307\t0.0\n7.746506575801475\t-3.0570325035516284\t1.0\n0.819936211967306\t1.7889868235585935\t0.0\n-0.5661392655681525\t0.11639722154697418\t0.0\n0.10636537835026526\t2.4838575503487927\t0.0\n-0.3098008007319234\t-0.4520105405499909\t0.0\n-1.1766741611791829\t-2.0682405761413376\t0.0\n1.836578893986538\t-0.4631219769197227\t1.0\n-0.6159545709671717\t-1.278800053130525\t0.0\n-0.5843228278855035\t-1.1515831214616434\t0.0\n-0.4274874983707042\t0.7995759570413785\t0.0\n0.946948116275836\t0.13571371725934334\t0.0\n-1.469504379372968\t1.1190356429522104\t1.0\n-0.47556695280368155\t-0.3201740433721378\t0.0\n1.6052279901324262\t-1.0342524137322422\t1.0\n-0.1909192058548902\t0.38479512559269907\t0.0\n-0.31009198069349814\t0.8858183841663081\t0.0\n0.8320686346175107\t1.5918283530383057\t0.0\n-0.30715379549253785\t-0.12208445275426706\t0.0\n-0.40981818292392863\t-0.027310490513622786\t0.0\n-0.5657782467397399\t0.05369686635412807\t0.0\n-0.5293889298045238\t-0.4774764342885304\t0.0\n-0.25122117899456814\t-0.12321005395259887\t1.0\n-0.5121749805543548\t-0.7679187688586129\t0.0\n-0.4251296158527861\t1.2044271466263283\t0.0\n-0.48473675049502174\t0.07161265902531967\t0.0\n-1.2278377757058163\t0.6542361933322528\t0.0\n-0.7409561708306862\t0.35401536909843523\t0.0\n-0.9231757199442723\t-1.068133895541837\t0.0\n-0.7772266586186746\t-0.7600667044925692\t0.0\n0.46165478722065034\t0.37697257014782515\t0.0\n-0.9021157671881399\t-0.8446017864873907\t0.0\n1.2894280552143784\t2.9746898445580516\t0.0\n-1.0183928735297594\t0.6134403500662665\t0.0\n-0.11050449143133546\t0.14367938036419975\t0.0\n-0.8206723676162611\t0.3586789051045519\t0.0\n-0.7399126996607975\t-0.19542507265845113\t0.0\n-0.8691132091003672\t-0.780012270060971\t0.0\n0.10534754072208823\t1.3169798715904348\t0.0\n0.8767294760664696\t0.9515815783353069\t0.0\n-0.8948578145869394\t-0.6630174447096547\t0.0\n-0.6383566989617553\t-1.0059379742407217\t0.0\n11.248984334161346\t-1.9024562292725162\t1.0\n0.2858132300506949\t-0.2181638252568465\t0.0\n-0.8467069432569556\t-0.6547254059685832\t0.0\n-0.7836297761442336\t-0.2700819643603404\t0.0\n-0.8394791102486756\t0.3532302404124301\t0.0\n0.7464834527423911\t-1.0879026157633132\t1.0\n-0.24632048999900993\t0.22510233571402863\t0.0\n-0.9640616175579004\t-0.8327546566727034\t0.0\n-0.26044151356635387\t-0.6546188430650653\t0.0\n-0.8738613298169081\t-0.7298414393257379\t0.0\n0.05812525093546974\t0.664317745574953\t0.0\n-0.6139827308775381\t-1.2749448970339645\t0.0\n-0.35755685498441314\t-0.7656006393039353\t0.0\n-0.4974587687923063\t1.6957850627696052\t0.0\n-0.7635439330635315\t-0.8132293739056453\t0.0\n-0.5662626177214819\t-0.2460973244654012\t0.0\n0.04472594315942508\t-0.9586048783664143\t0.0\n2.831912668898599\t-0.6007707003718512\t0.0\n-0.9771513517546083\t0.04509899696350716\t0.0\n-0.8689034904334109\t-0.37473061969196175\t0.0\n2.419856227224876\t1.7841512616463102\t0.0\n-0.21309107155567106\t-0.5026435508095002\t0.0\n-0.23719981336629486\t-0.3859597192694003\t0.0\n-0.9733530752040424\t-0.14568001592577887\t0.0\n-1.5705317930721754\t0.09556516641544809\t0.0\n-0.4897002450989814\t-0.4449847734802404\t0.0\n-0.8135727313610769\t0.2748468868588071\t0.0\n0.1553167355681792\t1.6813506597516643\t0.0\n0.4538322557456174\t1.606000043287114\t0.0\n0.5463039975727454\t-0.8596805483446978\t0.0\n-0.2765584636109667\t1.4441573926922056\t0.0\n-0.21270662051758651\t-1.2833614152828208\t0.0\n-0.04555131429185966\t1.5476430125517293\t0.0\n-0.533122575396788\t1.812555058560032\t0.0\n-0.4247682252462113\t-1.3092890816685496\t1.0\n-0.569061494163487\t-0.38105221368168507\t0.0\n-0.30201927289591346\t0.6213157556832521\t0.0\n-0.9031105089023338\t0.53957068074596\t0.0\n2.9144509434709036\t-2.10668043933442\t1.0\n0.8229039372938732\t0.38345838716901165\t0.0\n-0.2610814663450277\t-0.23368061632354672\t0.0\n-0.9373635493878023\t-0.8766319621626024\t0.0\n0.019294859248970283\t1.1967756823271736\t0.0\n-0.1588244234466465\t-0.1981478457834542\t0.0\n-0.3854245227167205\t-0.8930067054089771\t0.0\n-0.28830851832839505\t-0.2504333745284997\t0.0\n0.5980560321959882\t-0.23344537695132475\t1.0\n-0.15909282557172671\t0.2936033441915553\t0.0\n-0.8802488908149402\t0.622496265275278\t0.0\n-0.9383976263360241\t-0.8865916774505455\t0.0\n0.7005253269534107\t-0.3626642161412251\t0.0\n-0.19226387695419359\t1.2095958949395862\t0.0\n-0.8329218545606251\t-1.0667952623333488\t0.0\n-0.3117428221687518\t-0.6511225595781098\t0.0\n0.7091655789593713\t0.09422892246579125\t0.0\n1.750096000636769\t-0.9422495556722715\t0.0\n0.050800758072117605\t-0.08136593948462773\t0.0\n7.095718541921863\t-1.7095668154931525\t1.0\n0.7427352607665081\t2.6391648325223374\t0.0\n-0.6665324324846583\t0.6405610745299529\t0.0\n-0.9752592578467126\t-0.7537531517071552\t0.0\n2.745973330002549\t-1.980036855812296\t0.0\n-1.1887599842956447\t-0.1936504158777964\t0.0\n-0.1077293450287533\t-0.32249623903573044\t0.0\n0.12173453163769325\t0.8996617186697147\t0.0\n-0.41594917576782975\t0.8217643835565875\t0.0\n-0.09583685390174501\t0.7566239497643807\t0.0\n-0.6289786116933824\t-0.062414129574404544\t0.0\n0.44056878487509554\t0.8528947906841121\t0.0\n-0.7805732564996873\t-0.7583490349451663\t0.0\n0.4820910756313843\t-0.06396829524288726\t0.0\n-0.7845097730321949\t-1.0657515330015914\t0.0\n2.499393559768473\t-0.2582813621529944\t0.0\n-0.9681708055582526\t-0.9676641651513564\t0.0\n-0.634845559964113\t-0.1050801501223183\t0.0\n-0.11555543133323741\t1.398773281054492\t0.0\n-0.683322305375424\t-1.6171590376352787\t1.0\n0.10556187341643346\t-1.4629790811954684\t0.0\n-1.1134493819020563\t-0.1215639210770019\t0.0\n0.2125838574248442\t-0.13097211114256493\t0.0\n1.248849895299848\t5.403876308895876\t0.0\n0.060638989087770746\t1.0036701535743477\t0.0\n-0.8885823136406529\t-0.7367399026796697\t0.0\n-1.1413294327601267\t0.2327362476703175\t0.0\n-0.6319969568372515\t-1.0439400125964373\t0.0\n-0.2250292972611848\t-0.4197469587873218\t0.0\n-0.14468663870198628\t0.09448526913763225\t0.0\n-0.8053336870164347\t-0.4438190102340533\t0.0\n-0.1727577608321134\t-0.2276124001695501\t0.0\n-0.38917604029292285\t0.1018524371959219\t0.0\n0.6400401539862273\t-0.8966616584737405\t0.0\n-0.437251364558041\t0.017558235459412874\t0.0\n-0.5631691517820323\t-0.11795284574063362\t0.0\n-1.0628725621953894\t0.13723342608752717\t0.0\n-0.6444992282529024\t0.4259368458262106\t0.0\n0.8578333860228979\t-1.5378223955763088\t0.0\n-0.6968708619074508\t0.9975631768817814\t0.0\n3.138234016374084\t-2.532921397906276\t1.0\n2.072734102677874\t0.12048741516835908\t1.0\n-0.37306974102972035\t1.1431364716906827\t0.0\n-0.7658604720368749\t-0.3875018307936322\t0.0\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1572393832463_-1013804410",
       "id": "20191030-000352_1730039815",
       "dateCreated": "2019-10-30 00:03:52.463",
-      "status": "READY",
+      "dateStarted": "2019-10-30 02:28:22.610",
+      "dateFinished": "2019-10-30 02:28:22.673",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1767,10 +1949,10 @@
     {
       "text": "%python\ngroundtrough \u003d test_data[:,0]\nfull_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - full_predict) \u003c 0.01)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:04:38.072",
+      "dateUpdated": "2019-10-30 02:57:05.548",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -1786,11 +1968,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\n"
+            "data": "0.7608\n"
           }
         ]
       },
@@ -1798,18 +1980,18 @@
       "jobName": "paragraph_1572393856325_1142023695",
       "id": "20191030-000416_188500914",
       "dateCreated": "2019-10-30 00:04:16.325",
-      "dateStarted": "2019-10-30 00:04:30.508",
-      "dateFinished": "2019-10-30 00:04:30.520",
-      "status": "ERROR",
+      "dateStarted": "2019-10-30 02:57:05.610",
+      "dateFinished": "2019-10-30 02:57:05.620",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ngroundtrough \u003d test_data[:,0]\napprox_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - approx_predict) \u003c 0.01)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:04:41.639",
+      "dateUpdated": "2019-10-30 02:57:07.033",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
@@ -1825,11 +2007,11 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\n"
+            "data": "0.7607\n"
           }
         ]
       },
@@ -1837,9 +2019,9 @@
       "jobName": "paragraph_1572393862376_1927620060",
       "id": "20191030-000422_2068979734",
       "dateCreated": "2019-10-30 00:04:22.376",
-      "dateStarted": "2019-10-30 00:04:33.054",
-      "dateFinished": "2019-10-30 00:04:33.070",
-      "status": "ERROR",
+      "dateStarted": "2019-10-30 02:57:07.065",
+      "dateFinished": "2019-10-30 02:57:07.074",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {

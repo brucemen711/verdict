@@ -47,7 +47,7 @@
     {
       "text": "%python\ndef append_errors(actual, expected):\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([actual, 100 * (expected[\u0027c\u0027] - actual[\u0027c\u0027]).abs() / expected[\u0027c\u0027]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
       "user": "anonymous",
-      "dateUpdated": "2019-10-24 19:45:16.607",
+      "dateUpdated": "2019-10-30 00:29:05.228",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -60,7 +60,7 @@
         },
         "editorMode": "ace/mode/python",
         "tableHide": false,
-        "editorHide": true
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -567,7 +567,7 @@
     {
       "text": "%python\nresult2 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l.l_orderkey \u003d o.o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027)\nz.show(pd.DataFrame(result2))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:59:55.737",
+      "dateUpdated": "2019-10-30 02:26:39.750",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -708,7 +708,7 @@
     {
       "text": "%python\nresult2_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l_orderkey \u003d o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027, 0.01)\nresult2_verdict \u003d append_errors(result2_verdict, result2)\nz.show(result2_verdict)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:59:55.814",
+      "dateUpdated": "2019-10-30 02:26:39.836",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -985,7 +985,7 @@
     {
       "text": "%python\nresult3 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027)\nz.show(result3)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:59:55.892",
+      "dateUpdated": "2019-10-30 02:26:39.932",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1145,7 +1145,7 @@
     {
       "text": "%python\nresult3_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027, 0.01)\nresult3_verdict \u003d append_errors(result3_verdict, result3)\nz.show(result3_verdict)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 23:59:55.996",
+      "dateUpdated": "2019-10-30 02:26:40.014",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
