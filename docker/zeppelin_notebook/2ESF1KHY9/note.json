@@ -3,7 +3,7 @@
     {
       "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thusday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 02:59:19.514",
+      "dateUpdated": "2019-10-30 04:59:17.648",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -28,15 +28,15 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-10-30 02:59:19.546",
-      "dateFinished": "2019-10-30 02:59:19.563",
+      "dateStarted": "2019-10-30 04:59:17.692",
+      "dateFinished": "2019-10-30 04:59:20.437",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndef append_errors(actual, expected, col\u003d\u0027c\u0027):\n    actual \u003d actual.reset_index(drop\u003dTrue)\n    expected \u003d expected.reset_index(drop\u003dTrue)\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([expected, 100 * (expected[col] - actual[col]).abs() / expected[col]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:16:58.584",
+      "dateUpdated": "2019-10-30 04:59:33.921",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -62,8 +62,8 @@
       "jobName": "paragraph_1572395350062_-1755198401",
       "id": "20191030-002910_1376654274",
       "dateCreated": "2019-10-30 00:29:10.062",
-      "dateStarted": "2019-10-30 04:16:58.611",
-      "dateFinished": "2019-10-30 04:16:58.617",
+      "dateStarted": "2019-10-30 04:59:33.950",
+      "dateFinished": "2019-10-30 04:59:33.958",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -268,7 +268,7 @@
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:10:38.556",
+      "dateUpdated": "2019-10-30 04:59:46.154",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -352,15 +352,15 @@
       "jobName": "paragraph_1572302853114_1067630594",
       "id": "20191028-224733_424578856",
       "dateCreated": "2019-10-28 22:47:33.114",
-      "dateStarted": "2019-10-30 02:59:22.212",
-      "dateFinished": "2019-10-30 02:59:30.306",
+      "dateStarted": "2019-10-30 04:59:40.431",
+      "dateFinished": "2019-10-30 04:59:45.609",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", 0.005)\nverdict_sales_by_days \u003d append_errors(sales_by_days, replace_dow(df))\nz.show(verdict_sales_by_days)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:31:24.273",
+      "dateUpdated": "2019-10-30 04:59:49.685",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -435,7 +435,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tc\trel error (%)\nSaturday\t96144800\t0.19727855905269087\nSunday\t93996480\t0.13574654463340932\nMonday\t74761440\t0.06266682636369858\nTuesday\t69915520\t0.7642896146637347\nWednesday\t68214240\t0.34112390606877646\nThusday\t72538880\t0.08724585670486175\nFriday\t71801760\t0.7918960585326587\n"
+            "data": "order_dow\tc\trel error (%)\nSaturday\t96334848\t0.19727855905269087\nSunday\t93869056\t0.13574654463340932\nMonday\t74808320\t0.06266682636369858\nTuesday\t69385216\t0.7642896146637347\nWednesday\t67982336\t0.34112390606877646\nThusday\t72475648\t0.08724585670486175\nFriday\t71237632\t0.7918960585326587\n"
           }
         ]
       },
@@ -443,8 +443,8 @@
       "jobName": "paragraph_1572393982394_-817530277",
       "id": "20191030-000622_1429015947",
       "dateCreated": "2019-10-30 00:06:22.394",
-      "dateStarted": "2019-10-30 03:03:11.561",
-      "dateFinished": "2019-10-30 03:03:13.071",
+      "dateStarted": "2019-10-30 04:59:48.424",
+      "dateFinished": "2019-10-30 04:59:49.085",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -491,7 +491,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nsales_by_department \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nz.show(sales_by_department)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:15:06.148",
+      "dateUpdated": "2019-10-30 04:57:57.063",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -589,7 +589,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\ndf \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nverdict_sales_by_department \u003d append_errors(sales_by_department, df)\nz.show(verdict_sales_by_department)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:23:39.369",
+      "dateUpdated": "2019-10-30 04:57:57.100",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -810,7 +810,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department\norder by a1 desc\"\"\")\nreorder_rates \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027,\n    \u0027pantry\u0027, \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nz.show(reorder_rates)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:37:54.166",
+      "dateUpdated": "2019-10-30 04:57:57.140",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -907,7 +907,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\ndf \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027,\n        \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_reorder_rates \u003d append_errors(reorder_rates, df, \u0027a1\u0027)\nz.show(verdict_reorder_rates)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 03:39:32.699",
+      "dateUpdated": "2019-10-30 04:57:57.172",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1107,7 +1107,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ncart_order \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n    df[\u0027department\u0027].isin(\n    [\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \u0027personal care\u0027, \n     \u0027dry goods pasta\u0027])]\nz.show(cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:17:52.956",
+      "dateUpdated": "2019-10-30 04:57:57.199",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1200,7 +1200,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ndf \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n         df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n            \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_cart_order \u003d append_errors(cart_order, df, \u0027a1\u0027)\nz.show(verdict_cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:17:34.598",
+      "dateUpdated": "2019-10-30 04:57:57.246",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
