@@ -3,7 +3,7 @@
     {
       "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thusday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:59:17.648",
+      "dateUpdated": "2019-10-30 16:18:19.128",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -28,15 +28,15 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-10-30 04:59:17.692",
-      "dateFinished": "2019-10-30 04:59:20.437",
+      "dateStarted": "2019-10-30 16:18:19.215",
+      "dateFinished": "2019-10-30 16:18:22.310",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndef append_errors(actual, expected, col\u003d\u0027c\u0027):\n    actual \u003d actual.reset_index(drop\u003dTrue)\n    expected \u003d expected.reset_index(drop\u003dTrue)\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([expected, 100 * (expected[col] - actual[col]).abs() / expected[col]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:59:33.921",
+      "dateUpdated": "2019-10-30 17:48:08.633",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -48,7 +48,9 @@
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/python",
+        "tableHide": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -62,15 +64,15 @@
       "jobName": "paragraph_1572395350062_-1755198401",
       "id": "20191030-002910_1376654274",
       "dateCreated": "2019-10-30 00:29:10.062",
-      "dateStarted": "2019-10-30 04:59:33.950",
-      "dateFinished": "2019-10-30 04:59:33.958",
+      "dateStarted": "2019-10-30 16:18:22.940",
+      "dateFinished": "2019-10-30 16:18:22.949",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:29:52.964",
+      "dateUpdated": "2019-10-30 17:47:58.673",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -84,7 +86,7 @@
         },
         "editorMode": "ace/mode/python",
         "editorHide": false,
-        "tableHide": false
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -111,7 +113,7 @@
     {
       "text": "%python\nv.info(\u0027sd56a949e5d404a58b633e387a3401cc0_rowid\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:30:06.250",
+      "dateUpdated": "2019-10-30 17:47:59.735",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -123,7 +125,8 @@
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/python",
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -150,7 +153,7 @@
     {
       "text": "%python\nv.info(\u0027hive.instacart.orders\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 21:54:40.461",
+      "dateUpdated": "2019-10-30 17:48:01.018",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -162,7 +165,7 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/python",
-        "tableHide": false
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -189,7 +192,7 @@
     {
       "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:26:39.545",
+      "dateUpdated": "2019-10-30 17:48:02.682",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -201,7 +204,7 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/python",
-        "tableHide": false
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -226,9 +229,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 1. Wednesday is the \u003cspan style\u003d\"color:red\"\u003eleast favorite\u003c/span\u003e day for shopping",
+      "text": "%md\n# 1. Weekly buying patterns?\n## People shop more on weekends; the least on Wednesday",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:09:09.706",
+      "dateUpdated": "2019-10-30 16:26:30.927",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -252,7 +255,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. Wednesday is the \u003cspan style\u003d\"color:red\"\u003eleast favorite\u003c/span\u003e day for shopping\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. Weekly buying patterns?\u003c/h1\u003e\n\u003ch2\u003ePeople shop more on weekends; the least on Wednesday\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -260,15 +263,97 @@
       "jobName": "paragraph_1572125345747_-611159523",
       "id": "20191026-212905_822270821",
       "dateCreated": "2019-10-26 21:29:05.747",
-      "dateStarted": "2019-10-30 00:09:09.706",
-      "dateFinished": "2019-10-30 00:09:09.723",
+      "dateStarted": "2019-10-30 16:26:30.928",
+      "dateFinished": "2019-10-30 16:26:30.934",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:55:09.839",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458098270_-876114574",
+      "id": "20191030-175458_1459273481",
+      "dateCreated": "2019-10-30 17:54:58.270",
+      "dateStarted": "2019-10-30 17:55:03.942",
+      "dateFinished": "2019-10-30 17:55:03.948",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:55:21.409",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458111357_-263847842",
+      "id": "20191030-175511_1363912743",
+      "dateCreated": "2019-10-30 17:55:11.357",
+      "dateStarted": "2019-10-30 17:55:17.089",
+      "dateFinished": "2019-10-30 17:55:17.095",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:59:46.154",
+      "dateUpdated": "2019-10-30 18:52:36.401",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -352,15 +437,15 @@
       "jobName": "paragraph_1572302853114_1067630594",
       "id": "20191028-224733_424578856",
       "dateCreated": "2019-10-28 22:47:33.114",
-      "dateStarted": "2019-10-30 04:59:40.431",
-      "dateFinished": "2019-10-30 04:59:45.609",
+      "dateStarted": "2019-10-30 18:52:29.974",
+      "dateFinished": "2019-10-30 18:52:34.130",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", 0.005)\nverdict_sales_by_days \u003d append_errors(sales_by_days, replace_dow(df))\nz.show(verdict_sales_by_days)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:59:49.685",
+      "dateUpdated": "2019-10-30 18:52:48.607",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -392,6 +477,12 @@
                   "initialized": false
                 },
                 "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
                   "rotate": {
                     "degree": "-45"
                   },
@@ -443,15 +534,15 @@
       "jobName": "paragraph_1572393982394_-817530277",
       "id": "20191030-000622_1429015947",
       "dateCreated": "2019-10-30 00:06:22.394",
-      "dateStarted": "2019-10-30 04:59:48.424",
-      "dateFinished": "2019-10-30 04:59:49.085",
+      "dateStarted": "2019-10-30 18:52:40.353",
+      "dateFinished": "2019-10-30 18:52:41.223",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 2. But, people buy \u003cspan style\u003d\"color:red\"\u003e\"alcohol\"\u003c/span\u003e the most on Wednesday",
+      "text": "%md\n# 2. Let\u0027s dig deeper: Correlation between products and buying patterns?",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 22:23:10.507",
+      "dateUpdated": "2019-10-30 16:32:17.355",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -475,7 +566,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. But, people buy \u003cspan style\u003d\"color:red\"\u003e\u0026ldquo;alcohol\u0026rdquo;\u003c/span\u003e the most on Wednesday\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. Let\u0026rsquo;s dig deeper: Correlation between products and buying patterns?\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -483,15 +574,138 @@
       "jobName": "paragraph_1572125395527_1856302582",
       "id": "20191026-212955_1420239986",
       "dateCreated": "2019-10-26 21:29:55.528",
-      "dateStarted": "2019-10-29 22:23:10.489",
-      "dateFinished": "2019-10-29 22:23:10.530",
+      "dateStarted": "2019-10-30 16:32:06.962",
+      "dateFinished": "2019-10-30 16:32:06.969",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nsales_by_department \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nz.show(sales_by_department)\n",
+      "text": "%md\n## 2.1 On weekends, \"Produce\" sales soar",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.063",
+      "dateUpdated": "2019-10-30 17:29:11.112",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2.1 On weekends, \u0026ldquo;Produce\u0026rdquo; sales soar\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572453088103_1707204947",
+      "id": "20191030-163128_679892995",
+      "dateCreated": "2019-10-30 16:31:28.103",
+      "dateStarted": "2019-10-30 17:28:53.870",
+      "dateFinished": "2019-10-30 17:28:53.877",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:55:38.556",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458127938_566368640",
+      "id": "20191030-175527_1284982424",
+      "dateCreated": "2019-10-30 17:55:27.938",
+      "dateStarted": "2019-10-30 17:55:33.587",
+      "dateFinished": "2019-10-30 17:55:33.591",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:56:02.179",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458139727_-704485648",
+      "id": "20191030-175539_1122100530",
+      "dateCreated": "2019-10-30 17:55:39.728",
+      "dateStarted": "2019-10-30 17:55:59.645",
+      "dateFinished": "2019-10-30 17:55:59.650",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nweekend_sales \u003d replace_dow(df[df[\u0027department\u0027].isin(\n    [\u0027produce\u0027, \u0027dairy eggs\u0027, \u0027bakery\u0027, \u0027canned goods\u0027, \u0027snacks\u0027])])\nz.show(weekend_sales)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 18:19:54.785",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -500,7 +714,343 @@
           "0": {
             "graph": {
               "mode": "multiBarChart",
-              "height": 362.0,
+              "height": 266.035,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "department": "string",
+                      "order_dow": "string",
+                      "c": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_dow",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "department",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "department\torder_dow\tc\nbakery\tSaturday\t23016055\nbakery\tSunday\t20567025\nbakery\tMonday\t15398890\nbakery\tTuesday\t14072455\nbakery\tWednesday\t13920642\nbakery\tThusday\t15575228\nbakery\tFriday\t16585453\ncanned goods\tSaturday\t23313898\ncanned goods\tSunday\t18185898\ncanned goods\tMonday\t13415572\ncanned goods\tTuesday\t12094139\ncanned goods\tWednesday\t11684305\ncanned goods\tThusday\t13098588\ncanned goods\tFriday\t16604000\ndairy eggs\tSaturday\t104133592\ndairy eggs\tSunday\t96265990\ndairy eggs\tMonday\t71367725\ndairy eggs\tTuesday\t64714352\ndairy eggs\tWednesday\t64222325\ndairy eggs\tThusday\t71994518\ndairy eggs\tFriday\t74872681\nproduce\tSaturday\t200086202\nproduce\tSunday\t169897464\nproduce\tMonday\t120992292\nproduce\tTuesday\t108154292\nproduce\tWednesday\t106534704\nproduce\tThusday\t119731854\nproduce\tFriday\t136199014\nsnacks\tSaturday\t49464672\nsnacks\tSunday\t54098620\nsnacks\tMonday\t40258847\nsnacks\tTuesday\t36512770\nsnacks\tWednesday\t36158407\nsnacks\tThusday\t39906426\nsnacks\tFriday\t35992911\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572453184944_-162699071",
+      "id": "20191030-163304_134655433",
+      "dateCreated": "2019-10-30 16:33:04.944",
+      "dateStarted": "2019-10-30 16:44:39.368",
+      "dateFinished": "2019-10-30 16:54:45.681",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\nverdict_weekend_sales \u003d append_errors(weekend_sales,\n    replace_dow(df[df[\u0027department\u0027].isin(\n        [\u0027produce\u0027, \u0027dairy eggs\u0027, \u0027bakery\u0027, \u0027canned goods\u0027, \u0027snacks\u0027])]))\nz.show(verdict_weekend_sales)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 18:53:29.814",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 264.023,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "department": "string",
+                      "order_dow": "string",
+                      "c": "string",
+                      "rel error (%)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "order_dow",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "department",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "c",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "department\torder_dow\tc\trel error (%)\nbakery\tSaturday\t22855168\t0.7039414455408948\nbakery\tSunday\t20659712\t0.44863645727491264\nbakery\tMonday\t15266816\t0.8651050749547253\nbakery\tTuesday\t14119424\t0.33265521313050733\nbakery\tWednesday\t13876736\t0.3164000525772055\nbakery\tThusday\t15643136\t0.4341073298857723\nbakery\tFriday\t16658432\t0.43809045173039096\ncanned goods\tSaturday\t23035904\t1.2067857202391536\ncanned goods\tSunday\t18087936\t0.5415874978770381\ncanned goods\tMonday\t13458944\t0.3222541084946932\ncanned goods\tTuesday\t12060160\t0.2817458474846105\ncanned goods\tWednesday\t11786240\t0.8648644521068636\ncanned goods\tThusday\t13005824\t0.713249694905913\ncanned goods\tFriday\t16649728\t0.2746471293705218\ndairy eggs\tSaturday\t103936512\t0.18961575312436885\ndairy eggs\tSunday\t96360960\t0.09855651085252783\ndairy eggs\tMonday\t70887936\t0.6768274364766382\ndairy eggs\tTuesday\t65183744\t0.7201059208872691\ndairy eggs\tWednesday\t64729600\t0.7836831990310461\ndairy eggs\tThusday\t71380992\t0.8595089292118552\ndairy eggs\tFriday\t74693120\t0.24039831245501594\nproduce\tSaturday\t200114176\t0.013979019657258064\nproduce\tSunday\t169052160\t0.5000255542431401\nproduce\tMonday\t120573440\t0.3473833043164398\nproduce\tTuesday\t108613120\t0.42244251891484197\nproduce\tWednesday\t106141184\t0.370751470042015\nproduce\tThusday\t119327232\t0.33908605204216924\nproduce\tFriday\t136206336\t0.005375667692874435\nsnacks\tSaturday\t49276416\t0.3820407717963904\nsnacks\tSunday\t54397440\t0.5493273212857076\nsnacks\tMonday\t40182784\t0.18929250895109706\nsnacks\tTuesday\t36973056\t1.2449227891792336\nsnacks\tWednesday\t35930624\t0.6339522519842683\nsnacks\tThusday\t39964160\t0.144464440138364\nsnacks\tFriday\t36187648\t0.5381311324792372\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572453388953_-1999245554",
+      "id": "20191030-163628_292078927",
+      "dateCreated": "2019-10-30 16:36:28.953",
+      "dateStarted": "2019-10-30 18:53:15.920",
+      "dateFinished": "2019-10-30 18:53:19.738",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 2.2 People buy more alcohol on Wed and Thu; may be exchausted",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:29:11.219",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2.2 People buy more alcohol on Wed and Thu; may be exchausted\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572453134424_-232695529",
+      "id": "20191030-163214_2103629384",
+      "dateCreated": "2019-10-30 16:32:14.424",
+      "dateStarted": "2019-10-30 17:28:58.958",
+      "dateFinished": "2019-10-30 17:28:58.970",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:56:12.643",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458165188_1107850356",
+      "id": "20191030-175605_141026424",
+      "dateCreated": "2019-10-30 17:56:05.188",
+      "dateStarted": "2019-10-30 17:56:08.643",
+      "dateFinished": "2019-10-30 17:56:08.648",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:56:25.058",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458173919_-2087198294",
+      "id": "20191030-175613_679850099",
+      "dateCreated": "2019-10-30 17:56:13.919",
+      "dateStarted": "2019-10-30 17:56:19.669",
+      "dateFinished": "2019-10-30 17:56:19.674",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nsales_by_department \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nz.show(sales_by_department)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 18:21:53.502",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 12.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 305.996,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -528,6 +1078,13 @@
                   },
                   "xLabelStatus": "default",
                   "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "lineWithFocus": false
                 }
               },
               "commonSetting": {},
@@ -581,15 +1138,15 @@
       "jobName": "paragraph_1572301684564_-840481688",
       "id": "20191028-222804_1103152124",
       "dateCreated": "2019-10-28 22:28:04.564",
-      "dateStarted": "2019-10-30 03:04:07.050",
-      "dateFinished": "2019-10-30 03:14:53.850",
+      "dateStarted": "2019-10-30 18:06:25.684",
+      "dateFinished": "2019-10-30 18:16:51.289",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\ndf \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nverdict_sales_by_department \u003d append_errors(sales_by_department, df)\nz.show(verdict_sales_by_department)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.100",
+      "dateUpdated": "2019-10-30 18:53:55.451",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -598,7 +1155,7 @@
           "0": {
             "graph": {
               "mode": "multiBarChart",
-              "height": 364.0,
+              "height": 305.996,
               "optionOpen": false,
               "setting": {
                 "table": {
@@ -761,313 +1318,15 @@
       "jobName": "paragraph_1572124234413_-1358816919",
       "id": "20191026-211034_426820453",
       "dateCreated": "2019-10-26 21:10:34.414",
-      "dateStarted": "2019-10-30 03:19:04.753",
-      "dateFinished": "2019-10-30 03:19:08.104",
+      "dateStarted": "2019-10-30 18:53:50.640",
+      "dateFinished": "2019-10-30 18:53:54.075",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 3. \"Alcohol\" is  \u003cspan style\u003d\"color:red\"\u003ere-ordered MORE\u003c/span\u003e than \"babies\" or \"pets\" products\n",
+      "text": "%md\n# 3. What\u0027s the first item people put in their carts? Surprisingly, Alcohol",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:10:42.151",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. \u0026ldquo;Alcohol\u0026rdquo; is \u003cspan style\u003d\"color:red\"\u003ere-ordered MORE\u003c/span\u003e than \u0026ldquo;babies\u0026rdquo; or \u0026ldquo;pets\u0026rdquo; products\u003c/h1\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1572304370961_-1144247186",
-      "id": "20191028-231250_45515445",
-      "dateCreated": "2019-10-28 23:12:50.961",
-      "dateStarted": "2019-10-30 00:10:42.151",
-      "dateFinished": "2019-10-30 00:10:42.173",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department\norder by a1 desc\"\"\")\nreorder_rates \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027,\n    \u0027pantry\u0027, \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nz.show(reorder_rates)\n",
-      "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.140",
-      "config": {
-        "colWidth": 6.0,
-        "fontSize": 12.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "order_dow": "string",
-                      "order_hour_of_day": "string",
-                      "c": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "lineChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "department",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
-              "values": [
-                {
-                  "name": "a1",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          }
-        },
-        "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "department\ta1\nproduce\t0.6504809283582765\npets\t0.6025383914848246\nbabies\t0.5776046873550661\nalcohol\t0.5713089004694973\ndry goods pasta\t0.4621970171646055\npantry\t0.34734411733582765\npersonal care\t0.3218135954020645\n"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1572304374295_89249475",
-      "id": "20191028-231254_757572290",
-      "dateCreated": "2019-10-28 23:12:54.295",
-      "dateStarted": "2019-10-30 03:20:40.598",
-      "dateFinished": "2019-10-30 03:28:54.048",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\ndf \u003d df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027,\n        \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_reorder_rates \u003d append_errors(reorder_rates, df, \u0027a1\u0027)\nz.show(verdict_reorder_rates)",
-      "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.172",
-      "config": {
-        "colWidth": 6.0,
-        "fontSize": 12.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "department": "string",
-                      "a1": "string",
-                      "rel error (%)": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                },
-                "lineChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "department",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
-              "values": [
-                {
-                  "name": "a1",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          },
-          "1": {
-            "graph": {
-              "mode": "lineChart",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "order_dow": "string",
-                      "order_hour_of_day": "string",
-                      "c": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                },
-                "lineChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_dow",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "values": [
-                {
-                  "name": "c",
-                  "index": 2.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          }
-        },
-        "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "department\ta1\trel error (%)\nproduce\t0.6534528372282332\t0.45480082121346405\nalcohol\t0.5988463555322496\t0.6165247426935571\nbabies\t0.5809935205183585\t0.5832824366559064\npets\t0.5647155812036274\t1.1675469006569659\ndry goods pasta\t0.46294576523031206\t0.16173559020117098\npantry\t0.34445262747476496\t0.8394448555264757\npersonal care\t0.31072248719307544\t3.569457849408021\n"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1572304181478_1641062225",
-      "id": "20191028-230941_2055384765",
-      "dateCreated": "2019-10-28 23:09:41.479",
-      "dateStarted": "2019-10-30 03:31:13.330",
-      "dateFinished": "2019-10-30 03:31:13.812",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n# 4. People put \"Alcohol\" first in their carts",
-      "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:15:10.708",
+      "dateUpdated": "2019-10-30 17:28:47.186",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1091,7 +1350,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e4. People put \u0026ldquo;Alcohol\u0026rdquo; first in their carts\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. What\u0026rsquo;s the first item people put in their carts? Surprisingly, Alcohol\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1099,15 +1358,97 @@
       "jobName": "paragraph_1572128115868_-396332900",
       "id": "20191026-221515_136520021",
       "dateCreated": "2019-10-26 22:15:15.868",
-      "dateStarted": "2019-10-30 00:15:10.713",
-      "dateFinished": "2019-10-30 00:15:10.748",
+      "dateStarted": "2019-10-30 17:28:36.741",
+      "dateFinished": "2019-10-30 17:28:36.754",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ncart_order \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n    df[\u0027department\u0027].isin(\n    [\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \u0027personal care\u0027, \n     \u0027dry goods pasta\u0027])]\nz.show(cart_order)",
+      "text": "%md\n## Presto",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.199",
+      "dateUpdated": "2019-10-30 17:56:35.174",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458188015_-1014454132",
+      "id": "20191030-175628_1558273167",
+      "dateCreated": "2019-10-30 17:56:28.015",
+      "dateStarted": "2019-10-30 17:56:31.303",
+      "dateFinished": "2019-10-30 17:56:31.309",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Presto + Verdict",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:56:49.367",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePresto + Verdict\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572458196417_661125032",
+      "id": "20191030-175636_4571658",
+      "dateCreated": "2019-10-30 17:56:36.417",
+      "dateStarted": "2019-10-30 17:56:41.686",
+      "dateFinished": "2019-10-30 17:56:41.691",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ncart_order \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n    df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n                          \u0027personal care\u0027])]\nz.show(cart_order)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 17:34:58.343",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1184,7 +1525,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tdepartment\ta1\n4\talcohol\t5.293533366135539\n4\tbabies\t10.07978690531829\n4\tdry goods pasta\t9.94836928727832\n4\tpantry\t9.1571164557193\n4\tpersonal care\t8.344505178725594\n4\tpets\t7.497460656688582\n4\tproduce\t7.763728061796652\n"
+            "data": "order_dow\tdepartment\ta1\n4\talcohol\t5.293533366135539\n4\tbabies\t10.07978690531829\n4\tpantry\t9.1571164557193\n4\tpersonal care\t8.344505178725594\n4\tproduce\t7.763728061796652\n"
           }
         ]
       },
@@ -1192,15 +1533,15 @@
       "jobName": "paragraph_1572302470296_748894594",
       "id": "20191028-224110_1440582116",
       "dateCreated": "2019-10-28 22:41:10.296",
-      "dateStarted": "2019-10-30 03:52:20.088",
-      "dateFinished": "2019-10-30 04:08:44.289",
+      "dateStarted": "2019-10-30 17:24:21.654",
+      "dateFinished": "2019-10-30 17:34:56.223",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ndf \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n         df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027pets\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n            \u0027personal care\u0027, \u0027dry goods pasta\u0027])]\nverdict_cart_order \u003d append_errors(cart_order, df, \u0027a1\u0027)\nz.show(verdict_cart_order)",
+      "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ndf \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n         df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n                                \u0027personal care\u0027])]\nverdict_cart_order \u003d append_errors(cart_order, df, \u0027a1\u0027)\nz.show(verdict_cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 04:57:57.246",
+      "dateUpdated": "2019-10-30 18:23:06.122",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1346,7 +1687,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tdepartment\ta1\trel error (%)\n4\talcohol\t5.560321715817694\t4.7980739841583375\n4\tbabies\t10.76530612244898\t6.367856234958065\n4\tdry goods pasta\t9.89646672144618\t0.5244555182473831\n4\tpantry\t9.23065693430657\t0.7966982102210844\n4\tpersonal care\t8.524682651622003\t2.1135974236193547\n4\tpets\t8.228187919463087\t8.880779947259484\n4\tproduce\t7.769494887837632\t0.0742239505171358\n"
+            "data": "order_dow\tdepartment\ta1\trel error (%)\n4\talcohol\t5.560321715817694\t4.7980739841583375\n4\tbabies\t10.76530612244898\t6.367856234958065\n4\tpantry\t9.23065693430657\t0.7966982102210844\n4\tpersonal care\t8.524682651622003\t2.1135974236193547\n4\tproduce\t7.769494887837632\t0.0742239505171358\n"
           }
         ]
       },
@@ -1354,15 +1695,15 @@
       "jobName": "paragraph_1572125842286_808400136",
       "id": "20191026-213722_701436767",
       "dateCreated": "2019-10-26 21:37:22.286",
-      "dateStarted": "2019-10-30 04:17:19.797",
-      "dateFinished": "2019-10-30 04:17:20.351",
+      "dateStarted": "2019-10-30 18:23:04.683",
+      "dateFinished": "2019-10-30 18:23:05.437",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n# \u003cdiv\u003e\u003c/div\u003e\n# Verdict for Machine Learning: Click Prediction\n**dataset**: 128GB on disk, 45.8 millions examples, 1 million features\n**Model**: Logistic Regression (Depth-1 Neural Net)",
+      "text": "%md\n\n# \u003cdiv\u003e\u003c/div\u003e\n# 4. VerdictML: What items are more likely to be clicked?\n**dataset**: 128GB on disk, 45.8 millions examples, 1 million features\n**Model**: Logistic Regression (Depth-1 Neural Net)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 00:17:33.579",
+      "dateUpdated": "2019-10-30 18:07:18.013",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1387,7 +1728,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/h1\u003e\n\u003ch1\u003eVerdict for Machine Learning: Click Prediction\u003c/h1\u003e\n\u003cp\u003e\u003cstrong\u003edataset\u003c/strong\u003e: 128GB on disk, 45.8 millions examples, 1 million features\u003cbr/\u003e\u003cstrong\u003eModel\u003c/strong\u003e: Logistic Regression (Depth-1 Neural Net)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/h1\u003e\n\u003ch1\u003e4. VerdictML: What items are more likely to be clicked?\u003c/h1\u003e\n\u003cp\u003e\u003cstrong\u003edataset\u003c/strong\u003e: 128GB on disk, 45.8 millions examples, 1 million features\u003cbr/\u003e\u003cstrong\u003eModel\u003c/strong\u003e: Logistic Regression (Depth-1 Neural Net)\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1395,8 +1736,8 @@
       "jobName": "paragraph_1572128303974_29704561",
       "id": "20191026-221823_1543063705",
       "dateCreated": "2019-10-26 22:18:23.974",
-      "dateStarted": "2019-10-30 00:17:33.580",
-      "dateFinished": "2019-10-30 00:17:33.608",
+      "dateStarted": "2019-10-30 18:07:18.014",
+      "dateFinished": "2019-10-30 18:07:18.034",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1556,9 +1897,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)\n",
+      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-30 02:57:25.294",
+      "dateUpdated": "2019-10-30 17:03:28.175",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
