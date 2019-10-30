@@ -102,7 +102,7 @@ class VerdictSession(object):
 
 
     # QUERYING METHODS
-    def sql(self, sql, rel_err_bound=0.05):
+    def sql(self, sql, rel_err_bound=0.05, cache_only=False):
         """Processes a SQL query, and makes a prediction that satisfies the specified relative error.
 
         :param sql: A SQL query.
@@ -129,7 +129,7 @@ class VerdictSession(object):
             request = sql2verdict_query(sql)
             request["type"] = "single_agg"
 
-            result = self.json(request, rel_err_bound)
+            result = self.json(request, rel_err_bound, cache_only)
         log(f"Returning an answer in {time.time() - start} sec(s).")
         return result
 
@@ -161,7 +161,7 @@ class VerdictSession(object):
         return itr
 
 
-    def json(self, query_request, rel_err_bound=0.05):
+    def json(self, query_request, rel_err_bound=0.05, cache_only=False):
         """Processes a query in the json format. Using this method eliminates the overhead of
         converting SQL to a json representation (performed by the sql() method).
 
@@ -196,7 +196,7 @@ class VerdictSession(object):
         query_executor = Querying(self._engine, self._cache_engine)
 
         request_obj = self.request2query_obj(query_request)
-        return query_executor.json(request_obj, rel_err_bound)
+        return query_executor.json(request_obj, rel_err_bound, cache_only)
 
 
     def json_stream(self, query_request):

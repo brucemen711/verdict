@@ -567,7 +567,7 @@
     {
       "text": "%python\nresult2 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l.l_orderkey \u003d o.o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027)\nz.show(pd.DataFrame(result2))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 21:10:11.775",
+      "dateUpdated": "2019-10-29 23:59:55.737",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -708,7 +708,7 @@
     {
       "text": "%python\nresult2_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT o_orderstatus, count(*) as c\nFROM hive.tpch_sf100.lineitem l INNER JOIN\n     hive.tpch_sf100.orders o ON l_orderkey \u003d o_orderkey\nGROUP BY o_orderstatus\nORDER BY o_orderstatus\n\u0027\u0027\u0027, 0.01)\nresult2_verdict \u003d append_errors(result2_verdict, result2)\nz.show(result2_verdict)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 21:10:11.831",
+      "dateUpdated": "2019-10-29 23:59:55.814",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -985,7 +985,7 @@
     {
       "text": "%python\nresult3 \u003d v.sql(\u0027\u0027\u0027\\\nBYPASS SELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027)\nz.show(result3)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 21:10:10.122",
+      "dateUpdated": "2019-10-29 23:59:55.892",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1145,7 +1145,7 @@
     {
       "text": "%python\nresult3_verdict \u003d v.sql(\u0027\u0027\u0027\\\nSELECT shipyear, shipmonth, count(*) as c\nFROM (\n    SELECT year(l_shipdate) shipyear, month(l_shipdate) shipmonth\n    FROM hive.tpch_sf100.lineitem\n) t\nGROUP BY shipyear, shipmonth\nORDER BY shipyear, shipmonth\n\u0027\u0027\u0027, 0.01)\nresult3_verdict \u003d append_errors(result3_verdict, result3)\nz.show(result3_verdict)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 21:10:10.283",
+      "dateUpdated": "2019-10-29 23:59:55.996",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1305,7 +1305,7 @@
     {
       "text": "%md\n# Verdict for Machine Learning: Click Prediction\n**dataset**: 128GB on disk, 45.8 millions examples, 1 million features\n**Model**: Logistic Regression (Depth-1 Neural Net)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-16 06:32:50.186",
+      "dateUpdated": "2019-10-30 00:19:47.542",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1338,15 +1338,15 @@
       "jobName": "paragraph_1568912411082_-2013798765",
       "id": "20190919-170011_2064467869",
       "dateCreated": "2019-09-19 17:00:11.082",
-      "dateStarted": "2019-10-16 06:32:50.186",
-      "dateFinished": "2019-10-16 06:32:50.199",
+      "dateStarted": "2019-10-30 00:19:47.542",
+      "dateFinished": "2019-10-30 00:19:47.568",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Data loading",
       "user": "anonymous",
-      "dateUpdated": "2019-09-27 16:22:33.058",
+      "dateUpdated": "2019-10-30 00:19:49.714",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1379,8 +1379,8 @@
       "jobName": "paragraph_1568906395948_-98542072",
       "id": "20190919-151955_2059636953",
       "dateCreated": "2019-09-19 15:19:55.948",
-      "dateStarted": "2019-09-27 16:22:33.058",
-      "dateFinished": "2019-09-27 16:22:33.064",
+      "dateStarted": "2019-10-30 00:19:49.718",
+      "dateFinished": "2019-10-30 00:19:49.741",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1422,7 +1422,7 @@
     {
       "text": "%md\n## Training w/ SciPy (2 hours)",
       "user": "anonymous",
-      "dateUpdated": "2019-09-27 16:24:00.103",
+      "dateUpdated": "2019-10-30 00:01:27.204",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1455,15 +1455,15 @@
       "jobName": "paragraph_1568819914954_-1636071512",
       "id": "20190918-151834_492649650",
       "dateCreated": "2019-09-18 15:18:34.954",
-      "dateStarted": "2019-09-27 16:24:00.104",
-      "dateFinished": "2019-09-27 16:24:00.108",
+      "dateStarted": "2019-10-30 00:01:27.212",
+      "dateFinished": "2019-10-30 00:01:27.234",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Training w/ SciPy+Verdict (\u003c2 mins)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-16 06:33:03.418",
+      "dateUpdated": "2019-10-30 00:01:38.244",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1496,8 +1496,8 @@
       "jobName": "paragraph_1568819935256_1708449209",
       "id": "20190918-151855_208265605",
       "dateCreated": "2019-09-18 15:18:55.256",
-      "dateStarted": "2019-10-16 06:33:03.418",
-      "dateFinished": "2019-10-16 06:33:03.424",
+      "dateStarted": "2019-10-30 00:01:38.244",
+      "dateFinished": "2019-10-30 00:01:38.267",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1586,7 +1586,7 @@
     {
       "text": "%md\n## Prediction w/ SciPy Model",
       "user": "anonymous",
-      "dateUpdated": "2019-09-27 16:29:55.842",
+      "dateUpdated": "2019-10-30 00:03:44.008",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1619,15 +1619,15 @@
       "jobName": "paragraph_1568921042228_538524386",
       "id": "20190919-192402_1614978242",
       "dateCreated": "2019-09-19 19:24:02.228",
-      "dateStarted": "2019-09-27 16:29:55.843",
-      "dateFinished": "2019-09-27 16:29:55.847",
+      "dateStarted": "2019-10-30 00:03:43.998",
+      "dateFinished": "2019-10-30 00:03:44.007",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Prediction w/ SciPy + Verdict Model",
       "user": "anonymous",
-      "dateUpdated": "2019-10-16 06:33:15.624",
+      "dateUpdated": "2019-10-30 00:03:45.212",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1660,8 +1660,8 @@
       "jobName": "paragraph_1568921057397_-1652991307",
       "id": "20190919-192417_949697575",
       "dateCreated": "2019-09-19 19:24:17.398",
-      "dateStarted": "2019-10-16 06:33:15.625",
-      "dateFinished": "2019-10-16 06:33:15.631",
+      "dateStarted": "2019-10-30 00:03:45.215",
+      "dateFinished": "2019-10-30 00:03:45.244",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1861,7 +1861,7 @@
     {
       "text": "%md\n## SciPy Model Accuracy",
       "user": "anonymous",
-      "dateUpdated": "2019-09-27 16:29:04.667",
+      "dateUpdated": "2019-10-30 00:19:31.203",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1894,15 +1894,15 @@
       "jobName": "paragraph_1568845938245_1985470761",
       "id": "20190918-223218_932544041",
       "dateCreated": "2019-09-18 22:32:18.245",
-      "dateStarted": "2019-09-27 16:29:04.669",
-      "dateFinished": "2019-09-27 16:29:04.673",
+      "dateStarted": "2019-10-30 00:19:31.203",
+      "dateFinished": "2019-10-30 00:19:31.222",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## SciPy + Verdict Model Accuracy",
       "user": "anonymous",
-      "dateUpdated": "2019-10-16 06:33:26.347",
+      "dateUpdated": "2019-10-30 00:19:41.318",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
@@ -1935,8 +1935,8 @@
       "jobName": "paragraph_1568913349525_-136105025",
       "id": "20190919-171549_2063887305",
       "dateCreated": "2019-09-19 17:15:49.525",
-      "dateStarted": "2019-10-16 06:33:26.347",
-      "dateFinished": "2019-10-16 06:33:26.352",
+      "dateStarted": "2019-10-30 00:19:41.313",
+      "dateFinished": "2019-10-30 00:19:41.322",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -2051,7 +2051,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Quickstart",
+  "name": "Examples with TPC-H",
   "id": "2EMM5HJDB",
   "noteParams": {},
   "noteForms": {},

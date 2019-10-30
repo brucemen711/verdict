@@ -172,8 +172,8 @@ def main():
                         default='start', const='start', help='The main command: start or stop')
 
     # cache loading option
-    parser.add_argument('--preload-cache', dest='preload-cache', action='store_true')
-    parser.add_argument('--no-preload-cache', dest='preload-cache', action='store_false')
+    parser.add_argument('--preload-cache', dest='preload_cache', action='store_true')
+    parser.add_argument('--no-preload-cache', dest='preload_cache', action='store_false')
     parser.set_defaults(preload_cache=True)
     parser.add_argument('--cache-dir', type=str, default='/usr/local/var/verdict/cache/',
                         help='The directory where cache files are stored.')

@@ -301,7 +301,7 @@ class Querying(object):
         self._engine = engine
         self._cache_engine = cache_engine
 
-    def json(self, query_request, rel_err_bound):
+    def json(self, query_request, rel_err_bound, cache_only):
         """Computes an accuracy-guaranteed answer using automatically chosen sample sizes.
 
         :param query_request:  A query object. The query must in the following form:
@@ -336,6 +336,9 @@ class Querying(object):
                 } 
 
         :param rel_err_bound:  The required relative error
+
+        :param cache_only:
+            If True, only uses the cache (regardless of accuracy).
         """
         assert_type(query_request, dict)
         assert 'single_agg' == query_request['type']
@@ -404,7 +407,10 @@ class Querying(object):
         if options['bypass_cache']:
             log(f'Bypassing the cache result according to the option.')
 
-        if cache_ratio >= required_ratio:
+        if cache_only:
+            log(f"Set to only use the cache; we return the answer.", "debug")
+            return unbiased_result
+        elif cache_ratio >= required_ratio:
             log(f"The cache is large enough ({cache_ratio*100}%); we return its answer.", "debug")
             return unbiased_result
 

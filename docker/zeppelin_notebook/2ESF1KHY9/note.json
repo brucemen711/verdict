@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thursday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
+      "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thusday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 19:51:08.755",
+      "dateUpdated": "2019-10-29 21:53:50.984",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -28,15 +28,15 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-10-29 19:51:08.821",
-      "dateFinished": "2019-10-29 19:51:11.921",
+      "dateStarted": "2019-10-29 21:53:51.024",
+      "dateFinished": "2019-10-29 21:53:51.054",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nv.info()",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:09:15.739",
+      "dateUpdated": "2019-10-29 22:12:19.566",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -50,7 +50,7 @@
         },
         "editorMode": "ace/mode/python",
         "editorHide": false,
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -77,7 +77,7 @@
     {
       "text": "%python\nv.info(\u0027hive.instacart.orders\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:09:17.362",
+      "dateUpdated": "2019-10-29 21:54:40.461",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -89,7 +89,7 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/python",
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -108,15 +108,15 @@
       "jobName": "paragraph_1572125702072_971143135",
       "id": "20191026-213502_914580839",
       "dateCreated": "2019-10-26 21:35:02.072",
-      "dateStarted": "2019-10-28 22:09:49.525",
-      "dateFinished": "2019-10-28 22:09:49.533",
+      "dateStarted": "2019-10-29 21:54:38.735",
+      "dateFinished": "2019-10-29 21:54:38.756",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nv.info(\u0027hive.instacart.order_products\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-28 23:09:18.591",
+      "dateUpdated": "2019-10-29 22:12:28.788",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -128,7 +128,7 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/python",
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -147,15 +147,15 @@
       "jobName": "paragraph_1572125722389_-1540892106",
       "id": "20191026-213522_509501608",
       "dateCreated": "2019-10-26 21:35:22.389",
-      "dateStarted": "2019-10-28 22:09:51.264",
-      "dateFinished": "2019-10-28 22:09:51.272",
+      "dateStarted": "2019-10-29 22:12:27.827",
+      "dateFinished": "2019-10-29 22:12:27.846",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 1. People \u003cspan style\u003d\"color:red\"\u003epurchase the most\u003c/span\u003e on Saturday followed by Sunday",
+      "text": "%md\n# 1. Wednesday is the \u003cspan style\u003d\"color:red\"\u003eleast favorite\u003c/span\u003e day for shopping",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:06:00.403",
+      "dateUpdated": "2019-10-30 00:09:09.706",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -179,7 +179,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. People \u003cspan style\u003d\"color:red\"\u003epurchase the most\u003c/span\u003e on Saturday followed by Sunday\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1. Wednesday is the \u003cspan style\u003d\"color:red\"\u003eleast favorite\u003c/span\u003e day for shopping\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -187,18 +187,18 @@
       "jobName": "paragraph_1572125345747_-611159523",
       "id": "20191026-212905_822270821",
       "dateCreated": "2019-10-26 21:29:05.747",
-      "dateStarted": "2019-10-29 20:06:00.406",
-      "dateFinished": "2019-10-29 20:06:00.438",
+      "dateStarted": "2019-10-30 00:09:09.706",
+      "dateFinished": "2019-10-30 00:09:09.723",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.911",
+      "dateUpdated": "2019-10-29 23:57:47.010",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
@@ -285,65 +285,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))",
+      "text": "%python\nverdict_sales_by_days \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", cache_only\u003dTrue)\nz.show(replace_dow())",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:17:19.030",
+      "dateUpdated": "2019-10-30 00:08:29.003",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "order_dow": "string",
-                      "c": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "order_dow",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
-              "values": [
-                {
-                  "name": "c",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          },
-          "1": {
             "graph": {
               "mode": "multiBarChart",
               "height": 300.0,
@@ -397,6 +347,7 @@
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
+          "completionKey": "TAB",
           "completionSupport": true
         },
         "editorMode": "ace/mode/python"
@@ -410,23 +361,23 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\tc\nSaturday\t96360448\nSunday\t94119936\nMonday\t74885120\nTuesday\t69437440\nWednesday\t67915776\nThursday\t72654848\nFriday\t70946816\n"
+            "data": "order_dow\tc\nSaturday\t96360448\nSunday\t94119936\nMonday\t74885120\nTuesday\t69437440\nWednesday\t67915776\nThusday\t72654848\nFriday\t70946816\n"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1572124882764_-1543086177",
-      "id": "20191026-212122_1751757888",
-      "dateCreated": "2019-10-26 21:21:22.764",
-      "dateStarted": "2019-10-29 19:52:22.027",
-      "dateFinished": "2019-10-29 19:52:22.227",
+      "jobName": "paragraph_1572393982394_-817530277",
+      "id": "20191030-000622_1429015947",
+      "dateCreated": "2019-10-30 00:06:22.394",
+      "dateStarted": "2019-10-30 00:06:43.016",
+      "dateFinished": "2019-10-30 00:06:43.199",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 2. \u003cspan style\u003d\"color:red\"\u003eWhat products\u003c/span\u003e are sold the most on weekend? \"Produce\"",
+      "text": "%md\n# 2. But, people buy \u003cspan style\u003d\"color:red\"\u003e\"alcohol\"\u003c/span\u003e the most on Wednesday",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:06:47.980",
+      "dateUpdated": "2019-10-29 22:23:10.507",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -450,7 +401,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. \u003cspan style\u003d\"color:red\"\u003eWhat products\u003c/span\u003e are sold the most on weekend? \u0026ldquo;Produce\u0026rdquo;\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e2. But, people buy \u003cspan style\u003d\"color:red\"\u003e\u0026ldquo;alcohol\u0026rdquo;\u003c/span\u003e the most on Wednesday\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -458,18 +409,18 @@
       "jobName": "paragraph_1572125395527_1856302582",
       "id": "20191026-212955_1420239986",
       "dateCreated": "2019-10-26 21:29:55.528",
-      "dateStarted": "2019-10-29 20:06:47.982",
-      "dateFinished": "2019-10-29 20:06:47.993",
+      "dateStarted": "2019-10-29 22:23:10.489",
+      "dateFinished": "2019-10-29 22:23:10.530",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\npresto_sales_by_department \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n     ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nz.show(replace_dow(presto_sales_by_department))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.969",
+      "dateUpdated": "2019-10-29 23:57:50.131",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
@@ -562,17 +513,17 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_sales_by_department \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nz.show(replace_dow(verdict_sales_by_department))",
+      "text": "%python\nverdict_sales_by_department \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027bulk\u0027 \n   or department \u003d \u0027other\u0027 or department \u003d \u0027missing\u0027 \n   or department \u003d \u0027pets\u0027\ngroup by department, order_dow\norder by department, order_dow\"\"\", cache_only\u003dTrue)\nz.show(replace_dow(verdict_sales_by_department))",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:17:14.168",
+      "dateUpdated": "2019-10-30 00:10:24.410",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
+              "mode": "multiBarChart",
               "height": 364.0,
               "optionOpen": false,
               "setting": {
@@ -601,6 +552,18 @@
                   },
                   "xLabelStatus": "default",
                   "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
               "commonSetting": {},
@@ -715,7 +678,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1784320\nalcohol\tSunday\t2099712\nalcohol\tMonday\t2029056\nalcohol\tTuesday\t2277376\nalcohol\tWednesday\t2629632\nalcohol\tThursday\t2726912\nalcohol\tFriday\t1972736\nbabies\tSaturday\t8367104\nbabies\tSunday\t7305216\nbabies\tMonday\t5823488\nbabies\tTuesday\t5355520\nbabies\tWednesday\t5054976\nbabies\tThursday\t5086208\nbabies\tFriday\t5656064\nbakery\tSaturday\t22855168\nbakery\tSunday\t20659712\nbakery\tMonday\t15266816\nbakery\tTuesday\t14119424\nbakery\tWednesday\t13876736\nbakery\tThursday\t15643136\nbakery\tFriday\t16658432\nbeverages\tSaturday\t44122624\nbeverages\tSunday\t48684544\nbeverages\tMonday\t37254656\nbeverages\tTuesday\t35105792\nbeverages\tWednesday\t34539520\nbeverages\tThursday\t38368256\nbeverages\tFriday\t34854400\nbreakfast\tSaturday\t13172736\nbreakfast\tSunday\t13088256\nbreakfast\tMonday\t9784832\nbreakfast\tTuesday\t8919040\nbreakfast\tWednesday\t8625664\nbreakfast\tThursday\t9521664\nbreakfast\tFriday\t9247744\nbulk\tSaturday\t599552\nbulk\tSunday\t626176\nbulk\tMonday\t480256\nbulk\tTuesday\t430080\nbulk\tWednesday\t380416\nbulk\tThursday\t482816\nbulk\tFriday\t473088\ncanned goods\tSaturday\t23035904\ncanned goods\tSunday\t18087936\ncanned goods\tMonday\t13458944\ncanned goods\tTuesday\t12060160\ncanned goods\tWednesday\t11786240\ncanned goods\tThursday\t13005824\ncanned goods\tFriday\t16649728\ndairy eggs\tSaturday\t103936512\ndairy eggs\tSunday\t96360960\ndairy eggs\tMonday\t70887936\ndairy eggs\tTuesday\t65183744\ndairy eggs\tWednesday\t64729600\ndairy eggs\tThursday\t71380992\ndairy eggs\tFriday\t74693120\ndeli\tSaturday\t21346816\ndeli\tSunday\t18656256\ndeli\tMonday\t13704704\ndeli\tTuesday\t12427776\ndeli\tWednesday\t12147200\ndeli\tThursday\t13506560\ndeli\tFriday\t14789632\ndry goods pasta\tSaturday\t18592256\ndry goods pasta\tSunday\t14945280\ndry goods pasta\tMonday\t11045376\ndry goods pasta\tTuesday\t10045952\ndry goods pasta\tWednesday\t9613312\ndry goods pasta\tThursday\t10518528\ndry goods pasta\tFriday\t13083648\nfrozen\tSaturday\t44661760\nfrozen\tSunday\t36283904\nfrozen\tMonday\t28548608\nfrozen\tTuesday\t27008000\nfrozen\tWednesday\t26560000\nfrozen\tThursday\t29569024\nfrozen\tFriday\t34576384\nhousehold\tSaturday\t13049856\nhousehold\tSunday\t12384256\nhousehold\tMonday\t10006016\nhousehold\tTuesday\t9740288\nhousehold\tWednesday\t9498112\nhousehold\tThursday\t10154496\nhousehold\tFriday\t10654720\ninternational\tSaturday\t5711360\ninternational\tSunday\t4610048\ninternational\tMonday\t3423744\ninternational\tTuesday\t3168256\ninternational\tWednesday\t3046912\ninternational\tThursday\t3364864\ninternational\tFriday\t3965952\nmeat seafood\tSaturday\t15422464\nmeat seafood\tSunday\t12072960\nmeat seafood\tMonday\t8680448\nmeat seafood\tTuesday\t8055808\nmeat seafood\tWednesday\t7752192\nmeat seafood\tThursday\t8845312\nmeat seafood\tFriday\t11107840\nmissing\tSaturday\t1471488\nmissing\tSunday\t1206784\nmissing\tMonday\t907264\nmissing\tTuesday\t877568\nmissing\tWednesday\t885760\nmissing\tThursday\t985600\nmissing\tFriday\t1118208\nother\tSaturday\t640512\nother\tSunday\t582144\nother\tMonday\t485376\nother\tTuesday\t512512\nother\tWednesday\t453120\nother\tThursday\t513024\nother\tFriday\t535040\npantry\tSaturday\t35891200\npantry\tSunday\t30372864\npantry\tMonday\t24515072\npantry\tTuesday\t23208448\npantry\tWednesday\t22852608\npantry\tThursday\t24941568\npantry\tFriday\t27991552\npersonal care\tSaturday\t8215552\npersonal care\tSunday\t7382528\npersonal care\tMonday\t6080000\npersonal care\tTuesday\t5754880\npersonal care\tWednesday\t5625856\npersonal care\tThursday\t5865984\npersonal care\tFriday\t6590464\npets\tSaturday\t1732608\npets\tSunday\t1507840\npets\tMonday\t1170432\npets\tTuesday\t1315328\npets\tWednesday\t1288704\npets\tThursday\t1366016\npets\tFriday\t1616896\nproduce\tSaturday\t200114176\nproduce\tSunday\t169052160\nproduce\tMonday\t120573440\nproduce\tTuesday\t108613120\nproduce\tWednesday\t106141184\nproduce\tThursday\t119327232\nproduce\tFriday\t136206336\nsnacks\tSaturday\t49276416\nsnacks\tSunday\t54397440\nsnacks\tMonday\t40182784\nsnacks\tTuesday\t36973056\nsnacks\tWednesday\t35930624\nsnacks\tThursday\t39964160\nsnacks\tFriday\t36187648\n"
+            "data": "department\torder_dow\tc\nalcohol\tSaturday\t1826816\nalcohol\tSunday\t1826816\nalcohol\tMonday\t2260992\nalcohol\tTuesday\t2170880\nalcohol\tWednesday\t3055616\nalcohol\tThusday\t2646016\nalcohol\tFriday\t1835008\nbulk\tSaturday\t622592\nbulk\tSunday\t638976\nbulk\tMonday\t548864\nbulk\tTuesday\t409600\nbulk\tWednesday\t327680\nbulk\tThusday\t475136\nbulk\tFriday\t393216\nmissing\tSaturday\t1515520\nmissing\tSunday\t1155072\nmissing\tMonday\t868352\nmissing\tTuesday\t843776\nmissing\tWednesday\t892928\nmissing\tThusday\t1007616\nmissing\tFriday\t1089536\nother\tSaturday\t655360\nother\tSunday\t557056\nother\tMonday\t491520\nother\tTuesday\t565248\nother\tWednesday\t450560\nother\tThusday\t483328\nother\tFriday\t557056\npets\tSaturday\t1720320\npets\tSunday\t1343488\npets\tMonday\t1138688\npets\tTuesday\t1335296\npets\tWednesday\t1220608\npets\tThusday\t1474560\npets\tFriday\t1703936\n"
           }
         ]
       },
@@ -723,15 +686,15 @@
       "jobName": "paragraph_1572124234413_-1358816919",
       "id": "20191026-211034_426820453",
       "dateCreated": "2019-10-26 21:10:34.414",
-      "dateStarted": "2019-10-29 19:52:41.177",
-      "dateFinished": "2019-10-29 19:52:47.845",
+      "dateStarted": "2019-10-30 00:10:21.855",
+      "dateFinished": "2019-10-30 00:10:23.734",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n# 3. Any \u003cspan style\u003d\"color:red\"\u003etime-sensitive\u003c/span\u003e sales pattern?\n\n## 3.1 \"Produce\" is most sold on Saturday afternoon",
+      "text": "%md\n# 3. \"Alcohol\" is  \u003cspan style\u003d\"color:red\"\u003ere-ordered MORE\u003c/span\u003e than \"babies\" or \"pets\" products\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:07:43.999",
+      "dateUpdated": "2019-10-30 00:10:42.151",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -756,7 +719,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. Any \u003cspan style\u003d\"color:red\"\u003etime-sensitive\u003c/span\u003e sales pattern?\u003c/h1\u003e\n\u003ch2\u003e3.1 \u0026ldquo;Produce\u0026rdquo; is most sold on Saturday afternoon\u003c/h2\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e3. \u0026ldquo;Alcohol\u0026rdquo; is \u003cspan style\u003d\"color:red\"\u003ere-ordered MORE\u003c/span\u003e than \u0026ldquo;babies\u0026rdquo; or \u0026ldquo;pets\u0026rdquo; products\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -764,18 +727,18 @@
       "jobName": "paragraph_1572304370961_-1144247186",
       "id": "20191028-231250_45515445",
       "dateCreated": "2019-10-28 23:12:50.961",
-      "dateStarted": "2019-10-29 20:07:43.999",
-      "dateFinished": "2019-10-29 20:07:44.005",
+      "dateStarted": "2019-10-30 00:10:42.151",
+      "dateFinished": "2019-10-30 00:10:42.173",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nsales_by_department \u003d v.sql(\"\"\"\\\nbypass select order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\nwhere department \u003d \u0027produce\u0027\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(sales_by_department))",
+      "text": "%python\nverdict_reorder_rates \u003d v.sql(\"\"\"\\\nbypass select department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\nz.show(verdict_reorder_rates)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.151",
+      "dateUpdated": "2019-10-30 00:11:23.284",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
@@ -867,17 +830,17 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_produce_sales_by_hours \u003d v.sql(\"\"\"\\\nselect order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027produce\u0027\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\", 0.1)\nz.show(replace_dow(verdict_produce_sales_by_hours))",
+      "text": "%python\nverdict_reorder_rates \u003d v.sql(\"\"\"\\\nselect department, avg(reordered) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027\ngroup by department\norder by a1 desc\"\"\", cache_only\u003dTrue)\nz.show(verdict_reorder_rates)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.703",
+      "dateUpdated": "2019-10-30 00:11:10.814",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "lineChart",
+              "mode": "multiBarChart",
               "height": 300.0,
               "optionOpen": false,
               "setting": {
@@ -885,9 +848,8 @@
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "order_dow": "string",
-                      "order_hour_of_day": "string",
-                      "c": "string"
+                      "department": "string",
+                      "a1": "string"
                     },
                     "updated": false
                   },
@@ -916,22 +878,16 @@
               "commonSetting": {},
               "keys": [
                 {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_dow",
+                  "name": "department",
                   "index": 0.0,
                   "aggr": "sum"
                 }
               ],
+              "groups": [],
               "values": [
                 {
-                  "name": "c",
-                  "index": 2.0,
+                  "name": "a1",
+                  "index": 1.0,
                   "aggr": "sum"
                 }
               ]
@@ -1019,7 +975,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t1281280\nSaturday\t1\t740992\nSaturday\t2\t448640\nSaturday\t3\t272384\nSaturday\t4\t244096\nSaturday\t5\t370176\nSaturday\t6\t1103360\nSaturday\t7\t4425984\nSaturday\t8\t9894656\nSaturday\t9\t14202368\nSaturday\t10\t17019904\nSaturday\t11\t17392384\nSaturday\t12\t17169152\nSaturday\t13\t17907072\nSaturday\t14\t17960192\nSaturday\t15\t17821440\nSaturday\t16\t15777792\nSaturday\t17\t12362496\nSaturday\t18\t8883712\nSaturday\t19\t6732160\nSaturday\t20\t5932288\nSaturday\t21\t5136128\nSaturday\t22\t4057984\nSaturday\t23\t2319744\nSunday\t0\t1232384\nSunday\t1\t553600\nSunday\t2\t325504\nSunday\t3\t213632\nSunday\t4\t231040\nSunday\t5\t489600\nSunday\t6\t1598592\nSunday\t7\t5177984\nSunday\t8\t10053888\nSunday\t9\t14623616\nSunday\t10\t16110208\nSunday\t11\t14915968\nSunday\t12\t13775488\nSunday\t13\t13842560\nSunday\t14\t13636352\nSunday\t15\t13591680\nSunday\t16\t12635776\nSunday\t17\t10039424\nSunday\t18\t7414784\nSunday\t19\t5703424\nSunday\t20\t4403200\nSunday\t21\t3733120\nSunday\t22\t2900224\nSunday\t23\t1771008\nMonday\t0\t972416\nMonday\t1\t441216\nMonday\t2\t236288\nMonday\t3\t193024\nMonday\t4\t172160\nMonday\t5\t378624\nMonday\t6\t1249792\nMonday\t7\t3673856\nMonday\t8\t6362240\nMonday\t9\t9291392\nMonday\t10\t10049152\nMonday\t11\t9838464\nMonday\t12\t9585280\nMonday\t13\t9567360\nMonday\t14\t9654016\nMonday\t15\t9627904\nMonday\t16\t9498752\nMonday\t17\t7830400\nMonday\t18\t6285184\nMonday\t19\t4792192\nMonday\t20\t3796992\nMonday\t21\t3059328\nMonday\t22\t2478464\nMonday\t23\t1601024\nTuesday\t0\t868736\nTuesday\t1\t398336\nTuesday\t2\t248576\nTuesday\t3\t155392\nTuesday\t4\t183552\nTuesday\t5\t373504\nTuesday\t6\t1160320\nTuesday\t7\t3240576\nTuesday\t8\t5646592\nTuesday\t9\t7577600\nTuesday\t10\t8721536\nTuesday\t11\t8650624\nTuesday\t12\t8387584\nTuesday\t13\t8515968\nTuesday\t14\t8649600\nTuesday\t15\t8853120\nTuesday\t16\t8463360\nTuesday\t17\t7167104\nTuesday\t18\t5928576\nTuesday\t19\t4444800\nTuesday\t20\t3366656\nTuesday\t21\t3113728\nTuesday\t22\t2592000\nTuesday\t23\t1508608\nWednesday\t0\t770816\nWednesday\t1\t374144\nWednesday\t2\t249728\nWednesday\t3\t191744\nWednesday\t4\t190464\nWednesday\t5\t378752\nWednesday\t6\t1187968\nWednesday\t7\t3338240\nWednesday\t8\t5538560\nWednesday\t9\t7527168\nWednesday\t10\t8374016\nWednesday\t11\t8316672\nWednesday\t12\t8050816\nWednesday\t13\t8218496\nWednesday\t14\t8097152\nWednesday\t15\t8211456\nWednesday\t16\t8190464\nWednesday\t17\t6918784\nWednesday\t18\t5597184\nWednesday\t19\t4705408\nWednesday\t20\t3830144\nWednesday\t21\t3466368\nWednesday\t22\t2861952\nWednesday\t23\t1737600\nThursday\t0\t899968\nThursday\t1\t464640\nThursday\t2\t232192\nThursday\t3\t241152\nThursday\t4\t267264\nThursday\t5\t445184\nThursday\t6\t1398784\nThursday\t7\t3836032\nThursday\t8\t6432128\nThursday\t9\t8932352\nThursday\t10\t9808640\nThursday\t11\t10171648\nThursday\t12\t9501312\nThursday\t13\t9323520\nThursday\t14\t9838720\nThursday\t15\t9425280\nThursday\t16\t9100544\nThursday\t17\t7404672\nThursday\t18\t6136448\nThursday\t19\t4512000\nThursday\t20\t3608576\nThursday\t21\t3159168\nThursday\t22\t2447872\nThursday\t23\t1703040\nFriday\t0\t949760\nFriday\t1\t532096\nFriday\t2\t313088\nFriday\t3\t200960\nFriday\t4\t239104\nFriday\t5\t345344\nFriday\t6\t994560\nFriday\t7\t3616256\nFriday\t8\t7268608\nFriday\t9\t9472640\nFriday\t10\t11037056\nFriday\t11\t11263872\nFriday\t12\t11224960\nFriday\t13\t11345536\nFriday\t14\t11828736\nFriday\t15\t11487104\nFriday\t16\t10383744\nFriday\t17\t8718976\nFriday\t18\t6500352\nFriday\t19\t5184256\nFriday\t20\t4076288\nFriday\t21\t3609856\nFriday\t22\t3132032\nFriday\t23\t2060544\n"
+            "data": "department\ta1\nproduce\t0.6534528372282332\nalcohol\t0.5988463555322496\nbabies\t0.5809935205183585\npets\t0.5647155812036274\ndry goods pasta\t0.46294576523031206\npantry\t0.34445262747476496\npersonal care\t0.31072248719307544\n"
           }
         ]
       },
@@ -1027,15 +983,15 @@
       "jobName": "paragraph_1572304181478_1641062225",
       "id": "20191028-230941_2055384765",
       "dateCreated": "2019-10-28 23:09:41.479",
-      "dateStarted": "2019-10-29 20:03:23.677",
-      "dateFinished": "2019-10-29 20:03:29.038",
+      "dateStarted": "2019-10-29 22:21:06.545",
+      "dateFinished": "2019-10-29 22:21:07.911",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3.2 Frozen products are ordered more in the afternoon",
+      "text": "%md\n# 4. People put \"Alcohol\" first in their carts",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:07:48.693",
+      "dateUpdated": "2019-10-30 00:15:10.708",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1059,7 +1015,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3.2 Frozen products are ordered more in the afternoon\u003c/h2\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e4. People put \u0026ldquo;Alcohol\u0026rdquo; first in their carts\u003c/h1\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1067,18 +1023,18 @@
       "jobName": "paragraph_1572128115868_-396332900",
       "id": "20191026-221515_136520021",
       "dateCreated": "2019-10-26 22:15:15.868",
-      "dateStarted": "2019-10-29 20:07:48.693",
-      "dateFinished": "2019-10-29 20:07:48.699",
+      "dateStarted": "2019-10-30 00:15:10.713",
+      "dateFinished": "2019-10-30 00:15:10.748",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\npresto_frozen_by_hour \u003d v.sql(\"\"\"\\\nbypass select order_hour_of_day, department, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n    ON p.order_id \u003d o.order_id\nwhere department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027\ngroup by order_hour_of_day, department\norder by order_hour_of_day, department\"\"\")\nz.show(presto_frozen_by_hour)",
+      "text": "%python\ncart_order \u003d v.sql(\"\"\"\\\nbypass select department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere order_dow \u003d 4 and\n   (department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027)\ngroup by department\norder by a1\"\"\")\nz.show(cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.886",
+      "dateUpdated": "2019-10-30 00:17:57.502",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
@@ -1172,12 +1128,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\nverdict_frozen_by_hour \u003d v.sql(\"\"\"\\\nselect order_hour_of_day, department, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o \n    ON order_id \u003d order_id\nwhere department \u003d \u0027beverages\u0027 or department \u003d \u0027snacks\u0027 or department \u003d \u0027frozen\u0027\ngroup by order_hour_of_day, department\norder by order_hour_of_day, department\"\"\")\nz.show(verdict_frozen_by_hour)",
+      "text": "%python\nverdict_cart_order \u003d v.sql(\"\"\"\\\nselect department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\nwhere order_dow \u003d 4 and\n   (department \u003d \u0027alcohol\u0027 or department \u003d \u0027babies\u0027\n   or department \u003d \u0027pets\u0027 or department \u003d \u0027produce\u0027\n   or department \u003d \u0027pantry\u0027 or department \u003d \u0027personal care\u0027\n   or department \u003d \u0027dry goods pasta\u0027)\ngroup by department\norder by a1\"\"\", cache_only\u003dTrue)\nz.show(verdict_cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:11:56.752",
+      "dateUpdated": "2019-10-30 00:16:51.824",
       "config": {
         "colWidth": 6.0,
-        "fontSize": 9.0,
+        "fontSize": 12.0,
         "enabled": true,
         "results": {
           "0": {
@@ -1223,21 +1179,15 @@
               "keys": [
                 {
                   "name": "department",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_hour_of_day",
                   "index": 0.0,
                   "aggr": "sum"
                 }
               ],
+              "groups": [],
               "values": [
                 {
-                  "name": "c",
-                  "index": 2.0,
+                  "name": "a1",
+                  "index": 1.0,
                   "aggr": "sum"
                 }
               ]
@@ -1325,7 +1275,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "order_hour_of_day\tdepartment\tc\n0\tbeverages\t1770496\n0\tfrozen\t1615360\n0\tsnacks\t1803264\n1\tbeverages\t994304\n1\tfrozen\t888320\n1\tsnacks\t921088\n2\tbeverages\t652800\n2\tfrozen\t557568\n2\tsnacks\t598016\n3\tbeverages\t523776\n3\tfrozen\t433664\n3\tsnacks\t423936\n4\tbeverages\t499712\n4\tfrozen\t409088\n4\tsnacks\t403456\n5\tbeverages\t748544\n5\tfrozen\t668672\n5\tsnacks\t668672\n6\tbeverages\t2311680\n6\tfrozen\t1970688\n6\tsnacks\t2413056\n7\tbeverages\t7076864\n7\tfrozen\t5884928\n7\tsnacks\t7438848\n8\tbeverages\t14285312\n8\tfrozen\t10626048\n8\tsnacks\t15479296\n9\tbeverages\t21925376\n9\tfrozen\t14653952\n9\tsnacks\t23296000\n10\tbeverages\t24857088\n10\tfrozen\t17221120\n10\tsnacks\t27024896\n11\tbeverages\t23585280\n11\tfrozen\t17981440\n11\tsnacks\t25565184\n12\tbeverages\t21427712\n12\tfrozen\t17951744\n12\tsnacks\t23236096\n13\tbeverages\t22485504\n13\tfrozen\t18461184\n13\tsnacks\t24297472\n14\tbeverages\t22648320\n14\tfrozen\t19105792\n14\tsnacks\t24609280\n15\tbeverages\t22286848\n15\tfrozen\t19414016\n15\tsnacks\t23762944\n16\tbeverages\t21116416\n16\tfrozen\t18830848\n16\tsnacks\t23013888\n17\tbeverages\t17918976\n17\tfrozen\t16706560\n17\tsnacks\t19119616\n18\tbeverages\t13969408\n18\tfrozen\t13171712\n18\tsnacks\t14240256\n19\tbeverages\t10877952\n19\tfrozen\t10384896\n19\tsnacks\t11214336\n20\tbeverages\t7655936\n20\tfrozen\t7340032\n20\tsnacks\t8251904\n21\tbeverages\t5826048\n21\tfrozen\t5819904\n21\tsnacks\t6593024\n22\tbeverages\t4414976\n22\tfrozen\t4320768\n22\tsnacks\t5141504\n23\tbeverages\t3070464\n23\tfrozen\t2789376\n23\tsnacks\t3396096\n"
+            "data": "department\ta1\nalcohol\t5.560321715817694\nproduce\t7.769494887837632\npets\t8.228187919463087\npersonal care\t8.524682651622003\npantry\t9.23065693430657\ndry goods pasta\t9.89646672144618\nbabies\t10.76530612244898\n"
           }
         ]
       },
@@ -1333,15 +1283,15 @@
       "jobName": "paragraph_1572125842286_808400136",
       "id": "20191026-213722_701436767",
       "dateCreated": "2019-10-26 21:37:22.286",
-      "dateStarted": "2019-10-29 20:08:33.834",
-      "dateFinished": "2019-10-29 20:08:37.842",
+      "dateStarted": "2019-10-30 00:16:46.353",
+      "dateFinished": "2019-10-30 00:16:49.132",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3.3 People order \u003cspan style\u003d\"color:red\"\u003ethe most\u003c/span\u003e on Sunday morning \n# (We May want to remove this because the regular query is too fast)",
+      "text": "%md\n\n# \u003cdiv\u003e\u003c/div\u003e\n# Verdict for Machine Learning: Click Prediction\n**dataset**: 128GB on disk, 45.8 millions examples, 1 million features\n**Model**: Logistic Regression (Depth-1 Neural Net)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:12:58.986",
+      "dateUpdated": "2019-10-30 00:17:33.579",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1350,6 +1300,7 @@
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
+          "completionKey": "TAB",
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
@@ -1365,94 +1316,115 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3.3 People order \u003cspan style\u003d\"color:red\"\u003ethe most\u003c/span\u003e on Sunday morning\u003c/h2\u003e\n\u003ch1\u003e(We May want to remove this because the regular query is too fast)\u003c/h1\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e\u003cdiv\u003e\u003c/div\u003e\u003c/h1\u003e\n\u003ch1\u003eVerdict for Machine Learning: Click Prediction\u003c/h1\u003e\n\u003cp\u003e\u003cstrong\u003edataset\u003c/strong\u003e: 128GB on disk, 45.8 millions examples, 1 million features\u003cbr/\u003e\u003cstrong\u003eModel\u003c/strong\u003e: Logistic Regression (Depth-1 Neural Net)\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1572125495340_-624403078",
-      "id": "20191026-213135_958375413",
-      "dateCreated": "2019-10-26 21:31:35.340",
-      "dateStarted": "2019-10-29 20:12:48.634",
-      "dateFinished": "2019-10-29 20:12:48.640",
+      "jobName": "paragraph_1572128303974_29704561",
+      "id": "20191026-221823_1543063705",
+      "dateCreated": "2019-10-26 22:18:23.974",
+      "dateStarted": "2019-10-30 00:17:33.580",
+      "dateFinished": "2019-10-30 00:17:33.608",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ntime_dow_correlation \u003d v.sql(\"\"\"\\\nbypass select order_dow, order_hour_of_day, count(*) c\nfrom hive.instacart.orders o\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(time_dow_correlation))",
+      "text": "%md\n## Data loading",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:12:22.712",
+      "dateUpdated": "2019-10-30 00:00:27.101",
       "config": {
-        "colWidth": 6.0,
+        "colWidth": 12.0,
         "fontSize": 9.0,
         "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 316.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "order_dow": "string",
-                      "order_hour_of_day": "string",
-                      "c": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "order_dow",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "values": [
-                {
-                  "name": "c",
-                  "index": 2.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          }
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
         },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eData loading\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393613849_1280233850",
+      "id": "20191030-000013_1117571284",
+      "dateCreated": "2019-10-30 00:00:13.849",
+      "dateStarted": "2019-10-30 00:00:23.294",
+      "dateFinished": "2019-10-30 00:00:23.308",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nimport numpy as np\nfrom blinkml.logistic import Logistic\nfrom scipy import sparse\nfrom sklearn.decomposition import PCA\n\ntest_data \u003d sparse.load_npz(\u0027/root/blinkml/trained_models/Criteo_test.npz\u0027)[:10000]\ntest_features \u003d test_data[:, 1:]\ntest_labels \u003d test_data[:,0]\n\npca \u003d PCA(n_components\u003d2)\ntest_features2D \u003d pca.fit_transform(test_features[:,:100].toarray())",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:00:51.068",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nModuleNotFoundError: No module named \u0027blinkml\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nModuleNotFoundError: No module named \u0027blinkml\u0027\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393623260_1711094423",
+      "id": "20191030-000023_1292263738",
+      "dateCreated": "2019-10-30 00:00:23.261",
+      "dateStarted": "2019-10-30 00:00:51.099",
+      "dateFinished": "2019-10-30 00:00:51.115",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Training w/ SciPy (2 hours)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:01:14.377",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -1463,149 +1435,37 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "TABLE",
-            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t629760\nSaturday\t1\t383680\nSaturday\t2\t225440\nSaturday\t3\t154080\nSaturday\t4\t130080\nSaturday\t5\t186880\nSaturday\t6\t532640\nSaturday\t7\t1985600\nSaturday\t8\t4497280\nSaturday\t9\t6527680\nSaturday\t10\t7754400\nSaturday\t11\t8165600\nSaturday\t12\t8230880\nSaturday\t13\t8615840\nSaturday\t14\t8728320\nSaturday\t15\t8632640\nSaturday\t16\t7914080\nSaturday\t17\t6360480\nSaturday\t18\t4731520\nSaturday\t19\t3624640\nSaturday\t20\t2924320\nSaturday\t21\t2307680\nSaturday\t22\t1799360\nSaturday\t23\t1101920\nSunday\t0\t587840\nSunday\t1\t292800\nSunday\t2\t176800\nSunday\t3\t119680\nSunday\t4\t129440\nSunday\t5\t257120\nSunday\t6\t859200\nSunday\t7\t2651360\nSunday\t8\t5458560\nSunday\t9\t8305280\nSunday\t10\t8907360\nSunday\t11\t8253440\nSunday\t12\t7532640\nSunday\t13\t7476480\nSunday\t14\t7482240\nSunday\t15\t7424480\nSunday\t16\t7161760\nSunday\t17\t5886720\nSunday\t18\t4636320\nSunday\t19\t3543200\nSunday\t20\t2604960\nSunday\t21\t1910880\nSunday\t22\t1438720\nSunday\t23\t899200\nMonday\t0\t489440\nMonday\t1\t251520\nMonday\t2\t150880\nMonday\t3\t115040\nMonday\t4\t119040\nMonday\t5\t223840\nMonday\t6\t761280\nMonday\t7\t2119200\nMonday\t8\t3941440\nMonday\t9\t5810240\nMonday\t10\t6276800\nMonday\t11\t6100480\nMonday\t12\t5724800\nMonday\t13\t5864000\nMonday\t14\t5947680\nMonday\t15\t5995040\nMonday\t16\t6006560\nMonday\t17\t5144160\nMonday\t18\t4235200\nMonday\t19\t3213440\nMonday\t20\t2406240\nMonday\t21\t1704480\nMonday\t22\t1303360\nMonday\t23\t857280\nTuesday\t0\t472320\nTuesday\t1\t239200\nTuesday\t2\t152480\nTuesday\t3\t104640\nTuesday\t4\t115040\nTuesday\t5\t216800\nTuesday\t6\t729920\nTuesday\t7\t1983360\nTuesday\t8\t3608480\nTuesday\t9\t5169920\nTuesday\t10\t5766400\nTuesday\t11\t5634400\nTuesday\t12\t5352800\nTuesday\t13\t5465760\nTuesday\t14\t5563680\nTuesday\t15\t5758400\nTuesday\t16\t5643680\nTuesday\t17\t4858880\nTuesday\t18\t4000160\nTuesday\t19\t3079840\nTuesday\t20\t2207200\nTuesday\t21\t1644480\nTuesday\t22\t1318720\nTuesday\t23\t828960\nWednesday\t0\t422720\nWednesday\t1\t241920\nWednesday\t2\t143840\nWednesday\t3\t109760\nWednesday\t4\t116800\nWednesday\t5\t212800\nWednesday\t6\t704160\nWednesday\t7\t1998880\nWednesday\t8\t3490240\nWednesday\t9\t5025440\nWednesday\t10\t5605440\nWednesday\t11\t5417120\nWednesday\t12\t5159840\nWednesday\t13\t5240160\nWednesday\t14\t5380000\nWednesday\t15\t5475520\nWednesday\t16\t5454880\nWednesday\t17\t4700480\nWednesday\t18\t3908000\nWednesday\t19\t3096000\nWednesday\t20\t2269760\nWednesday\t21\t1727360\nWednesday\t22\t1409920\nWednesday\t23\t903200\nThursday\t0\t510240\nThursday\t1\t267520\nThursday\t2\t162560\nThursday\t3\t134560\nThursday\t4\t145600\nThursday\t5\t251840\nThursday\t6\t778560\nThursday\t7\t2149440\nThursday\t8\t3842400\nThursday\t9\t5477120\nThursday\t10\t6130080\nThursday\t11\t6066400\nThursday\t12\t5714240\nThursday\t13\t5807360\nThursday\t14\t5985120\nThursday\t15\t6001280\nThursday\t16\t5737600\nThursday\t17\t4792800\nThursday\t18\t3889600\nThursday\t19\t2998560\nThursday\t20\t2131520\nThursday\t21\t1522400\nThursday\t22\t1199680\nThursday\t23\t842400\nFriday\t0\t528960\nFriday\t1\t307040\nFriday\t2\t194240\nFriday\t3\t138080\nFriday\t4\t128320\nFriday\t5\t181760\nFriday\t6\t518880\nFriday\t7\t1811040\nFriday\t8\t3673600\nFriday\t9\t4934240\nFriday\t10\t5706400\nFriday\t11\t5919040\nFriday\t12\t5939360\nFriday\t13\t6010240\nFriday\t14\t6199680\nFriday\t15\t6094880\nFriday\t16\t5689920\nFriday\t17\t4863680\nFriday\t18\t3865120\nFriday\t19\t2935360\nFriday\t20\t2142720\nFriday\t21\t1680160\nFriday\t22\t1365120\nFriday\t23\t973920\n"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTraining w/ SciPy (2 hours)\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1572302545488_1858780584",
-      "id": "20191028-224225_1943653690",
-      "dateCreated": "2019-10-28 22:42:25.488",
-      "dateStarted": "2019-10-29 20:12:15.509",
-      "dateFinished": "2019-10-29 20:12:22.018",
+      "jobName": "paragraph_1572393651068_-868266322",
+      "id": "20191030-000051_1257623191",
+      "dateCreated": "2019-10-30 00:00:51.068",
+      "dateStarted": "2019-10-30 00:01:09.883",
+      "dateFinished": "2019-10-30 00:01:09.898",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%python\ntime_dow_correlation \u003d v.sql(\"\"\"\\\nselect order_dow, order_hour_of_day, count(*) c\nfrom \n  hive.instacart.orders o\ngroup by order_dow, order_hour_of_day\norder by order_dow, order_hour_of_day\"\"\")\nz.show(replace_dow(time_dow_correlation))",
+      "text": "%md\n## Training w/ SciPy+Verdict (\u003c2 mins)",
       "user": "anonymous",
-      "dateUpdated": "2019-10-29 20:12:14.192",
+      "dateUpdated": "2019-10-30 00:01:48.011",
       "config": {
         "colWidth": 6.0,
         "fontSize": 9.0,
         "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "order_dow": "string",
-                      "order_hour_of_day": "string",
-                      "c": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "order_dow",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "values": [
-                {
-                  "name": "c",
-                  "index": 2.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          },
-          "1": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 300.0,
-              "optionOpen": true,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "department": "string",
-                      "monthly_freq": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "order_dow",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [
-                {
-                  "name": "order_hour_of_day",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "values": [
-                {
-                  "name": "c",
-                  "index": 2.0,
-                  "aggr": "sum"
-                }
-              ]
-            },
-            "helium": {}
-          }
-        },
+        "results": {},
         "editorSetting": {
-          "language": "python",
+          "language": "scala",
           "editOnDblClick": false,
+          "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/scala",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1615,33 +1475,386 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "TABLE",
-            "data": "order_dow\torder_hour_of_day\tc\nSaturday\t0\t627200\nSaturday\t1\t380032\nSaturday\t2\t215808\nSaturday\t3\t153600\nSaturday\t4\t131456\nSaturday\t5\t199424\nSaturday\t6\t522880\nSaturday\t7\t1978496\nSaturday\t8\t4524160\nSaturday\t9\t6513408\nSaturday\t10\t7766912\nSaturday\t11\t8219136\nSaturday\t12\t8229504\nSaturday\t13\t8614272\nSaturday\t14\t8740864\nSaturday\t15\t8660992\nSaturday\t16\t7879808\nSaturday\t17\t6414208\nSaturday\t18\t4711552\nSaturday\t19\t3615488\nSaturday\t20\t2931840\nSaturday\t21\t2316160\nSaturday\t22\t1806720\nSaturday\t23\t1114880\nSunday\t0\t587008\nSunday\t1\t286592\nSunday\t2\t183424\nSunday\t3\t123008\nSunday\t4\t125952\nSunday\t5\t268544\nSunday\t6\t848896\nSunday\t7\t2645376\nSunday\t8\t5479808\nSunday\t9\t8319232\nSunday\t10\t8846720\nSunday\t11\t8270848\nSunday\t12\t7515648\nSunday\t13\t7450112\nSunday\t14\t7458560\nSunday\t15\t7396096\nSunday\t16\t7111296\nSunday\t17\t5868160\nSunday\t18\t4618112\nSunday\t19\t3508352\nSunday\t20\t2626688\nSunday\t21\t1906176\nSunday\t22\t1458560\nSunday\t23\t901504\nMonday\t0\t475648\nMonday\t1\t258304\nMonday\t2\t142848\nMonday\t3\t116096\nMonday\t4\t131584\nMonday\t5\t212736\nMonday\t6\t758016\nMonday\t7\t2110976\nMonday\t8\t3954432\nMonday\t9\t5807232\nMonday\t10\t6254208\nMonday\t11\t6114560\nMonday\t12\t5744896\nMonday\t13\t5853056\nMonday\t14\t5924736\nMonday\t15\t6002432\nMonday\t16\t6015744\nMonday\t17\t5181824\nMonday\t18\t4257152\nMonday\t19\t3243520\nMonday\t20\t2401024\nMonday\t21\t1704704\nMonday\t22\t1299712\nMonday\t23\t879104\nTuesday\t0\t478208\nTuesday\t1\t234624\nTuesday\t2\t149120\nTuesday\t3\t101632\nTuesday\t4\t119680\nTuesday\t5\t221952\nTuesday\t6\t728704\nTuesday\t7\t1973376\nTuesday\t8\t3602560\nTuesday\t9\t5155072\nTuesday\t10\t5760896\nTuesday\t11\t5602304\nTuesday\t12\t5388288\nTuesday\t13\t5469696\nTuesday\t14\t5555456\nTuesday\t15\t5776128\nTuesday\t16\t5672832\nTuesday\t17\t4870656\nTuesday\t18\t4000896\nTuesday\t19\t3062784\nTuesday\t20\t2242176\nTuesday\t21\t1636864\nTuesday\t22\t1325312\nTuesday\t23\t850560\nWednesday\t0\t415104\nWednesday\t1\t238592\nWednesday\t2\t144896\nWednesday\t3\t114688\nWednesday\t4\t121856\nWednesday\t5\t201088\nWednesday\t6\t700032\nWednesday\t7\t1991680\nWednesday\t8\t3533696\nWednesday\t9\t5043200\nWednesday\t10\t5574016\nWednesday\t11\t5419136\nWednesday\t12\t5187200\nWednesday\t13\t5260672\nWednesday\t14\t5394176\nWednesday\t15\t5476096\nWednesday\t16\t5418112\nWednesday\t17\t4722048\nWednesday\t18\t3950208\nWednesday\t19\t3091072\nWednesday\t20\t2296704\nWednesday\t21\t1719680\nWednesday\t22\t1412096\nWednesday\t23\t903424\nThursday\t0\t516736\nThursday\t1\t269056\nThursday\t2\t169728\nThursday\t3\t133888\nThursday\t4\t139904\nThursday\t5\t253056\nThursday\t6\t789248\nThursday\t7\t2130688\nThursday\t8\t3865344\nThursday\t9\t5439744\nThursday\t10\t6132608\nThursday\t11\t6054656\nThursday\t12\t5708800\nThursday\t13\t5826688\nThursday\t14\t5962112\nThursday\t15\t6029184\nThursday\t16\t5695104\nThursday\t17\t4800384\nThursday\t18\t3929856\nThursday\t19\t3022080\nThursday\t20\t2134784\nThursday\t21\t1521152\nThursday\t22\t1182976\nThursday\t23\t831232\nFriday\t0\t520320\nFriday\t1\t302848\nFriday\t2\t190464\nFriday\t3\t131840\nFriday\t4\t134528\nFriday\t5\t177408\nFriday\t6\t519680\nFriday\t7\t1794816\nFriday\t8\t3678976\nFriday\t9\t4944640\nFriday\t10\t5676288\nFriday\t11\t5879168\nFriday\t12\t5953536\nFriday\t13\t6049408\nFriday\t14\t6190720\nFriday\t15\t6115456\nFriday\t16\t5648512\nFriday\t17\t4838016\nFriday\t18\t3882624\nFriday\t19\t2934272\nFriday\t20\t2130176\nFriday\t21\t1674880\nFriday\t22\t1366528\nFriday\t23\t995456\n"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTraining w/ SciPy+Verdict (\u0026lt;2 mins)\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1572124334496_-1237705006",
-      "id": "20191026-211214_1074587644",
-      "dateCreated": "2019-10-26 21:12:14.496",
-      "dateStarted": "2019-10-29 20:12:11.219",
-      "dateFinished": "2019-10-29 20:12:13.315",
+      "jobName": "paragraph_1572393669834_789624013",
+      "id": "20191030-000109_689730744",
+      "dateCreated": "2019-10-30 00:01:09.835",
+      "dateStarted": "2019-10-30 00:01:20.874",
+      "dateFinished": "2019-10-30 00:01:20.888",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nfull_trainer \u003d LocalTrainer(False, beta\u003dBETA)\nfull_model \u003d full_trainer.train(Logistic, training_set)\nfull_param \u003d full_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027, full_param)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:02:05.872",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393709502_256227954",
+      "id": "20191030-000149_1651306257",
+      "dateCreated": "2019-10-30 00:01:49.502",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\napprox_trainer \u003d ApproxTrainer(LocalTrainer(False, beta\u003dBETA), logistic_conf)\napprox_model \u003d approx_trainer.train(Logistic, training_set)\napprox_param \u003d approx_model.get_param()\nnp.save(\u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027, approx_param)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:02:09.233",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393680835_1433865941",
+      "id": "20191030-000120_1967161497",
+      "dateCreated": "2019-10-30 00:01:20.835",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Prediction w/ SciPy Model",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:02:35.482",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePrediction w/ SciPy Model\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393730576_2087759298",
+      "id": "20191030-000210_2009885353",
+      "dateCreated": "2019-10-30 00:02:10.576",
+      "dateStarted": "2019-10-30 00:02:32.063",
+      "dateFinished": "2019-10-30 00:02:32.096",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Prediction w/ SciPy + Verdict Model",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:03:38.237",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePrediction w/ SciPy + Verdict Model\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393739695_-288162073",
+      "id": "20191030-000219_2101703150",
+      "dateCreated": "2019-10-30 00:02:19.695",
+      "dateStarted": "2019-10-30 00:03:32.321",
+      "dateFinished": "2019-10-30 00:03:32.332",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nfull_model \u003d Logistic(X\u003dnp.array([[1]]))\nfull_param_path \u003d \u0027/root/blinkml/trained_models/criteo_full_param_0.001.npy\u0027\nfull_model.set_param(np.load(full_param_path))\nfull_predict \u003d full_model.predict(test_features)\nfull_predict.shape \u003d (10000,1)\nfull_df \u003d pd.DataFrame(np.hstack((test_features2D, full_predict)))\nz.show(full_df)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:03:52.379",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393745819_1508778223",
+      "id": "20191030-000225_1082070227",
+      "dateCreated": "2019-10-30 00:02:25.819",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\napprox_model \u003d Logistic(X\u003dnp.array([[1]]))\napprox_param_path \u003d \u0027/root/blinkml/trained_models/criteo_approx_param_0.001_delta_0.1.npy\u0027\napprox_model.set_param(np.load(approx_param_path))\napprox_predict \u003d approx_model.predict(test_features)\napprox_predict.shape \u003d (10000,1)\ndf_approx \u003d pd.DataFrame(np.hstack((test_features2D, approx_predict)))\nz.show(df_approx)\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:03:57.501",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393832463_-1013804410",
+      "id": "20191030-000352_1730039815",
+      "dateCreated": "2019-10-30 00:03:52.463",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## SciPy Model Accuracy",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:04:52.789",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSciPy Model Accuracy\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393844222_1408539096",
+      "id": "20191030-000404_1861958565",
+      "dateCreated": "2019-10-30 00:04:04.222",
+      "dateStarted": "2019-10-30 00:04:26.929",
+      "dateFinished": "2019-10-30 00:04:26.944",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## SciPy + Verdict Model Accuracy",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:04:55.828",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSciPy + Verdict Model Accuracy\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393846709_1026788404",
+      "id": "20191030-000406_1712762880",
+      "dateCreated": "2019-10-30 00:04:06.709",
+      "dateStarted": "2019-10-30 00:04:48.224",
+      "dateFinished": "2019-10-30 00:04:48.247",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ngroundtrough \u003d test_data[:,0]\nfull_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - full_predict) \u003c 0.01)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:04:38.072",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393856325_1142023695",
+      "id": "20191030-000416_188500914",
+      "dateCreated": "2019-10-30 00:04:16.325",
+      "dateStarted": "2019-10-30 00:04:30.508",
+      "dateFinished": "2019-10-30 00:04:30.520",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ngroundtrough \u003d test_data[:,0]\napprox_predict.shape \u003d (10000,1)\nnp.mean(np.abs(groundtrough - approx_predict) \u003c 0.01)",
+      "user": "anonymous",
+      "dateUpdated": "2019-10-30 00:04:41.639",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 319, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_python-7502216603154317133.py\", line 307, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nNameError: name \u0027test_data\u0027 is not defined\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1572393862376_1927620060",
+      "id": "20191030-000422_2068979734",
+      "dateCreated": "2019-10-30 00:04:22.376",
+      "dateStarted": "2019-10-30 00:04:33.054",
+      "dateFinished": "2019-10-30 00:04:33.070",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\n",
       "user": "anonymous",
-      "dateUpdated": "2019-10-26 22:18:23.975",
+      "dateUpdated": "2019-10-30 00:04:33.010",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1572128303974_29704561",
-      "id": "20191026-221823_1543063705",
-      "dateCreated": "2019-10-26 22:18:23.974",
+      "jobName": "paragraph_1572393873008_-1350020377",
+      "id": "20191030-000433_1938003711",
+      "dateCreated": "2019-10-30 00:04:33.009",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
