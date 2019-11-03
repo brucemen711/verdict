@@ -176,7 +176,7 @@ class VerdictSession(object):
                         "alias": agg_func, ...
                     },
                     "groupby": [alias, ...],
-                    "orderby": ["alias asc", ...],
+                    "orderby": [(base_attr, "asc"), ...],
                     "limit": int,
                 }
 
@@ -214,7 +214,7 @@ class VerdictSession(object):
                         "alias": agg_func, ...
                     },
                     "groupby": [alias, ...],
-                    "orderby": ["alias asc", ...],
+                    "orderby": [(base_attr, "asc"), ...],
                     "limit": int
                 }
 

@@ -434,6 +434,7 @@ class PandasSQL(object):
                 assert_equal(len(element.relop_args()), 1)
                 predicate = self._execute(element.relop_args()[0], source)
                 return source[predicate]
+                
             elif element.is_join():
                 join_type = element.join_type()
                 if join_type == 'cross':
