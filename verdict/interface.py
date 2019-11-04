@@ -43,17 +43,20 @@ Specifically, a verdict query must in the following form:
 
     agg_arg := { alias: agg_func,  ... }
 
-    select_arg := [ attr, ... ]      # must be evaluated to true or false
+    select_arg := attr      # must be evaluated to true or false
 
     join_arg := { 
         "join_to": rel_source, 
         "left_on": left_join_key, 
-        "right_on": right_join_key
+        "right_on": right_join_key,
+        "join_type": join_type
     }
 
     left_join_key := base_attr
 
     right_join_key := base_attr
+
+    join_type := "inner" | "left" | "right"
 
     groupby_arg := [ base_attr, ... ]
 
@@ -781,10 +784,10 @@ def from_verdict_query(json_obj):
 
             elif op == "orderby":
                 args = json_obj['arg']
-                assert_type(args, (tuple, List))
+                assert_type(args, (tuple, list))
                 new_args = []
                 for a in args:
-                    assert_type(args, (tuple, List))
+                    assert_type(args, (tuple, list))
                     assert_equal(len(a), 2)
                     new_args.append((from_verdict_query(a[0]), a[1]))
                 return DerivedTable(source, op, new_args)
@@ -799,7 +802,7 @@ def from_verdict_query(json_obj):
         else:
             raise ValueError(json_obj)
 
-    elif isinstance(json_obj, List):
+    elif isinstance(json_obj, list):
         return [from_verdict_query(a) for a in json_obj]
 
     elif isinstance(json_obj, tuple):

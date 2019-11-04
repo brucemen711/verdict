@@ -710,12 +710,18 @@ class Querying(object):
         col_values_and_ratios = base2chosen[primary_base]['partitions']
         cache_col_value = largest_part_value
 
+
         # 3. Perform all operations concurrently
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             query_futures = []
             col_values_and_ratios = sorted(col_values_and_ratios, 
                                        key=lambda c: c['col_value'], reverse=True)
             agg_merger = AggMerger(query_to_run, orderby, limit)
+
+            # TODO: This is a temp code placed to make streaming query light
+            cutoff_num = 5
+            if len(col_values_and_ratios) > cutoff_num:
+                col_values_and_ratios = col_values_and_ratios[:cutoff_num]
 
             for part in col_values_and_ratios:
                 col_value = part['col_value']

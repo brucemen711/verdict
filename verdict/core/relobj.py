@@ -759,7 +759,7 @@ class DerivedTable(Table):
         @param relop_args
             Arguments of this operation. The types of arguments will be different depending on the
             types of the operation. That is,
-                1. select: A single AttrOp.
+                1. select: A single AttrOp in a list.
                 2. project: A list of AttrOp or Attr
                 3. join: [join_type, BaseTable, key_col]
                 4. groupby: A list of Attr
@@ -773,10 +773,16 @@ class DerivedTable(Table):
 
         if relop_name == "project":
             for a in relop_args:
-                assert_type(a, (tuple, List))
+                assert_type(a, (tuple, list))
                 assert_equal(len(a), 2)
                 assert_type(a[0], Attr)
                 assert_type(a[1], str)
+
+        elif relop_name == "select":
+            assert_type(relop_args, (tuple, list))
+            assert len(relop_args) == 1
+            for a in relop_args:
+                assert_type(a, AttrOp)
 
         elif relop_name == "join":
             len(relop_args) == 4
@@ -788,7 +794,7 @@ class DerivedTable(Table):
 
         elif relop_name == "agg":
             for a in relop_args:
-                assert_type(a, (tuple, List))
+                assert_type(a, (tuple, list))
                 assert_equal(len(a), 2)
                 assert_type(a[0], AggFunc)
                 assert_type(a[1], str)
@@ -799,7 +805,7 @@ class DerivedTable(Table):
 
         elif relop_name == "orderby":
             for a in relop_args:
-                assert_type(a, (tuple, List))
+                assert_type(a, (tuple, list))
                 assert_equal(len(a), 2)
                 assert_type(a[0], BaseAttr)
                 assert_type(a[1], str)

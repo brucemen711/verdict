@@ -11,7 +11,7 @@ if len(sys.argv) > 1:
     hostname = sys.argv[1]
 
 verdict.set_loglevel('debug')
-v = verdict.presto(verdict_host='local', presto_host=hostname)
+v = verdict.presto(presto_host=hostname)
 
 
 table2key_col = {
