@@ -57,8 +57,7 @@ COPY docker/zeppelin_notebook/2EMM5HJDB/note.json /root/zeppelin-0.8.1-bin-all/n
 COPY docker/zeppelin_notebook/2ESF1KHY9/note.json /root/zeppelin-0.8.1-bin-all/notebook/2ESF1KHY9/note.json
 
 # Copy Jupyter notebook
-COPY docker/jupyter_notebook/WithVerdict.ipynb /opt/notebooks/WithVerdict.ipynb
-COPY docker/jupyter_notebook/NoVerdict.ipynb /opt/notebooks/NoVerdict.ipynb
+COPY docker/jupyter_notebook /opt/notebooks/
 
 # Entry point
 ENV PATH="/root/bootstrap:${PATH}"

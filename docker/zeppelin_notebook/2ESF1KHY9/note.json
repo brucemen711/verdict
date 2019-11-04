@@ -3,7 +3,7 @@
     {
       "text": "%python\nimport pandas as pd\n\ndef to_dow_name(dow_number):\n    return {\n        0: \u0027Saturday\u0027,\n        1: \u0027Sunday\u0027,\n        2: \u0027Monday\u0027,\n        3: \u0027Tuesday\u0027,\n        4: \u0027Wednesday\u0027,\n        5: \u0027Thusday\u0027,\n        6: \u0027Friday\u0027,\n    }[dow_number]\n\ndef replace_dow(frame):\n    frame[\u0027order_dow\u0027] \u003d frame[\u0027order_dow\u0027].apply(to_dow_name)\n    return frame\n\nimport verdict\nverdict.set_loglevel(\u0027error\u0027)\nv \u003d verdict.presto(\u0027presto\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:46:56.249",
+      "dateUpdated": "2019-11-04 01:07:49.592",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -28,15 +28,15 @@
       "jobName": "paragraph_1572124191778_-1198000652",
       "id": "20191026-210951_1529651661",
       "dateCreated": "2019-10-26 21:09:51.778",
-      "dateStarted": "2019-11-01 18:46:56.808",
-      "dateFinished": "2019-11-01 18:47:03.695",
+      "dateStarted": "2019-11-04 01:07:49.654",
+      "dateFinished": "2019-11-04 01:07:49.668",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndef append_errors(actual, expected, col\u003d\u0027c\u0027):\n    actual \u003d actual.reset_index(drop\u003dTrue)\n    expected \u003d expected.reset_index(drop\u003dTrue)\n    row_count \u003d min(len(actual.index), len(expected.index))\n    actual \u003d actual.head(row_count)\n    expected \u003d expected.head(row_count)\n    with_error \u003d pd.concat([expected, 100 * (expected[col] - actual[col]).abs() / expected[col]], axis\u003d1)\n    with_error.columns \u003d list(expected.columns) + [\u0027rel error (%)\u0027]\n    return with_error",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:47:07.492",
+      "dateUpdated": "2019-11-04 01:07:53.122",
       "config": {
         "colWidth": 12.0,
         "fontSize": 12.0,
@@ -64,8 +64,8 @@
       "jobName": "paragraph_1572395350062_-1755198401",
       "id": "20191030-002910_1376654274",
       "dateCreated": "2019-10-30 00:29:10.062",
-      "dateStarted": "2019-11-01 18:47:07.804",
-      "dateFinished": "2019-11-01 18:47:07.885",
+      "dateStarted": "2019-11-04 01:07:53.195",
+      "dateFinished": "2019-11-04 01:07:53.204",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -353,7 +353,7 @@
     {
       "text": "%python\nsales_by_days \u003d v.sql(\"\"\"\\\nbypass select order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\")\nz.show(replace_dow(sales_by_days))\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:47:39.718",
+      "dateUpdated": "2019-11-04 01:08:01.722",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -437,15 +437,15 @@
       "jobName": "paragraph_1572302853114_1067630594",
       "id": "20191028-224733_424578856",
       "dateCreated": "2019-10-28 22:47:33.114",
-      "dateStarted": "2019-11-01 18:47:29.476",
-      "dateFinished": "2019-11-01 18:47:39.121",
+      "dateStarted": "2019-11-04 01:07:55.681",
+      "dateFinished": "2019-11-04 01:08:00.030",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, count(*) c\nfrom hive.instacart.orders\ngroup by order_dow\norder by order_dow\"\"\", 0.005)\nverdict_sales_by_days \u003d append_errors(sales_by_days, replace_dow(df))\nz.show(verdict_sales_by_days)",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:47:53.306",
+      "dateUpdated": "2019-11-04 01:08:15.489",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -534,8 +534,8 @@
       "jobName": "paragraph_1572393982394_-817530277",
       "id": "20191030-000622_1429015947",
       "dateCreated": "2019-10-30 00:06:22.394",
-      "dateStarted": "2019-11-01 18:47:51.427",
-      "dateFinished": "2019-11-01 18:47:52.494",
+      "dateStarted": "2019-11-04 01:08:13.753",
+      "dateFinished": "2019-11-04 01:08:14.697",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -705,7 +705,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nweekend_sales \u003d replace_dow(df[df[\u0027department\u0027].isin(\n    [\u0027produce\u0027, \u0027dairy eggs\u0027, \u0027bakery\u0027, \u0027canned goods\u0027, \u0027snacks\u0027])])\nz.show(weekend_sales)\n\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:58:18.043",
+      "dateUpdated": "2019-11-04 01:19:02.810",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -800,15 +800,15 @@
       "jobName": "paragraph_1572453184944_-162699071",
       "id": "20191030-163304_134655433",
       "dateCreated": "2019-10-30 16:33:04.944",
-      "dateStarted": "2019-11-01 18:47:58.375",
-      "dateFinished": "2019-11-01 18:58:17.368",
+      "dateStarted": "2019-11-04 01:08:22.870",
+      "dateFinished": "2019-11-04 01:19:00.468",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\nverdict_weekend_sales \u003d append_errors(weekend_sales,\n    replace_dow(df[df[\u0027department\u0027].isin(\n        [\u0027produce\u0027, \u0027dairy eggs\u0027, \u0027bakery\u0027, \u0027canned goods\u0027, \u0027snacks\u0027])]))\nz.show(verdict_weekend_sales)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 19:25:14.932",
+      "dateUpdated": "2019-11-04 01:19:46.124",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -910,8 +910,8 @@
       "jobName": "paragraph_1572453388953_-1999245554",
       "id": "20191030-163628_292078927",
       "dateCreated": "2019-10-30 16:36:28.953",
-      "dateStarted": "2019-11-01 19:24:59.986",
-      "dateFinished": "2019-11-01 19:25:03.742",
+      "dateStarted": "2019-11-04 01:19:42.272",
+      "dateFinished": "2019-11-04 01:19:45.467",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1041,7 +1041,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\")\nsales_by_department \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nz.show(sales_by_department)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 19:10:55.821",
+      "dateUpdated": "2019-11-04 01:04:19.995",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1146,7 +1146,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect department, order_dow, count(*) c\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by department, order_dow\norder by department, order_dow\"\"\", 0.05)\ndf \u003d replace_dow(\n    df[df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027bulk\u0027, \u0027other\u0027, \u0027missing\u0027, \u0027pets\u0027])])\nverdict_sales_by_department \u003d append_errors(sales_by_department, df)\nz.show(verdict_sales_by_department)",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 19:25:49.751",
+      "dateUpdated": "2019-11-04 01:04:20.121",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1448,7 +1448,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nbypass select order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON p.order_id \u003d o.order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ncart_order \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n    df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n                          \u0027personal care\u0027])]\nz.show(cart_order)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:46:53.916",
+      "dateUpdated": "2019-11-04 01:04:18.794",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -1541,7 +1541,7 @@
     {
       "text": "%python\ndf \u003d v.sql(\"\"\"\\\nselect order_dow, department, avg(add_to_car_order) as a1\nfrom hive.instacart.order_products p\n    INNER JOIN hive.instacart.orders o\n    ON order_id \u003d order_id\ngroup by order_dow, department\norder by department\"\"\", cache_only\u003dTrue)\ndf \u003d df[(df[\u0027order_dow\u0027] \u003d\u003d 4) \u0026\n         df[\u0027department\u0027].isin([\u0027alcohol\u0027, \u0027babies\u0027, \u0027produce\u0027, \u0027pantry\u0027, \n                                \u0027personal care\u0027])]\nverdict_cart_order \u003d append_errors(cart_order, df, \u0027a1\u0027)\nz.show(verdict_cart_order)",
       "user": "anonymous",
-      "dateUpdated": "2019-11-01 18:46:54.220",
+      "dateUpdated": "2019-11-04 01:04:19.120",
       "config": {
         "colWidth": 6.0,
         "fontSize": 12.0,
@@ -2388,8 +2388,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "python:shared_process": [],
-    "spark:shared_process": []
+    "python:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
