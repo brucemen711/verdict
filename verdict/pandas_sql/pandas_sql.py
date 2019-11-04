@@ -1,8 +1,8 @@
-"""
-Deprecated
+"""Execute relational operations using Pandas
 """
 
 import json
+import numpy as np
 import pandas as pd
 import pickle
 from verdict.core.relobj import *
@@ -376,10 +376,10 @@ class PandasSQL(object):
                 return attr.str.endswith(pattern)
             elif op_name == 'floor':
                 attr = processed_args[0]
-                return attr.floor()
+                return np.floor(attr)
             elif op_name == 'ceil':
                 attr = processed_args[0]
-                return attr.ceil()
+                return np.ceil(attr)
             elif op_name == 'round':
                 attr = processed_args[0]
                 return attr.round()

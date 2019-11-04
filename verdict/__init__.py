@@ -4,7 +4,7 @@ from .driver.loader import load_driver
 from .session import VerdictSession
 
 
-__version__ = '0.6.0'
+__version__ = '0.6.1'
 
 
 def version():
