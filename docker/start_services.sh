@@ -10,5 +10,5 @@ nohup pandas-sql-server --preload-cache &
 /root/zeppelin-0.8.1-bin-all/bin/zeppelin-daemon.sh start
 
 # This starts Jupyter notebook
-jupyter lab --notebook-dir /opt/notebooks \
+jupyter notebook --notebook-dir /opt/notebooks \
     --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token=''
