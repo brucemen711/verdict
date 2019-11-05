@@ -809,5 +809,5 @@ def from_verdict_query(json_obj):
         return tuple([from_verdict_query(a) for a in json_obj])
 
     else:
-        raise ValueError(json_obj)
+        raise ValueError(f"Unexpected argument: {json_obj} of type ({type(json_obj)}).")
 
