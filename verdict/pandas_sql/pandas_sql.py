@@ -174,6 +174,7 @@ class PandasSQL(object):
                 return query_obj            
 
         elif query_obj.is_project():
+            # Pushes down only the currently appearing attributes to the source
             source_pushdown_list = flatten([get_baseattr(a) for a in query_obj.relop_args()])
             source_pushdown_list = list(set(source_pushdown_list))
             new_source = self._pushdown_project_inner(query_obj.source(), source_pushdown_list)

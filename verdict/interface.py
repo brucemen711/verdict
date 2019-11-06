@@ -98,13 +98,19 @@ from .core.relobj import *
 from .common.tools import *
 
 
+sql_cache = {}
+
+
 def sql2verdict_query(sql):
     """Converts the standard SQL:99 to the json representation that can be understood by Verdict's
     core logic (:class:`~verdict.core.querying2.Querying`).
     """
     assert_type(sql, str)
-    sql = copy.deepcopy(sql)
-    sql = preprocess(sql)
+    if sql in sql_cache:
+        return sql_cache[sql]
+        
+    sql_original = copy.deepcopy(sql)
+    sql = preprocess(sql_original)
     json_dict = parse(sql)
     log(f'An intermediate JSON from SQL: {json_dict}', 'debug')
     c = SQL2Json()
@@ -165,6 +171,7 @@ def sql2verdict_query(sql):
         assert_type(limit, int)
         request['limit'] = limit
 
+    sql_cache[sql_original] = request
     return request
 
 
