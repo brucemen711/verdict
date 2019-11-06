@@ -9,12 +9,16 @@ from pyhive import hive
 
 verdict.set_loglevel("debug")
 meta_setup = False
+fast_meta = True
 hostname = 'presto'
 if len(sys.argv) > 1:
     hostname = sys.argv[1]
 if len(sys.argv) > 2:
     if sys.argv[2].lower() == "true":
         meta_setup = True
+if len(sys.argv) > 3:
+    if sys.argv[3].lower() == "false":
+        fast_meta = False
 hive_cursor = hive.connect(hostname).cursor()
 
 presto_conn = prestodb.dbapi.connect(
@@ -102,21 +106,25 @@ for source, sample_list in source2samples.items():
             presto_cursor.execute(f"SELECT max({part_col}) FROM {sample_table_name}")
             result = presto_cursor.fetchall()
             parts_count = result[0][0]
-
             key_col = sample_name[33:]
-            u = UniformRandom()
-            ratio_dict = u.gen_sampling_ratios_from_parts_count(parts_count)
-            
+
             sample_meta = {
                 "sample_id": sample_name,
                 "source_name": source,
                 "table_name": f"hive.{sample_schema}.{sample_name}",
                 "key_col": key_col,
                 "part_col": part_col,
-                "partitions": sorted([
-                    {"col_value": p[0], "sampling_ratio": p[1]} for p in ratio_dict.items()
-                ], key=lambda r: r["col_value"])
             }
+
+            if fast_meta:
+                u = UniformRandom()
+                ratio_dict = u.gen_sampling_ratios_from_parts_count(parts_count)
+                sample_meta["partitions"] = sorted([
+                        {"col_value": p[0], "sampling_ratio": p[1]} for p in ratio_dict.items()
+                    ], key=lambda r: r["col_value"])
+            else:
+                sample_meta = v.create_accurate_sample_meta(sample_meta)
+
             v._meta.store_sample_meta(source, sample_name, sample_meta)
 
             # Store cache

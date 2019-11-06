@@ -354,27 +354,29 @@ class VerdictSession(object):
         meta.drop_sample_meta(source_table_name, sample_id)
 
 
-    def _create_accurate_sample_meta(self, partial_sample_meta):
-        """Stores the following structure in the meta store.
-            {
-                "sample_id": str,
-                "source_name": str,
-                "table_name": str,
-                "key_col": '_rowid',
-                "part_col": str,
-                "row_count": int,       # this is a new field
-                "partitions": [         # this is a new field
-                    { "col_value": int, "sampling_ratio": float }, ...
-                ]
-            }
+    def create_accurate_sample_meta(self, partial_sample_meta):
+        """Computes the accurate partition sizes (thus the sampling ratios)
 
-        @param partial_sample_meta
+        :param partial_sample_meta:
             {
                 "sample_id": str,
                 "source_name": str,
                 "table_name": str,
                 "key_col": '_rowid',
                 "part_col": str
+            }
+
+        :return: The same structure as the input meta but with an additional field "partitions".
+            In other words, this method returns
+            
+            {
+                'sample_id': str,
+                'table_name': str,
+                'key_col': '_rowid',
+                'part_col': string,
+                'partitions': [
+                    { 'col_value': int, 'sampling_ratio': float }
+                ]
             }
         """
         engine = self._engine
