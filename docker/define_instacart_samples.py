@@ -124,6 +124,7 @@ for source, sample_list in source2samples.items():
                     ], key=lambda r: r["col_value"])
             else:
                 sample_meta = v.create_accurate_sample_meta(sample_meta)
+                ratio_dict = {a["col_value"]: a["sampling_ratio"] for a in sample_meta["partitions"]}
 
             v._meta.store_sample_meta(source, sample_name, sample_meta)
 
